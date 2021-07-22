@@ -1,0 +1,45 @@
+nav{
+  background-color:#fff !important;
+  margin-bottom:0px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+ font-size: 1rem;
+ display: flex;
+ align-items: center;
+ text-decoration: none;
+ color: var(--Black);
+}
+
+nav a .title{
+  padding-left: 1rem;
+  line-height: 1.2;
+}
+
+nav  ul{
+  display: flex;
+  list-style-type: none;
+  padding-right: 6rem;
+}
+
+nav ul li{
+  font-size: 1.1rem;
+  margin-left: 4rem;
+}
+
+.nav-brand{
+ color:blue;
+ font-size:1.9rem;
+}
+
+.logo{
+  height:50px;
+  width: 50px;
+}
