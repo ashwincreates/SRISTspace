@@ -1,4 +1,5 @@
 import './Nav.css';
+import Emoji from '../emoji/Emoji';
 
 function Nav() {
   return (
@@ -10,11 +11,17 @@ function Nav() {
       <h1>version 1.0</h1>
     </div>
     </a>
+    
+    <div>
+      <input type="checkbox"></input>
+      <div></div>
+      <div></div>
+    </div>
 
     <ul>
-      <li>Notes</li>
-      <li>Events</li>
-      <li>About Us</li>
+      <li><Emoji symbol="📖" /> Notes</li>
+      <li><Emoji symbol="📖" /> Events</li>
+      <li><Emoji symbol="📖" /> About Us</li>
     </ul>
 
     </nav>

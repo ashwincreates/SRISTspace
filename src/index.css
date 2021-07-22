@@ -9,7 +9,11 @@
   /* Global Variables */
   --PrimaryColor : #6FCF97;
   --Black : #000000;
-  --Grey : #BDBDBD
+  --Grey : #BDBDBD;
+
+  /* BreakPoints */
+  --Phone: 375px;
+  --Tablet: 768px;
 }
 
 body {
