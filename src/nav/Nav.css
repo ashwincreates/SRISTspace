@@ -1,3 +1,5 @@
+@import "../index.css";
+
 nav{
   background-color:#fff !important;
   margin-bottom:0px;
@@ -35,18 +37,107 @@ nav ul li{
   padding:5px;
   border-radius:4px;
 }
-nav ul li:hover{
-  color:white;
- background-color:var(--Grey);
- box-shadow:1px 2px 5px black;
-}
 
+
+<<<<<<< HEAD
  .nav-brand{ 
  color:blue;
  font-size:1.9rem;
 } 
 
+=======
+>>>>>>> refs/remotes/origin/master
 .logo{
   height:50px;
   width: 50px;
+}
+
+@media(max-width: 370px){
+  
+   ul {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-right: 0 !important;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: clip-path cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;
+    clip-path: circle(0 at 89% 7%);
+  }
+  
+  .active{
+    clip-path: circle(100%);
+  }
+
+  li {
+    min-width: 4rem;
+    margin-left: 0px !important;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem !important;
+  }
+
+  nav {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .title{
+    display: none;
+  }
+
+  .nav-menu-btn {
+    z-index: 11;
+    height: 0.8rem;
+    width: 2rem;
+    margin-right: 0rem;
+    position: relative; }
+    .nav-menu-btn > div {
+      height: 3px;
+      border-width: 1px;
+      width: 100%;
+      background-color: var(--Black);
+      position: absolute;
+      transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965); }
+      
+      .nav-menu-btn > div:first-of-type {
+      top: 0; }
+    
+      .nav-menu-btn > div:last-of-type {
+      bottom: 0; }
+  
+      .nav-menu-btn .nav-menu:checked + .first {
+        background-color: var(--Black);
+        transform: rotate(45deg);
+        top: 5px; }
+  
+      .nav-menu-btn .nav-menu:checked + .first + .second {
+        background-color: var(--Black);
+        transform: rotate(-45deg);
+        bottom: 5px; }
+  
+      .nav-menu-btn .nav-menu {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+        z-index: 2;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: none;
+        user-select: none;
+        position: absolute;
+        opacity: 0;
+      }
+}
+
+@media (min-width: 370px) {
+  .nav-menu-btn{
+    display: none;
+  }
 }
