@@ -21,7 +21,7 @@ nav a {
 nav a .title{
   padding-left: 1rem;
   line-height: 1.2;
-}
+} 
 
 nav  ul{
   display: flex;
@@ -32,12 +32,19 @@ nav  ul{
 nav ul li{
   font-size: 1.1rem;
   margin-left: 4rem;
+  padding:5px;
+  border-radius:4px;
+}
+nav ul li:hover{
+  color:white;
+ background-color:var(--Grey);
+ box-shadow:1px 2px 5px black;
 }
 
-.nav-brand{
+ .nav-brand{ 
  color:blue;
  font-size:1.9rem;
-}
+} 
 
 .logo{
   height:50px;
