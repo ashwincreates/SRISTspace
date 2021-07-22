@@ -12,13 +12,13 @@ function Nav() {
     </div>
     </a>
     
-    <div>
-      <input type="checkbox"></input>
-      <div></div>
-      <div></div>
+    <div className="nav-menu-btn"  onClick= {() => opennav()}>
+      <input className="nav-menu" id="nav-btn" type="checkbox"></input>
+      <div className="first"></div>
+      <div className="second"></div>
     </div>
 
-    <ul>
+    <ul id="overlay">
       <li><Emoji symbol="📖" /> Notes</li>
       <li><Emoji symbol="📖" /> Events</li>
       <li><Emoji symbol="📖" /> About Us</li>
@@ -27,6 +27,25 @@ function Nav() {
     </nav>
     </>
   );
+}
+
+
+function opennav(){
+    let box = document.getElementById("nav-btn") as HTMLInputElement;
+    if(box?.checked)
+    {
+        document.getElementById("overlay")?.classList.add("active");
+        const root = document.getElementById("root")?.style;
+        if(root)
+            root.overflow = "hidden"
+    }
+    else
+    {
+        document.getElementById("overlay")?.classList.remove("active");
+        const root = document.getElementById("root")?.style;
+        if(root)
+            root.overflow = "scroll"
+    }
 }
 
 export default Nav;
