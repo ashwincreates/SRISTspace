@@ -5,7 +5,7 @@ function Nav() {
   return (
     <>
     <nav>
-    <a className="navbar-brand" href="#"><img className="logo" src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg"/>
+    <a className="navbar-brand" href="/"><img className="logo" src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg" alt="website logo"/>
     <div className="title">
       <h2>SRIST space</h2>
       <h1>version 1.0</h1>
