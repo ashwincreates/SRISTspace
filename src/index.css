@@ -47,3 +47,16 @@ h2 {
   color: var(--White);
   line-height: 120%;
 }
+
+
+button{
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--PrimaryColor);
+  color: var(--White);
+  height: 2.5rem;
+  width: 5.5rem;
+  font-size: 1rem;
+  font-family: "Poppins";
+}

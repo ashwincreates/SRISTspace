@@ -1,7 +1,7 @@
 import './App.css';
 import Nav from './nav/Nav';
 import Crousel from './crousel/Crousel';
-import List from "./list/list";
+import List from "./note/noteList";
 
 function App() {
   return (
