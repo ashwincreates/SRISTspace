@@ -48,7 +48,7 @@ nav ul li{
   width: 50px;
 }
 
-@media(max-width: 370px){
+@media(max-width: 480px){
   
    ul {
     z-index: 10;
@@ -132,7 +132,7 @@ nav ul li{
       }
 }
 
-@media (min-width: 370px) {
+@media (min-width: 480px) {
   .nav-menu-btn{
     display: none;
   }
