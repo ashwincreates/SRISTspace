@@ -1,0 +1,49 @@
+
+.column {
+  float: left;
+  width: 20%;
+  height:40%;
+  padding: 0 10px;
+  border-radius:10px;
+}
+
+
+.row {margin: 0 -5px;}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear:both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card-title {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  color:black;
+  text-align: center;
+  border-radius:10px;
+  background-color: #f1f1f1;
+}
+span{
+    font-size:14px;
+    font-weight:100;
+}
+.head{
+    margin-top:10px;
+    margin-left:15px;
+}
+.explore{
+ 
+float:right;
+margin-right:15px;
+
+}

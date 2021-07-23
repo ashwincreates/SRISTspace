@@ -1,9 +1,11 @@
 import './App.css';
 import Nav from './nav/Nav';
 import Crousel from './crousel/Crousel';
+import List from "./list/list";
 
 function App() {
   return (
+    <>
     <div className="App">
       <Nav></Nav> 
       <Crousel></Crousel>
@@ -14,7 +16,9 @@ function App() {
         <br />
         Have Fun! 
       </div>
+     <List></List>
     </div>
+    </>
   );
 }
 
