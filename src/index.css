@@ -10,9 +10,10 @@
   --PrimaryColor : #6FCF97;
   --Black : #333333;
   --Grey : #BDBDBD;
+  --White : #ffffff;
 
   /* BreakPoints */
-  --Phone: 375px;
+  --Phone: 480px;
   --Tablet: 768px;
 }
 
@@ -34,4 +35,15 @@ h1 {
 h2 {
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+.card{
+  padding: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  background-color: var(--PrimaryColor);
+  border-radius: 5px;
+  color: var(--White);
+  line-height: 120%;
 }
