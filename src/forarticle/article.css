@@ -1,0 +1,66 @@
+.tray {
+  display: flex;
+  overflow-y: hidden;
+  padding: 5px;
+  margin-left: 1rem;
+}
+
+.note-cards {
+  width: 150px;
+  height: 200px;
+  background-color: rgb(213, 238, 213);
+  padding: 20px;
+  border-radius: 5px;
+  margin-right: 20px;
+  display: flex;
+  align-items: flex-end;
+ 
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card-title {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+}
+span {
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.head {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .tray {
+    width: calc(100vw - 2rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .note-cards {
+    margin-bottom: 0.8rem;
+    margin-right: 1rem;
+    /*width: calc(100vw*0.4 - 2rem - 10px);*/
+    width: auto;
+  }
+}

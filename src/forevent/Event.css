@@ -1,0 +1,11 @@
+.event{
+    
+    text-align: center;
+    background-color: rgb(192, 235, 211);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 5px;
+    margin: 10px ;
+    box-shadow: rgba(148, 147, 89, 0.24) 10px 2px 5px;
+    
+}
