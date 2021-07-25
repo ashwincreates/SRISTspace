@@ -1,4 +1,4 @@
-import "./Article.css";
+import "./article.css";
 function Article() {
   return (
     <>

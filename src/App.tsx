@@ -5,7 +5,7 @@ import Nav from './nav/Nav';
 import Crousel from './crousel/Crousel';
 import About from './about/About';
 import List from "./note/noteList";
-import Article from "./forarticle/Article";
+import Article from "./forarticle/article";
 import Event from "./forevent/Event";
 
 function App() {
