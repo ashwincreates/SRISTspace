@@ -26,7 +26,7 @@ function App() {
         A Online community where students of srist can post notes, host events, ask help, poll.
         <br />
         Have Fun! 
-      </div>
+      </div>    
      <List></List>
      <Article></Article>
         <br></br>
