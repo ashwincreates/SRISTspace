@@ -17,14 +17,6 @@
  
 }
 
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
 .card-title {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
@@ -32,10 +24,6 @@
   text-align: center;
   border-radius: 10px;
   background-color: #f1f1f1;
-}
-span {
-  font-size: 14px;
-  font-weight: 100;
 }
 
 .head {

@@ -1,5 +1,5 @@
-import "./Event.css";
-function Event() {
+import "./event.css";
+function EventList() {
   return (
     <>
       <div className="head">
@@ -29,4 +29,4 @@ function Event() {
     </>
   );
 }
-export default Event;
+export default EventList;

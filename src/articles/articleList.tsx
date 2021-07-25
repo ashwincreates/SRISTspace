@@ -1,5 +1,5 @@
 import "./article.css";
-function Article() {
+function ArticleList() {
   return (
     <>
       <div className="head">
@@ -50,4 +50,4 @@ function Article() {
     </>
   );
 }
-export default Article;
+export default ArticleList;

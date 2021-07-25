@@ -62,5 +62,5 @@ button{
   cursor:pointer
 }
 .active_class{
-  color:cyan;
+  color: var(--PrimaryColor);
 }

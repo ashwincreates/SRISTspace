@@ -1,4 +1,4 @@
-import './Nav.css';
+import './nav.css';
 import Emoji from '../emoji/Emoji';
 import { NavLink } from "react-router-dom";
 function Nav() {
@@ -19,9 +19,10 @@ function Nav() {
     </div>
 
     <ul id="overlay">
-      <li><NavLink activeClassName="active_class" to="/noteList"><Emoji symbol="📖" /> Notes</NavLink></li>
-      <li><NavLink activeClassName="active_class" to="/Event"><Emoji symbol="📖" /> Events</NavLink></li>
-      <li><NavLink activeClassName="active_class" to="/About"><Emoji symbol="📖" /> About Us</NavLink></li>
+      <li><NavLink className="links" activeClassName="active_class" to="/notes">Notes</NavLink></li>
+      <li><NavLink className="links" activeClassName="active_class" to="/events">Events</NavLink></li>
+      <li><NavLink className="links" activeClassName="active_class" to="/articles">Articles</NavLink></li>
+      <li><NavLink className="links" activeClassName="active_class" to="/about">About Us</NavLink></li>
     </ul>
 
     </nav>

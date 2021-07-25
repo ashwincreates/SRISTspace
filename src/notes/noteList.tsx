@@ -1,5 +1,5 @@
 import "./note.css";
-function List() {
+function NoteList() {
     return(
         <>
         <div className="head">
@@ -38,4 +38,4 @@ function List() {
         </>
     );
 }
-export default List;
+export default NoteList;
