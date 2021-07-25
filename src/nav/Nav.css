@@ -36,6 +36,7 @@ nav ul li{
   margin-left: 4rem;
   padding:5px;
   border-radius:4px;
+  cursor:pointer;
 }
 
 .nav-brand{ 

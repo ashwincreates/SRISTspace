@@ -1,16 +1,16 @@
 import './Nav.css';
 import Emoji from '../emoji/Emoji';
-
+import { NavLink } from "react-router-dom";
 function Nav() {
   return (
     <>
     <nav>
-    <a className="navbar-brand" href="/"><img className="logo" src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg" alt="website logo"/>
+    <NavLink className="navbar-brand" to="/"><img className="logo" src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg" alt="website logo"/>
     <div className="title">
       <h2>SRIST space</h2>
       <h1>version 1.0</h1>
     </div>
-    </a>
+    </NavLink>
     
     <div className="nav-menu-btn"  onClick= {() => opennav()}>
       <input className="nav-menu" id="nav-btn" type="checkbox"></input>
@@ -19,9 +19,9 @@ function Nav() {
     </div>
 
     <ul id="overlay">
-      <li><Emoji symbol="📖" /> Notes</li>
-      <li><Emoji symbol="📖" /> Events</li>
-      <li><Emoji symbol="📖" /> About Us</li>
+      <li><NavLink activeClassName="active_class" to="/noteList"><Emoji symbol="📖" /> Notes</NavLink></li>
+      <li><NavLink activeClassName="active_class" to="/Event"><Emoji symbol="📖" /> Events</NavLink></li>
+      <li><NavLink activeClassName="active_class" to="/About"><Emoji symbol="📖" /> About Us</NavLink></li>
     </ul>
 
     </nav>
