@@ -1,11 +1,12 @@
+
 import './App.css';
 import { Switch,Route } from "react-router-dom";
 import Nav from './nav/Nav';
 import Crousel from './crousel/Crousel';
 import About from './about/About';
-import Event from './evnt/Event';
 import List from "./note/noteList";
-
+import Article from "./forarticle/Article";
+import Event from "./forevent/Event";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         Have Fun! 
       </div>
      <List></List>
+     <Article></Article>
+        <br></br>
+        <Event></Event>
     </div>
  
     </>

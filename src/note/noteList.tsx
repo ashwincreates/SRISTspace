@@ -7,7 +7,7 @@ function List() {
             <h2>Newly Uploaded Notes</h2>
             <h1>Fresh upload</h1>
           </div>
-          <button className="explore">Explore</button>
+          <button className="explore">Explore &#62;</button>
         </div>
         <div className="tray">
             <div className="note-card">
