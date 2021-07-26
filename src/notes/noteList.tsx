@@ -10,7 +10,7 @@ function NoteList() {
           <button className="explore">Explore &#62;</button>
         </div>
         <div className="tray">
-            <div className="note-card">
+            <div className="note-card ">
               <div>
                 <h3>Card 1</h3>
                 <span>Some text<br/></span>
