@@ -1,13 +1,25 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
+import {Switch, Route, BrowserRouter } from "react-router-dom";
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import Nav from './nav/nav';
+import App from './App';
+import Note from './notes/notes';
+import Article from './articles/article';
+import About from './about/about';
+import Event from './events/event';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+      <Nav></Nav>
+      <Switch>
+        <Route exact path='/' component={ App } />
+        <Route exact path='/notes' component={ Note } />
+        <Route exact path='/about' component={ About } />
+        <Route exact path='/articles' component={ Article } />
+        <Route exact path='/events' component={ Event } />
+      </Switch>
   </BrowserRouter>, 
   document.getElementById('root')
 );
