@@ -19,10 +19,10 @@ function Nav() {
     </div>
 
     <ul id="overlay">
-      <li><NavLink className="links" activeClassName="active_class" to="/notes">Notes</NavLink></li>
-      <li><NavLink className="links" activeClassName="active_class" to="/events">Events</NavLink></li>
-      <li><NavLink className="links" activeClassName="active_class" to="/articles">Articles</NavLink></li>
-      <li><NavLink className="links" activeClassName="active_class" to="/about">About Us</NavLink></li>
+      <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/notes">Notes</NavLink></li>
+      <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/events">Events</NavLink></li>
+      <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/articles">Articles</NavLink></li>
+      <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/about">About Us</NavLink></li>
     </ul>
 
     </nav>
@@ -47,6 +47,12 @@ function opennav(){
         if(root)
             root.overflow = "scroll"
     }
+}
+
+function linkClick(){
+  let box = document.getElementById("nav-btn") as HTMLInputElement;
+  box.checked = false;
+  opennav(); 
 }
 
 export default Nav;
