@@ -1,12 +1,16 @@
-
 import './App.css';
 import { Switch,Route } from "react-router-dom";
-import Nav from './nav/Nav';
+import Nav from './nav/nav';
 import Crousel from './crousel/Crousel';
-import About from './about/About';
-import List from "./note/noteList";
-import Article from "./forarticle/Article";
-import Event from "./forevent/Event";
+
+import Note from './notes/notes';
+import Article from './articles/article';
+import About from './about/about';
+import Event from './events/event';
+
+import NoteList from "./notes/noteList";
+import ArticleList from "./articles/articleList";
+import EventList from "./events/eventList";
 
 function App() {
   return (
@@ -15,9 +19,10 @@ function App() {
     <div className="App">
       <Nav></Nav> 
       <Switch>
-      <Route exact path='/about' component={About} />
-      <Route exact path='/notelist' component={List} />
-      <Route exact path='/event' component={Event} />
+        <Route exact path='/notes' component={ Note } />
+        <Route exact path='/about' component={ About } />
+        <Route exact path='/articles' component={ Article } />
+        <Route exact path='/events' component={ Event } />
       </Switch>
       <Crousel></Crousel>
       <div className="card">
@@ -26,11 +31,10 @@ function App() {
         A Online community where students of srist can post notes, host events, ask help, poll.
         <br />
         Have Fun! 
-      </div>
-     <List></List>
-     <Article></Article>
-        <br></br>
-        <Event></Event>
+      </div>    
+      <NoteList></NoteList>
+      <ArticleList></ArticleList>
+      <EventList></EventList>
     </div>
  
     </>

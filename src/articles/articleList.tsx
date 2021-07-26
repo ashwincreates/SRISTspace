@@ -1,5 +1,5 @@
-import "./Article.css";
-function Article() {
+import "./article.css";
+function ArticleList() {
   return (
     <>
       <div className="head">
@@ -50,4 +50,4 @@ function Article() {
     </>
   );
 }
-export default Article;
+export default ArticleList;
