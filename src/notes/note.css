@@ -87,6 +87,9 @@
 }
 .content{
   columns:100px 1;
+  width: auto;
+  margin-top: 10px;
+
 }
 .selection{
    margin-top: 2rem;
@@ -117,4 +120,7 @@ margin-right:0px !important;
   width:auto !important;
   height:100px !important;
   background:#9e9e9ee3 !important
+}
+.heading{
+  display: inline;
 }
