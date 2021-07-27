@@ -1,0 +1,46 @@
+.about1{
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.about2{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 30px;
+    color: chocolate;
+}
+.about4{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+
+
+}
+.about3{
+    text-align: center;
+    margin-top: 100px;
+    display: inline-block;
+    
+
+
+}
+.about5{
+    text-align: center;
+}
+.role
+
+{
+    font-weight: lighter;
+
+
+}
+.section{
+    font-size: large;
+
+}
+.name{
+    font-size: larger;
+    color: rgb(197, 33, 33);
+}
+
