@@ -7,8 +7,16 @@ app = Flask(__name__, static_folder='build')
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
+    ext = os.path.splitext(path)[1]
+    mime = ''
+
+    if ext == '.css':
+       mime = 'text/css'
+    if ext == '.js':
+        mime = 'text/js'
+
     if path != "" and os.path.exists(app.static_folder + '/' + path):
-        return send_from_directory(app.static_folder, path)
+        return send_from_directory(app.static_folder, path, mimetype=mime)
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
