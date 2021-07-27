@@ -1,7 +1,6 @@
-import flask as fsk
+from flask import (Flask, render_template)
 
-app = fsk.Flask(__name__ , static_folder= 'build'  ,
-                static_url_path='/')
+app = Flask(__name__)
 
 
 # @app.route('/', defaults={'path': ''})
@@ -14,7 +13,7 @@ app = fsk.Flask(__name__ , static_folder= 'build'  ,
 
 @app.route('/')
 def main():
-    return fsk.send_from_directory('system builds' , 'index.html')
+    return render_template("index.html") 
 
 
 if __name__ == "__main__":
