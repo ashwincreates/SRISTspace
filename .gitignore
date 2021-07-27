@@ -5,6 +5,14 @@
 /.pnp
 .pnp.js
 
+# system generated files for environment (Linux)
+/api/bin
+/api/include
+/api/lib
+/api/lib64
+/api/share
+/api/pyvenv.cfg
+
 # testing
 /coverage
 
