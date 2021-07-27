@@ -12,7 +12,7 @@ def serve(path):
 
     if ext == '.css':
        mime = 'text/css'
-    if ext == '.js'
+    if ext == '.js':
         mime = 'text/js'
 
     if path != "" and os.path.exists(app.static_folder + '/' + path):
