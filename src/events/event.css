@@ -9,3 +9,33 @@
     box-shadow: rgba(148, 147, 89, 0.24) 10px 2px 5px;
     
 }
+
+
+.eventname{
+    background-color: rgb(194, 194, 211);
+    height: 250px;
+    width:450px ;
+    margin-left: 0.7rem;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.eventweek{
+    background-color: #e99797;
+    margin-left: 1rem;
+    border-radius: 5px;
+    display: inline-block;
+    width: 475px;
+    height :fit-content;
+    
+}
+.eventheading span{
+float: right;
+    margin-right: 1rem;
+    
+}
+.eventheading{
+    margin-left: 1rem;
+    margin: 1rem;
+}
+
+
