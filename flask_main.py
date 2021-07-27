@@ -17,5 +17,5 @@ def main():
     return fsk.send_from_directory('system builds' , 'index.html')
 
 
-
-app.run(port=5001)
+if __name__ == "__main__":
+ app.run()
