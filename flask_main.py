@@ -14,7 +14,7 @@ app = fsk.Flask(__name__ , static_folder= 'build'  ,
 
 @app.route('/')
 def main():
-    return fsk.send_from_directory('build' , 'index.html')
+    return fsk.send_from_directory('system builds' , 'index.html')
 
 
 
