@@ -39,5 +39,7 @@ def getUserDetail(email):
     data = users.find_one({'email':email} , {'_id':0})
     if data is not None:
         return data
+    else :
+        return 'user does not exists'
 
 
