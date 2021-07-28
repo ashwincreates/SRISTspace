@@ -1,7 +1,8 @@
 import os
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request
 
 app = Flask(__name__, static_folder='build')
+
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
@@ -11,7 +12,7 @@ def serve(path):
     mime = ''
 
     if ext == '.css':
-       mime = 'text/css'
+        mime = 'text/css'
     if ext == '.js':
         mime = 'text/js'
 
@@ -19,6 +20,16 @@ def serve(path):
         return send_from_directory(app.static_folder, path, mimetype=mime)
     else:
         return send_from_directory(app.static_folder, 'index.html')
+
+
+@app.route('/signin', methods=['POST'])  # url -
+def newUser():
+    json = request.get_json()
+
+
+@app.route('/test', methods=['GET'])
+def runTest():
+    return "CALLBACK ... RECEIVED"
 
 
 if __name__ == '__main__':
