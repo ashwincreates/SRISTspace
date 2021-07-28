@@ -32,3 +32,4 @@ def addUsers(email, password, semester, stream, branch):
         return 'user exists'
     else:
         getUsers().insert_one(json)
+        return 'submit'

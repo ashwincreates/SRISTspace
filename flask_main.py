@@ -1,5 +1,7 @@
 import os
 from flask import Flask, send_from_directory, request
+from mongoDatabase import mongoDataBase
+
 
 app = Flask(__name__, static_folder='build')
 
@@ -22,10 +24,10 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 
-@app.route('/signin', methods=['POST'])  # url -
-def newUser():
-    json = request.get_json()
-    return "submit"
+@app.route('/signin/<email>/<password>/<semester>/<stream>/<branch>', methods=['POST'])  # url -
+def newUser(email, password, semester, stream, branch):
+    callback = mongoDataBase.addUsers(email , password , semester , stream , branch)
+    return callback
 
 
 @app.route('/test', methods=['GET'])
