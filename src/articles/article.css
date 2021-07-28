@@ -1,17 +1,86 @@
-.tray {
-  display: flex;
+.item-tray {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
   overflow-y: hidden;
   padding: 5px;
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.note-cards {
-  width: 150px;
-  height: 200px;
-  background-color: rgb(213, 238, 213);
+.chip-tray{
+  margin-left: 2rem;
+}
+
+.search{
+  font-family: Poppins;
+  color: rgba(0, 0, 0, 0.24);
+  width: 300px;
+  height: 45px;
+  font-size: 16px;
+  border-radius: 10px;
+  padding-left: 1rem;
+  border-style: none;
+}
+
+p{
+  margin-bottom: 3rem;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  width: auto;
+  height: auto;
+  padding: 2rem;
+  background-color: grey;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+.title-text{
+  font-size: 36px;
+}
+
+.flex{
+  display: flex;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw * 0.5) !important;
+  margin-bottom: 0.5rem;
+}
+
+.card-md {
+  width: auto;
+  height: 100px;
   padding: 20px;
   border-radius: 5px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
+  display: flex;
+  align-items: flex-end;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.card-lg {
+  width: auto;
+  height: 150px;
+  padding: 20px;
+  border-radius: 5px;
+  /* margin-right: 20px; */
+  margin-bottom: 15px;
+  align-items: flex-end;
   display: flex;
   align-items: flex-end;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -38,19 +107,34 @@
 }
 
 @media (max-width: 480px) {
-  .tray {
-    width: calc(100vw - 2rem);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .item-tray {
+    width: calc(100vw - 2rem - 10px);
+    display: flex;
+    flex-direction: column;
     margin-left: 1rem;
     margin-right: 1rem;
   }
 
-  .note-cards {
-    margin-bottom: 0.8rem;
-    margin-right: 1rem;
-    /*width: calc(100vw*0.4 - 2rem - 10px);*/
-    width: auto;
+  .flex{
+    flex-direction: column;
+  }
+
+  .section{
+    width: calc(100vw - 2rem - 10px) !important;
+  }
+
+  .search{
+     position: absolute;
+     top: 90px;
+     left: 0;
+     margin-left: 1rem;
+     width: calc(100vw - 3rem - 6px);
+     border: 3px solid rgba(0, 0, 0, 0.14);
+     outline: none;
+  }
+
+  .header{
+    margin-top: 82px;
   }
 }
 

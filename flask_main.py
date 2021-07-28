@@ -1,7 +1,9 @@
 import os
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request, jsonify
+from mongoDatabase import mongoDataBase
 
 app = Flask(__name__, static_folder='build')
+
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
@@ -11,7 +13,7 @@ def serve(path):
     mime = ''
 
     if ext == '.css':
-       mime = 'text/css'
+        mime = 'text/css'
     if ext == '.js':
         mime = 'text/js'
 
@@ -19,6 +21,24 @@ def serve(path):
         return send_from_directory(app.static_folder, path, mimetype=mime)
     else:
         return send_from_directory(app.static_folder, 'index.html')
+
+
+# url - https://sristspace.herokuapp.com/adduser/email/pass/sem/stream/branch
+@app.route('/adduser/<email>/<password>/<semester>/<stream>/<branch>', methods=['POST', 'GET'])
+def newUser(email, password, semester, stream, branch):
+    callback = mongoDataBase.addUsers(email, password, semester, stream, branch)
+    return callback
+
+
+# url - https://sristspace.herokuapp.com/getuser/email/pass
+@app.route('/getuser/<email>/<password>', methods=['GET'])
+def getUserData(email , password):
+    return jsonify(mongoDataBase.getUserDetail(email , password))
+
+
+@app.route('/test', methods=['GET'])
+def runTest():
+    return "CALLBACK ... RECEIVED"
 
 
 if __name__ == '__main__':
