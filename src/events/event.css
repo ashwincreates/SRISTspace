@@ -14,7 +14,7 @@
 .eventname{
     background-color: rgb(194, 194, 211);
     height: 250px;
-    width:450px ;
+    width:380px ;
     margin-left: 0.7rem;
     border-radius: 10px;
     margin-top: 10px;
@@ -24,7 +24,7 @@
     margin-left: 1rem;
     border-radius: 5px;
     display: inline-block;
-    width: 475px;
+    width: 420px;
     height :fit-content;
     
 }

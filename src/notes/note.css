@@ -23,6 +23,10 @@
     display: block;
     margin-bottom: 20px;
   }
+  .choice{
+  width:90%;
+ 
+}
 }
 
 .card-title {
@@ -46,21 +50,20 @@
 
 @media(max-width: 480px){
   .tray{
-    width: calc(100vw - 2rem);
+    width: calc(100vw - 1rem) ;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left: 1rem;
     margin-right: 1rem;
   }
   .list{
-    width:100%;
-  display:grid !important;
-  grid-template-columns:1fr  !important;
-  margin-left: 1rem;
-    margin-right: 1rem;
+   width: auto ;
+    grid-template-columns: 1fr !important;
+  
 }
   .grid{
-  width:auto !important;
+  width:100% !important;
+ 
 
 }
 
@@ -101,7 +104,7 @@
   margin-left:1rem;
 }
 .choice{
-  margin:10px;
+  margin-right:0px;
   padding:15px;
   color:#0ee40e;
   border:2px solid #0ee40e;
@@ -112,13 +115,13 @@
 }
 .list{
   display:grid !important;
-  grid-template-columns:auto auto auto !important;
+  grid-template-columns:auto auto auto;
 grid-gap:10px;
 }
 .grid{
-margin-left:0px !important;
+
 margin-right:0px !important;  
-  width:auto !important;
+  width:auto;
   height:100px !important;
   background:#9e9e9ee3 !important
 }

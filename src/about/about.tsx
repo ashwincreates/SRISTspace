@@ -30,7 +30,7 @@ function About() {
             <span className="role">Backend and frontend</span>
             <br></br>
 
-            <span className="section">Section-A</span>
+            <span className="section">Cs - A</span>
           </h2>
               </div>
               <div className="about3">
@@ -43,13 +43,13 @@ function About() {
             ></img>
           </div>
           <h2>
-            <span className="name">Name </span>
+            <span className="name">Ayush</span>
             <br></br>
 
-            <span className="role">Role</span>
+            <span className="role">frontend</span>
             <br></br>
 
-            <span className="section">Class section</span>
+            <span className="section">Cs - A</span>
           </h2>
               </div>
               <div className="about3">
