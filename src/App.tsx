@@ -1,6 +1,5 @@
 import './App.css';
 import Crousel from './crousel/Crousel';
-
 import NoteList from "./notes/noteList";
 import ArticleList from "./articles/articleList";
 import EventList from "./events/eventList";

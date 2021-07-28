@@ -65,7 +65,7 @@ function Event() {
         </p>
       </div>
       <br></br>
-      <hr></hr>
+     
       <div className="eventweek">
         <div className="eventname"></div>
         <h2 className="eventheading">

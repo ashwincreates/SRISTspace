@@ -3,13 +3,13 @@ function Notes() {
   return (
     <>
       <div className="card notes">
+        <h2 className="heading"> Notes </h2>
       <input
           className="searchbar"
           name="search"
           type="text"
           placeholder="search here"
         />
-        <h2 className="heading"> Notes </h2>
         
         <br />
         <div className="content">
