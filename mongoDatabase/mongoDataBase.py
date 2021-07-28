@@ -35,9 +35,9 @@ def addUsers(email, password, semester, stream, branch):
         return 'submit'
 
 
-def getUserDetail(email):
+def getUserDetail(email , password):
     users = getUsers()
-    data = users.find_one({'email': email}, {'_id': 0})
+    data = users.find_one({'email': email , 'password': password}, {'_id': 0})
     if data is not None:
         return data
     else:
