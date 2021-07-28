@@ -23,7 +23,7 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 
-@app.route('/signin/<email>/<password>/<semester>/<stream>/<branch>', methods=['POST', 'GET'])  # url -
+@app.route('/adduser/<email>/<password>/<semester>/<stream>/<branch>', methods=['POST', 'GET'])  # url -
 def newUser(email, password, semester, stream, branch):
     callback = mongoDataBase.addUsers(email, password, semester, stream, branch)
     return callback
