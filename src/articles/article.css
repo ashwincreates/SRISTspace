@@ -8,13 +8,57 @@
   margin-right: 1rem;
 }
 
-.flex{
-  margin-left: 1rem;
-  margin-left: 1rem;
+.chip-tray{
+  margin-left: 2rem;
 }
 
-.list{
- 
+.search{
+  font-family: Poppins;
+  color: rgba(0, 0, 0, 0.24);
+  width: 300px;
+  height: 45px;
+  font-size: 16px;
+  border-radius: 10px;
+  padding-left: 1rem;
+  border-style: none;
+}
+
+p{
+  margin-bottom: 3rem;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  width: auto;
+  height: auto;
+  padding: 2rem;
+  background-color: grey;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+.title-text{
+  font-size: 36px;
+}
+
+.flex{
+  display: flex;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw * 0.5) !important;
+  margin-bottom: 0.5rem;
 }
 
 .card-md {
@@ -23,6 +67,20 @@
   padding: 20px;
   border-radius: 5px;
   /* margin-right: 20px; */
+  display: flex;
+  align-items: flex-end;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.card-lg {
+  width: auto;
+  height: 150px;
+  padding: 20px;
+  border-radius: 5px;
+  /* margin-right: 20px; */
+  margin-bottom: 15px;
+  align-items: flex-end;
   display: flex;
   align-items: flex-end;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -55,6 +113,28 @@
     flex-direction: column;
     margin-left: 1rem;
     margin-right: 1rem;
+  }
+
+  .flex{
+    flex-direction: column;
+  }
+
+  .section{
+    width: calc(100vw - 2rem - 10px) !important;
+  }
+
+  .search{
+     position: absolute;
+     top: 90px;
+     left: 0;
+     margin-left: 1rem;
+     width: calc(100vw - 3rem - 6px);
+     border: 3px solid rgba(0, 0, 0, 0.14);
+     outline: none;
+  }
+
+  .header{
+    margin-top: 82px;
   }
 }
 
