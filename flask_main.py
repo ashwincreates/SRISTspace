@@ -25,6 +25,7 @@ def serve(path):
 @app.route('/signin', methods=['POST'])  # url -
 def newUser():
     json = request.get_json()
+    return "submit"
 
 
 @app.route('/test', methods=['GET'])
