@@ -23,64 +23,64 @@ function Article() {
         <br />
         <button className="explore">Explore &#62;</button>
       </div>
-      <div className="selection">
-        <h2 className="subject">Top Trending Articles</h2>
-        <br />
-
-        <div className="tray list">
-          <div className="note-card grid">
-            <div>
-              <h3>Card 1</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
+      <div className="head">
+        <div className="section-title">
+          <h2>Top Trending Article</h2>
+        </div>
+      </div>
+      <div className="item-tray">
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
           </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 3</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
           </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 3</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
           </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 4</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
           </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 6</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
           </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 5</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
           </div>
         </div>
       </div>
@@ -90,65 +90,18 @@ function Article() {
         </div>
         <button className="explore">Explore &#62;</button>
       </div>
-      <div className="tray">
-        <div className="note-card">
-          <div>
-            <h3>Card 1</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
+      <div className="flex">
+        <div className="list">
         </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 3</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 3</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 4</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 5</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 6</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
+        <div>
+          Sort by
         </div>
       </div>
       <br />
     </>
   );
 }
+
+
 
 export default Article;

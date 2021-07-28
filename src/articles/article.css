@@ -1,17 +1,28 @@
-.tray {
-  display: flex;
+.item-tray {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
   overflow-y: hidden;
   padding: 5px;
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.note-cards {
-  width: 150px;
-  height: 200px;
-  background-color: rgb(213, 238, 213);
+.flex{
+  margin-left: 1rem;
+  margin-left: 1rem;
+}
+
+.list{
+ 
+}
+
+.card-md {
+  width: auto;
+  height: 100px;
   padding: 20px;
   border-radius: 5px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   display: flex;
   align-items: flex-end;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -38,19 +49,12 @@
 }
 
 @media (max-width: 480px) {
-  .tray {
-    width: calc(100vw - 2rem);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .item-tray {
+    width: calc(100vw - 2rem - 10px);
+    display: flex;
+    flex-direction: column;
     margin-left: 1rem;
     margin-right: 1rem;
-  }
-
-  .note-cards {
-    margin-bottom: 0.8rem;
-    margin-right: 1rem;
-    /*width: calc(100vw*0.4 - 2rem - 10px);*/
-    width: auto;
   }
 }
 
