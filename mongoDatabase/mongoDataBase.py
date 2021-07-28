@@ -33,3 +33,11 @@ def addUsers(email, password, semester, stream, branch):
     else:
         getUsers().insert_one(json)
         return 'submit'
+
+def getUserDetail(email):
+    users = getUsers()
+    data = users.find_one({'email':email} , {'_id':0})
+    if data is not None:
+        return data
+
+

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, send_from_directory, request
+from flask import Flask, send_from_directory, request , jsonify
 from mongoDatabase import mongoDataBase
 
 app = Flask(__name__, static_folder='build')
@@ -22,11 +22,16 @@ def serve(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
-
-@app.route('/adduser/<email>/<password>/<semester>/<stream>/<branch>', methods=['POST', 'GET'])  # url -
+# url - https://sristspace.herokuapp.com/adduser/email/pass/sem/stream/branch
+@app.route('/adduser/<email>/<password>/<semester>/<stream>/<branch>', methods=['POST', 'GET'])
 def newUser(email, password, semester, stream, branch):
     callback = mongoDataBase.addUsers(email, password, semester, stream, branch)
     return callback
+
+#url -
+@app.route('/getuser/<email>' , methods = ['GET'])
+def getUserData(email):
+    return jsonify(mongoDataBase.getUserDetail(email))
 
 
 @app.route('/test', methods=['GET'])
