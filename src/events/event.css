@@ -10,12 +10,28 @@
     
 }
 
+
+.eventname{
+    background-color: rgb(194, 194, 211);
+    height: 225px;
+    max-width:325px ;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
 .eventweek{
     background-color: #e99797;
-    margin: 1rem;
+    margin-left: 0.9rem;
+    margin-top: 1rem;
     border-radius: 5px;
     display: inline-block;
+
     width:auto;
+
+    max-width: 360px;
+
     height :fit-content;
     
 }

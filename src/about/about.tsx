@@ -32,9 +32,9 @@ function About() {
 
             <span className="section">Cs - A</span>
           </h2>
-              </div>
-              <div className="about3">
-          <div>
+        </div>
+        <div className="about3">
+        <div>
             {" "}
             <img
               className="about4"
@@ -51,8 +51,8 @@ function About() {
 
             <span className="section">Cs - A</span>
           </h2>
-              </div>
-              <div className="about3">
+        </div>
+        <div className="about3">
           <div>
             {" "}
             <img
@@ -70,8 +70,8 @@ function About() {
 
             <span className="section">Class section</span>
           </h2>
-              </div>
-              <div className="about3">
+        </div>
+        <div className="about3">
           <div>
             {" "}
             <img
@@ -89,7 +89,7 @@ function About() {
 
             <span className="section">Class section</span>
           </h2>
-              </div>
+        </div>
       </div>
       <div className="about5">
         <div className="about3">
@@ -128,8 +128,8 @@ function About() {
             <br></br>
             <span className="section">Class section</span>
           </h2>
-              </div>
-              <div className="about3">
+        </div>
+        <div className="about3">
           <div>
             {" "}
             <img
@@ -147,7 +147,7 @@ function About() {
 
             <span className="section">Class section</span>
           </h2>
-              </div>
+        </div>
       </div>
     </>
   );
