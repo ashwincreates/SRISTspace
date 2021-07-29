@@ -49,6 +49,7 @@ def getNotes(semester, stream):
     return jsonify(mongoDataBase.fetchNotes(semester, stream))
 
 
+# url - https://sristspace.herokuapp.com/dropNotes/topic/ref
 @app.route('/dropNotes/<topic>/<link>')
 def dropNotes(topic, link):
     callback = mongoDataBase.dropNotes(topic, link)
