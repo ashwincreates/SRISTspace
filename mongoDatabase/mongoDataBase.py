@@ -72,7 +72,7 @@ def addNotes(topic, link, uploadDate, subject, semester, stream):
 
 def fetchNotes(semester, stream):  # via drop downs
     notes = getNotes()
-    cols = getNotes().find({'semester': {'$in':semester}, 'stream': {'$in':stream}})
+    cols = getNotes().find({'semester': semester, 'stream': stream})
     data = ''
     for i in cols:
         data+=str(i)
