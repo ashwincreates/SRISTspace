@@ -32,8 +32,19 @@ def newUser(email, password, semester, stream, branch):
 
 # url - https://sristspace.herokuapp.com/getuser/email/pass
 @app.route('/getuser/<email>/<password>', methods=['GET'])
-def getUserData(email , password):
-    return jsonify(mongoDataBase.getUserDetail(email , password))
+def getUserData(email, password):
+    return jsonify(mongoDataBase.getUserDetail(email, password))
+
+
+@app.route('/addNotes/<topic>/<link>/<date>/<subject>/<semester>/<stream>')
+def addNotes(topic, link, date, subject, semester, stream):
+    callback = mongoDataBase.addNotes(topic, link, date, subject, semester, stream)
+    return callback
+
+
+@app.route('/getNotesByDrop/<semester>/<stream>')
+def getNotes(semester, stream):
+    return jsonify(mongoDataBase.fetchNotes(semester, stream))
 
 
 @app.route('/test', methods=['GET'])
