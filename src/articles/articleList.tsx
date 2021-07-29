@@ -1,4 +1,5 @@
 import "./article.css";
+import "../notes/note.css";
 function ArticleList() {
   return (
     <>
@@ -9,8 +10,8 @@ function ArticleList() {
         </div>
         <button className="explore">Explore &#62;</button>
       </div>
-      <div className="tray">
-        <div className="note-cards">
+      <div className="item-tray">
+        <div className="card-md">
           <div>
             <h3>Post</h3>
             <span>
@@ -19,7 +20,8 @@ function ArticleList() {
             </span>
           </div>
         </div>
-        <div className="note-cards">
+
+        <div className="card-md">
           <div>
             <h3>Post</h3>
             <span>
@@ -28,7 +30,8 @@ function ArticleList() {
             </span>
           </div>
         </div>
-        <div className="note-cards">
+
+        <div className="card-md">
           <div>
             <h3>Post</h3>
             <span>
@@ -37,7 +40,26 @@ function ArticleList() {
             </span>
           </div>
         </div>
-        <div className="note-cards">
+
+        <div className="card-md">
+          <div>
+            <h3>Post</h3>
+            <span>
+              Some text
+              <br />
+            </span>
+          </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Post</h3>
+            <span>
+              Some text
+              <br />
+            </span>
+          </div>
+        </div>
+        <div className="card-md">
           <div>
             <h3>Post</h3>
             <span>
