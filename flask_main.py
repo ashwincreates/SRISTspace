@@ -43,9 +43,16 @@ def addNotes(topic, link, date, subject, semester, stream):
     return callback
 
 
+# url - https://sristspace.herokuapp.com/getNotesByDrop/sem/stream
 @app.route('/getNotesByDrop/<semester>/<stream>')
 def getNotes(semester, stream):
     return jsonify(mongoDataBase.fetchNotes(semester, stream))
+
+
+@app.route('/dropNotes/<topic>/<link>')
+def dropNotes(topic, link):
+    callback = mongoDataBase.dropNotes(topic, link)
+    return callback
 
 
 @app.route('/test', methods=['GET'])

@@ -75,7 +75,7 @@ def fetchNotes(semester, stream):  # via drop downs
     cols = getNotes().find({'semester': semester, 'stream': stream})
     data = ''
     for i in cols:
-        data+=str(i)
+        data += str(i)
 
     if data is not None:
         return str(data)
@@ -83,5 +83,11 @@ def fetchNotes(semester, stream):  # via drop downs
         return "no notes"
 
 
+def searchNotes(keyword):
+    notes = getNotes()
+
+
 def dropNotes(topic, link):
     notes = getNotes()
+    notes.drop({'topic': topic, 'link': link})
+    return "success"
