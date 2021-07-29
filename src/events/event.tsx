@@ -5,7 +5,7 @@ function Event() {
     <>
      <div className="header">
         <div className="content">
-          <h3 className="title-text"> Article </h3>  
+          <h3 className="title-text"> Events </h3>  
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
