@@ -89,5 +89,5 @@ def searchNotes(keyword):
 
 def dropNotes(topic, link):
     notes = getNotes()
-    notes.drop({'topic': topic, 'link': link})
+    notes.delete_one({'topic': topic, 'link': link})
     return "success"
