@@ -16,37 +16,21 @@
   align-items: flex-end;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.card-md{
+  background-color:#918f8f94;
+}
 
 @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
+  
   .choice{
   width:90%;
+  margin:5px;
  
 }
 }
 
-.card-title {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  color:black;
-  text-align: center;
-  border-radius:10px;
-  background-color: #f1f1f1;
-}
 
-.head{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+
 
 @media(max-width: 480px){
   .tray{
@@ -56,16 +40,7 @@
     margin-left: 1rem;
     margin-right: 1rem;
   }
-  .list{
-   width: auto ;
-    grid-template-columns: 1fr !important;
-  
-}
-  .grid{
-  width:100% !important;
  
-
-}
 
   .note-card{
     margin-bottom: 0.8rem;
@@ -76,34 +51,17 @@
 
 }
 
-.notes{
-  background:#9e9e9ee3 !important;
-  margin-bottom:15px;
-}
 
-.searchbar{
-    float:right;
-    font-size: large;
-    border-radius: 22px;
-    text-align: center;
-   
-    font-family:pacifico;   
-}
-.content{
-  columns:100px 1;
-  width: auto;
-  margin-top: 10px;
-  width: 70%;
 
-}
 .selection{
    margin-top: 2rem;
     margin-bottom: 2rem;
     
 }
 .subject{
-  margin-left:1rem;
+  margin-left:15px;
 }
+
 .choice{
   margin-right:0px;
   padding:15px;
@@ -113,19 +71,4 @@
   font-weight:200;
   border-radius:8px;
   margin-left:2rem;
-}
-.list{
-  display:grid !important;
-  grid-template-columns:auto auto auto;
-grid-gap:10px;
-}
-.grid{
-
-margin-right:0px !important;  
-  width:auto;
-  height:100px !important;
-  background:#9e9e9ee3 !important
-}
-.heading{
-  display: inline;
 }

@@ -23,6 +23,7 @@ function Nav() {
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/events">Events</NavLink></li>
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/articles">Articles</NavLink></li>
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/about">About Us</NavLink></li>
+      <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/auth">Login</NavLink></li>
     </ul>
 
     </nav>

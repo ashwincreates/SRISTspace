@@ -1,0 +1,26 @@
+.center{
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.box{
+  width: 500px;
+}
+
+.text{
+  margin-bottom: 0.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.14);
+  outline: none;
+}
+
+.text:focus{
+  border: 2px solid var(--PrimaryColor);
+  color: var(--PrimaryColor);
+}
+
+form{
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
