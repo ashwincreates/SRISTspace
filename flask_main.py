@@ -36,6 +36,7 @@ def getUserData(email, password):
     return jsonify(mongoDataBase.getUserDetail(email, password))
 
 
+# url - https://sristspace.herokuapp.com/addNotes/Java/ref-oracle/date/sub/sem/stream
 @app.route('/addNotes/<topic>/<link>/<date>/<subject>/<semester>/<stream>')
 def addNotes(topic, link, date, subject, semester, stream):
     callback = mongoDataBase.addNotes(topic, link, date, subject, semester, stream)

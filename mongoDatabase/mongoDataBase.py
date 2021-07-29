@@ -74,7 +74,7 @@ def fetchNotes(semester, stream):  # via drop downs
     notes = getNotes()
     data = getNotes().find({'semester': semester, 'stream': stream}, {'_id': 0})
     if data is not None:
-        return data
+        return str(data)
     else:
         return "no notes"
 
