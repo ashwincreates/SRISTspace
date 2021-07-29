@@ -72,7 +72,7 @@ def addNotes(topic, link, uploadDate, subject, semester, stream):
 
 def fetchNotes(semester, stream):  # via drop downs
     notes = getNotes()
-    data = getNotes().find({'semester': semester, 'stream': stream}, {'_id': 0})
+    data = getNotes().find({'semester': {'$in':semester}, 'stream': {'$in':stream}})
     if data is not None:
         return str(data)
     else:
