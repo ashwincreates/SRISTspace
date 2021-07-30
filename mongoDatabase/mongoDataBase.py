@@ -85,6 +85,11 @@ def fetchNotes(semester, stream):  # via drop downs
 
 def searchNotes(keyword):
     notes = getNotes()
+    data = getNotes().find({} , {'topic':1 , '_id': 1})
+    test = data.next()
+    return test
+
+
 
 
 def dropNotes(topic, link):
