@@ -92,7 +92,7 @@ def searchNotes(keyword):
     data = []
 
     for i in cols:
-        data[i] = i
+        data+=i
 
     json = {
         'data':data
