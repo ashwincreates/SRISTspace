@@ -90,7 +90,7 @@ def searchNotes(keyword):
 
     x = ''
     for i in cols:
-        x+=str(cols)
+        x+=str(i)
     return x
 
 
