@@ -88,11 +88,11 @@ def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
     cols = getNotes().find({'topic':{'$regex': re.compile(keyword , re.IGNORECASE) }} , {'_id':0})
-
+    num = cols.count()
     data = []
 
-    for i in cols:
-        data+=i
+    for i in range(0 , num-1):
+        data[i] = cols[i]
 
     json = {
         'data':data
