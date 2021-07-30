@@ -91,7 +91,7 @@ def searchNotes(keyword):
     num = cols.count()
     data = []
 
-    for i in range(0 , num-1):
+    for i in range(0 , num):
         data[i] = cols[i]
 
     json = {
