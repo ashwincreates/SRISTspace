@@ -97,6 +97,7 @@ def searchNotes(keyword):
     json = {
         'data':data
     }
+
     return json
 
 
