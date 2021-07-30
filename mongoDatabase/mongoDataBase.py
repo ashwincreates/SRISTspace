@@ -87,7 +87,11 @@ def searchNotes(keyword):
     notes = getNotes()
     data = getNotes().find({} , {'topic':1 , '_id': 1})
     test = data.next()
-    return test
+
+    temp = ''
+    for i in test:
+        temp+=str(i)
+    return temp
 
 
 
