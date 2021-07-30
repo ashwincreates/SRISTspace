@@ -74,12 +74,16 @@ def addNotes(topic, link, uploadDate, subject, semester, stream):
 def fetchNotes(semester, stream):  # via drop downs
     notes = getNotes()
     cols = getNotes().find({'semester': semester, 'stream': stream})
-    data = ''
+    data = []
     for i in cols:
-        data += str(i)
+        data.append(i)
 
-    if data is not None:
-        return str(data)
+    json  = {
+        'data': data
+    }
+
+    if cols is not None:
+        return json
     else:
         return "no notes"
 
