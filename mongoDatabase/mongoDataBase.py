@@ -86,10 +86,8 @@ def fetchNotes(semester, stream):  # via drop downs
 def searchNotes(keyword):
     notes = getNotes()
     data = getNotes().find({} , {'topic':1 , '_id': 1})
-    test = data.next()
-
     temp = ''
-    for i in test:
+    for i in data:
         temp+=str(i)
     return temp
 
