@@ -86,13 +86,11 @@ def fetchNotes(semester, stream):  # via drop downs
 def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
-    data = None
-    for temp in getNotes().find():
-       if data is None:
-        data = temp
+    cols = getNotes().find({'topic':{'$in':keyword}} , {'_id':0})
+
     x = ''
-    for i in data:
-        x+=str(data)
+    for i in cols:
+        x+=str(cols)
     return x
 
 
