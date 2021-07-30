@@ -1,8 +1,11 @@
 import './App.css';
 import Crousel from './crousel/Crousel';
 import NoteList from "./notes/noteList";
+import "./notes/note.css";
 import ArticleList from "./articles/articleList";
+import  "./articles/article.css";
 import EventList from "./events/eventList";
+
 
 function App() {
   return (

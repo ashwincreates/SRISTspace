@@ -10,7 +10,7 @@ function ArticleList() {
         <button className="explore">Explore &#62;</button>
       </div>
       <div className="tray">
-        <div className="note-cards">
+        <div className="note-card">
           <div>
             <h3>Post</h3>
             <span>
@@ -19,7 +19,7 @@ function ArticleList() {
             </span>
           </div>
         </div>
-        <div className="note-cards">
+        <div className="note-card">
           <div>
             <h3>Post</h3>
             <span>
@@ -28,7 +28,7 @@ function ArticleList() {
             </span>
           </div>
         </div>
-        <div className="note-cards">
+        <div className="note-card">
           <div>
             <h3>Post</h3>
             <span>
@@ -37,7 +37,7 @@ function ArticleList() {
             </span>
           </div>
         </div>
-        <div className="note-cards">
+        <div className="note-card">
           <div>
             <h3>Post</h3>
             <span>

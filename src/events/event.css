@@ -1,4 +1,4 @@
-.event{
+.events{
     
    display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -7,6 +7,17 @@
   padding: 5px;
   margin-left: 1rem;
   margin-right: 1rem;
+    
+}
+ .event{
+    
+    text-align: center;
+    background-color: rgb(192, 235, 211);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 5px;
+    margin: 1rem;
+    box-shadow: rgba(148, 147, 89, 0.24) 10px 2px 5px;
     
 }
 
@@ -55,7 +66,7 @@ float: right;
 }
 @media(max-width:900px)
 {
-    .event{
+    .events{
     width:calc(100vw - 1rem);
    display: grid;
   grid-template-columns: 1fr 1fr ;
@@ -67,7 +78,7 @@ float: right;
 }
 @media(max-width:550px)
 {
-    .event{
+    .events{
     width:calc(100vw - 1rem);
    display: grid;
   grid-template-columns: 1fr ;
