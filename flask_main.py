@@ -55,6 +55,7 @@ def dropNotes(topic, link):
     callback = mongoDataBase.dropNotes(topic, link)
     return callback
 
+
 @app.route('/getNotesBySearch/<keyword>')
 def getNotesSearch(keyword):
     callback = mongoDataBase.searchNotes(keyword)
