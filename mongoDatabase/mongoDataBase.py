@@ -86,7 +86,7 @@ def fetchNotes(semester, stream):  # via drop downs
 def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
-    cols = getNotes().find({'topic':{'$regex':'/^'+keyword+'$/i'}} , {'_id':0})
+    cols = getNotes().find({'topic':{'$regex': keyword , '$caseSensitive':False}} , {'_id':0})
 
     x = ''
     for i in cols:
