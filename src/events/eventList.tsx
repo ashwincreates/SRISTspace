@@ -10,22 +10,21 @@ function EventList() {
         <button className="explore">Explore &#62;</button>
       </div>
       <div className="event">
-       <h2>Event Banner</h2> 
-        Text
+        <h2>Event Banner</h2>
+        Text 
       </div>
       <div className="event">
-       <h2>Event Banner</h2> 
+        <h2>Event Banner</h2>
         Text
-      </div> <div className="event">
-       <h2>Event Banner</h2> 
+      </div>{" "}
+      <div className="event">
+        <h2>Event Banner</h2>
         Text
-      </div> <div className="event">
-       <h2>Event Banner</h2> 
+      </div>{" "}
+      <div className="event">
+        <h2>Event Banner</h2>
         Text
       </div>
-    
-    
-    
     </>
   );
 }

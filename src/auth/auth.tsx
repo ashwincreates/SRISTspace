@@ -1,7 +1,10 @@
-function signup() {
+import './auth.css';
+
+function Auth() {
   return (
-    <div></div>  
+    <div>
+    </div>
   );
 }
 
-export default signup;
+export default Auth;
