@@ -1,4 +1,5 @@
 import pymongo as pg
+import re
 
 path = "mongodb+srv://utkarsh:utkarsh123456@sristspace.lyx27.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 database = "sristspacedb"
@@ -86,7 +87,7 @@ def fetchNotes(semester, stream):  # via drop downs
 def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
-    cols = getNotes().find({'topic':{'$regex': keyword , '$caseSensitive':False}} , {'_id':0})
+    cols = getNotes().find({'topic':{'$regex': re.compile(keyword , re.IGNORECASE) }} , {'_id':0})
 
     x = ''
     for i in cols:
