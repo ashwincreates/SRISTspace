@@ -91,8 +91,8 @@ def searchNotes(keyword):
     num = cols.count()
     data = []
 
-    for i in range(0 , num):
-        data[i] = cols[i]
+    for i in cols:
+        data.__add__(i)
 
     json = {
         'data':data
