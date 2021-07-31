@@ -73,39 +73,32 @@ def addNotes(topic, link, uploadDate, subject, semester, stream):
 
 def fetchNotes(semester, stream):  # via drop downs
     notes = getNotes()
-    cols = getNotes().find({'semester': semester, 'stream': stream})
+    cols = getNotes().find({'semester': semester, 'stream': stream} , {'_id': 0})
     data = []
     for i in cols:
         data.append(i)
 
-    json  = {
+    json = {
         'data': data
     }
 
-    if cols is not None:
-        return json
-    else:
-        return "no notes"
+    return json
 
 
 def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
-    cols = getNotes().find({'topic':{'$regex': re.compile(keyword , re.IGNORECASE) }} , {'_id':0})
-    num = cols.count()
+    cols = getNotes().find({'topic': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
     data = []
 
     for i in cols:
         data.append(i)
 
     json = {
-        'data':data
+        'data': data
     }
 
     return json
-
-
-
 
 
 def dropNotes(topic, link):
