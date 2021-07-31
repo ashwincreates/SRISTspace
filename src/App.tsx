@@ -12,6 +12,7 @@ function App() {
     <>
 
     <div className="App">
+    
       <Crousel></Crousel>
       <div className="card">
         <h2> Welcome to SRIST space </h2>

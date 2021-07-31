@@ -1,10 +1,15 @@
 import "./note.css";
 import "../articles/article.css";
 import Subjects from "./subjects/subjects";
+import Searchcard from "../searchbar/Searchcard";
+import Sdata from "../searchbar/Sdata";
+
 function Notes() {
+ 
   return (
     <>
       <div className="header">
+      
         <div className="content">
           <h2 className="title-text"> Notes </h2>
           <p>
@@ -15,13 +20,15 @@ function Notes() {
           </p>
           <button className="explore">Explore &#62;</button>
         </div>
-        <input
+         <input
           className="search"
-          name="search"
           type="text"
-          placeholder="search here"
+          placeholder="search Subject,topics..."
+          id="myInput"
         />
       </div>
+   <Searchcard></Searchcard> 
+
 	<Subjects />
       <div className="head">
         <div className="section-title">
@@ -86,8 +93,7 @@ function Notes() {
           </div>
         </div>
       </div>
-      <br />
-      <br />
+      
     </>
   );
 }

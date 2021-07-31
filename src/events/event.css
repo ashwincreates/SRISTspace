@@ -63,19 +63,6 @@ float: right;
     
 }
 }
-@media(max-width:550px)
-{
-    .events{
-    width:calc(100vw - 1rem);
-   display: grid;
-  grid-template-columns: 1fr ;
-  grid-gap: 1rem;
-  overflow-y: hidden;
- 
-
-    margin-left: 1rem;
-    margin: 1rem;}
-}
 
 @media(max-width:900px){
     .eventname{
