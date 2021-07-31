@@ -1,9 +1,14 @@
 import "./note.css";
 import "../articles/article.css";
+import Searchcard from "../searchbar/Searchcard";
+import Sdata from "../searchbar/Sdata";
+
 function Notes() {
+ 
   return (
     <>
       <div className="header">
+      
         <div className="content">
           <h2 className="title-text"> Notes </h2>
           <p>
@@ -14,13 +19,15 @@ function Notes() {
           </p>
           <button className="explore">Explore &#62;</button>
         </div>
-        <input
+         <input
           className="search"
-          name="search"
           type="text"
-          placeholder="search here"
+          placeholder="search Subject,topics..."
+          id="myInput"
         />
       </div>
+   <Searchcard></Searchcard> 
+
       <div className="selection">
         <h2 className="subject">Subjects</h2>
         <br />
@@ -48,62 +55,62 @@ function Notes() {
           </select>
         </form>
         <br />
-        <div className="tray list">
-          <div className="note-card grid">
-            <div>
-              <h3>Card 1</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
-          </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 3</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
-          </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 3</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
-          </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 4</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
-          </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 6</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
-          </div>
-          <div className="note-card grid">
-            <div>
-              <h3>Card 5</h3>
-              <span>
-                Some text
-                <br />
-              </span>
-            </div>
+          <div className="item-tray">
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
           </div>
         </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
+          </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
+          </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
+          </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
+          </div>
+        </div>
+        <div className="card-md">
+          <div>
+            <h3>Card 1</h3>
+            <span>
+              Some text
+              <br />
+            </span>
+          </div>
+        </div>
+      </div>
       </div>
       <div className="head">
         <div className="section-title">
@@ -168,8 +175,7 @@ function Notes() {
           </div>
         </div>
       </div>
-      <br />
-      <br />
+      
     </>
   );
 }
