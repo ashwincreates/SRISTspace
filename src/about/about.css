@@ -1,33 +1,33 @@
 .about1{
+
     text-align: center;
     margin-top: 20px;
     margin-left: 10%;
     margin-right: 10%;
 }
 .about2{
+
     text-align: center;
     margin-top: 50px;
     font-size: 30px;
     color: chocolate;
 }
 .about4{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border-radius: 20px;
-
-
 }
 .about3{
     text-align: center;
-    margin-top: 100px;
-    display: inline-block;
-    
-
-
+  
 }
 .about5{
-    text-align: center;
+  
+    display:grid;
+   grid-template-columns:1fr 1fr 1fr;
+   grid-gap:2rem;
 }
+
 .role
 
 {
@@ -35,8 +35,9 @@
 
 
 }
-.section{
+.faculty{
     font-size: large;
+    display:inline-block;
 
 }
 .name{

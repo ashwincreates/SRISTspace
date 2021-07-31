@@ -16,45 +16,7 @@ function About() {
       <div className="about5">
         <div className="about3">
           <div>
-            {" "}
-            <img
-              className="about4"
-              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
-              alt="dev img"
-            ></img>
-          </div>
-          <h2>
-            <span className="name">Ashwin </span>
-            <br></br>
-
-            <span className="role">Backend and frontend</span>
-            <br></br>
-
-            <span className="section">Cs - A</span>
-          </h2>
-        </div>
-        <div className="about3">
-        <div>
-            {" "}
-            <img
-              className="about4"
-              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
-              alt="dev img"
-            ></img>
-          </div>
-          <h2>
-            <span className="name">Ayush</span>
-            <br></br>
-
-            <span className="role">frontend</span>
-            <br></br>
-
-            <span className="section">Cs - A</span>
-          </h2>
-        </div>
-        <div className="about3">
-          <div>
-            {" "}
+          
             <img
               className="about4"
               src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
@@ -68,12 +30,12 @@ function About() {
             <span className="role">Role</span>
             <br></br>
 
-            <span className="section">Class section</span>
+            <span className="faculty">Class faculty</span>
           </h2>
         </div>
         <div className="about3">
           <div>
-            {" "}
+          
             <img
               className="about4"
               src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
@@ -87,68 +49,87 @@ function About() {
             <span className="role">Role</span>
             <br></br>
 
-            <span className="section">Class section</span>
+            <span className="faculty">Class faculty</span>
+          </h2>
+        </div>
+        <div className="about3">
+          <div>
+          
+            <img
+              className="about4"
+              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
+              alt="dev img"
+            ></img>
+          </div>
+          <h2>
+            <span className="name">Name </span>
+            <br></br>
+
+            <span className="role">Role</span>
+            <br></br>
+
+            <span className="faculty">Class faculty</span>
+          </h2>
+        </div>
+        <div className="about3">
+          <div>
+          
+            <img
+              className="about4"
+              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
+              alt="dev img"
+            ></img>
+          </div>
+          <h2>
+            <span className="name">Name </span>
+            <br></br>
+
+            <span className="role">Role</span>
+            <br></br>
+
+            <span className="faculty">Class faculty</span>
+          </h2>
+        </div>
+        <div className="about3">
+          <div>
+          
+            <img
+              className="about4"
+              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
+              alt="dev img"
+            ></img>
+          </div>
+          <h2>
+            <span className="name">Name </span>
+            <br></br>
+
+            <span className="role">Role</span>
+            <br></br>
+
+            <span className="faculty">Class faculty</span>
+          </h2>
+        </div>
+        <div className="about3">
+          <div>
+          
+            <img
+              className="about4"
+              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
+              alt="dev img"
+            ></img>
+          </div>
+          <h2>
+            <span className="name">Name </span>
+            <br></br>
+
+            <span className="role">Role</span>
+            <br></br>
+
+            <span className="faculty">Class faculty</span>
           </h2>
         </div>
       </div>
-      <div className="about5">
-        <div className="about3">
-          <div>
-            {" "}
-            <img
-              className="about4"
-              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
-              alt="dev img"
-            ></img>
-          </div>
-          <h2>
-            <span className="name">Name </span>
-            <br></br>
-
-            <span className="role">Role</span>
-            <br></br>
-
-            <span className="section">Class section</span>
-          </h2>
-        </div>
-
-        <div className="about3">
-          <div>
-            {" "}
-            <img
-              className="about4"
-              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
-              alt="dev img"
-            ></img>
-          </div>
-          <h2>
-            <span className="name">Name </span>
-            <br></br>
-            <span className="role">Role</span>
-            <br></br>
-            <span className="section">Class section</span>
-          </h2>
-        </div>
-        <div className="about3">
-          <div>
-            {" "}
-            <img
-              className="about4"
-              src="https://pbs.twimg.com/media/Dkfak-NUcAIhYE-.jpg"
-              alt="dev img"
-            ></img>
-          </div>
-          <h2>
-            <span className="name">Name </span>
-            <br></br>
-
-            <span className="role">Role</span>
-            <br></br>
-
-            <span className="section">Class section</span>
-          </h2>
-        </div>
-      </div>
+    
     </>
   );
 }

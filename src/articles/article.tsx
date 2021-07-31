@@ -18,7 +18,7 @@ function Article() {
             className="search"
             name="search"
             type="text"
-            placeholder="search here"
+             placeholder="search Subject,topics..."
         />
       </div>
       <div className="head">
