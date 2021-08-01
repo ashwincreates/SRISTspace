@@ -70,20 +70,21 @@ class Subjects extends React.Component<Props, State> {
       () => {
         console.log(this.state.semester + " " + this.state.branch);
         if (this.state.semester && this.state.branch != "") {
-          this.handleSubmit(this.state.semester, this.state.semester);
+          this.handleSubmit(this.state.semester, this.state.branch);
         }
       }
     );
   }
 
   handleSubmit(semester : string, branch: string) {
-	fetch("http://sristspace.herokuapp.com/getNotesByDrop/" + semester + "/" + branch)
+	fetch("http://127.0.0.1:5000/getNotesByDrop/" + semester + "/" + branch)
 	.then(res => res.json())
 	.then((data) => {
 		this.setState({
 			notelist: data
 		});
 	}).catch((error) => console.log(error))
+	console.log("http://127.0.0.1:5000/getNotesByDrop/" + semester + "/" + branch)
   }
 
   render() {

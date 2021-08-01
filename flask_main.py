@@ -1,8 +1,13 @@
 import os
 from flask import Flask, send_from_directory, request, jsonify
 from mongoDatabase import mongoDataBase
+from flask_cors import CORS, cross_origin
+
 
 app = Flask(__name__, static_folder='build')
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+# CORS(app)
 
 
 # Serve React App
@@ -45,6 +50,7 @@ def addNotes(topic, link, date, subject, semester, stream):
 
 # url - https://sristspace.herokuapp.com/getNotesByDrop/sem/stream
 @app.route('/getNotesByDrop/<semester>/<stream>')
+@cross_origin
 def getNotes(semester, stream):
     return jsonify(mongoDataBase.fetchNotes(semester, stream))
 

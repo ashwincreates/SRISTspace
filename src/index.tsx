@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom';
 import {Switch, Route, BrowserRouter } from "react-router-dom";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
 import Nav from './nav/nav';
 import App from './App';
 import Note from './notes/notes';
@@ -25,6 +24,7 @@ ReactDOM.render(
   </BrowserRouter>, 
   document.getElementById('root')
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
