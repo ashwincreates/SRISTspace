@@ -6,6 +6,7 @@ import "./notes/note.css";
 import ArticleList from "./articles/articleList";
 import  "./articles/article.css";
 import EventList from "./events/eventList";
+import Login from './login/login';
 
 
 
@@ -16,6 +17,7 @@ function App() {
     <>
 
     <div className="App">
+      <Login/>
     
       <Crousel></Crousel>
       <div className="card">

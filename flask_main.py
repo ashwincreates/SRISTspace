@@ -1,8 +1,11 @@
 import os
 from flask import Flask, send_from_directory, request, jsonify
 from mongoDatabase import mongoDataBase
+from flask_cors import CORS
+
 
 app = Flask(__name__, static_folder='build')
+CORS(app)
 
 
 # Serve React App
