@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import Crousel from './crousel/Crousel';
 import NoteList from "./notes/noteList";
 import "./notes/note.css";
@@ -7,7 +8,10 @@ import  "./articles/article.css";
 import EventList from "./events/eventList";
 
 
+
 function App() {
+
+  
   return (
     <>
 
@@ -25,7 +29,7 @@ function App() {
       <ArticleList></ArticleList>
       <EventList></EventList>
     </div>
- 
+
     </>
   );
 }
