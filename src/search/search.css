@@ -19,8 +19,3 @@
   color: var(--PrimaryColor);
 }
 
-form{
-  padding-top: 1rem;
-  display: flex;
-  flex-direction: column;
-}

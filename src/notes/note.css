@@ -53,18 +53,22 @@ form {
   }
 
   .choice {
-    width: calc(100vw - 2rem - 10px);
+    width: calc(100vw - 2rem - 10px) !important;
     margin-bottom: 0.5rem;
     margin-right: 0;
   }
 
   form{
 	  margin-right: calc(1rem + 5px);
+	  flex-direction: column;
+	  display: flex;
+
   }
 
 }
 
 .choice {
+  width: 350px;
   margin-right: 1rem;
   padding: 15px;
   color: var(--PrimaryColor);
