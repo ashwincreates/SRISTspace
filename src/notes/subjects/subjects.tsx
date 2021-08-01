@@ -70,16 +70,20 @@ class Subjects extends React.Component<Props, State> {
       () => {
         console.log(this.state.semester + " " + this.state.branch);
         if (this.state.semester && this.state.branch != "") {
-          this.handleSubmit();
+          this.handleSubmit(this.state.semester, this.state.semester);
         }
       }
     );
   }
 
-  handleSubmit() {
-	this.setState({
-		notelist : notes
-	})
+  handleSubmit(semester : string, branch: string) {
+	fetch("http://sristspace.herokuapp.com/getNotesByDrop/" + semester + "/" + branch)
+	.then(res => res.json())
+	.then((data) => {
+		this.setState({
+			notelist: data
+		});
+	}).catch((error) => console.log(error))
   }
 
   render() {
@@ -115,11 +119,11 @@ class Subjects extends React.Component<Props, State> {
             <option selected disabled>
               Choose your stream
             </option>
-            <option value="cs">CS</option>
-            <option value="ce">CE</option>
-            <option value="ec">EC</option>
-            <option value="ee">EE</option>
-            <option value="it">IT</option>
+            <option value="CS">CS</option>
+            <option value="CE">CE</option>
+            <option value="EC">EC</option>
+            <option value="EE">EE</option>
+            <option value="IT">IT</option>
           </select>
         </form>
         <div className="item-tray">
