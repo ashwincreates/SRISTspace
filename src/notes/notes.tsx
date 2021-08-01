@@ -5,11 +5,9 @@ import Searchcard from "../searchbar/Searchcard";
 import Sdata from "../searchbar/Sdata";
 
 function Notes() {
- 
   return (
     <>
       <div className="header">
-      
         <div className="content">
           <h2 className="title-text"> Notes </h2>
           <p>
@@ -20,16 +18,8 @@ function Notes() {
           </p>
           <button className="explore">Explore &#62;</button>
         </div>
-         <input
-          className="search"
-          type="text"
-          placeholder="search Subject,topics..."
-          id="myInput"
-        />
       </div>
-   <Searchcard></Searchcard> 
-
-	<Subjects />
+      <Subjects />
       <div className="head">
         <div className="section-title">
           <h2>Newly Uploaded Notes</h2>
@@ -93,7 +83,6 @@ function Notes() {
           </div>
         </div>
       </div>
-      
     </>
   );
 }
