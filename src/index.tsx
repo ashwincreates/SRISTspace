@@ -8,6 +8,7 @@ import Note from './notes/notes';
 import Article from './articles/article';
 import About from './about/about';
 import Event from './events/event';
+import Search from './search/search';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route exact path='/about' component={ About } />
         <Route exact path='/articles' component={ Article } />
         <Route exact path='/events' component={ Event } />
+	<Route exact path='/search' component={ Search } />
       </Switch>
   </BrowserRouter>, 
   document.getElementById('root')

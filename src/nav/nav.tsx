@@ -1,6 +1,7 @@
 import './nav.css';
 import Emoji from '../emoji/Emoji';
 import { NavLink } from "react-router-dom";
+import Searchcard from '../searchbar/Searchcard';
 function Nav() {
   return (
     <>
@@ -18,6 +19,7 @@ function Nav() {
       <div className="second"></div>
     </div>
 
+      <Searchcard></Searchcard>
     <ul id="overlay">
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/notes">Notes</NavLink></li>
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/events">Events</NavLink></li>
