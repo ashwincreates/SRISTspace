@@ -1,8 +1,6 @@
 import "./note.css";
 import "../articles/article.css";
 import Subjects from "./subjects/subjects";
-import Searchcard from "../searchbar/Searchcard";
-import Sdata from "../searchbar/Sdata";
 
 function Notes() {
   return (

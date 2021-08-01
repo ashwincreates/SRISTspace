@@ -50,7 +50,6 @@ def addNotes(topic, link, date, subject, semester, stream):
 
 # url - https://sristspace.herokuapp.com/getNotesByDrop/sem/stream
 @app.route('/getNotesByDrop/<semester>/<stream>')
-@cross_origin
 def getNotes(semester, stream):
     return jsonify(mongoDataBase.fetchNotes(semester, stream))
 

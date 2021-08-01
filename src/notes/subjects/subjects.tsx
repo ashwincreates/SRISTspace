@@ -77,14 +77,15 @@ class Subjects extends React.Component<Props, State> {
   }
 
   handleSubmit(semester : string, branch: string) {
-	fetch("http://127.0.0.1:5000/getNotesByDrop/" + semester + "/" + branch)
+	fetch("http://sristspace.herokuapp.com/getNotesByDrop/" + semester + "/" + branch)
 	.then(res => res.json())
 	.then((data) => {
 		this.setState({
-			notelist: data
-		});
-	}).catch((error) => console.log(error))
-	console.log("http://127.0.0.1:5000/getNotesByDrop/" + semester + "/" + branch)
+			notelist : data.data
+		})
+	}
+	).catch((error) => {console.log(error);
+	console.log(this.state.notelist)})
   }
 
   render() {
