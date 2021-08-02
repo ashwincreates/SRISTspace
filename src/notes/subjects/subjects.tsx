@@ -110,7 +110,7 @@ class Subjects extends React.Component<Props, State> {
 
   handleSubmit(semester: string, branch: string) {
     fetch(
-      "http://0.0.0.0:"+ process.env.PORT + "/getNotesByDrop/" +
+      "http://0.0.0.0:"+ "80"  + "/getNotesByDrop/" +
         semester +
         "/" +
         branch
