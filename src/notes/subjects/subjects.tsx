@@ -1,14 +1,18 @@
 import React from "react";
 import { Note } from "../../models/models";
 
+//state and props for the class
 interface State {
   semester: string;
   branch: string;
   notelist: Note[];
+  loading: boolean;
+  dirty: boolean;
 }
 
 interface Props {}
 
+//for testing purpose
 const notes: Note[] = [
   {
     topic: "java",
@@ -28,28 +32,49 @@ const notes: Note[] = [
   },
 ];
 
-function Card(props : any) {
-	return (
-	<div className="card-md">
-            <div>
-              <h1>Subject</h1>
-              <span>
-                {props.subject}
-                <br />
-              </span>
-            </div>
-          </div>
-	)
+function Card(props: any) {
+  return (
+    <div className="card-md">
+      <div>
+        <h1>Subject</h1>
+        <span>
+          {props.subject}
+          <br />
+        </span>
+      </div>
+    </div>
+  );
 }
 
-function NoCard(){
-	return(
-	<div className="nocard">
-		<span>Choose Subject and semester</span>
-	</div>
-	)
+function NoCard(props: any) {
+  if (props.loading) {
+    return (
+      <div className="nocard">
+        <Spinner></Spinner>
+      </div>
+    );
+  } else {
+    if (props.dirty) return <div className="nocard">Nothing here</div>;
+    else {
+      return (
+        <div className="nocard">
+          <span>Choose Subject and semester</span>
+        </div>
+      );
+    }
+  }
 }
 
+function Spinner() {
+  return (
+    <div className="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+}
 
 class Subjects extends React.Component<Props, State> {
   constructor(props: any) {
@@ -58,6 +83,8 @@ class Subjects extends React.Component<Props, State> {
       semester: "",
       branch: "",
       notelist: [],
+      loading: false,
+      dirty: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -71,32 +98,45 @@ class Subjects extends React.Component<Props, State> {
         console.log(this.state.semester + " " + this.state.branch);
         if (this.state.semester && this.state.branch != "") {
           this.handleSubmit(this.state.semester, this.state.branch);
+          this.setState({
+            notelist: [],
+            loading: true,
+            dirty: true,
+          });
         }
       }
     );
   }
 
-  handleSubmit(semester : string, branch: string) {
-	fetch("http://sristspace.herokuapp.com/getNotesByDrop/" + semester + "/" + branch)
-	.then(res => res.json())
-	.then((data) => {
-		this.setState({
-			notelist : data.data
-		})
-	}
-	).catch((error) => {console.log(error);
-	console.log(this.state.notelist)})
+  handleSubmit(semester: string, branch: string) {
+    fetch(
+      "http://sristspace.herokuapp.com/getNotesByDrop/" +
+        semester +
+        "/" +
+        branch
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          notelist: data.data,
+          loading: false,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(this.state.notelist);
+      });
   }
 
   render() {
-
-	let cards : any;
-	if(this.state.notelist.length === 0){
-		cards = <NoCard/>
-}
-	else{
-		cards = this.state.notelist.map((note) => <Card subject={note.subject} />);
-	}
+    let cards: any;
+    if (this.state.notelist.length === 0) {
+      cards = <NoCard loading={this.state.loading} dirty={this.state.dirty} />;
+    } else {
+      cards = this.state.notelist.map((note) => (
+        <Card subject={note.subject} />
+      ));
+    }
 
     return (
       <>
@@ -128,9 +168,7 @@ class Subjects extends React.Component<Props, State> {
             <option value="IT">IT</option>
           </select>
         </form>
-        <div className="item-tray">
-	{cards}
-        </div>
+        <div className="item-tray">{cards}</div>
       </>
     );
   }
