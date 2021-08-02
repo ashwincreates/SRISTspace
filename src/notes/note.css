@@ -74,6 +74,9 @@ form {
   color: var(--PrimaryColor);
   border: 2px solid var(--PrimaryColor);
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 500;
+  font-family: Poppins;
   border-radius: 8px;
+  background-color: var(--White);
+  outline: none;
 }

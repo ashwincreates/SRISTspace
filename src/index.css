@@ -66,3 +66,10 @@ button{
 .active_class{
   color: var(--PrimaryColor);
 }
+
+input{
+	border: 2px solid red;
+	border-style: none;
+	border-radius: 10px;
+}
+
