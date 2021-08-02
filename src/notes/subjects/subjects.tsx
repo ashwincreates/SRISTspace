@@ -110,7 +110,7 @@ class Subjects extends React.Component<Props, State> {
 
   handleSubmit(semester: string, branch: string) {
     fetch(
-      "http://sristspace.herokuapp.com/getNotesByDrop/" +
+      "http://0.0.0.0:"+ process.env.PORT + "/getNotesByDrop/" +
         semester +
         "/" +
         branch

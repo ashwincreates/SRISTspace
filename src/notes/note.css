@@ -7,7 +7,7 @@
 
 .nocard{
   width: auto;
-  height: 100px;
+  height: 200px;
   padding: 20px;
   border-radius: 5px;
   /* margin-right: 20px; */
@@ -16,6 +16,8 @@
   justify-content: center;
   grid-column-start: 1;
   grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
