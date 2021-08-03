@@ -2,13 +2,21 @@ import os
 from flask import Flask, send_from_directory, request, jsonify
 from mongoDatabase import mongoDataBase
 from flask_cors import CORS, cross_origin
-
+from dotenv import load_dotenv
 
 app = Flask(__name__, static_folder='build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 # CORS(app)
 
+load_dotenv()
+env = os.environ.get("ENV");
+if(env == "production"):
+    port = os.environ.get("PORT")
+else:
+    port = 3000
+
+print("the current environment is : " + env)
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
@@ -73,4 +81,4 @@ def runTest():
 
 
 if __name__ == '__main__':
-    app.run(use_reloader=True, port=5000, threaded=True)
+    app.run(use_reloader=True, port=port, threaded=True)
