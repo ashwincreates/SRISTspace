@@ -87,7 +87,10 @@ class Subjects extends React.Component<Props, State> {
       dirty: false,
     };
     this.handleChange = this.handleChange.bind(this);
+	this.URL = "https://sristspace.herokuapp.com";
   }
+
+URL:any;
 
   handleChange(event: any) {
     this.setState(
@@ -110,7 +113,7 @@ class Subjects extends React.Component<Props, State> {
 
   handleSubmit(semester: string, branch: string) {
     fetch(
-      "http://0.0.0.0:"+ "80"  + "/getNotesByDrop/" +
+      this.URL + "/getNotesByDrop/" +
         semester +
         "/" +
         branch
