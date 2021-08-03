@@ -1,5 +1,4 @@
 import './App.css';
-import { useState } from 'react';
 import Crousel from './crousel/Crousel';
 import NoteList from "./notes/noteList";
 import "./notes/note.css";

@@ -53,6 +53,11 @@ h2 {
 
 button{
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 25px;
+  padding-right: 25px;
   border: none;
   border-radius: 5px;
   background-color: var(--PrimaryColor);
