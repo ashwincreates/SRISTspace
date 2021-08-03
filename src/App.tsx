@@ -8,6 +8,7 @@ import EventList from "./events/eventList";
 
 
 
+
 function App() {
 
   
@@ -15,6 +16,7 @@ function App() {
     <>
 
     <div className="App">
+    
     
       <Crousel></Crousel>
       <div className="card">
@@ -27,7 +29,9 @@ function App() {
       <NoteList></NoteList>
       <ArticleList></ArticleList>
       <EventList></EventList>
+      
     </div>
+    
 
     </>
   );
