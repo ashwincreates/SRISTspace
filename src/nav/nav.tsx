@@ -1,5 +1,4 @@
 import './nav.css';
-import Emoji from '../emoji/Emoji';
 import { NavLink } from "react-router-dom";
 import Searchcard from '../searchbar/Searchcard';
 function Nav() {

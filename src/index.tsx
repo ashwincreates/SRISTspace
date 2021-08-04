@@ -8,11 +8,18 @@ import Note from './notes/notes';
 import Article from './articles/article';
 import About from './about/about';
 import Event from './events/event';
+
 import Searchcard from './searchbar/Searchcard';
+import Search from './search/search';
+import Login from './login/login';
+import Dialog from './dialog/dialog';
+
 
   
 ReactDOM.render(
+  
   <BrowserRouter>
+  {/* <Login/> */}
       <Nav></Nav>
       <Switch>
         <Route exact path='/' component={ App } />

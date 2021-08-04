@@ -1,6 +1,7 @@
 import "./note.css";
 import "../articles/article.css";
 import Subjects from "./subjects/subjects";
+import Icons from "../icons/icons";
 
 
 function Notes() {
@@ -15,7 +16,7 @@ function Notes() {
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
           </p>
-          <button className="explore">Explore &#62;</button>
+          <button className="explore">Explore <Icons name="forward" /></button>
         </div>
       </div>
      

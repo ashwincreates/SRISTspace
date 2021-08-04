@@ -1,0 +1,14 @@
+dialog {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.24);
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	right: 0;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
