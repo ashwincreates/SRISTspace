@@ -1,8 +1,9 @@
+import Dialog from '../dialog/dialog';
 import './auth.css';
 
 function Auth() {
   return (
-<div></div>
+	<Dialog></Dialog>
     
   );
 }

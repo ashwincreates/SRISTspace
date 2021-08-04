@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import Dialog from "../../dialog/dialog";
 import { Note } from "../../models/models";
 
 //state and props for the class
@@ -33,17 +34,17 @@ const notes: Note[] = [
 ];
 
 function Card(props: any) {
-  return (
+
+  return ( 
+<>
     <div className="card-md">
-      <div>
         <h1>Subject</h1>
         <span>
           {props.subject}
           <br />
         </span>
-      </div>
     </div>
-  );
+</>)
 }
 
 function NoCard(props: any) {
