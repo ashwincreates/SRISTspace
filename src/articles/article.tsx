@@ -1,5 +1,7 @@
 import "../notes/note.css";
 import "./article.css";
+
+
 function Article() {
   return (
     <>
@@ -13,6 +15,7 @@ function Article() {
             and scrambled it to make a type specimen book. 
           </p>
           <button className="explore">Explore &#62;</button>
+          
         </div>
         <input
             className="search"

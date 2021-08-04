@@ -63,6 +63,7 @@ button{
   font-family: "Poppins";
   cursor:pointer
 }
+
 .active_class{
   color: var(--PrimaryColor);
 }

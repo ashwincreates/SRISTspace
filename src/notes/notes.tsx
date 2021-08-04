@@ -2,6 +2,7 @@ import "./note.css";
 import "../articles/article.css";
 import Subjects from "./subjects/subjects";
 
+
 function Notes() {
   return (
     <>
@@ -17,6 +18,7 @@ function Notes() {
           <button className="explore">Explore &#62;</button>
         </div>
       </div>
+     
       <Subjects />
       <div className="head">
         <div className="section-title">

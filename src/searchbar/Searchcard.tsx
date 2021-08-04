@@ -1,24 +1,32 @@
-import { useState } from "react";
+import React from "react";
 import "../articles/article.css";
-
-function Searchcard() {
-  const [filter, setFilter] = useState("");
-
-  const searchtext = (event : any) => {
-    setFilter(event.target.value);
-  };
-  return (
+// import Search from './search';
+ 
+class Searchcard extends React.Component<{}, {}>{
+  constructor(props:any){
+    super(props);
+    this.printval=this.printval.bind(this);
+    this.inpref=React.createRef();
+  }
+  inpref:any;
+printval(event:any){
+  event.preventDefault();
+  console.log(this.inpref.current.value); 
+}
+render(){
+ return (
     <>
+    <form onSubmit={this.printval}>
       <input
         className="search"
         type="text"
         placeholder="search Subject,topics..."
         id="myInput"
-        value={filter}
-        onChange={searchtext}
+        ref={this.inpref}       
       />
+     </form>
     </>
   );
+ }
 }
-
 export default Searchcard;
