@@ -78,3 +78,15 @@ input{
 	border-radius: 10px;
 }
 
+.explore {
+  background-position: center;
+  transition: background 0.8s;
+}
+.explore:hover {
+  background: #575757 radial-gradient(circle, transparent 1%, #82c888 1%) center/15000%;
+}
+.explore:active {
+  background-color: #575757;
+  background-size: 100%;
+  transition: background 0s;
+}
