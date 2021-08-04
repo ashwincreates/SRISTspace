@@ -3,8 +3,8 @@ import './auth.css';
 
 function Auth() {
   return (
-	<Dialog></Dialog>
-    
+	// <Dialog></Dialog>
+    <div/>
   );
 }
 
