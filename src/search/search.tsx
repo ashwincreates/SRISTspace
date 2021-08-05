@@ -55,7 +55,7 @@ class Search extends React.Component<
         <div className="head">
           <h2>Search result for "{this.props.location.state}"</h2>
         </div>
-        <div className="tray">{cards}</div>
+        <div className="item-tray">{cards}</div>
       </>
     );
   }
