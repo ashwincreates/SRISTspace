@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import Dialog from "../../dialog/dialog";
 import { Note } from "../../models/models";
 
 //state and props for the class
 interface State {
   semester: string;
+open: boolean;
   branch: string;
   notelist: Note[];
   loading: boolean;
@@ -14,7 +15,7 @@ interface State {
 interface Props {}
 
 //for testing purpose
-const notes: Note[] = [
+/*const notes: Note[] = [
   {
     topic: "java",
     link: "link",
@@ -31,20 +32,21 @@ const notes: Note[] = [
     semester: 4,
     stream: "CS",
   },
-];
+];*/
 
+//helper functions
 function Card(props: any) {
-
-  return ( 
-<>
-    <div className="card-md">
+  return (
+    <>
+      <div className="card-md" onClick={props.toggle(props.subject)}>
         <h1>Subject</h1>
         <span>
           {props.subject}
           <br />
         </span>
-    </div>
-</>)
+      </div>
+    </>
+  );
 }
 
 function NoCard(props: any) {
@@ -77,6 +79,7 @@ function Spinner() {
   );
 }
 
+//Subject class
 class Subjects extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
@@ -86,12 +89,13 @@ class Subjects extends React.Component<Props, State> {
       notelist: [],
       loading: false,
       dirty: false,
+	open: false,
     };
     this.handleChange = this.handleChange.bind(this);
-	this.URL = "https://sristspace.herokuapp.com";
+    this.URL = "https://sristspace.herokuapp.com";
   }
 
-URL:any;
+  URL: any;
 
   handleChange(event: any) {
     this.setState(
@@ -113,12 +117,7 @@ URL:any;
   }
 
   handleSubmit(semester: string, branch: string) {
-    fetch(
-      this.URL + "/getNotesByDrop/" +
-        semester +
-        "/" +
-        branch
-    )
+    fetch(this.URL + "/getNotesByDrop/" + semester + "/" + branch)
       .then((res) => res.json())
       .then((data) => {
         this.setState({
@@ -132,13 +131,18 @@ URL:any;
       });
   }
 
+	toggle(name : string){
+		console.log(name);
+	//	this.setState({open: !(this.state.open)});
+}
+
   render() {
     let cards: any;
     if (this.state.notelist.length === 0) {
       cards = <NoCard loading={this.state.loading} dirty={this.state.dirty} />;
     } else {
       cards = this.state.notelist.map((note) => (
-        <Card subject={note.subject} />
+        <Card subject={note.subject} toggle={this.toggle} />
       ));
     }
 

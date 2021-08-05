@@ -9,10 +9,8 @@ import Article from './articles/article';
 import About from './about/about';
 import Event from './events/event';
 
-import Searchcard from './searchbar/Searchcard';
 import Search from './search/search';
 import Login from './login/login';
-import Dialog from './dialog/dialog';
 
 
   
