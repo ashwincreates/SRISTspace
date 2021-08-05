@@ -3,6 +3,7 @@ import "../articles/article.css";
 import Subjects from "./subjects/subjects";
 import Icons from "../icons/icons";
 
+
 function Notes() {
   return (
     <>
@@ -18,6 +19,7 @@ function Notes() {
           <button className="explore">Explore <Icons name="forward" /></button>
         </div>
       </div>
+     
       <Subjects />
       <div className="head">
         <div className="section-title">

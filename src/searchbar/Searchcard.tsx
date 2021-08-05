@@ -2,11 +2,8 @@ import React from "react";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import "../articles/article.css";
 
-interface Data extends RouteComponentProps {
-	text : string;
-}
 
-class Search extends React.Component<Data, {}> {
+class SearchInput extends React.Component<RouteComponentProps, {}> {
   constructor(props: any) {
     super(props);
     this.printval = this.printval.bind(this);
@@ -17,7 +14,8 @@ class Search extends React.Component<Data, {}> {
 
   printval(event : any) {
 	event.preventDefault();
-	console.log(this.inpref.current.value);
+	this.props.history.push("/search",  this.inpref.current.value);
+	this.inpref.current.value = "";
   }
 
   render() {
@@ -38,30 +36,5 @@ class Search extends React.Component<Data, {}> {
   }
 }
 
-/*function Searchcard() {
-  let textinput : any;
-  textinput = React.createRef<HTMLInputElement>();
-
-  function printval(event: any) {
-    event.preventDefault();
-    console.log(textinput.current.value)
-	const history = useHistory();
-	history.push("/search");
-  }
-
-  return (
-    <>
-      <form onSubmit={() => useHistory().push("/search")}>
-        <input
-          className="search"
-          type="text"
-          ref={textinput}
-          placeholder="search subject,topics..."
-          id="myInput"
-        />
-      </form>
-    </>
-  );
-}*/
-const Searchcard = withRouter<Data, React.ComponentType<Data>>(Search)
+const Searchcard = withRouter<RouteComponentProps, React.ComponentType<RouteComponentProps>>(SearchInput)
 export default Searchcard;
