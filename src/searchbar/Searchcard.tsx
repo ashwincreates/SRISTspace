@@ -38,3 +38,4 @@ class SearchInput extends React.Component<RouteComponentProps, {}> {
 
 const Searchcard = withRouter<RouteComponentProps, React.ComponentType<RouteComponentProps>>(SearchInput)
 export default Searchcard;
+

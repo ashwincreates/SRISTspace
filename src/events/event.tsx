@@ -14,7 +14,7 @@ function Event() {
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
           </p>
-          <button className="explore">Host A Event &#62;</button>
+          <button className="explore">Host Event&#62;</button>
         </div>
         <input
           className="search"
