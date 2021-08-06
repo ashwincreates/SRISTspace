@@ -1,16 +1,16 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import "../articles/article.css";
-import { Note } from "../models/models";
-interface locstate {
-  state: string;
-}
+import { Note } from "../../models/models";
 
+interface state
+{
+   notelist:Note[];
+}
 function Card(props: any) {
   return (
     <>
-   
-      <div className="card-md">
+    
+      <div className="note-card">
         <h1>{props.subject}</h1>
         <span>{props.topic}</span>
       </div>
@@ -18,10 +18,8 @@ function Card(props: any) {
   );
 }
 
-class Search extends React.Component<
-  RouteComponentProps<locstate>,
-  { notelist: Note[] }
-> {
+class Recent extends React.Component< {}, { notelist: Note[] }> 
+{
   constructor(props: any) {
     super(props);
     this.state = {
@@ -33,7 +31,7 @@ class Search extends React.Component<
   URL: any;
 
   render() {
-    fetch(this.URL + "/getNotesBySearch/" + this.props.location.state)
+    fetch(this.URL + "/getNotesByDrop/4/CS")
       .then((res) => res.json())
       .then((data) => {
         this.setState({
@@ -52,13 +50,11 @@ class Search extends React.Component<
 
     return (
       <>
-        <div className="head">
-          <h2>Search result for "{this.props.location.state}"</h2>
-        </div>
-        <div className="item-tray">{cards}</div>
+       
+        <div className="tray">{cards}</div>
       </>
     );
   }
 }
 
-export default Search;
+export default Recent;

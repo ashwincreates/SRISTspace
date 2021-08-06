@@ -29,7 +29,9 @@
   border-radius: 5px;
   margin-right: 20px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  justify-content: end;
+  flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -68,8 +70,8 @@
   width: 350px;
   margin-right: 1rem;
   padding: 15px;
-  color: var(--PrimaryColor);
-  border: 2px solid var(--PrimaryColor);
+  color: #13e8e6f7;
+  border: 2px solid #13e8e6f7;
   font-size: 16px;
   font-weight: 500;
   font-family: Poppins;

@@ -65,10 +65,10 @@ button{
   justify-content: space-between;
   padding-left: 25px;
   padding-right: 25px;
-  border: none;
+  border: 2px solid #13e8e6f7;
   border-radius: 5px;
-  background-color: var(--PrimaryColor);
-  color: var(--White);
+  background-color: var(--SecondaryColor);
+  color:#13e8e6f7 ;
   height: 2.5rem;
   width: 9rem;
   font-size: 1rem;
@@ -91,7 +91,9 @@ input{
   transition: background 0.8s;
 }
 .explore:hover {
-  background: lightgreen radial-gradient(circle, transparent 1%, #82c888 1%) center/15000%;
+  background: #13e8e6f7 radial-gradient(circle, transparent 1%, #82c888 1%) center/15000%;
+  color:white;
+ 
 }
 .explore:active {
   background-color: white;

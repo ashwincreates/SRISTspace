@@ -1,6 +1,7 @@
 import "./note.css";
 import "../articles/article.css";
 import Subjects from "./subjects/subjects";
+import Recent from "./subjects/recent";
 import Icons from "../icons/icons";
 
 
@@ -21,6 +22,7 @@ function Notes() {
       </div>
      
       <Subjects />
+     
       <div className="head">
         <div className="section-title">
           <h2>Newly Uploaded Notes</h2>
@@ -28,62 +30,8 @@ function Notes() {
         </div>
         <button className="explore">Explore &#62;</button>
       </div>
-      <div className="tray">
-        <div className="note-card">
-          <div>
-            <h3>Card 1</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 3</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 3</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 4</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 5</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-        <div className="note-card">
-          <div>
-            <h3>Card 6</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
-      </div>
+     <Recent />
+     <br/>
     </>
   );
 }
