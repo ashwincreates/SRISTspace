@@ -13,7 +13,7 @@ super(props);
 this.state = {
 
 login : false,
-SignUp:false
+SignUp:false,
 
 }
 
