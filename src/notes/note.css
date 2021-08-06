@@ -33,11 +33,6 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-form {
-  margin-left: calc(1rem + 5px);
-  margin-bottom: 1rem;
-}
-
 @media (max-width: 480px) {
   .tray {
     width: calc(100vw - 1rem - 10px);

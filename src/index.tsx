@@ -11,6 +11,7 @@ import Event from './events/event';
 
 import Search from './search/search';
 import Login from './login/login';
+import Auth from './auth/auth';
 
 
   
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route exact path='/articles' component={ Article } />
         <Route exact path='/events' component={ Event } />
 	<Route exact path='/search' component={ Search } />
+	<Route exact path='/auth' component={ Auth } />
       </Switch>
   </BrowserRouter>, 
   document.getElementById('root')

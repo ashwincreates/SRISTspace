@@ -38,14 +38,14 @@ function opennav(){
     if(box?.checked)
     {
         document.getElementById("overlay")?.classList.add("active");
-        const root = document.documentElement.style;
+        const root = document.getElementById("root")?.style;
         if(root)
             root.overflow = "hidden"
     }
     else
     {
         document.getElementById("overlay")?.classList.remove("active");
-        const root = document.documentElement.style;
+        const root = document.getElementById("root")?.style;
         if(root)
             root.overflow = "scroll"
     }

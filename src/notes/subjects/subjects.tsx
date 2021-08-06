@@ -5,7 +5,7 @@ import { Note } from "../../models/models";
 //state and props for the class
 interface State {
   semester: string;
-open: boolean;
+  open: boolean;
   branch: string;
   notelist: Note[];
   loading: boolean;
@@ -14,31 +14,11 @@ open: boolean;
 
 interface Props {}
 
-//for testing purpose
-/*const notes: Note[] = [
-  {
-    topic: "java",
-    link: "link",
-    upload: new Date("2021-07-31"),
-    subject: "Energy, Environment,Ecology & Society",
-    semester: 4,
-    stream: "CS",
-  },
-  {
-    topic: "Java ebooks",
-    link: "ref-oracle- ebooks",
-    upload: new Date("2021-07-31"),
-    subject: "Computer Organization and Architecture",
-    semester: 4,
-    stream: "CS",
-  },
-];*/
-
 //helper functions
 function Card(props: any) {
   return (
     <>
-      <div className="card-md" onClick={props.toggle(props.subject)}>
+      <div className="card-md">
         <h1>Subject</h1>
         <span>
           {props.subject}
@@ -89,7 +69,7 @@ class Subjects extends React.Component<Props, State> {
       notelist: [],
       loading: false,
       dirty: false,
-	open: false,
+      open: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.URL = "https://sristspace.herokuapp.com";
@@ -131,10 +111,10 @@ class Subjects extends React.Component<Props, State> {
       });
   }
 
-	toggle(name : string){
-		console.log(name);
-	//	this.setState({open: !(this.state.open)});
-}
+  toggle(name: string) {
+    console.log(name);
+    this.setState({open: !this.state.open});
+  }
 
   render() {
     let cards: any;
@@ -142,7 +122,14 @@ class Subjects extends React.Component<Props, State> {
       cards = <NoCard loading={this.state.loading} dirty={this.state.dirty} />;
     } else {
       cards = this.state.notelist.map((note) => (
-        <Card subject={note.subject} toggle={this.toggle} />
+        
+      <div className="card-md" onClick={() => this.toggle(note.topic)}>
+        <h1>Subject</h1>
+        <span>
+          {note.subject}
+          <br />
+        </span>
+      </div>
       ));
     }
 
@@ -177,6 +164,7 @@ class Subjects extends React.Component<Props, State> {
           </select>
         </form>
         <div className="item-tray">{cards}</div>
+        <Dialog open={this.state.open} Onpop={() => {}}><div className="card-md">dialog is {this.state.open?"open":"closed"}</div></Dialog>
       </>
     );
   }
