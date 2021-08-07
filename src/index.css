@@ -58,11 +58,6 @@ h2 {
   line-height: 120%;
 }
 
-a{
-	margin: 0 !important;
-	font-size: 3rem;
-}
-
 button{
   text-decoration: none;
   display: flex;

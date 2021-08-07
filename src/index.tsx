@@ -27,7 +27,6 @@ ReactDOM.render(
         <Route exact path='/articles' component={ Article } />
         <Route exact path='/events' component={ Event } />
 	<Route exact path='/search' component={ Search } />
-	<Route exact path='/auth' component={ Auth } />
       </Switch>
   </BrowserRouter>, 
   document.getElementById('root')

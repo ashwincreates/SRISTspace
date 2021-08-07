@@ -12,12 +12,6 @@ function Article() {
           </p>
           <button className="explore">Write a article</button>
           
-        <input
-            className="search"
-            name="search"
-            type="text"
-             placeholder="search Subject,topics..."
-        />
       </div>
       <div className="head">
         <div className="section-title">
