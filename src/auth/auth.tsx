@@ -11,7 +11,7 @@ function toggle(){
 
   return (
    <div>
-	<Dialog open={open} Onpop={() => {}}><div className="card-md">hello</div></Dialog>
+	<Dialog open={open}><div className="card-md">hello</div></Dialog>
 	<button onClick={toggle}>toggle</button>
 </div> 
   );

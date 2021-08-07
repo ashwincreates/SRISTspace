@@ -24,7 +24,7 @@
 .note-card {
   width: 150px;
   height: 200px;
-  background-color: rgb(213, 238, 213);
+  background-color: white;
   padding: 20px;
   border-radius: 5px;
   margin-right: 20px;
@@ -66,12 +66,16 @@
 
 }
 
+form{
+	margin-left: 1rem;
+}
+
 .choice {
   width: 350px;
   margin-right: 1rem;
   padding: 15px;
-  color: #13e8e6f7;
-  border: 2px solid #13e8e6f7;
+  color: var(--PrimaryColor);
+  border: 2px solid var(--PrimaryColor);
   font-size: 16px;
   font-weight: 500;
   font-family: Poppins;

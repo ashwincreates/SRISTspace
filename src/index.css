@@ -65,10 +65,10 @@ button{
   justify-content: space-between;
   padding-left: 25px;
   padding-right: 25px;
-  border: 2px solid #13e8e6f7;
+  border: 2px solid var(--PrimaryColor);
   border-radius: 5px;
-  background-color: var(--SecondaryColor);
-  color:#13e8e6f7 ;
+  background-color: var(--PrimaryColor);
+  color: var(--White) ;
   height: 2.5rem;
   width: 9rem;
   font-size: 1rem;

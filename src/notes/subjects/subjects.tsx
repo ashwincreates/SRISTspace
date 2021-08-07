@@ -10,6 +10,7 @@ interface State {
   notelist: Note[];
   loading: boolean;
   dirty: boolean;
+  selected : string;
 }
 
 interface Props {}
@@ -70,6 +71,7 @@ class Subjects extends React.Component<Props, State> {
       loading: false,
       dirty: false,
       open: false,
+	selected: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.URL = "https://sristspace.herokuapp.com";
@@ -112,8 +114,7 @@ class Subjects extends React.Component<Props, State> {
   }
 
   toggle(name: string) {
-    console.log(name);
-    this.setState({open: !this.state.open});
+    this.setState({open: !this.state.open, selected : name});
   }
 
   render() {
@@ -123,7 +124,7 @@ class Subjects extends React.Component<Props, State> {
     } else {
       cards = this.state.notelist.map((note) => (
         
-      <div className="card-md" onClick={() => this.toggle(note.topic)}>
+      <div className="card-md" onClick={() => this.toggle(note.subject)}>
         <h1>Subject</h1>
         <span>
           {note.subject}
@@ -164,7 +165,7 @@ class Subjects extends React.Component<Props, State> {
           </select>
         </form>
         <div className="item-tray">{cards}</div>
-        <Dialog open={this.state.open} Onpop={() => {}}><div className="card-md">dialog is {this.state.open?"open":"closed"}</div></Dialog>
+        <Dialog open={this.state.open}><div className="card-md">dialog is {this.state.selected}</div></Dialog>
       </>
     );
   }
