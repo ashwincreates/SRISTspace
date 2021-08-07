@@ -11,7 +11,6 @@ import Event from './events/event';
 
 import Search from './search/search';
 import Login from './login/login';
-import Auth from './auth/auth';
 
 
   
