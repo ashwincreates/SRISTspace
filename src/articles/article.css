@@ -4,6 +4,7 @@
   grid-gap: 1rem;
   overflow-y: hidden;
   padding: 5px;
+  margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -22,11 +23,6 @@
   outline: none;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-}
-
 .header {
   width: auto;
   height: auto;
@@ -35,18 +31,28 @@
   margin-left: 1rem;
   margin-right: 1rem;
   display: flex;
+  flex-direction: column;
   border-radius: 10px;
   justify-content: space-between;
+  color: var(--White);
+  align-items: center;
 }
 
 .title-text {
-  font-size: 36px;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .flex {
   display: flex;
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+p {
+	margin-top: 0;
+	text-align: center;
+
 }
 
 .section {

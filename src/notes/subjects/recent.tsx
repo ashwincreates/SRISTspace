@@ -2,10 +2,6 @@ import React from "react";
 import { RouteComponentProps } from "react-router";
 import { Note } from "../../models/models";
 
-interface state
-{
-   notelist:Note[];
-}
 function Card(props: any) {
   return (
     <>

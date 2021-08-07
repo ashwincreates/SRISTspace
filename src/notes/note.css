@@ -37,24 +37,23 @@
 
 @media (max-width: 480px) {
   .tray {
-    width: calc(100vw - 1rem - 10px);
+    width: calc(100vw - 2rem - 10px);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
   }
 
   .note-card {
-    margin-bottom: 0.8rem;
-    margin-right: 1rem;
-    /*width: calc(100vw*0.4 - 2rem - 10px);*/
-    width: auto;
+    width: calc(100vw*0.5 - 4rem - 5px);
+    margin-right: 0;
   }
 
   .choice {
-    width: calc(100vw - 2rem - 10px) !important;
+    width: calc(100vw - 2rem) !important;
     margin-bottom: 0.5rem;
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 
   form{

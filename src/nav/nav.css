@@ -13,7 +13,7 @@ nav{
 }
 
 nav a {
- font-size: 1rem;
+ font-size: 1.5rem;
  display: flex;
  align-items: center;
  text-decoration: none;
@@ -32,7 +32,6 @@ nav  ul{
 }
 
 .links{
-  font-size: 1.1rem;
   margin-left: 4rem;
   padding:5px;
   border-radius:4px;
@@ -84,6 +83,13 @@ nav  ul{
     margin-left: 1rem;
     margin-right: 1rem;
   }
+
+  .rem-form{
+	margin: 0;
+  	position: absolute;
+	top: 0;
+	left: 0;
+  }
   
   .title{
     display: none;
@@ -91,6 +97,7 @@ nav  ul{
 
   .nav-menu-btn {
     z-index: 11;
+    right:1rem;
     height: 0.8rem;
     width: 2rem;
     margin-right: 0rem;

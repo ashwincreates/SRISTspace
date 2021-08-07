@@ -6,17 +6,12 @@ function Article() {
   return (
     <>
       <div className="header">
-        <div className="content">
           <h3 className="title-text"> Article </h3>  
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. 
+            Articles written by everyone. Write your own too 
           </p>
-          <button className="explore">Explore &#62;</button>
+          <button className="explore">Write a article</button>
           
-        </div>
         <input
             className="search"
             name="search"
