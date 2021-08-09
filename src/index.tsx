@@ -5,12 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import Nav from './nav/nav';
 import App from './App';
 import Note from './notes/notes';
-import Article from './articles/article';
 import About from './about/about';
 import Event from './events/event';
 
 import Search from './search/search';
 import Login from './login/login';
+import Explore from './articles/explore';
+import ReadArticle from './articles/readarticle';
+import AddArticle from './articles/addarticle';
 
 
   
@@ -19,14 +21,16 @@ ReactDOM.render(
   <BrowserRouter>
   {/* <Login/> */}
       <Nav></Nav>
-      <Switch>
+	<Switch>
         <Route exact path='/' component={ App } />
         <Route exact path='/notes' component={ Note } />
         <Route exact path='/about' component={ About } />
-        <Route exact path='/articles' component={ Article } />
+        <Route exact path='/articles' component={ Explore } />
+        <Route exact path='/articles/addarticle' component={ AddArticle } />
+        <Route exact path='/articles/:article' component={ ReadArticle } />
         <Route exact path='/events' component={ Event } />
 	<Route exact path='/search' component={ Search } />
-      </Switch>
+	</Switch>
   </BrowserRouter>, 
   document.getElementById('root')
 );

@@ -6,3 +6,11 @@ export interface Note {
   semester: number;
   stream: string;
 }
+
+export interface Article {
+	title : string;
+	author : string;
+	upload : Date;
+	data : string;
+	likes : number;
+}
