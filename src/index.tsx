@@ -18,8 +18,9 @@ import AddArticle from './articles/addarticle';
   
 ReactDOM.render(
   
+
   <BrowserRouter>
-  {/* <Login/> */}
+       <Login/>
       <Nav></Nav>
 	<Switch>
         <Route exact path='/' component={ App } />
