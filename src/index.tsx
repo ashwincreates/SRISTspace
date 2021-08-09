@@ -16,8 +16,9 @@ import Login from './login/login';
   
 ReactDOM.render(
   
+
   <BrowserRouter>
-  {/* <Login/> */}
+       <Login/>
       <Nav></Nav>
       <Switch>
         <Route exact path='/' component={ App } />
