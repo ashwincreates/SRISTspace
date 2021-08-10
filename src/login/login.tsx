@@ -16,7 +16,7 @@ export default class Login extends Component<props,states>{
 constructor(props:any){
    super(props);
    this.state = {
-      open:true
+      open:false
    }
 }
 
