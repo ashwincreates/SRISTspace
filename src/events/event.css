@@ -27,7 +27,7 @@ span{
   font-size:16px;
   font:-webkit-control;
   color:#b02f00;
- float:right;
+ float:left;
   right:0px;
 }
 .like{
@@ -36,7 +36,7 @@ span{
     border:1px solid black;
     width: 30px;
     height: 30px;
- 
+ float:right;
     cursor:pointer;
 }
 .click{
@@ -54,6 +54,7 @@ top:28px;
 right:-55px;
   margin:5px;
   font-weight:bold !important;
+  float:right;
 }
 img{
   position:relative;

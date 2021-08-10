@@ -25,9 +25,9 @@ return(
             <h2 className="data">
               {item.name} <span style={{backgroundColor:bg}} className="like"><button className="click"  onClick={Click}></button></span><span className="count">{count}Likes </span>
             </h2>
-            <span>{item.venue}</span>
-            <span>{item.date}</span>
-            <span>{item.time}</span>
+            <span>{item.venue}</span><br/>
+            <span>{item.date}</span><br/>
+            <span>{item.time}</span><br/>
             <p>
               this is a annual event which is inaugrated by the college department so please take participation more and more.
             </p>
