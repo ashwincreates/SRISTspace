@@ -8,7 +8,6 @@ import Note from './notes/notes';
 import Article from './articles/article';
 import About from './about/about';
 import Event from './events/event';
-
 import Search from './search/search';
 import Login from './login/login';
 import Auth from './auth/auth';
