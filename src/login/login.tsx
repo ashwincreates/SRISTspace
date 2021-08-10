@@ -1,111 +1,48 @@
-import React from 'react'
-import { setConstantValue } from 'typescript';
+import React, { Component } from 'react'
 import './login.css'
+import ReactDOM from 'react-dom';
+import Dialog from '../dialog/dialog';
+import {useState } from 'react';
 
-
-export default class Login extends React.Component{
-
-
-constructor(props :any){
-
-super(props);
-
-this.state = {
-
-login : false,
-SignUp:false,
-
+interface states{
+   open:boolean;
 }
 
-// this.signUp = Signup.bind(this);
-
+interface props{
+  
 }
 
-
-
-render(){
-
-return(
-
-
-<>
-<div className = "Views">
- <div className = "inlines">
-   <img
-className = "logoat"
-src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg"
-alt = ""
-/>
-<h1 style = {{
-
-color:"black",
-
-
-}}>
-    SRIST space
-</h1>
-</div>
-
-<h1
-style = {{
-
-   textAlign:"center"
-
-}}
->
-   Get started by signing in .
-</h1>
-<button style = {
-   {
-      
-      
-      
-
+export default class Login extends Component<props,states>{
+constructor(props:any){
+   super(props);
+   this.state = {
+      open:false
    }
-} onClick = {Signup}
->
-   Sign up
-</button>
-<button  onClick = {loginAt} style = {{
+}
 
+render (){
 
-
-}}>
-   Login
-</button>
-
-</div>
-<div className = "layout"   />
-
-</>
-
+return (
+<Dialog open = {this.state.open}>
+  <div>
+     <text>
+        hello
+     </text>
+  </div>
+</Dialog>
 
 
 );
 
+}
 
 }
 
 
 
 
-}
-
-function Signup(){
 
 
-   // this.setState({Signup:true});
-    
- 
- 
- }
-
-function loginAt (){
-
-
-
-
-}
 
 
 

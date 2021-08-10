@@ -18,7 +18,7 @@ class Dialog extends React.Component<Props, State>{
 		}
 	}
 	
-	componentDidUpdate(prevProps : any){
+	/*componentDidUpdate(prevProps : any){
 
 		if(prevProps.open != this.props.open){
 			this.toggle();
@@ -28,7 +28,7 @@ class Dialog extends React.Component<Props, State>{
 
 	toggle(){
 		this.setState({open :!this.state.open})
-	}
+	}*/
 
 	render() {
 		const root = document.getElementById("root")?.style;
@@ -40,7 +40,7 @@ class Dialog extends React.Component<Props, State>{
 			if(root)
 				root.overflow = "scroll";
 		}*/
-		const modal = <dialog  open={this.state.open} onClick={() => this.toggle()}> {this.props.children} </dialog>
+		const modal = <dialog  open={this.props.open} /*onClick={() => this.toggle()}*/ > {this.props.children} </dialog>
 		return ReactDOM.createPortal(modal, document.getElementById("modal") as HTMLElement)	
 	}	
 }

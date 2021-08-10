@@ -7,24 +7,13 @@ function Event() {
   return (
     <>
       <div className="header">
-        <div className="content">
           <h2 className="title-text"> Event</h2>
 
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            Show ur participation and Host new events
           </p>
-          <button className="explore">Event &#62;</button>
+          <button className="explore">Host a Event</button>
         </div>
-        <input
-          className="search"
-          name="search"
-          type="text"
-          placeholder="search Subject,topics..."
-        />
-      </div>
       <div className="head">
         <h2 className="subject">Coming Up This Week</h2>
       </div>

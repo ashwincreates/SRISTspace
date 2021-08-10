@@ -75,6 +75,7 @@ class Subjects extends React.Component<Props, State> {
     };
     this.handleChange = this.handleChange.bind(this);
     this.URL = "https://sristspace.herokuapp.com";
+    this.toggle = this.toggle.bind(this);
   }
 
   URL: any;
@@ -115,7 +116,7 @@ class Subjects extends React.Component<Props, State> {
 
   toggle(name: string) {
     this.setState({open: !this.state.open, selected : name});
-  }
+	  }
 
   render() {
     let cards: any;
@@ -165,7 +166,7 @@ class Subjects extends React.Component<Props, State> {
           </select>
         </form>
         <div className="item-tray">{cards}</div>
-        <Dialog open={this.state.open}><div className="card-md">dialog is {this.state.selected}</div></Dialog>
+        <Dialog open={this.state.open}><div className="card-md">dialog is {this.state.selected} <br /> <button onClick={() => this.toggle(this.state.selected)}>close</button></div></Dialog>
       </>
     );
   }

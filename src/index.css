@@ -28,6 +28,7 @@ body {
 	height: 100vh;
 	width: 100vw;
 	overflow: scroll;
+	position: relative;
 }
 
 h1, h2, h3, h4, h5{
@@ -57,7 +58,6 @@ h2 {
   line-height: 120%;
 }
 
-
 button{
   text-decoration: none;
   display: flex;
@@ -65,12 +65,11 @@ button{
   justify-content: space-between;
   padding-left: 25px;
   padding-right: 25px;
-  border: 2px solid var(--PrimaryColor);
+  border: none;
   border-radius: 5px;
   background-color: var(--PrimaryColor);
   color: var(--White) ;
   height: 2.5rem;
-  width: 9rem;
   font-size: 1rem;
   font-family: "Poppins";
   cursor:pointer
@@ -91,7 +90,7 @@ input{
   transition: background 0.8s;
 }
 .explore:hover {
-  background: #13e8e6f7 radial-gradient(circle, transparent 1%, #82c888 1%) center/15000%;
+  background: var(--PrimaryColor) radial-gradient(circle, transparent 1%, #82c888 1%) center/15000%;
   color:white;
  
 }

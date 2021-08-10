@@ -21,7 +21,7 @@ class SearchInput extends React.Component<RouteComponentProps, {}> {
   render() {
     return (
       <>
-        <form onSubmit={this.printval}>
+        <form onSubmit={this.printval} className="rem-form">
           <input
             className="search"
 		name = "search"
