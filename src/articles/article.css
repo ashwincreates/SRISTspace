@@ -7,6 +7,12 @@
   color: var(--Grey);
 }
 
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: inline;
+  color: #aaa;
+}
+
 .no-text-content {
   font-size: 1.1rem;
   max-width: 50vw;
@@ -38,6 +44,7 @@ p [content-editable] {
   outline: none;
   word-wrap: break-word;
   word-break: break-all;
+  display: inline;
 }
 
 .article-heading {
