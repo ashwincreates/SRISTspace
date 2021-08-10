@@ -7,7 +7,6 @@ import App from './App';
 import Note from './notes/notes';
 import About from './about/about';
 import Event from './events/event';
-
 import Search from './search/search';
 import Login from './login/login';
 import Explore from './articles/explore';
