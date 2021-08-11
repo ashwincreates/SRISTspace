@@ -58,7 +58,7 @@ h2 {
   line-height: 120%;
 }
 
-button{
+.button,button{
   text-decoration: none;
   display: flex;
   align-items: center;
