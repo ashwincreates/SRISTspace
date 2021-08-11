@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import './login.css'
-import ReactDOM, { render } from 'react-dom';
+import './login.css';
 import Dialog from '../dialog/dialog';
 import {useState } from 'react';
 
@@ -127,12 +126,14 @@ case "0":
             }}
             >Sign Up</h1>
 <div className = "borderScrap"> 
-           <input className = "commonInputs" placeholder = {"Type Email Address"}></input>
+<form>
+           <input className = "commonInputs" placeholder = {"Type Email Address"} type="email"></input>
            <input className = "commonInputs" placeholder = {"Type password"} type = "password" name = "password"></input>
            <input className = "commonInputs" placeholder = {"Retype password"} type = "password" name = "password"></input>
-           <button className = "common2">
+           <button className = "common2" >
               Sign Up 
            </button>
+           </form>
            <div style = {{
               display:"flex",
               flexDirection:"row"

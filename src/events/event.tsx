@@ -12,7 +12,7 @@ function Event() {
           <p>
             Show ur participation and Host new events
           </p>
-          <button className="explore">Host a Event</button>
+          <button onClick={Ecard} className="explore">Host a Event</button>
         </div>
       <div className="head">
         <h2 className="subject">Coming Up This Week</h2>
