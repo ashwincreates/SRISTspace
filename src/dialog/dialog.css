@@ -8,7 +8,7 @@ dialog {
   pointer-events: none;
   opacity: 0;
   border: none;
-  background-color: rgba(0, 0, 0, 0.24);
+  background-color: rgba(0, 0, 0, 0.473);
   transition: opacity 0.5s;
   display: flex;
   flex-direction: column;
