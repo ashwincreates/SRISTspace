@@ -1,13 +1,7 @@
-.no-text-title {
-  font-size: 2rem;
-  max-width: 50vw;
-  width: 50vw;
-  text-align: left !important;
-  user-select: none;
-  color: var(--Grey);
+article {
+	width: 50vw;
 }
-
-[contenteditable=true]:empty:before {
+p:first-of-type:empty:before {
   content: attr(placeholder);
   display: inline;
   color: #aaa;
@@ -221,6 +215,10 @@ p {
 
   .header {
     margin-top: 82px;
+  }
+
+  article {
+  	width: 100%;
   }
 
   .menu {
