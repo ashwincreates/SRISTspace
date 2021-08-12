@@ -12,6 +12,7 @@ import Login from './login/login';
 import Explore from './articles/explore';
 import ReadArticle from './articles/readarticle';
 import AddArticle from './articles/addarticle';
+import addevent from './events/addevent';
 
 
   
@@ -29,6 +30,7 @@ ReactDOM.render(
         <Route exact path='/articles/addarticle' component={ AddArticle } />
         <Route exact path='/articles/:article' component={ ReadArticle } />
         <Route exact path='/events' component={ Event } />
+          <Route exact path='/events/addevent' component={ addevent } />
 	<Route exact path='/search' component={ Search } />
 	</Switch>
   </BrowserRouter>, 

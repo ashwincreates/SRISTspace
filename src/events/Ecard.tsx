@@ -2,6 +2,7 @@ import React,{ useState } from "react";
 import Edata from "./Edata";
 import "../notes/note.css";
 import "./event.css";
+import Dialog from "../dialog/dialog";
 import ReactDOM, { render } from 'react-dom';
 
 function Card(props:any){
@@ -12,7 +13,7 @@ function Card(props:any){
     function Click(){
         let newBg="	#ff0000";
         if(state){
-      setcount(count-1);
+      setcount(count+1);
        setBg(newBg);
         }
   
@@ -48,6 +49,7 @@ return(
         </div>
          );
           })}
+            {/* <Dialog open={this.state.open}><div className="card-md">dialog is {this.state.selected} <br /> <button onClick={() => this.toggle(this.state.selected)}>close</button></div></Dialog> */}
         </>
     )
 }
