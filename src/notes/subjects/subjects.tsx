@@ -102,8 +102,7 @@ class Subjects extends React.Component<Props, State> {
   handleSubmit(semester: string, branch: string) {
     fetch(this.URL + "/getNotesByDrop/" + semester + "/" + branch)
       .then((res) => res.json())
-      .then((data) => {
-         
+      .then((data) => { 
         this.setState({
           notelist: data.data,
           loading: false,
