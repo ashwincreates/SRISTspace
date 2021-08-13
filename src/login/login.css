@@ -29,12 +29,10 @@ display: flex;
 
 .udTxt{
 
-margin-left: 46%;
-margin-top: 5%;
-border-bottom: 2px solid black;
+margin-left: 50%;
 color: blue;
 width: fit-content;
-
+cursor:pointer;
 }
 
 .commonButton{
@@ -58,6 +56,16 @@ align-content: center;
     margin-left: 10%;
    
 }
+.commonInputs1{
+    border: 2px solid grey;
+    align-self: center;
+    height: 25px;
+    width: 80%;
+    margin-top: 6%;
+    margin-left: 10%;
+
+
+}
 
 .borderScrap{
 
@@ -72,4 +80,11 @@ align-content: center;
     height: 12%;
     margin-left: 35%;
     margin-top: 5px;
+}
+
+.googlesign{
+    width: 40%;
+    height: 10%;
+    margin-left: 30%;
+
 }

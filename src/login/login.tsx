@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import './login.css'
-import ReactDOM, { render } from 'react-dom';
+import './login.css';
 import Dialog from '../dialog/dialog';
 import {useState } from 'react';
 
@@ -29,6 +28,7 @@ render (){
 
 return (
 <Dialog open = {this.state.open}>
+  
    <div className = "Views">
    <div>
       <div className = "flexrow">
@@ -48,15 +48,31 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
       v 1.0
    </h1>
 </div>
+<h1 className = "udTxt" onClick = {this.closeDialog}>
+      SKIP
+   </h1>
       </div>
    </div>
    <LoginWindows/>
-   <h1 className = "udTxt" onClick = {this.closeDialog}>
-      SKIP
+  
+  <div style = {{
+     marginTop:"60px"
+  }}>
+   <h1 style = {{
+      textAlign:"center",
+      color:"white"
+      ,marginTop:"5%"
+   }}>
+      or
    </h1>
-   </div>
-
- 
+   
+      <img 
+      className = "googlesign"
+      src ={process.env.PUBLIC_URL + "/googlesign.png"}
+      alt = ""
+      />
+</div>
+   </div>  
 </Dialog>
 
 
@@ -127,12 +143,14 @@ case "0":
             }}
             >Sign Up</h1>
 <div className = "borderScrap"> 
-           <input className = "commonInputs" placeholder = {"Type Email Address"}></input>
+<form>
+           <input className = "commonInputs" placeholder = {"Type Email Address"} type="email"></input>
            <input className = "commonInputs" placeholder = {"Type password"} type = "password" name = "password"></input>
            <input className = "commonInputs" placeholder = {"Retype password"} type = "password" name = "password"></input>
-           <button className = "common2">
+           <button className = "common2" >
               Sign Up 
            </button>
+           </form>
            <div style = {{
               display:"flex",
               flexDirection:"row"
@@ -161,9 +179,43 @@ case "0":
       case "2":
          return(
             <div>
-               <text>
-                  login
-               </text>
+               <h1 style = {{
+                  textAlign:"center",
+                   color:"black"
+               }}>
+                  Login
+               </h1>
+               <div className = "borderScrap" style = {{
+                  marginTop:"50px"
+               }}>
+                  <input
+                  placeholder = "Enter registered email address"
+                  className = "commonInputs1"
+                  />
+                  <input placeholder = "Enter password" type = "password" name = "password" className = "commonInputs1"/>
+                  <button className = "common2" style = {{
+                     marginLeft:"130px"
+                  }}>
+                     Login
+                  </button>
+                  <div style = {{
+                     display:"flex",
+                     flexDirection:"row"
+                  }}>
+                  <h1 style = {{
+              color:"black"
+              ,marginLeft:"10px"
+           }}>
+              Create a new account.
+           </h1>
+           <text style={{
+              color:"blue"
+              ,marginLeft:"10px"
+           }}  onClick = {this.changeToSignUp} >
+              sign up
+           </text>
+           </div>
+               </div>
             </div>
          );
   

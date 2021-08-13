@@ -103,6 +103,7 @@ class Subjects extends React.Component<Props, State> {
     fetch(this.URL + "/getNotesByDrop/" + semester + "/" + branch)
       .then((res) => res.json())
       .then((data) => {
+         
         this.setState({
           notelist: data.data,
           loading: false,

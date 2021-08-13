@@ -1,9 +1,10 @@
 import "../notes/note.css";
 import "./event.css";
 import Ecard from "./Ecard";
-
+import {useHistory, useRouteMatch} from "react-router";
 import "../articles/article.css";
 function Event() {
+  let history = useHistory();
   return (
     <>
       <div className="header">
@@ -12,7 +13,7 @@ function Event() {
           <p>
             Show ur participation and Host new events
           </p>
-          <button className="explore">Host a Event</button>
+          <button onClick={() => {history.push(`events/addevent`)}} className="explore">Host a Event</button>
         </div>
       <div className="head">
         <h2 className="subject">Coming Up This Week</h2>

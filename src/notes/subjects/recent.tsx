@@ -30,6 +30,8 @@ class Recent extends React.Component< {}, { notelist: Note[] }>
     fetch(this.URL + "/getNotesByDrop/4/CS")
       .then((res) => res.json())
       .then((data) => {
+        
+        
         this.setState({
           notelist: data.data,
         });
