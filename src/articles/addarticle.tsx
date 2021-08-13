@@ -21,7 +21,10 @@ class AddArticle extends React.Component<{}, State> {
     this.focusLost = this.focusLost.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.publish = this.publish.bind(this);
+    this.URL = "https://sristspace.herokuapp.com";
   }
+
+	URL : any;
 
   handlekeydown(event: any) {
     switch (event.keyCode) {
@@ -68,7 +71,7 @@ class AddArticle extends React.Component<{}, State> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(resobj),
     };
-    fetch("http://127.0.0.1:5000/uploadArticles", options)
+    fetch(this.URL + "/uploadArticles", options)
       .then((response) => response.json())
       .then((data) => console.log(data));
   }
