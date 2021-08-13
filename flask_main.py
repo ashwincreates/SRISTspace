@@ -1,6 +1,7 @@
 import os
 from flask import Flask, send_from_directory, request, jsonify
 from mongoDatabase import mongoDataBase
+from mongoDatabase import articles
 from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 
@@ -10,11 +11,11 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 # CORS(app)
 
 load_dotenv()
-env = os.environ.get("ENV");
+env = os.environ.get("ENV")
 if(env == "production"):
     port = os.environ.get("PORT")
 else:
-    port = 3000
+    port = 5000
 
 print("the current environment is : " + env)
 
@@ -79,6 +80,16 @@ def getNotesSearch(keyword):
 def runTest():
     return "CALLBACK ... RECEIVED"
 
+@app.route('/uploadArticles', methods=['POST'])
+def ReceiveArticles():
+    message = articles.uploadArticles(request.json)
+    return jsonify(message)
+
+@app.route('/fetchArticles', methods=['GET'])
+def FetchArticles():
+    data = articles.fetchArticles()
+    print(data)
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=port, threaded=True)

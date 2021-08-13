@@ -1,8 +1,18 @@
-import {useHistory, useRouteMatch} from "react-router";
+import {useEffect, useState} from "react";
+import {useHistory} from "react-router";
+import {Article} from "../models/models";
 
 function Explore() {
 
+let [articleList, setArticleList] = useState<Article[]>([]);
+
+useEffect(() => {
+	fetch('http://127.0.0.1:5000/fetchArticles').then(res => res.json()).then(data => {setArticleList(data.data)})	
+}, [])
+
 let history = useHistory();
+
+let card = articleList.map((item : any) => <div className="card-md" onClick={() => {history.push('/articles/readArticle', item)}}><h3>{item.title.replace('<br>', '')}</h3><span>this is a article</span></div>)
 
   return (
     <>
@@ -17,15 +27,7 @@ let history = useHistory();
         </div>
       </div>
       <div className="item-tray">
-        <div className="card-md">
-          <div>
-            <h3>Card 1</h3>
-            <span>
-              Some text
-              <br />
-            </span>
-          </div>
-        </div>
+	{card}
       </div>
       <div className="head">
         <div className="section-title">

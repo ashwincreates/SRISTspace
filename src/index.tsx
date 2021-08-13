@@ -27,7 +27,7 @@ ReactDOM.render(
         <Route exact path='/about' component={ About } />
         <Route exact path='/articles' component={ Explore } />
         <Route exact path='/articles/addarticle' component={ AddArticle } />
-        <Route exact path='/articles/:article' component={ ReadArticle } />
+        <Route exact path='/articles/readarticle' component={ ReadArticle } />
         <Route exact path='/events' component={ Event } />
 	<Route exact path='/search' component={ Search } />
 	</Switch>
