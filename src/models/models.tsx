@@ -8,9 +8,11 @@ export interface Note {
 }
 
 export interface Article {
+	id : Object;
 	title : string;
-	author : string;
-	upload : Date;
-	data : string;
-	likes : number;
+	//author : string;
+	//upload : Date;
+	article : Object[];
+	//images : {index : number, data : string}[];
+	//likes : number;
 }

@@ -1,9 +1,14 @@
 import React from "react";
 import Icons from "../icons/icons";
 
+interface Request {
+	title : string,
+	article : Object[],
+}
+
 interface State {
   title: string;
-  content: any;
+  content: {}[];
 }
 
 class AddArticle extends React.Component<{}, State> {
@@ -11,11 +16,15 @@ class AddArticle extends React.Component<{}, State> {
     super(props);
     this.state = {
       title: "Your Title Here...",
-      content: "Type body here...",
+      content: [],
     };
     this.focusLost = this.focusLost.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.publish = this.publish.bind(this);
+    this.URL = "https://sristspace.herokuapp.com";
   }
+
+	URL : any;
 
   handlekeydown(event: any) {
     switch (event.keyCode) {
@@ -23,8 +32,7 @@ class AddArticle extends React.Component<{}, State> {
         let parentele = event.target.parentNode;
         if (
           event.target.parentNode.children.length > 1 &&
-          (event.target.innerHTML === "<br>" ||
-		event.target.innerHTML === "")
+          (event.target.innerHTML === "<br>" || event.target.innerHTML === "")
         ) {
           event.target.outerHTML = "";
           parentele.children[parentele.children.length - 1].focus();
@@ -44,6 +52,30 @@ class AddArticle extends React.Component<{}, State> {
     }
   }
 
+  publish() {
+	let resobj : Request = {title : '', article : []}
+	resobj.title = this.state.title;
+	let article = document.getElementById("content")?.children;
+	if(article)
+	{
+		for(let i = 0; i < article.length; i++)
+		{
+			if(article[i].nodeName == "P")
+				resobj.article.push({'text' : article[i].innerHTML})
+			else
+				resobj.article.push({'image' : article[i].getAttribute("src")})
+		}
+	}
+    let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(resobj),
+    };
+    fetch(this.URL + "/uploadArticles", options)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }
+
   componentDidMount() {
     document
       .getElementById("content")
@@ -53,30 +85,34 @@ class AddArticle extends React.Component<{}, State> {
   focusLost(event: any) {
     if (event.target.innerHTML === "<br>") event.target.innerHTML = "";
     console.log("data cleaned");
+
+    this.setState({
+      title: document.getElementById("heading")?.innerHTML as string,
+    });
   }
 
-  handleChange(event : any) {
-    if(event.target.files && event.target.files[0]){
-		let reader = new FileReader();
-		reader.onload = function(ev : any){
-			var art = document.getElementById("content")
-			if(art){
-				var img = document.createElement("img");
-				img.className = "article-image";
-				img.src=ev.target.result;
-				img.tabIndex=0;
-				art.insertBefore(img, art.children[art.children.length - 1])
-			}			
-		}.bind(this);
-		reader.readAsDataURL(event.target.files[0]);
-	}
+  handleChange(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (ev: any) => {
+        var art = document.getElementById("content");
+        if (art) {
+          var img = document.createElement("img");
+          img.className = "article-image";
+          img.src = ev.target.result;
+          img.tabIndex = 0;
+          art.insertBefore(img, art.children[art.children.length - 1]);
+        }
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 
   render() {
     return (
       <>
         <div className="menu">
-          <button onClick={() => {}}>Publish article</button>
+          <button onClick={this.publish}>Publish article</button>
           <label className="button explore" htmlFor="addImage">
             Add Image
           </label>
@@ -104,14 +140,14 @@ class AddArticle extends React.Component<{}, State> {
             ></p>
           </article>
         </div>
-	<div className="publish">
-        	<button className="icon-button explore">
-          		<Icons name="publish"></Icons>
-        	</button>
-          	<label className="button icon-button explore" htmlFor="addImage">
-            		<Icons name="add_image"></Icons>
-          	</label>
-	</div>
+        <div className="publish">
+          <button className="icon-button explore">
+            <Icons name="publish"></Icons>
+          </button>
+          <label className="button icon-button explore" htmlFor="addImage">
+            <Icons name="add_image"></Icons>
+          </label>
+        </div>
       </>
     );
   }
