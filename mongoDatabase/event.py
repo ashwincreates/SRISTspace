@@ -21,9 +21,9 @@ def getEvents():
 
 def uploadEvent(data):
     cloudinary.config(cloud_name = "sristspace", api_key = "879963674368385", api_secret = "TiBlP74DD9AxmdTqK8r1oOWCPQE")
-    #if(data['image'] != None):
-     #   image_url = cloudinary.uploader.upload(data['image'])
-      #  data['image'] = image_url['url']
+    if(data['image'] != None):
+        image_url = cloudinary.uploader.upload(data['image'])
+        data['image'] = image_url['url']
     getEvents().insert_one(data)
     return "event added"
 

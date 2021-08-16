@@ -5,9 +5,11 @@ import React from "react";
 import { useState } from "react";
 import "../articles/article.css";
 import Dialog from "../dialog/dialog";
+import Icons from "../icons/icons";
 
 function Event() {
   const [open, setOpen] = React.useState(false);
+  const [image, setImage] = React.useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,27 +19,44 @@ function Event() {
     setOpen(false);
   };
 
-const handleSubmit = () => {
-	console.log("event sunmitted")
-	let resobj = {eventname : "testevent", eventdate : "12-02-2021"}
-	let options = {
-		method : "POST",
-		headers : {"Content-Type" : "application/json"},
-		body : JSON.stringify(resobj),
-	};
-	fetch("http://127.0.0.1:5000/uploadEvent", options)
-	.then(response => response.json()).then((data) => console.log(data))
-}
-
+  const handleSubmit = () => {
+    console.log("event sunmitted");
+    let resobj = { eventname: "testevent", eventdate: "12-02-2021", image : image};
+    let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(resobj),
+    };
+    fetch("http://127.0.0.1:5000/uploadEvent", options)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
   function Eventpopup() {
+    function onChange(event: any) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (ev: any) => {
+          setImage(ev.target.result);
+          console.log(ev.target.result);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    }
+
     return (
       <>
         <div className="row">
           <div className="columnleft">
             <h2 className="poptitle">Host a Event</h2>
+
             <input type="name" placeholder="Event Name" className="popdata" />
             <br />
-            <input type="name" placeholder="Event Date" className="popdata" />
+            <input
+              style={{ opacity: 0.8 }}
+              type="date"
+              name="Event Date"
+              className="popdata"
+            />
             <br />
             <input type="name" placeholder="Event Venue" className="popdata" />
             <br />
@@ -46,7 +65,12 @@ const handleSubmit = () => {
             </button>
           </div>
           <div className="columnright">
-            <div className="popimg ">upload a banner</div>
+		<img src={image}></img>
+            <input type="file" id="file" onChange={onChange} />
+            <label id="content" htmlFor="file">
+              {" "}
+              upload a banner{" "}
+            </label>
           </div>
         </div>
       </>

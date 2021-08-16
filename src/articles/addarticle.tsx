@@ -175,6 +175,7 @@ class AddArticle extends React.Component<{}, State> {
           <button className="icon-button explore">
             <Icons name="publish"></Icons>
           </button>
+
         </div>
         <div className="menu-display">
           <div
@@ -192,6 +193,7 @@ class AddArticle extends React.Component<{}, State> {
               <Icons name="add_image"></Icons>
             </label>
           </div>
+
         </div>
       </>
     );
