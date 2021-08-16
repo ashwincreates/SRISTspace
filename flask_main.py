@@ -2,6 +2,7 @@ import os
 from flask import Flask, send_from_directory, request, jsonify
 from mongoDatabase import mongoDataBase
 from mongoDatabase import articles
+from mongoDatabase import event
 from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 
@@ -88,7 +89,16 @@ def ReceiveArticles():
 @app.route('/fetchArticles', methods=['GET'])
 def FetchArticles():
     data = articles.fetchArticles()
-    print(data)
+    return jsonify(data)
+
+@app.route('/uploadEvent', methods=['POST'])
+def ReceiveEvents():
+    message = event.uploadEvent(request.json)
+    return jsonify(message)
+
+@app.route('/fetchEvents', methods=['GET'])
+def FetchEvents():
+    data = event.fetchEvents()
     return jsonify(data)
 
 if __name__ == '__main__':
