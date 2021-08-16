@@ -88,6 +88,8 @@ interface loginstates{
 rendered:string;
 email:string;
 password:string;
+pass1:string;
+response:string;
 }
 
 class LoginWindows extends Component<loginprops,loginstates>{
@@ -97,7 +99,9 @@ constructor(props:loginprops){
    this.state = {
       rendered:"0",
       password:"",
-      email:""
+      email:"",
+      pass1:"" 
+      ,response:""
    }
 
    this.changeToLogin = this.changeToLogin.bind(this);
@@ -112,12 +116,63 @@ changeToLogin(){
    this.setState({rendered:"2"});
 }
 
-signUPToserver(){
+signUPToserver(event){
+   event.preventDefault();
   var url:string =  "https://sristspace.herokuapp.com/adduser/"+this.state.email +"/" + this.state.password +
   "/sem/stream/branch";
 
+  var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+  var isValid:boolean = false;
+  if (!pattern.test(this.state.email)){
+     alert("Enter valid email address.")
+     isValid = false;
+  }
+
+  if (this.state.pass1 != this.state.password){
+     alert("Password does not match.")
+     isValid = false;
+  }else {
+     isValid = true;
+  }
+
+  if (isValid){
+     fetch(url).then(res=>{
+        this.setState({response:JSON.stringify(res.json)})
+     }).then(()=>{
+        if (this.state.response != "submit"){
+          alert(this.state.response)
+        }else {
+           this.setState({rendered:"0"})
+        }
+     }).then(data =>{
+        
+     })
+
+     isValid = false;
+  }
+
+  
   
 }
+
+LoginToServer(event){
+   event.preventDefault();
+
+}
+
+setEmail(email:string){
+   this.setState({email:email});
+}
+
+setPassword(pass:string){
+   this.setState({password:pass});
+}
+
+setPass1(pass:string){
+   this.setState({pass1:pass});
+}
+
 
 
 
@@ -155,10 +210,10 @@ case "0":
             >Sign Up</h1>
 <div className = "borderScrap"> 
 <form>
-           <input className = "commonInputs"  placeholder = {"Type Email Address"} type="email"></input>
-           <input className = "commonInputs"  placeholder = {"Type password"} type = "password" name = "password"></input>
-           <input className = "commonInputs" placeholder = {"Retype password"} type = "password" name = "password"></input>
-           <button className = "common2" >
+           <input className = "commonInputs" onChange = {evt => {this.setEmail(evt.target.value)}} placeholder = {"Type Email Address"} type="email"></input>
+           <input className = "commonInputs" onChange = {evt=>{this.setPassword(evt.target.value)}}  placeholder = {"Type password"} type = "password" name = "password"></input>
+           <input className = "commonInputs" onChange = {evt=>{this.setPass1(evt.target.value)}} placeholder = {"Retype password"} type = "password" name = "password"></input>
+           <button className = "common2" onClick = {(Event) =>{this.signUPToserver(Event)}} >
               Sign Up 
            </button>
            </form>
@@ -205,7 +260,7 @@ case "0":
                   className = "commonInputs1"
                   />
                   <input placeholder = "Enter password"   type = "password" name = "password" className = "commonInputs1"/>
-                  <button className = "common2" >
+                  <button className = "common2" onClick = {(Event) => {this.LoginToServer(Event)}} >
                      Login
                   </button>
                   
