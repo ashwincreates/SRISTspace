@@ -155,9 +155,9 @@ case "0":
             >Sign Up</h1>
 <div className = "borderScrap"> 
 <form>
-           <input className = "commonInputs" value = {this.state.email} placeholder = {"Type Email Address"} type="email"></input>
-           <input className = "commonInputs" value = {this.state.password} placeholder = {"Type password"} type = "password" name = "password"></input>
-           <input className = "commonInputs" value = {this.state.password} placeholder = {"Retype password"} type = "password" name = "password"></input>
+           <input className = "commonInputs"  placeholder = {"Type Email Address"} type="email"></input>
+           <input className = "commonInputs"  placeholder = {"Type password"} type = "password" name = "password"></input>
+           <input className = "commonInputs" placeholder = {"Retype password"} type = "password" name = "password"></input>
            <button className = "common2" >
               Sign Up 
            </button>
@@ -203,9 +203,8 @@ case "0":
                   <input
                   placeholder = "Enter registered email address"
                   className = "commonInputs1"
-                  value = {this.state.email}
                   />
-                  <input placeholder = "Enter password" value = {this.state.password}  type = "password" name = "password" className = "commonInputs1"/>
+                  <input placeholder = "Enter password"   type = "password" name = "password" className = "commonInputs1"/>
                   <button className = "common2" >
                      Login
                   </button>
