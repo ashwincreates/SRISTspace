@@ -144,6 +144,7 @@ class AddArticle extends React.Component<{}, State> {
           <button className="icon-button explore">
             <Icons name="publish"></Icons>
           </button>
+          
           <label className="button icon-button explore" htmlFor="addImage">
             <Icons name="add_image"></Icons>
           </label>
