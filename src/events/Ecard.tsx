@@ -2,8 +2,9 @@ import React,{ useState } from "react";
 import Edata from "./Edata";
 import "../notes/note.css";
 import "./event.css";
-import Dialog from "../dialog/dialog";
+
 import ReactDOM, { render } from 'react-dom';
+
 
 function Card(props:any){
      let state=true;
@@ -37,6 +38,7 @@ function Card(props:any){
         </>
     )
 }
+
 function Ecard() {
     // const state=useState();
  
@@ -49,7 +51,7 @@ return(
         </div>
          );
           })}
-            {/* <Dialog open={this.state.open}><div className="card-md">dialog is {this.state.selected} <br /> <button onClick={() => this.toggle(this.state.selected)}>close</button></div></Dialog> */}
+          
         </>
     )
 }
