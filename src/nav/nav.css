@@ -1,8 +1,8 @@
 @import "../index.css";
 
-nav{
-  background-color:#fff !important;
-  margin-bottom:0px;
+nav {
+  background-color: #fff !important;
+  margin-bottom: 0px;
   margin-left: 2rem;
   margin-right: 2rem;
   padding-top: 1rem;
@@ -13,44 +13,43 @@ nav{
 }
 
 nav a {
- font-size: 1.1rem;
- display: flex;
- align-items: center;
- text-decoration: none;
- color: var(--Black);
- margin-right: 3rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--Black);
+  margin-right: 3rem;
 }
 
-nav a .title{
+nav a .title {
   padding-left: 1rem;
   line-height: 1.2;
-} 
+}
 
-nav  ul{
+nav ul {
   display: flex;
   list-style-type: none;
   padding-right: 6rem;
 }
 
-.links{
-  padding:5px;
-  border-radius:4px;
-  cursor:pointer;
+.links {
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.nav-brand{ 
- color:blue;
- font-size:1.9rem;
-} 
+.nav-brand {
+  color: blue;
+  font-size: 1.9rem;
+}
 
-.logo{
-  height:50px;
+.logo {
+  height: 50px;
   width: 50px;
 }
 
-@media(max-width: 700px){
-  
-   ul {
+@media (max-width: 700px) {
+  ul {
     z-index: 10;
     position: fixed;
     top: 0;
@@ -67,8 +66,8 @@ nav  ul{
     transition: clip-path cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;
     clip-path: circle(0 at 89% 7%);
   }
-  
-  .active{
+
+  .active {
     clip-path: circle(100%);
   }
 
@@ -83,71 +82,76 @@ nav  ul{
     margin-left: 1rem;
     margin-right: 1rem;
   }
-	
 
   nav a {
-  	font-size: 1.5rem;
-	margin: 0;
+    font-size: 1.5rem;
+    margin: 0;
   }
 
-  .rem-form{
-	margin: 0;
-  	position: absolute;
-	top: 0;
-	left: 0;
+  .rem-form {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
-  
-  .title{
+
+  .title {
     display: none;
   }
 
   .nav-menu-btn {
     z-index: 11;
-    right:1rem;
+    right: 1rem;
     height: 0.8rem;
     width: 2rem;
     margin-right: 0rem;
-    position: relative; }
-    .nav-menu-btn > div {
-      height: 3px;
-      border-width: 1px;
-      width: 100%;
-      background-color: var(--Black);
-      position: absolute;
-      transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965); }
-      
-      .nav-menu-btn > div:first-of-type {
-      top: 0; }
-    
-      .nav-menu-btn > div:last-of-type {
-      bottom: 0; }
-  
-      .nav-menu-btn .nav-menu:checked + .first {
-        background-color: var(--Black);
-        transform: rotate(45deg);
-        top: 5px; }
-  
-      .nav-menu-btn .nav-menu:checked + .first + .second {
-        background-color: var(--Black);
-        transform: rotate(-45deg);
-        bottom: 5px; }
-  
-      .nav-menu-btn .nav-menu {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        cursor: pointer;
-        z-index: 2;
-        -webkit-touch-callout: none;
-        -webkit-tap-highlight-color: none;
-        user-select: none;
-        position: absolute;
-        opacity: 0;
-      }
+    position: relative;
+  }
+  .nav-menu-btn > div {
+    height: 3px;
+    border-width: 1px;
+    width: 100%;
+    background-color: var(--Black);
+    position: absolute;
+    transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+  }
+
+  .nav-menu-btn > div:first-of-type {
+    top: 0;
+  }
+
+  .nav-menu-btn > div:last-of-type {
+    bottom: 0;
+  }
+
+  .nav-menu-btn .nav-menu:checked + .first {
+    background-color: var(--Black);
+    transform: rotate(45deg);
+    top: 5px;
+  }
+
+  .nav-menu-btn .nav-menu:checked + .first + .second {
+    background-color: var(--Black);
+    transform: rotate(-45deg);
+    bottom: 5px;
+  }
+
+  .nav-menu-btn .nav-menu {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: none;
+    user-select: none;
+    position: absolute;
+    opacity: 0;
+  }
 }
 
 @media (min-width: 700px) {
-  .nav-menu-btn{
+  .nav-menu-btn {
     display: none;
   }
 }

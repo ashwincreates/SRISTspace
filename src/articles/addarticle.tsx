@@ -1,30 +1,34 @@
-import React from "react";
+import React, { ReactEventHandler } from "react";
 import Icons from "../icons/icons";
 
 interface Request {
-	title : string,
-	article : Object[],
+  title: string;
+  article: Object[];
 }
 
 interface State {
-  title: string;
-  content: {}[];
+  position: { x: number; y: number };
+  display: string;
+  current: any;
 }
 
 class AddArticle extends React.Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      title: "Your Title Here...",
-      content: [],
+      position: { x: -100, y: -100 },
+      display: "none",
+      current: document.getElementById("content")?.children[0],
     };
+    this.focusGain = this.focusGain.bind(this);
     this.focusLost = this.focusLost.bind(this);
+    this.handlekeydown = this.handlekeydown.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.publish = this.publish.bind(this);
     this.URL = "https://sristspace.herokuapp.com";
   }
 
-	URL : any;
+  URL: any;
 
   handlekeydown(event: any) {
     switch (event.keyCode) {
@@ -40,8 +44,22 @@ class AddArticle extends React.Component<{}, State> {
         break;
       case 13:
         let p = document.createElement("p");
+        p.onblur = (ev) => {
+          let node = ev.target as HTMLElement;
+          let nodep = node.parentNode as HTMLElement;
+          if (node.innerHTML === "<br>" && nodep.children.length > 2)
+            node.outerHTML = "";
+        };
+        p.onfocus = (ev) => {
+          let node = ev.target as HTMLElement;
+          let rect = node.getBoundingClientRect();
+          this.setState({
+            position: { x: rect.x - 48, y: rect.y - 4 },
+            display: "initial",
+            current: node,
+          });
+        };
         p.contentEditable = "true";
-        p.onblur = this.focusLost;
         p.className = "article-content";
         p.setAttribute("placeholder", "The content goes here");
         event.target.parentNode.insertBefore(p, event.target.nextSibling);
@@ -53,19 +71,16 @@ class AddArticle extends React.Component<{}, State> {
   }
 
   publish() {
-	let resobj : Request = {title : '', article : []}
-	resobj.title = this.state.title;
-	let article = document.getElementById("content")?.children;
-	if(article)
-	{
-		for(let i = 0; i < article.length; i++)
-		{
-			if(article[i].nodeName == "P")
-				resobj.article.push({'text' : article[i].innerHTML})
-			else
-				resobj.article.push({'image' : article[i].getAttribute("src")})
-		}
-	}
+    let resobj: Request = { title: "", article: [] };
+    resobj.title = document.getElementById("heading")?.innerHTML as string;
+    let article = document.getElementById("content")?.children;
+    if (article) {
+      for (let i = 0; i < article.length; i++) {
+        if (article[i].nodeName == "P")
+          resobj.article.push({ text: article[i].innerHTML });
+        else resobj.article.push({ image: article[i].getAttribute("src") });
+      }
+    }
     let options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -83,11 +98,19 @@ class AddArticle extends React.Component<{}, State> {
   }
 
   focusLost(event: any) {
-    if (event.target.innerHTML === "<br>") event.target.innerHTML = "";
-    console.log("data cleaned");
+    if (
+      event.target.innerHTML === "<br>" &&
+      event.target.parentNode.children.length > 2
+    )
+      event.target.outerHTML = "";
+  }
 
+  focusGain(event: any) {
+    let rect = event.target.getBoundingClientRect();
     this.setState({
-      title: document.getElementById("heading")?.innerHTML as string,
+      position: { x: rect.x - 48, y: rect.y - 4 },
+      display: "initial",
+      current: event.target,
     });
   }
 
@@ -101,7 +124,17 @@ class AddArticle extends React.Component<{}, State> {
           img.className = "article-image";
           img.src = ev.target.result;
           img.tabIndex = 0;
-          art.insertBefore(img, art.children[art.children.length - 1]);
+        img.onfocus = (ev) => {
+          let node = ev.target as HTMLElement;
+          let rect = node.getBoundingClientRect();
+          this.setState({
+            position: { x: rect.x - 48, y: rect.y - 4 },
+            display: "initial",
+            current: node,
+          });
+        };
+          art.insertBefore(img, this.state.current.nextSibling);
+	img.focus();
         }
       };
       reader.readAsDataURL(event.target.files[0]);
@@ -113,9 +146,6 @@ class AddArticle extends React.Component<{}, State> {
       <>
         <div className="menu">
           <button onClick={this.publish}>Publish article</button>
-          <label className="button explore" htmlFor="addImage">
-            Add Image
-          </label>
           <input
             id="addImage"
             className="hidden"
@@ -129,7 +159,7 @@ class AddArticle extends React.Component<{}, State> {
             placeholder="Title goes here.."
             id="heading"
             className="article-heading"
-            onBlur={this.focusLost}
+            onBlur={(e) => {if(e.target.innerHTML === "<br>")e.target.innerHTML = ""}}
           ></p>
           <article id="content">
             <p
@@ -137,6 +167,7 @@ class AddArticle extends React.Component<{}, State> {
               placeholder={"The content goes here"}
               onBlur={this.focusLost}
               className="article-content"
+              onFocus={this.focusGain}
             ></p>
           </article>
         </div>
@@ -144,10 +175,30 @@ class AddArticle extends React.Component<{}, State> {
           <button className="icon-button explore">
             <Icons name="publish"></Icons>
           </button>
+<<<<<<< HEAD
           
           <label className="button icon-button explore" htmlFor="addImage">
             <Icons name="add_image"></Icons>
           </label>
+=======
+        </div>
+        <div className="menu-display">
+          <div
+            className="icon-button floating-menu"
+            style={{
+              display: this.state.display,
+              position: "fixed",
+              top: this.state.position.y,
+              left: this.state.position.x,
+            }}
+          >
+            <input type="checkbox" className="float-select" />
+            <Icons name="add"></Icons>
+            <label className="floating-menu-item" htmlFor="addImage">
+              <Icons name="add_image"></Icons>
+            </label>
+          </div>
+>>>>>>> 0c7281bf56bd517e623452af93a4fabf3a7898c9
         </div>
       </>
     );

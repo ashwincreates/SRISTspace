@@ -55,13 +55,11 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
    </div>
    <LoginWindows/>
   
-  <div style = {{
-     marginTop:"60px"
-  }}>
+  <div className = "or">
    <h1 style = {{
       textAlign:"center",
       color:"white"
-      ,marginTop:"5%"
+      ,marginTop:"15%"
    }}>
       or
    </h1>
@@ -88,6 +86,8 @@ interface loginprops{
 
 interface loginstates{
 rendered:string;
+email:string;
+password:string;
 }
 
 class LoginWindows extends Component<loginprops,loginstates>{
@@ -95,7 +95,9 @@ class LoginWindows extends Component<loginprops,loginstates>{
 constructor(props:loginprops){
    super(props);
    this.state = {
-      rendered:"0"
+      rendered:"0",
+      password:"",
+      email:""
    }
 
    this.changeToLogin = this.changeToLogin.bind(this);
@@ -109,6 +111,15 @@ changeToSignUp(){
 changeToLogin(){
    this.setState({rendered:"2"});
 }
+
+signUPToserver(){
+  var url:string =  "https://sristspace.herokuapp.com/adduser/"+this.state.email +"/" + this.state.password +
+  "/sem/stream/branch";
+
+  
+}
+
+
 
 render (){
 
@@ -144,9 +155,9 @@ case "0":
             >Sign Up</h1>
 <div className = "borderScrap"> 
 <form>
-           <input className = "commonInputs" placeholder = {"Type Email Address"} type="email"></input>
-           <input className = "commonInputs" placeholder = {"Type password"} type = "password" name = "password"></input>
-           <input className = "commonInputs" placeholder = {"Retype password"} type = "password" name = "password"></input>
+           <input className = "commonInputs" value = {this.state.email} placeholder = {"Type Email Address"} type="email"></input>
+           <input className = "commonInputs" value = {this.state.password} placeholder = {"Type password"} type = "password" name = "password"></input>
+           <input className = "commonInputs" value = {this.state.password} placeholder = {"Retype password"} type = "password" name = "password"></input>
            <button className = "common2" >
               Sign Up 
            </button>
@@ -188,16 +199,18 @@ case "0":
                <div className = "borderScrap" style = {{
                   marginTop:"50px"
                }}>
+                  <form>
                   <input
                   placeholder = "Enter registered email address"
                   className = "commonInputs1"
+                  value = {this.state.email}
                   />
-                  <input placeholder = "Enter password" type = "password" name = "password" className = "commonInputs1"/>
-                  <button className = "common2" style = {{
-                     marginLeft:"130px"
-                  }}>
+                  <input placeholder = "Enter password" value = {this.state.password}  type = "password" name = "password" className = "commonInputs1"/>
+                  <button className = "common2" >
                      Login
                   </button>
+                  
+                  </form>
                   <div style = {{
                      display:"flex",
                      flexDirection:"row"
