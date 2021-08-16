@@ -175,12 +175,7 @@ class AddArticle extends React.Component<{}, State> {
           <button className="icon-button explore">
             <Icons name="publish"></Icons>
           </button>
-<<<<<<< HEAD
-          
-          <label className="button icon-button explore" htmlFor="addImage">
-            <Icons name="add_image"></Icons>
-          </label>
-=======
+
         </div>
         <div className="menu-display">
           <div
@@ -198,7 +193,7 @@ class AddArticle extends React.Component<{}, State> {
               <Icons name="add_image"></Icons>
             </label>
           </div>
->>>>>>> 0c7281bf56bd517e623452af93a4fabf3a7898c9
+
         </div>
       </>
     );

@@ -46,6 +46,7 @@ function Event() {
     <div className="row">
     <div className="columnleft">
   <h2 className="poptitle">Host a Event</h2>
+ 
   <input type="name" placeholder="Event Name" className="popdata" /><br/>
   <input style={{opacity:0.8}} type="date" name="Event Date" className="popdata" /><br/>
   <input type="name" placeholder="Event Venue" className="popdata" />
