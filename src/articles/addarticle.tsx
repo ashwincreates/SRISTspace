@@ -1,5 +1,7 @@
-import React, { ReactEventHandler } from "react";
+import React from "react";
+import Dialog from "../dialog/dialog";
 import Icons from "../icons/icons";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 
 interface Request {
   title: string;
@@ -8,19 +10,28 @@ interface Request {
 
 interface State {
   position: { x: number; y: number };
-  display: string;
   current: any;
+  delete: string;
+  loading: boolean;
+  open: boolean;
+  published: boolean;
 }
 
-class AddArticle extends React.Component<{}, State> {
+class Article extends React.Component<RouteComponentProps, State> {
   constructor(props: any) {
     super(props);
     this.state = {
       position: { x: -100, y: -100 },
-      display: "none",
-      current: document.getElementById("content")?.children[0],
+      current: "",
+      delete: "none",
+      loading: false,
+      open: false,
+      published: false,
     };
+    this.confirmation = this.confirmation.bind(this);
+    this.confirm = this.confirm.bind(this);
     this.focusGain = this.focusGain.bind(this);
+    this.addpara = this.addpara.bind(this);
     this.focusLost = this.focusLost.bind(this);
     this.handlekeydown = this.handlekeydown.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -30,38 +41,58 @@ class AddArticle extends React.Component<{}, State> {
 
   URL: any;
 
+  addpara() {
+    let p = document.createElement("p");
+    p.onblur = (ev) => {
+      let node = ev.target as HTMLElement;
+      let nodep = node.parentNode as HTMLElement;
+      if (node.innerHTML === "<br>" && nodep.children.length > 2)
+        node.outerHTML = "";
+    };
+    p.onfocus = (ev) => {
+      let node = ev.target as HTMLElement;
+      let rect = node.getBoundingClientRect();
+      this.setState({
+        position: { x: rect.x - 48, y: rect.y - 4 },
+        current: node,
+        delete: "none",
+      });
+    };
+    p.contentEditable = "true";
+    p.className = "article-content";
+    p.setAttribute("placeholder", "The content goes here");
+    return p;
+  }
+
+  componentDidUpdate() {
+    if (this.state.published == true) {
+      setTimeout(() => {this.props.history.push("/articles")}, 3000);
+    }
+  }
+
   handlekeydown(event: any) {
     switch (event.keyCode) {
       case 8:
         let parentele = event.target.parentNode;
         if (
+          event.target.nodeName === "IMG" &&
+          event.target.parentNode.children.length === 1
+        ) {
+          let p = this.addpara();
+          event.target.parentNode.insertBefore(p, event.target.nextSibling);
+          event.target.outerHTML = "";
+          p.focus();
+        } else if (
           event.target.parentNode.children.length > 1 &&
           (event.target.innerHTML === "<br>" || event.target.innerHTML === "")
         ) {
+          let index = [...parentele.children].indexOf(event.target);
+          parentele.children[index > 0 ? index - 1 : index].focus();
           event.target.outerHTML = "";
-          parentele.children[parentele.children.length - 1].focus();
         }
         break;
       case 13:
-        let p = document.createElement("p");
-        p.onblur = (ev) => {
-          let node = ev.target as HTMLElement;
-          let nodep = node.parentNode as HTMLElement;
-          if (node.innerHTML === "<br>" && nodep.children.length > 2)
-            node.outerHTML = "";
-        };
-        p.onfocus = (ev) => {
-          let node = ev.target as HTMLElement;
-          let rect = node.getBoundingClientRect();
-          this.setState({
-            position: { x: rect.x - 48, y: rect.y - 4 },
-            display: "initial",
-            current: node,
-          });
-        };
-        p.contentEditable = "true";
-        p.className = "article-content";
-        p.setAttribute("placeholder", "The content goes here");
+        let p = this.addpara();
         event.target.parentNode.insertBefore(p, event.target.nextSibling);
         p.focus();
         break;
@@ -71,6 +102,7 @@ class AddArticle extends React.Component<{}, State> {
   }
 
   publish() {
+    this.setState({ loading: true });
     let resobj: Request = { title: "", article: [] };
     resobj.title = document.getElementById("heading")?.innerHTML as string;
     let article = document.getElementById("content")?.children;
@@ -88,13 +120,20 @@ class AddArticle extends React.Component<{}, State> {
     };
     fetch(this.URL + "/uploadArticles", options)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then(() => {
+        this.setState({ loading: false, published: true });
+      });
+  }
+
+  confirm() {
+    this.setState({ open: !this.state.open });
   }
 
   componentDidMount() {
     document
       .getElementById("content")
       ?.addEventListener("keydown", this.handlekeydown);
+    this.setState({ current: document.getElementById("content")?.children[0] });
   }
 
   focusLost(event: any) {
@@ -109,8 +148,8 @@ class AddArticle extends React.Component<{}, State> {
     let rect = event.target.getBoundingClientRect();
     this.setState({
       position: { x: rect.x - 48, y: rect.y - 4 },
-      display: "initial",
       current: event.target,
+      delete: "none",
     });
   }
 
@@ -124,28 +163,64 @@ class AddArticle extends React.Component<{}, State> {
           img.className = "article-image";
           img.src = ev.target.result;
           img.tabIndex = 0;
-        img.onfocus = (ev) => {
-          let node = ev.target as HTMLElement;
-          let rect = node.getBoundingClientRect();
-          this.setState({
-            position: { x: rect.x - 48, y: rect.y - 4 },
-            display: "initial",
-            current: node,
-          });
-        };
+          img.onfocus = (ev) => {
+            let node = ev.target as HTMLElement;
+            let rect = node.getBoundingClientRect();
+            this.setState({
+              position: { x: rect.x - 48, y: rect.y - 4 },
+              current: node,
+              delete: "flex",
+            });
+          };
           art.insertBefore(img, this.state.current.nextSibling);
-	img.focus();
+          img.focus();
         }
       };
       reader.readAsDataURL(event.target.files[0]);
+      let menu = document.getElementById("float-menu") as HTMLInputElement;
+      menu.checked = false;
     }
   }
 
+  confirmation() {
+    return (
+      <>
+        Are you sure you want to publish?
+        <div className="flex">
+          <button onClick={this.publish}>Publish!</button>
+          <button
+            onClick={() => {
+              this.setState({ open: !this.state.open });
+            }}
+            className="cancel"
+          >
+            Cancel
+          </button>
+        </div>
+      </>
+    );
+  }
+
   render() {
+    let box: any;
+    if (this.state.loading === false && this.state.published === false)
+      box = <this.confirmation />;
+    else if (this.state.loading === true && this.state.published === false) {
+      box = (
+        <div className="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      );
+    } else {
+      box = <>Your Article is Published</>;
+    }
     return (
       <>
         <div className="menu">
-          <button onClick={this.publish}>Publish article</button>
+          <button onClick={this.confirm}>Publish article</button>
           <input
             id="addImage"
             className="hidden"
@@ -159,7 +234,9 @@ class AddArticle extends React.Component<{}, State> {
             placeholder="Title goes here.."
             id="heading"
             className="article-heading"
-            onBlur={(e) => {if(e.target.innerHTML === "<br>")e.target.innerHTML = ""}}
+            onBlur={(e) => {
+              if (e.target.innerHTML === "<br>") e.target.innerHTML = "";
+            }}
           ></p>
           <article id="content">
             <p
@@ -171,33 +248,72 @@ class AddArticle extends React.Component<{}, State> {
             ></p>
           </article>
         </div>
-        <div className="publish">
-          <button className="icon-button explore">
-            <Icons name="publish"></Icons>
-          </button>
-
-        </div>
+        <button className="icon-button explore publish" onClick={this.confirm}>
+          <Icons name="publish"></Icons>
+        </button>
+        <button
+          style={{ display: this.state.delete }}
+          className="icon-button delete"
+          onClick={() => {
+            if (this.state.current.parentNode.children.length === 1) {
+              let p = this.addpara();
+              this.state.current.parentNode.insertBefore(
+                p,
+                this.state.current.nextSibling
+              );
+              this.state.current.outerHTML = "";
+              p.focus();
+            } else {
+              let index = [...this.state.current.parentNode.children].indexOf(
+                this.state.current
+              );
+              this.state.current.parentNode.children[index - 1].focus();
+              this.state.current.outerHTML = "";
+            }
+          }}
+        >
+          <Icons name="delete"></Icons>
+        </button>
         <div className="menu-display">
           <div
             className="icon-button floating-menu"
             style={{
-              display: this.state.display,
               position: "fixed",
               top: this.state.position.y,
               left: this.state.position.x,
             }}
           >
-            <input type="checkbox" className="float-select" />
+            <input type="checkbox" id="float-menu" className="float-select" />
             <Icons name="add"></Icons>
-            <label className="floating-menu-item" htmlFor="addImage">
-              <Icons name="add_image"></Icons>
-            </label>
+            <div className="float-container">
+              <label className="floating-menu-item" htmlFor="addImage">
+                <Icons name="add_image"></Icons>
+              </label>
+              <div
+                className="floating-menu-item"
+                onClick={() => {
+                  let art = document.getElementById("content");
+                  let p = this.addpara();
+                  art?.insertBefore(p, this.state.current.nextSibling);
+                  p.focus();
+                  let menu = document.getElementById(
+                    "float-menu"
+                  ) as HTMLInputElement;
+                  menu.checked = false;
+                }}
+              >
+                <Icons name="add_para"></Icons>
+              </div>
+            </div>
           </div>
-
         </div>
+        <Dialog open={this.state.open}>
+          {<div className="card-md confirm">{box}</div>}
+        </Dialog>
       </>
     );
   }
 }
 
+const AddArticle =  withRouter<RouteComponentProps, React.ComponentType<RouteComponentProps>>(Article);
 export default AddArticle;

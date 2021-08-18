@@ -20,6 +20,26 @@ p:first-of-type:empty:before {
   display: none;
 }
 
+.cancel {
+	background-color: #eb5757;
+}
+
+.confirm {
+	justify-content: initial !important;
+	height: auto !important;
+	min-width: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.confirm > div {
+	margin: 1rem 0.5rem 0px 0.5rem;
+	justify-content: space-between;
+	width: calc(100% - 1rem);
+	flex-direction: row;
+}
+
 .floating-menu {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 100%;
@@ -34,17 +54,15 @@ p:first-of-type:empty:before {
   z-index: 2;
 }
 
-.floating-menu .floating-menu-item {
+.floating-menu-item {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 100%;
   height: 2.1rem;
   width: 2.1rem;
   pointer-events: auto !important;
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+  opacity: 1;
+  position: initial !important;
   background-color: white !important;
   align-items: center;
   justify-content: center;
@@ -64,7 +82,7 @@ p:first-of-type:empty:before {
   transition: all 0.2s ease-in;
 }
 
-.floating-menu .float-select {
+.float-select {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -79,13 +97,28 @@ p:first-of-type:empty:before {
   opacity: 0;
 }
 
-.floating-menu .float-select:checked + svg {
+.float-select:checked + svg {
   transform: rotate(45deg);
 }
 
-.floating-menu .float-select:checked ~ .floating-menu-item {
-  left: 45px;
+.float-select:checked ~ .float-container {
+display: flex;
+  left: 40px;
   opacity: 1;
+}
+
+.float-container {
+  display: none;
+  opacity: 0;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease-in;
+}
+
+.float-container > * {
+  margin-right: 5px;
 }
 
 .menu {
@@ -133,6 +166,7 @@ p [content-editable] {
 .article-image:focus {
   outline: solid 5px var(--PrimaryColor);
 }
+
 
 .article-content {
   font-size: 1.1rem;
@@ -223,11 +257,13 @@ p {
   bottom: 2rem;
   right: 1rem;
   display: none;
-  flex-direction: column-reverse;
 }
 
-.publish > * {
-  margin-top: 1rem;
+.delete {
+  position: fixed;
+  bottom: 10rem;
+  right: 1rem;
+  background-color: #eb5757;
 }
 
 .card-md {
@@ -276,6 +312,12 @@ p {
   justify-content: space-between;
 }
 
+@media(min-width: 480px) {
+	.delete {
+		display: none !important;
+	}
+}
+
 @media (max-width: 480px) {
   .floating-menu-item {
     height: 3.5rem !important;
@@ -291,10 +333,20 @@ p {
     width: 3.5rem !important;
   }
 
-  .floating-menu .float-select:checked ~ .floating-menu-item {
+  .float-container {
+    flex-direction: column;
+  }
+
+  .float-select:checked ~ .float-container {
+	 display: flex;
     left: 0;
-    top: -3.8rem;
+    top: -9.4rem;
     opacity: 1;
+  }
+
+  .float-container > * {
+    margin-right: 0;
+    margin-top: 0.8rem;
   }
 
   .item-tray {
@@ -315,6 +367,8 @@ p {
 
   .publish {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .search {
