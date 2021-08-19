@@ -12,3 +12,10 @@ export interface Article {
 	title : string;
 	article : Object[];
 }
+export interface Event {
+	id : Object;
+	eventname : string;
+  eventdate:string;
+  eventvenue:string;
+	
+}

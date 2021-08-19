@@ -178,13 +178,7 @@ width:auto;
     width: 90%;
     height: 166px;
 }
-.event-image{
-     position: relative !important;
-    width: 100% !important;
-    height:100% !important;
-    top: -109px !important;
-  
-}
+
 } 
 
 
@@ -195,17 +189,16 @@ input[type="file"]{
   display:none;
 }
 label{
-      position: relative;
-    color: white;
-    text-align: center;
-    top: 50%;
-    left: 30%;
+
+    color: red;
+    /* text-align: center; */
+    /* top: 50%; */
+    right: 20%;
+    top: 44%;
+  
 }
+
 .event-image{
-        position: relative;
-    height: 450px;
-    width: 100%;
-    top: -255px;
-    left: -30%;
+            height: 100%;
     border-radius: 10px;
 }

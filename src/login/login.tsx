@@ -151,10 +151,7 @@ signUPToserver(event){
 
      isValid = false;
   }
-
-  
-  
-}
+  }
 
 LoginToServer(event){
    event.preventDefault();
