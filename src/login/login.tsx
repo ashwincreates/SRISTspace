@@ -2,20 +2,35 @@ import React, { Component } from 'react'
 import './login.css';
 import Dialog from '../dialog/dialog';
 import {useState } from 'react';
+import { responsiveFontSizes } from '@material-ui/core';
+import { STATUS_CODES } from 'http';
+import { resourceUsage } from 'process';
 
 interface states{
    open:boolean;
+   rendered:string;
+email:string;
+password:string;
+pass1:string;
+response:string;
 }
 
 interface props{
   
 }
 
+let open:boolean = true;
+
 export default class Login extends Component<props,states>{
 constructor(props:any){
    super(props);
    this.state = {
-      open:true
+      open:true,
+      rendered:"0",
+      password:"",
+      email:"",
+      pass1:"" 
+      ,response:""
    }
    this.closeDialog = this.closeDialog.bind(this);
 }
@@ -80,23 +95,13 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
 
 }
 
-interface loginprops{
-  
-}
 
-interface loginstates{
-rendered:string;
-email:string;
-password:string;
-pass1:string;
-response:string;
-}
+class LoginWindows extends Component<props,states> {
 
-class LoginWindows extends Component<loginprops,loginstates>{
-
-constructor(props:loginprops){
+constructor(props:props){
    super(props);
    this.state = {
+      open:true,
       rendered:"0",
       password:"",
       email:"",
@@ -106,6 +111,10 @@ constructor(props:loginprops){
 
    this.changeToLogin = this.changeToLogin.bind(this);
    this.changeToSignUp = this.changeToSignUp.bind(this);
+}
+
+forceClose(){
+   this.setState({open:false});
 }
 
 changeToSignUp(){
@@ -137,17 +146,24 @@ signUPToserver(event){
   }
 
   if (isValid){
-     fetch(url).then(res=>{
-        this.setState({response:JSON.stringify(res.json)})
-     }).then(()=>{
-        if (this.state.response != "submit"){
-          alert(this.state.response)
-        }else {
-           this.setState({rendered:"0"})
-        }
-     }).then(data =>{
-        
+     var output:string = "";
+     fetch(url).then((response)=>{
+        response.text().then(result =>{
+           output = result;
+        }).then(()=>{
+         if (output === "submit"){
+
+            this.setState({rendered:"2"});
+         
+            alert("user added , login to continue.");
+           }else {
+         
+             alert("user already exists");
+           }
+        })
      })
+   
+     
 
      isValid = false;
   }
@@ -156,6 +172,36 @@ signUPToserver(event){
 LoginToServer(event){
    event.preventDefault();
 
+   var url:string = "https://sristspace.herokuapp.com/getuser/" + this.state.email + "/" + this.state.password;
+   var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+   var isValid:boolean = false;
+   if (!pattern.test(this.state.email)){
+      alert("Enter valid email address.")
+      isValid = false;
+   }else {
+      isValid = true;
+   }
+
+
+   if (isValid){
+
+      fetch(url).then(response=>{
+         response.json().then(result=>{
+            if (result === "user does not exists"){
+               alert("wrong password or email.")
+            }else {
+               // this.setState({rendered:"0"})
+               
+            }
+         })
+      })
+
+      isValid = false;
+
+   }
+   
+   
 }
 
 setEmail(email:string){
@@ -255,8 +301,11 @@ case "0":
                   <input
                   placeholder = "Enter registered email address"
                   className = "commonInputs1"
+                  onChange = {evt=>{this.setEmail(evt.target.value)}}
                   />
-                  <input placeholder = "Enter password"   type = "password" name = "password" className = "commonInputs1"/>
+                  <input placeholder = "Enter password" 
+                  onChange = {evt=>{this.setPassword(evt.target.value)}}
+                  type = "password" name = "password" className = "commonInputs1"/>
                   <button className = "common2" onClick = {(Event) => {this.LoginToServer(Event)}} >
                      Login
                   </button>
