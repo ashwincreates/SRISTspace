@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './login.css';
 import Dialog from '../dialog/dialog';
 import {useState } from 'react';
+import { responsiveFontSizes } from '@material-ui/core';
 
 interface states{
    open:boolean;
@@ -137,18 +138,14 @@ signUPToserver(event){
   }
 
   if (isValid){
-     fetch(url).then(res=>{
-        this.setState({response:JSON.stringify(res.json)})
-     }).then(()=>{
-        if (this.state.response != "submit"){
-          alert(this.state.response)
-        }else {
-           this.setState({rendered:"0"})
-        }
-     }).then(data =>{
-        
+     fetch(url).then((response) =>{
+        response.text();
+     }).then(result =>{
+        alert(result);
      })
 
+    
+    
      isValid = false;
   }
 
