@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import './login.css';
 import Dialog from '../dialog/dialog';
-import {useState } from 'react';
-import { responsiveFontSizes } from '@material-ui/core';
-import { STATUS_CODES } from 'http';
-import { resourceUsage } from 'process';
+import {GoogleLogin} from "react-google-login"
 
 interface states{
    open:boolean;
@@ -37,6 +34,10 @@ constructor(props:any){
 
 closeDialog(){
    this.setState({open:false});
+}
+
+responseGoogle = (response) =>{
+   alert(response.error + " detail : " + response.detail);
 }
 
 render (){
@@ -79,10 +80,17 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
       or
    </h1>
    
-      <img 
+      {/* <img 
       className = "googlesign"
       src ={process.env.PUBLIC_URL + "/googlesign.png"}
       alt = ""
+      /> */}
+
+      <GoogleLogin
+      clientId = "561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+      className = "googlesign"
+      onSuccess = {this.responseGoogle}
+      onFailure = {this.responseGoogle}
       />
 </div>
    </div>  
