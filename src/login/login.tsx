@@ -16,7 +16,12 @@ interface props{
   
 }
 
-let open:boolean = true;
+let loggedIn:boolean = true;
+const openContext = React.createContext(true);
+
+const closeSuper =()=>{
+   
+}
 
 export default class Login extends Component<props,states>{
 constructor(props:any){
@@ -45,6 +50,8 @@ responseGoogleFailure = (response) =>{
    alert("unable to sign in with google.")
   
 }
+
+
 
 render (){
 
@@ -75,7 +82,7 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
    </h1>
       </div>
    </div>
-   <LoginWindows/>
+   <LoginWindows open = {this.state.open}/>
   
   <div className = "or">
    <h1 style = {{
@@ -109,10 +116,13 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
 
 }
 
+interface LoginProps{
+   open:boolean;
+}
 
-class LoginWindows extends Component<props,states> {
+class LoginWindows extends Component<LoginProps,states> {
 
-constructor(props:props){
+constructor(props:any){
    super(props);
    this.state = {
       open:true,
@@ -128,7 +138,7 @@ constructor(props:props){
 }
 
 forceClose(){
-   this.setState({open:false});
+  this.setState({open:false});
 }
 
 changeToSignUp(){
@@ -209,7 +219,8 @@ LoginToServer(event){
                alert("wrong password or email.")
             }else {
                // this.setState({rendered:"0"})
-               
+               this.forceClose();
+
             }
          })
       })
