@@ -3,7 +3,6 @@ import Edata from "./Edata";
 import "../notes/note.css";
 import "./event.css";
 
-import ReactDOM, { render } from 'react-dom';
 
 
 function Card(props:any){

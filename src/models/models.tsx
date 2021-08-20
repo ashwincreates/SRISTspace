@@ -13,3 +13,10 @@ export interface Article {
 	likes : number;
 	author : string;
 }
+export interface Event {
+	id : Object;
+	eventname : string;
+  eventdate:string;
+  eventvenue:string;
+	
+}
