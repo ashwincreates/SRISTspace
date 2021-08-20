@@ -8,7 +8,8 @@ export interface Note {
 }
 
 export interface Article {
-	id : Object;
 	title : string;
 	article : Object[];
+	likes : number;
+	author : string;
 }

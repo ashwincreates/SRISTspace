@@ -6,14 +6,14 @@ function Explore() {
 
 let [articleList, setArticleList] = useState<Article[]>([]);
 
-let URL = "https://sristspace.herokuapp.com";
+let URL = "http://127.0.0.1:5000";
 useEffect(() => {
 	fetch(URL + '/fetchArticles').then(res => res.json()).then(data => {setArticleList(data.data)})	
 }, [])
 
 let history = useHistory();
 
-let card = articleList.map((item : any) => <div className="card-md" onClick={() => {history.push('/articles/readArticle', item)}}><h3>{item.title.replace('<br>', '')}</h3><span>this is a article</span></div>)
+let card = articleList.map((item : any) => <div className="card-md" onClick={() => {history.push("/articles/" + item._id)}}><h3>{item.title.replace('<br>', '')}</h3><span>this is a article</span></div>)
 
   return (
     <>
