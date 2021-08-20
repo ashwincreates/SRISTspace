@@ -178,7 +178,14 @@ width:auto;
     width: 90%;
     height: 166px;
 }
+label{
 
+    text-align: center;
+    position: absolute;
+    justify-content: center;
+    left: 13%;
+  
+}
 } 
 
 
@@ -188,6 +195,7 @@ width:auto;
 input[type="file"]{
   display:none;
 }
+
 label{
 
     color: red;
@@ -195,7 +203,6 @@ label{
     /* top: 50%; */
     right: 20%;
     top: 44%;
-  
 }
 
 .event-image{

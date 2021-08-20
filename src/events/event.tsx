@@ -19,6 +19,7 @@ function Event() {
 const [eventName,setEventName]=React.useState("");
 const [eventDate,setEventDate]=React.useState("");
 const [eventVenue,setEventVenue]=React.useState("");
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -38,8 +39,7 @@ const [eventVenue,setEventVenue]=React.useState("");
     };
     fetch("http://127.0.0.1:5000/uploadEvent", options)
       .then((response) => response.json())
-      .then((data) => console.log(data));
-     console.log(Response);
+     console.log(resobj);
       setEventDate("");
       setEventName("");
       setEventVenue("");
@@ -52,8 +52,7 @@ const [eventVenue,setEventVenue]=React.useState("");
   function Eventpopup() {
     function onChange(event: any) {
       event.preventDefault();
-
-
+   
       if (event.target.files && event.target.files[0]) {
         let reader = new FileReader();
         reader.onload = (ev: any) => {
@@ -62,6 +61,7 @@ const [eventVenue,setEventVenue]=React.useState("");
           console.log(ev.target.result);
         };
         reader.readAsDataURL(event.target.files[0]);
+     
       }
     }
 
@@ -90,10 +90,10 @@ const [eventVenue,setEventVenue]=React.useState("");
           <div className="columnright">
 		<img src={image} className="event-image"></img>
             <input type="file" id="file" onChange={onChange} />
-            <label id="content" htmlFor="file">
               
-              upload a banner
-            </label>
+            <label id="content" htmlFor="file">
+                 upload a banner
+              </label>
           </div>
         </div>
       </>
