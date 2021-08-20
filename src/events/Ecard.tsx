@@ -1,5 +1,6 @@
-import React,{ useState } from "react";
+import React,{ useEffect, useState } from "react";
 import Edata from "./Edata";
+import { IEvent } from "../models/models";
 import "../notes/note.css";
 import "./event.css";
 
@@ -40,13 +41,20 @@ function Card(props:any){
 
 function Ecard() {
     // const state=useState();
+	const [List, setList] = useState([] as IEvent[]);
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/fetchEvents")
+      .then((res) => res.json())
+      .then((data) => setList(data.data))
+	.catch(error => console.log(error))
+  }, []);
  
     return(
         <>
-        {Edata.map((item)=>{
+        {List.map((item)=>{
 return(
          <div className="card-post">
-        <Card name={item.name} venue={item.venue} time={item.time} date={item.date} image={item.image} />
+        <Card name={item.eventname} venue={item.eventvenue} time={item.time} date={item.eventdate} image={item.image} />
         </div>
          );
           })}

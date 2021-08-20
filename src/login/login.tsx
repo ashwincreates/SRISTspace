@@ -5,8 +5,13 @@ import {useState } from 'react';
  import { responsiveFontSizes } from '@material-ui/core';
 import { STATUS_CODES } from 'http';
 import { resourceUsage } from 'process';
+<<<<<<< HEAD
 
 import {GoogleLogin} from "react-google-login";
+=======
+import {GoogleLogin} from "react-google-login"
+>>>>>>> ceae309ef8956d10cab5fb325f080ff4113d09cc
+
 
 
 interface states{

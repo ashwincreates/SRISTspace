@@ -8,14 +8,16 @@ export interface Note {
 }
 
 export interface Article {
-	id : Object;
 	title : string;
 	article : Object[];
+	likes : number;
+	author : string;
 }
-export interface Event {
-	id : Object;
+export interface IEvent {
+	id : string;
 	eventname : string;
   eventdate:string;
   eventvenue:string;
+	image : any;
 	
 }

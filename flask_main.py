@@ -101,5 +101,10 @@ def FetchEvents():
     data = event.fetchEvents()
     return jsonify(data)
 
+@app.route('/getArticles/<_id>', methods=['GET'])
+def Get(_id):
+    data = articles.getbyid(_id)
+    return jsonify(data)
+
 if __name__ == '__main__':
     app.run(use_reloader=True, port=port, threaded=True)
