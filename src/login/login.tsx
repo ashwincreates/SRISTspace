@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import './login.css';
 import Dialog from '../dialog/dialog';
+<<<<<<< HEAD
 import {useState } from 'react';
 // import { responsiveFontSizes } from '@material-ui/core';
 import { STATUS_CODES } from 'http';
 import { resourceUsage } from 'process';
+=======
+import {GoogleLogin} from "react-google-login"
+>>>>>>> 46c2232718289b33d393b074c494215df487887c
 
 interface states{
    open:boolean;
@@ -19,7 +23,12 @@ interface props{
   
 }
 
-let open:boolean = true;
+let loggedIn:boolean = true;
+const openContext = React.createContext(true);
+
+const closeSuper =()=>{
+   
+}
 
 export default class Login extends Component<props,states>{
 constructor(props:any){
@@ -38,6 +47,18 @@ constructor(props:any){
 closeDialog(){
    this.setState({open:false});
 }
+
+responseGoogleSuccess = (response) =>{
+   
+   this.closeDialog();
+}
+
+responseGoogleFailure = (response) =>{
+   alert("unable to sign in with google.")
+  
+}
+
+
 
 render (){
 
@@ -68,7 +89,7 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
    </h1>
       </div>
    </div>
-   <LoginWindows/>
+   <LoginWindows open = {this.state.open}/>
   
   <div className = "or">
    <h1 style = {{
@@ -79,10 +100,17 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
       or
    </h1>
    
-      <img 
+      {/* <img 
       className = "googlesign"
       src ={process.env.PUBLIC_URL + "/googlesign.png"}
       alt = ""
+      /> */}
+
+      <GoogleLogin
+      clientId = "561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+      className = "googlesign"
+      onSuccess = {this.responseGoogleSuccess}
+      onFailure = {this.responseGoogleFailure}
       />
 </div>
    </div>  
@@ -95,10 +123,13 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
 
 }
 
+interface LoginProps{
+   open:boolean;
+}
 
-class LoginWindows extends Component<props,states> {
+class LoginWindows extends Component<LoginProps,states> {
 
-constructor(props:props){
+constructor(props:any){
    super(props);
    this.state = {
       open:true,
@@ -114,7 +145,7 @@ constructor(props:props){
 }
 
 forceClose(){
-   this.setState({open:false});
+  this.setState({open:false});
 }
 
 changeToSignUp(){
@@ -192,7 +223,8 @@ LoginToServer(event){
                alert("wrong password or email.")
             }else {
                // this.setState({rendered:"0"})
-               
+               this.forceClose();
+
             }
          })
       })
