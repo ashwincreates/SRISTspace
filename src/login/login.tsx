@@ -36,8 +36,14 @@ closeDialog(){
    this.setState({open:false});
 }
 
-responseGoogle = (response) =>{
-   alert(response.error + " detail : " + response.detail);
+responseGoogleSuccess = (response) =>{
+   
+   this.closeDialog();
+}
+
+responseGoogleFailure = (response) =>{
+   alert("unable to sign in with google.")
+  
 }
 
 render (){
@@ -89,8 +95,8 @@ src = "https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute
       <GoogleLogin
       clientId = "561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
       className = "googlesign"
-      onSuccess = {this.responseGoogle}
-      onFailure = {this.responseGoogle}
+      onSuccess = {this.responseGoogleSuccess}
+      onFailure = {this.responseGoogleFailure}
       />
 </div>
    </div>  
