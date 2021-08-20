@@ -81,7 +81,7 @@ const [eventVenue,setEventVenue]=React.useState("");
               className="popdata" onChange={(e)=>{ setEventDate(e.target.value)}}
             />
             <br />
-            <input type="name" value={eventVenue} placeholder="Event Venue" className="popdata" onChange={(e)=>{setEventVenue(e.target.value)}} />
+            <input type="name"  placeholder="Event Venue" className="popdata" onChange={(e)=>{setEventVenue(e.target.value)}} />
             <br />
             <button className="popbtn" onClick={handleSubmit}>
               Host Event !

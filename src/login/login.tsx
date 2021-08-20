@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import './login.css';
 import Dialog from '../dialog/dialog';
-
 import {useState } from 'react';
-// import { responsiveFontSizes } from '@material-ui/core';
+ import { responsiveFontSizes } from '@material-ui/core';
 import { STATUS_CODES } from 'http';
 import { resourceUsage } from 'process';
 
-import {GoogleLogin} from "react-google-login"
+import {GoogleLogin} from "react-google-login";
 
 
 interface states{
