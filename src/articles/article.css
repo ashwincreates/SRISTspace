@@ -354,7 +354,7 @@ p {
   .info {
     width: calc(100vw - 3rem);
     position: fixed;
-    bottom: 0.5rem;
+    bottom: 0;
     padding: 0.8rem;
     background-color: white;
     border-radius: 8px;

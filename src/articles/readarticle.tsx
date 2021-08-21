@@ -18,7 +18,7 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
       liked: false,
     };
     this.like = this.like.bind(this);
-    this.URL = "https://sristspace.herokuapp.com";
+    this.URL = "https://sristspace.herokuapp.com/getArticles/";
     fetch(
       (this.URL +
         props.match.params.article) as string
