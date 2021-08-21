@@ -53,11 +53,7 @@ function Ecard() {
         {List.map((item)=>{
 return(
          <div className="card-post">
-<<<<<<< HEAD
-        <Card name={item.eventname} venue={item.eventvenue}  date={item.eventdate} image={item.image} />
-=======
         <Card name={item.eventname} venue={item.eventvenue} date={item.eventdate} image={item.image} />
->>>>>>> 0f3d94eecfd0cdd60c48bb22fd6d32a3c5893ca6
         </div>
          );
           })}
