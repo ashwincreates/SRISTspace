@@ -62,7 +62,6 @@ function Event() {
     }
   };
 
-
   const onChange = (event: any) => {
     event.preventDefault();
 
@@ -74,6 +73,7 @@ function Event() {
       reader.readAsDataURL(event.target.files[0]);
     }
   };
+>>>>>>> ceae309ef8956d10cab5fb325f080ff4113d09cc
 
   return (
     <>
