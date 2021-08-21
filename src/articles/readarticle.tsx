@@ -4,26 +4,47 @@ import Icons from "../icons/icons";
 import { Article } from "../models/models";
 
 interface State extends Article {
-	liked : boolean;
+  liked: boolean;
 }
 
 class ReadArticle extends React.Component<RouteComponentProps, State> {
   constructor(props: any) {
     super(props);
-	this.state = {
-		author: "",
-		title: "",
-		likes: 0,
-		article: [],
-		liked : false,
-	}
-	this.like = this.like.bind(this)
-	fetch("http://127.0.0.1:5000/getArticles/" + props.match.params.article as string).then(res => res.json()).then(data => {this.setState({author : data.author, title : data.title.replace("<br>", ""), likes : data.likes, article : data.article}, this.init)})
+    this.state = {
+      author: "",
+      title: "",
+      likes: 0,
+      article: [],
+      liked: false,
+    };
+    this.like = this.like.bind(this);
+    this.URL = "https://sristspace.herokuapp.com";
+    fetch(
+      (this.URL +
+        props.match.params.article) as string
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState(
+          {
+            author: data.author,
+            title: data.title.replace("<br>", ""),
+            likes: data.likes,
+            article: data.article,
+          },
+          this.init
+        );
+      });
   }
 
+  URL : string;
 
-	init(){
-	let content = document.getElementById("content");
+  componentWillUnmount() {
+    console.log("Like updated");
+  }
+
+  init() {
+    let content = document.getElementById("content");
     for (let i = 0; i < this.state.article.length; i++) {
       if (this.state.article[i].hasOwnProperty("image")) {
         let img = document.createElement("img");
@@ -39,31 +60,37 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
         content?.appendChild(text);
       }
     }
-}
+  }
 
-	like(){
-		this.setState({liked : !this.state.liked}, () => {
-		if(this.state.liked)
-			this.setState({likes : this.state.likes + 1})
-		else
-			this.setState({likes : this.state.likes - 1})
-	});}
+  like() {
+    this.setState({ liked: !this.state.liked }, () => {
+      if (this.state.liked) {
+        this.setState({ likes: this.state.likes + 1 });
+      } else {
+        this.setState({ likes: this.state.likes - 1 });
+      }
+    });
+  }
 
   render() {
     return (
       <div className="container">
-        <p id="heading" className="article-heading">{this.state.title}</p>
-	<div className="info">
-		<div>
-		{this.state.author}
-		<h1>date</h1>
-		</div>
-		<div onClick={this.like} className="likes">
-
-		<div>{this.state.likes}</div>
-		<Icons name="like"></Icons>
-		</div>
-	</div>
+        <p id="heading" className="article-heading">
+          {this.state.title}
+        </p>
+        <div className="info">
+          <div>
+            {this.state.author}
+            <h1>date</h1>
+          </div>
+          <div
+            onClick={this.like}
+            className={"likes ".concat(this.state.liked ? "liked" : "")}
+          >
+            <div>{this.state.likes}</div>
+            <Icons name={"like_fill"}></Icons>
+          </div>
+        </div>
         <article id="content"></article>
       </div>
     );

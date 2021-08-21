@@ -29,7 +29,6 @@ function Card(props:any){
             </h2>
             <span>{props.venue}</span><br/>
             <span>{props.date}</span><br/>
-            <span>{props.time}</span><br/>
             <p>
               this is a annual event which is inaugrated by the college department so please take participation more and more.
             </p>
@@ -54,7 +53,7 @@ function Ecard() {
         {List.map((item)=>{
 return(
          <div className="card-post">
-        <Card name={item.eventname} venue={item.eventvenue} time={item.time} date={item.eventdate} image={item.image} />
+        <Card name={item.eventname} venue={item.eventvenue} date={item.eventdate} image={item.image} />
         </div>
          );
           })}

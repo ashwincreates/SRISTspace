@@ -6,7 +6,7 @@ function Explore() {
 
 let [articleList, setArticleList] = useState<Article[]>([]);
 
-let URL = "http://127.0.0.1:5000";
+let URL = "https://sristspace.herokuapp.com";
 useEffect(() => {
 	fetch(URL + '/fetchArticles').then(res => res.json()).then(data => {setArticleList(data.data)})	
 }, [])
