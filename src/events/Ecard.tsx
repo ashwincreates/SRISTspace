@@ -54,7 +54,7 @@ function Ecard() {
         {List.map((item)=>{
 return(
          <div className="card-post">
-        <Card name={item.eventname} venue={item.eventvenue} time={item.time} date={item.eventdate} image={item.image} />
+        <Card name={item.eventname} venue={item.eventvenue}  date={item.eventdate} image={item.image} />
         </div>
          );
           })}

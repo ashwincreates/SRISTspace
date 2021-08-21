@@ -98,6 +98,7 @@ height:100vh;
     bottom: -8%;
     font-size: 22px;
 }
+
 .popdata{
      padding: 16px;
     padding-left: 22px;
@@ -116,12 +117,19 @@ height:100vh;
     margin-top: 15px;
     line-height: 54px;
 }
-
+.close{
+     position: absolute;
+    right: 9px;
+    top: 6px;
+}
 .columnright{
-  width:387px;
-  height:436px;
-  background:grey;
-  border-radius:10px;
+  top: 16px;
+    width: 100vw;
+    height: 66vh;
+    background: grey;
+    border-radius: 10px;
+    position: relative;
+    right: 13px;
 }
 .popimg{
   position:relative;
@@ -129,37 +137,46 @@ top:50%;
 left:45%;
 
 }
-@media (max-width: 480px){
+@media only screen and (min-width: 360px ) and (max-width:500px){
+  .event-card{
+    margin:20px;
+  }
+  .close{
+  float:right !important;
+   position: relative !important;
+   right:-10px;
+}
   .poptitle{
     
     font-size: 26px;
-    /* margin-bottom: 13px; */
-    margin-left: 10px;
-    margin-top: -19px;
+   
+    margin-left: -9px;
+    margin-top: -24px;
     line-height: 37px;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* margin: auto; */
+    
     position: absolute;
     left: 28%;
 }
   .popbtn{
   
-         width: 160%;
+        width: 100%;
     top: 180px;
-    height: 44px;
+    height: 42px;
     justify-content: center;
-    left: 7px;
+    left: 0px;
   }
   .row{
  flex-direction:column;
-width:auto;
+width:fit-content;
+margin-left:0px;
 }
+
 .popdata{
      padding: 10px;
     padding-left: 15px;
-    margin-top: 15px;
-    width: 160%;
+    margin-top: 11px;
+    margin-bottom:0px;
+    width: 95%;
     background: #FFFFFF;
     border: 1px solid #6FCF97;
     box-sizing: border-box;
@@ -170,13 +187,16 @@ width:auto;
 
   flex-direction:column;
   height:200px !important;
-  
+  width:81vw;
+  position:fixed;
+  top:68px;
 }
 .columnright{
  position: absolute;
-    top: 212px;
+    top: 190px;
     width: 90%;
     height: 166px;
+    left:20px;
 }
 label{
 

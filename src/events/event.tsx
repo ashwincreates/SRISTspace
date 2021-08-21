@@ -2,18 +2,11 @@ import "../notes/note.css";
 import "./event.css";
 import Ecard from "./Ecard";
 import React, { useEffect } from "react";
-// import { useState } from "react";
+ import { useState } from "react";
 import "../articles/article.css";
 import Dialog from "../dialog/dialog";
 import Icons from "../icons/icons";
-// import Icons from "../icons/icons";
 
-// interface Request{
-//   id : Object;
-// 	eventname : string;
-//   eventdate:string;
-//   eventvenue:string;
-// }
 function Event() {
   const [open, setOpen] = React.useState(false);
   const [image, setImage] = React.useState("");
@@ -30,6 +23,10 @@ function Event() {
   };
 
   const handleSubmit = () => {
+       setEventDate("");
+      setEventName("");
+      setEventVenue("");
+      setImage("");
     if (
       eventName !== "" &&
       eventDate !== "" &&
@@ -57,7 +54,7 @@ function Event() {
       setEventVenue("");
       setImage("");
     } else {
-      console.log(`${eventName} ${eventVenue} ${eventDate}`);
+      // console.log(`${eventName} ${eventVenue} ${eventDate}`);
       alert("plz fill the data");
     }
   };
@@ -73,7 +70,6 @@ function Event() {
       reader.readAsDataURL(event.target.files[0]);
     }
   };
->>>>>>> ceae309ef8956d10cab5fb325f080ff4113d09cc
 
   return (
     <>
@@ -94,8 +90,12 @@ function Event() {
       </div>
       <Dialog open={open}>
         <div className="event-card">
-          <div className="row">
+          <div className="row" > 
+           
             <div className="columnleft">
+              <div  className="close" onClick={handleClose}>
+                <Icons name="close"></Icons>
+                </div>
               <h2 className="poptitle">Host a Event</h2>
 
               <input
@@ -131,9 +131,7 @@ function Event() {
               </button>
             </div>
             <div className="columnright">
-              <div onClick={handleClose}>
-                <Icons name="close"></Icons>
-              </div>
+          
               <img src={image} className="event-image"></img>
               <input type="file" id="file" onChange={onChange} />
 
