@@ -29,7 +29,6 @@ function Card(props:any){
             </h2>
             <span>{props.venue}</span><br/>
             <span>{props.date}</span><br/>
-            <span>{props.time}</span><br/>
             <p>
               this is a annual event which is inaugrated by the college department so please take participation more and more.
             </p>
@@ -43,7 +42,7 @@ function Ecard() {
     // const state=useState();
 	const [List, setList] = useState([] as IEvent[]);
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/fetchEvents")
+    fetch("http://sristspace.herokuapp.com/fetchEvents")
       .then((res) => res.json())
       .then((data) => setList(data.data))
 	.catch(error => console.log(error))
@@ -54,7 +53,11 @@ function Ecard() {
         {List.map((item)=>{
 return(
          <div className="card-post">
+<<<<<<< HEAD
         <Card name={item.eventname} venue={item.eventvenue}  date={item.eventdate} image={item.image} />
+=======
+        <Card name={item.eventname} venue={item.eventvenue} date={item.eventdate} image={item.image} />
+>>>>>>> 0f3d94eecfd0cdd60c48bb22fd6d32a3c5893ca6
         </div>
          );
           })}

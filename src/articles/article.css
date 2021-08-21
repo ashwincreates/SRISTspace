@@ -1,5 +1,5 @@
 article {
-  width: 50vw;
+  width: 40vw;
 }
 p:first-of-type:empty:before {
   content: attr(placeholder);
@@ -7,23 +7,33 @@ p:first-of-type:empty:before {
   color: #aaa;
 }
 
+.liked {
+  color: var(--PrimaryColor);
+}
+
+.liked svg path {
+  fill: var(--PrimaryColor);
+}
+
 .likes {
-	display: flex;
-	align-items: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: grey;
 }
 
 .likes > svg {
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
-	margin-bottom: 0.3rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .info {
-	width: 50vw;
-	display: flex;
-	margin-bottom: 2rem;
-	justify-content: space-between;
-	align-items: center;
+  width: 40vw;
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .menu-display {
@@ -40,23 +50,23 @@ p:first-of-type:empty:before {
 }
 
 .cancel {
-	background-color: #eb5757;
+  background-color: #eb5757;
 }
 
 .confirm {
-	justify-content: initial !important;
-	height: auto !important;
-	min-width: 200px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  justify-content: initial !important;
+  height: auto !important;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .confirm > div {
-	margin: 1rem 0.5rem 0px 0.5rem;
-	justify-content: space-between;
-	width: calc(100% - 1rem);
-	flex-direction: row;
+  margin: 1rem 0.5rem 0px 0.5rem;
+  justify-content: space-between;
+  width: calc(100% - 1rem);
+  flex-direction: row;
 }
 
 .floating-menu {
@@ -121,7 +131,7 @@ p:first-of-type:empty:before {
 }
 
 .float-select:checked ~ .float-container {
-display: flex;
+  display: flex;
   left: 40px;
   opacity: 1;
 }
@@ -173,8 +183,8 @@ p [content-editable] {
   font-size: 3rem;
   color: var(--Black);
   font-weight: 500;
-  max-width: 50vw;
-  width: 50vw;
+  max-width: 40vw;
+  width: 40vw;
   margin-bottom: 2rem;
   text-align: left !important;
   word-wrap: break-word;
@@ -189,11 +199,11 @@ p [content-editable] {
   outline: solid 5px var(--PrimaryColor);
 }
 
-
 .article-content {
   font-size: 1.2rem;
-  max-width: 50vw;
-  width: 50vw;
+  color: var(--Black);
+  max-width: 40vw;
+  width: 40vw;
   text-align: left !important;
   word-wrap: break-word;
   word-break: break-all;
@@ -334,23 +344,22 @@ p {
   justify-content: space-between;
 }
 
-@media(min-width: 480px) {
-	.delete {
-		display: none !important;
-	}
+@media (min-width: 480px) {
+  .delete {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
-	
-	.info {
-		width: calc(100vw - 3rem);
-		position: fixed;
-		bottom: 0.5rem;
-		padding: 0.8rem;
-		background-color: white;
-		border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	}
+  .info {
+    width: calc(100vw - 3rem);
+    position: fixed;
+    bottom: 0;
+    padding: 0.8rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
 
   .floating-menu-item {
     height: 3.5rem !important;
@@ -371,7 +380,7 @@ p {
   }
 
   .float-select:checked ~ .float-container {
-	 display: flex;
+    display: flex;
     left: 0;
     top: -9.4rem;
     opacity: 1;
