@@ -42,7 +42,7 @@ function Ecard() {
     // const state=useState();
 	const [List, setList] = useState([] as IEvent[]);
   useEffect(() => {
-    fetch("http://sristspace.herokuapp.com/fetchEvents")
+    fetch("https://sristspace.herokuapp.com/fetchEvents")
       .then((res) => res.json())
       .then((data) => setList(data.data))
 	.catch(error => console.log(error))

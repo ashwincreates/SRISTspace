@@ -7,8 +7,6 @@ import { STATUS_CODES } from 'http';
 import { resourceUsage } from 'process';
 import {GoogleLogin} from "react-google-login"
 
-
-
 interface states{
    open:boolean;
    rendered:string;
