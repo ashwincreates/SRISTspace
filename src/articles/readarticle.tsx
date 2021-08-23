@@ -11,18 +11,17 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
   constructor(props: any) {
     super(props);
     this.state = {
+      cap_img: "",
       author: "",
       title: "",
       likes: 0,
       article: [],
       liked: false,
+      date: "",
     };
     this.like = this.like.bind(this);
     this.URL = "https://sristspace.herokuapp.com/getArticles/";
-    fetch(
-      (this.URL +
-        props.match.params.article) as string
-    )
+    fetch((this.URL + props.match.params.article) as string)
       .then((res) => res.json())
       .then((data) => {
         this.setState(
@@ -31,13 +30,14 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
             title: data.title.replace("<br>", ""),
             likes: data.likes,
             article: data.article,
+            date: data.date,
           },
           this.init
         );
       });
   }
 
-  URL : string;
+  URL: string;
 
   componentWillUnmount() {
     console.log("Like updated");
@@ -81,7 +81,7 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
         <div className="info">
           <div>
             {this.state.author}
-            <h1>date</h1>
+            <h1>{this.state.date}</h1>
           </div>
           <div
             onClick={this.like}

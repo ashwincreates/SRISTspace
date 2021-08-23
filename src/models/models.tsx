@@ -12,6 +12,8 @@ export interface Article {
 	article : Object[];
 	likes : number;
 	author : string;
+	date: string;
+	cap_img?: string;
 }
 export interface IEvent {
 	id : string;

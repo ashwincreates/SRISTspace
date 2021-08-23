@@ -24,15 +24,18 @@ def getArticles():
 def uploadArticles(data):
     cloudinary.config(cloud_name = "sristspace", api_key = "879963674368385", api_secret = "TiBlP74DD9AxmdTqK8r1oOWCPQE")
     image_url = None
+    cap_image = 0
     for i in data['article']:
         if 'image' in i.keys():
             image_url = cloudinary.uploader.upload(i['image'])
             i['image'] = image_url['url']
+            if(cap_image == 0):
+                data['cap_image'] = image_url['url'];
     getArticles().insert_one(data)
     return "success"
 
-def fetchArticles():
-    articles = getArticles().find({}, {'article' : 0})
+def fetchTrendingArticles():
+    articles = getArticles().find({}, {'article' : 0}).sort('likes',-1).limit(6)
     data = []
     for i in articles:
         val = json.loads(json_util.dumps(i['_id']))
@@ -40,6 +43,19 @@ def fetchArticles():
         data.append(i)
     res ={'data' : data}
     print(res);
+    return res
+
+def fetchPage(page):
+    skip = int(page) * 5
+    articles = getArticles().find({}, {'article': 0}).skip(skip).limit(5)
+    print( page * 5 + " is skipped")
+    data = []
+    for i in articles:
+        val = json.loads(json_util.dumps(i['_id']))
+        i['_id'] = val['$oid']
+        data.append(i)
+    res = {'data' : data}
+    print(res)
     return res
 
 def getbyid(_id):

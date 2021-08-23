@@ -7,6 +7,53 @@ p:first-of-type:empty:before {
   color: #aaa;
 }
 
+.cap_img{
+	background-color: var(--Grey);
+	border-radius: 8px;
+	height: 100px;
+	width: 150px;
+}
+
+.margin-full {
+	margin-left: 15% !important;
+	margin-right: 15% !important;
+}
+
+.article-info {
+	color: var(--Black);
+	display: flex;
+	flex-direction: column;
+	padding-top: 0.2rem;
+	padding-left: 1rem;
+}
+
+.article-info h1 {
+	margin-top: 0.5rem;
+}
+
+.article-lg .article-info {
+	padding: 0;
+}
+
+.article-lg .article-title {
+	font-size: 1.3rem;
+}
+
+.article-title {
+	font-weight: 600;
+	font-size: 1.1rem;
+	display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+}
+
+.index {
+	opacity: 0.6;
+	font-weight: 600;
+	font-size: 2rem;
+	color: var(--Grey);
+}
+
 .liked {
   color: var(--PrimaryColor);
 }
@@ -188,7 +235,6 @@ p [content-editable] {
   margin-bottom: 2rem;
   text-align: left !important;
   word-wrap: break-word;
-  word-break: break-all;
 }
 
 .article-image {
@@ -220,15 +266,11 @@ p [content-editable] {
   margin-right: 1rem;
 }
 
-.chip-tray {
-  margin-left: 2rem;
-}
-
 .search {
   font-family: Poppins;
   width: 300px;
-  height: 45px;
-  font-size: 16px;
+  height: 40px;
+  font-size: 14px;
   padding-left: 1rem;
   border: 3px solid rgba(0, 0, 0, 0.14);
   outline: none;
@@ -268,7 +310,7 @@ p {
 .section {
   display: flex;
   flex-direction: column;
-  width: calc(100vw * 0.5) !important;
+  width: 40vw !important;
   margin-bottom: 0.5rem;
 }
 
@@ -296,6 +338,24 @@ p {
   bottom: 10rem;
   right: 1rem;
   background-color: #eb5757;
+}
+
+.article-md {
+  width: auto;
+  height: 115px;
+  background-color: white;
+  color: var(--Black);
+  display: flex;
+  /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
+}
+
+.article-lg {
+  width: auto;
+  height: 100px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-md {
@@ -406,6 +466,11 @@ p {
   .section {
     width: calc(100vw - 2rem - 10px) !important;
   }
+
+	.margin-full {
+		margin-left: 1rem !important;
+		margin-right: 1rem !important;
+	}
 
   .publish {
     display: flex;

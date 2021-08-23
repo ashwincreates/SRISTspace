@@ -1,6 +1,7 @@
 @import "../index.css";
 
 nav {
+  height: 3rem;
   background-color: #fff !important;
   margin-bottom: 0px;
   margin-left: 2rem;
