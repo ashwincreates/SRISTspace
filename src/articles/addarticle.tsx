@@ -39,7 +39,7 @@ class Article extends React.Component<RouteComponentProps, State> {
     this.handlekeydown = this.handlekeydown.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.publish = this.publish.bind(this);
-    this.URL = "http://127.0.0.1:5000"/*""https://sristspace.herokuapp.com"*/;
+    this.URL = "https://sristspace.herokuapp.com";
   }
 
   URL: any;
