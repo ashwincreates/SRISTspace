@@ -86,9 +86,14 @@ def ReceiveArticles():
     message = articles.uploadArticles(request.json)
     return jsonify(message)
 
-@app.route('/fetchArticles', methods=['GET'])
+@app.route('/fetchTrendingArticles', methods=['GET'])
 def FetchArticles():
-    data = articles.fetchArticles()
+    data = articles.fetchTrendingArticles()
+    return jsonify(data)
+
+@app.route("/fetchArticles/<page>", methods=['GET'])
+def FetchPage(page):
+    data = articles.fetchPage(page)
     return jsonify(data)
 
 @app.route('/uploadEvent', methods=['POST'])

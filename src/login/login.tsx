@@ -5,13 +5,19 @@ import {useState } from 'react';
  import { responsiveFontSizes } from '@material-ui/core';
 import { STATUS_CODES } from 'http';
 import { resourceUsage } from 'process';
+<<<<<<< HEAD
 
 import {GoogleLogin} from "react-google-login";
 
 
 
+=======
+import {GoogleLogin} from "react-google-login";
+
+>>>>>>> 6d4cc3d57fd75b2eb74f037544d7860414b32a24
 
 interface states{
+   successOpen:boolean;
    open:boolean;
    rendered:string;
 email:string;
@@ -22,15 +28,13 @@ response:string;
 
 interface props {}
 
-let loggedIn: boolean = true;
-const openContext = React.createContext(true);
-
-const closeSuper = () => {};
+var loggedIn: boolean = false;
 
 export default class Login extends Component<props, states> {
   constructor(props: any) {
     super(props);
     this.state = {
+       successOpen:true,
       open: true,
       rendered: "0",
       password: "",
@@ -39,7 +43,114 @@ export default class Login extends Component<props, states> {
       response: "",
     };
     this.closeDialog = this.closeDialog.bind(this);
+    this.changeToLogin = this.changeToLogin.bind(this);
+    this.changeToSignUp = this.changeToSignUp.bind(this);
   }
+
+  signUPToserver(event) {
+   event.preventDefault();
+   var url: string =
+     "https://sristspace.herokuapp.com/adduser/" +
+     this.state.email +
+     "/" +
+     this.state.password +
+     "/sem/stream/branch";
+
+   var pattern = new RegExp(
+     /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+   );
+
+   var isValid: boolean = false;
+   if (!pattern.test(this.state.email)) {
+     alert("Enter valid email address.");
+     isValid = false;
+   }
+
+   if (this.state.pass1 != this.state.password) {
+     alert("Password does not match.");
+     isValid = false;
+   } else {
+     isValid = true;
+   }
+
+   if (isValid) {
+     var output: string = "";
+     fetch(url).then((response) => {
+       response
+         .text()
+         .then((result) => {
+           output = result;
+         })
+         .then(() => {
+           if (output === "submit") {
+             this.setState({ rendered: "2" });
+
+             alert("user added , login to continue.");
+           } else {
+             alert("user already exists");
+           }
+         });
+     });
+
+     isValid = false;
+   }
+ }
+
+ LoginToServer(event) {
+   event.preventDefault();
+
+   var url: string =
+     "https://sristspace.herokuapp.com/getuser/" +
+     this.state.email +
+     "/" +
+     this.state.password;
+   var pattern = new RegExp(
+     /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+   );
+
+   var isValid: boolean = false;
+   if (!pattern.test(this.state.email)) {
+     alert("Enter valid email address.");
+     isValid = false;
+   } else {
+     isValid = true;
+   }
+
+   if (isValid) {
+     fetch(url).then((response) => {
+       response.json().then((result) => {
+         if (result === "user does not exists") {
+           alert("wrong password or email.");
+         } else {
+           // this.setState({rendered:"0"})
+           this.closeDialog();
+         }
+       });
+     });
+
+     isValid = false;
+   }
+ }
+
+ setEmail(email: string) {
+   this.setState({ email: email });
+ }
+
+ setPassword(pass: string) {
+   this.setState({ password: pass });
+ }
+
+ setPass1(pass: string) {
+   this.setState({ pass1: pass });
+ }
+
+  changeToSignUp() {
+   this.setState({ rendered: "1" });
+ }
+
+ changeToLogin() {
+   this.setState({ rendered: "2" });
+ }
 
   closeDialog() {
     this.setState({ open: false });
@@ -54,7 +165,11 @@ export default class Login extends Component<props, states> {
   };
 
   render() {
-    return (
+
+   switch(this.state.rendered){
+
+     case "0": 
+     return (
       <Dialog open={this.state.open}>
         <div className="Views">
           <div>
@@ -78,171 +193,7 @@ export default class Login extends Component<props, states> {
               </h1>
             </div>
           </div>
-          <LoginWindows open={this.state.open} />
-
-          <div className="or">
-            <h1
-              style={{
-                textAlign: "center",
-                color: "white",
-                marginTop: "15%",
-              }}
-            >
-              or
-            </h1>
-
-            {/* <img 
-      className = "googlesign"
-      src ={process.env.PUBLIC_URL + "/googlesign.png"}
-      alt = ""
-      /> */}
-
-            <GoogleLogin
-              clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
-              className="googlesign"
-              onSuccess={this.responseGoogleSuccess}
-              onFailure={this.responseGoogleFailure}
-            />
-          </div>
-        </div>
-      </Dialog>
-    );
-  }
-}
-
-interface LoginProps {
-  open: boolean;
-}
-
-class LoginWindows extends Component<LoginProps, states> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      open: true,
-      rendered: "0",
-      password: "",
-      email: "",
-      pass1: "",
-      response: "",
-    };
-
-    this.changeToLogin = this.changeToLogin.bind(this);
-    this.changeToSignUp = this.changeToSignUp.bind(this);
-  }
-
-  forceClose() {
-    this.setState({ open: false });
-  }
-
-  changeToSignUp() {
-    this.setState({ rendered: "1" });
-  }
-
-  changeToLogin() {
-    this.setState({ rendered: "2" });
-  }
-
-  signUPToserver(event) {
-    event.preventDefault();
-    var url: string =
-      "https://sristspace.herokuapp.com/adduser/" +
-      this.state.email +
-      "/" +
-      this.state.password +
-      "/sem/stream/branch";
-
-    var pattern = new RegExp(
-      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-    );
-
-    var isValid: boolean = false;
-    if (!pattern.test(this.state.email)) {
-      alert("Enter valid email address.");
-      isValid = false;
-    }
-
-    if (this.state.pass1 != this.state.password) {
-      alert("Password does not match.");
-      isValid = false;
-    } else {
-      isValid = true;
-    }
-
-    if (isValid) {
-      var output: string = "";
-      fetch(url).then((response) => {
-        response
-          .text()
-          .then((result) => {
-            output = result;
-          })
-          .then(() => {
-            if (output === "submit") {
-              this.setState({ rendered: "2" });
-
-              alert("user added , login to continue.");
-            } else {
-              alert("user already exists");
-            }
-          });
-      });
-
-      isValid = false;
-    }
-  }
-
-  LoginToServer(event) {
-    event.preventDefault();
-
-    var url: string =
-      "https://sristspace.herokuapp.com/getuser/" +
-      this.state.email +
-      "/" +
-      this.state.password;
-    var pattern = new RegExp(
-      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-    );
-
-    var isValid: boolean = false;
-    if (!pattern.test(this.state.email)) {
-      alert("Enter valid email address.");
-      isValid = false;
-    } else {
-      isValid = true;
-    }
-
-    if (isValid) {
-      fetch(url).then((response) => {
-        response.json().then((result) => {
-          if (result === "user does not exists") {
-            alert("wrong password or email.");
-          } else {
-            // this.setState({rendered:"0"})
-            this.forceClose();
-          }
-        });
-      });
-
-      isValid = false;
-    }
-  }
-
-  setEmail(email: string) {
-    this.setState({ email: email });
-  }
-
-  setPassword(pass: string) {
-    this.setState({ password: pass });
-  }
-
-  setPass1(pass: string) {
-    this.setState({ pass1: pass });
-  }
-
-  render() {
-    switch (this.state.rendered) {
-      case "0":
-        return (
+          {/* <LoginWindows open={this.state.open} /> */}
           <div>
             <h1
               style={{
@@ -259,10 +210,54 @@ class LoginWindows extends Component<LoginProps, states> {
               Login
             </button>
           </div>
-        );
 
-      case "1":
-        return (
+
+          <div className="or">
+            <h1
+              style={{
+                textAlign: "center",
+                color: "white",
+                marginTop: "15%",
+              }}
+            >
+              or
+            </h1>
+            <GoogleLogin
+              clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+              className="googlesign"
+              onSuccess={this.responseGoogleSuccess}
+              onFailure={this.responseGoogleFailure}
+            />
+          </div>
+        </div>
+      </Dialog>
+    );
+
+    case "1":  return (
+      <Dialog open={this.state.open}>
+        <div className="Views">
+          <div>
+            <div className="flexrow">
+              <img
+                className="logoat"
+                alt=""
+                src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg"
+              />
+              <div
+                style={{
+                  verticalAlign: "center",
+                  margin: "5px",
+                }}
+              >
+                <text>SRIST space</text>
+                <h1>v 1.0</h1>
+              </div>
+              <h1 className="udTxt" onClick={this.closeDialog}>
+                SKIP
+              </h1>
+            </div>
+          </div>
+          {/* <LoginWindows open={this.state.open} /> */}
           <div>
             <h1
               style={{
@@ -335,11 +330,55 @@ class LoginWindows extends Component<LoginProps, states> {
               </div>
             </div>
           </div>
-        );
 
-      case "2":
-        return (
-          <div>
+
+          <div className="or">
+            <h1
+              style={{
+                textAlign: "center",
+                color: "white",
+                marginTop: "15%",
+              }}
+            >
+              or
+            </h1>
+            <GoogleLogin
+              clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+              className="googlesign"
+              onSuccess={this.responseGoogleSuccess}
+              onFailure={this.responseGoogleFailure}
+            />
+          </div>
+        </div>
+      </Dialog>
+    );
+
+    case "2": return(
+      <Dialog open={this.state.open}>
+      <div className="Views">
+        <div>
+          <div className="flexrow">
+            <img
+              className="logoat"
+              alt=""
+              src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg"
+            />
+            <div
+              style={{
+                verticalAlign: "center",
+                margin: "5px",
+              }}
+            >
+              <text>SRIST space</text>
+              <h1>v 1.0</h1>
+            </div>
+            <h1 className="udTxt" onClick={this.closeDialog}>
+              SKIP
+            </h1>
+          </div>
+        </div>
+        {/* <LoginWindows open={this.state.open} /> */}
+        <div>
             <h1
               style={{
                 textAlign: "center",
@@ -406,7 +445,35 @@ class LoginWindows extends Component<LoginProps, states> {
               </div>
             </div>
           </div>
-        );
-    }
-  }
+
+
+        <div className="or">
+          <h1
+            style={{
+              textAlign: "center",
+              color: "white",
+              marginTop: "15%",
+            }}
+          >
+            or
+          </h1>
+          <GoogleLogin
+            clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+            className="googlesign"
+            onSuccess={this.responseGoogleSuccess}
+            onFailure={this.responseGoogleFailure}
+          />
+        </div>
+      </div>
+    </Dialog>
+    );
+
+
+   }
+      
+   }
+    
+  
+
+
 }

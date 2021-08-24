@@ -8,6 +8,7 @@ interface Request {
   article: Object[];
   author : string;
   likes : number;
+  date : string;
 }
 
 interface State {
@@ -105,7 +106,7 @@ class Article extends React.Component<RouteComponentProps, State> {
 
   publish() {
     this.setState({ loading: true });
-    let resobj: Request = { title: "", article: [], author : "", likes : 0};
+    let resobj: Request = { title: "", article: [], author : "", likes : 0, date : Date().toString().slice(4, 15)};
     resobj.title = document.getElementById("heading")?.innerHTML as string;
     let article = document.getElementById("content")?.children;
     if (article) {

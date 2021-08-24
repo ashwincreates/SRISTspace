@@ -7,8 +7,9 @@ srist space is a app where students can stay updated, get help and share informa
 ## TODOS
 
 ### HOME
+- JWT authentication
 - Creating the lists dynamic
-- Adding Welcome Home Pop Up
+- Welcome pop up ...cancelled
 - Integrating User
 - Adding footer
 - Creating Loading CSS
@@ -23,15 +24,15 @@ srist space is a app where students can stay updated, get help and share informa
 
 ### EVENTS
 - Likes system
-- Adding Events
+- Adding Events ...done
 - Responsiveness
 - UI fixes
 
 ### ARTICLES
 - UI fixes
-- Link routing
+- Link routing ...done
 - Article editor features(floating toolbox, text)
-- Sorting tags
+- Sorting tags ...cancelled
 
 ### ABOUT US
 - UI and Layout fix
