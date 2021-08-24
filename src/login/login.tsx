@@ -5,17 +5,7 @@ import {useState } from 'react';
  import { responsiveFontSizes } from '@material-ui/core';
 import { STATUS_CODES } from 'http';
 import { resourceUsage } from 'process';
-<<<<<<< HEAD
-
 import {GoogleLogin} from "react-google-login";
-
-
-
-=======
-import {GoogleLogin} from "react-google-login";
-
->>>>>>> 6d4cc3d57fd75b2eb74f037544d7860414b32a24
-
 interface states{
    successOpen:boolean;
    open:boolean;
