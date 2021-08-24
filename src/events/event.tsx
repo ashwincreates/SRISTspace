@@ -7,6 +7,8 @@ import "../articles/article.css";
 import Dialog from "../dialog/dialog";
 import Icons from "../icons/icons";
 
+
+
 function Event() {
   const [open, setOpen] = React.useState(false);
   const [image, setImage] = React.useState("");
@@ -45,7 +47,7 @@ function Event() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resobj),
       };
-      fetch("http://127.0.0.1:5000/uploadEvent", options).then((response) =>
+      fetch("https://sristspace.herokuapp.com/uploadEvent", options).then((response) =>
         response.json()
       );
       console.log(resobj);
@@ -53,12 +55,12 @@ function Event() {
       setEventName("");
       setEventVenue("");
       setImage("");
+    
     } else {
       // console.log(`${eventName} ${eventVenue} ${eventDate}`);
       alert("plz fill the data");
     }
   };
-
   const onChange = (event: any) => {
     event.preventDefault();
 

@@ -3,11 +3,10 @@ import Edata from "./Edata";
 import { IEvent } from "../models/models";
 import "../notes/note.css";
 import "./event.css";
-
-
+import { Note } from "../models/models";
 
 function Card(props:any){
-     let state=true;
+      let state=true;
     const [count,setcount]=useState(120);
     const grey="#808080";
     const [bg,setBg]=useState(grey);
@@ -17,9 +16,8 @@ function Card(props:any){
       setcount(count+1);
        setBg(newBg);
         }
-  
- 
 }
+
     return(
         <>
          <div className="thumbnail"><img src={props.image} alt ="load..." />
@@ -49,11 +47,17 @@ function Ecard() {
   }, []);
  
     return(
-        <>
+      <>
+ 
         {List.map((item)=>{
 return(
+  
          <div className="card-post">
+<<<<<<< HEAD
+        <Card name={item.eventname} venue={item.eventvenue}  date={item.eventdate} image={item.image} />
+=======
         <Card name={item.eventname} venue={item.eventvenue} date={item.eventdate} image={item.image} />
+>>>>>>> 6d4cc3d57fd75b2eb74f037544d7860414b32a24
         </div>
          );
           })}
