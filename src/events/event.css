@@ -143,7 +143,7 @@ left:45%;
   float:right !important;
    position: relative !important;
    right:auto;
-   top:18%;
+   top:70px;
 }
   .poptitle{
     
@@ -157,12 +157,13 @@ left:45%;
     left: 28%;
 }
   .popbtn{
-  
+  position:relative;
         width: 100%;
-    top: 100%;
+    top: 120%;
     height: 42px;
     justify-content: center;
     left: 0px;
+    
   }
   .row{
  flex-direction:column;
@@ -188,11 +189,11 @@ margin-left:0px;
   height:200px !important;
   width:81vw;
   position:fixed;
-  top:68px;
+  top:40px;
 }
 .columnright{
  position:fixed;
-    top:55%;
+    top:50%;
     width: 80%;
     height: 166px;
     left:20px;
