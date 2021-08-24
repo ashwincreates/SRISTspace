@@ -5,10 +5,13 @@ from mongoDatabase import articles
 from mongoDatabase import event
 from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
+import functools
+import jwt
 
 app = Flask(__name__, static_folder='build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['SECRET_KEY'] = '$ri$t$p@ceKey'
 # CORS(app)
 
 load_dotenv()
@@ -36,6 +39,22 @@ def serve(path):
         return send_from_directory(app.static_folder, path, mimetype=mime)
     else:
         return send_from_directory(app.static_folder, 'index.html')
+
+
+#JWT authentication
+def checkForToken(f):
+    @functools.wraps(f)
+    def decorator(*args,**kwargs):
+        AuthToken = None
+
+        if 'x-access-token' in request.headers:
+            AuthToken = request.headers['x-access-token']
+        else : return 'user not verified'
+
+        decrypt = jwt.JWT.decode(AuthToken , app.config['SECRET_KEY'])
+        if mongoDataBase.checkExistance(decrypt['email']) :
+            return f(decrypt['email'] , *args , **kwargs)
+    return decorator
 
 
 # url - https://sristspace.herokuapp.com/adduser/email/pass/sem/stream/branch

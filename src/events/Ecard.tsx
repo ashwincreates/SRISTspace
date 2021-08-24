@@ -53,11 +53,16 @@ function Ecard() {
 return(
   
          <div className="card-post">
+<<<<<<< HEAD
 
         <Card name={item.eventname} venue={item.eventvenue}  date={item.eventdate} image={item.image} />
 
         <Card name={item.eventname} venue={item.eventvenue} date={item.eventdate} image={item.image} />
 
+=======
+        <Card name={item.eventname} venue={item.eventvenue}  date={item.eventdate} image={item.image} />
+        <Card name={item.eventname} venue={item.eventvenue} date={item.eventdate} image={item.image} />
+>>>>>>> 69e7dd0bd4dcab61f3ffb1a51aaf4c329a14f867
         </div>
          );
           })}

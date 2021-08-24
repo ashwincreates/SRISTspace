@@ -1,14 +1,14 @@
 import React from "react";
 import Dialog from "../dialog/dialog";
 import Icons from "../icons/icons";
-import {RouteComponentProps, withRouter} from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
 interface Request {
   title: string;
   article: Object[];
-  author : string;
-  likes : number;
-  date : string;
+  author: string;
+  likes: number;
+  date: string;
 }
 
 interface State {
@@ -16,6 +16,7 @@ interface State {
   current: any;
   delete: string;
   loading: boolean;
+  menu: string;
   open: boolean;
   published: boolean;
 }
@@ -27,6 +28,7 @@ class Article extends React.Component<RouteComponentProps, State> {
       position: { x: -100, y: -100 },
       current: "",
       delete: "none",
+      menu: "none",
       loading: false,
       open: false,
       published: false,
@@ -47,19 +49,10 @@ class Article extends React.Component<RouteComponentProps, State> {
   addpara() {
     let p = document.createElement("p");
     p.onblur = (ev) => {
-      let node = ev.target as HTMLElement;
-      let nodep = node.parentNode as HTMLElement;
-      if (node.innerHTML === "<br>" && nodep.children.length > 2)
-        node.outerHTML = "";
+      this.focusLost(ev);
     };
     p.onfocus = (ev) => {
-      let node = ev.target as HTMLElement;
-      let rect = node.getBoundingClientRect();
-      this.setState({
-        position: { x: rect.x - 48, y: rect.y - 4 },
-        current: node,
-        delete: "none",
-      });
+      this.focusGain(ev);
     };
     p.contentEditable = "true";
     p.className = "article-content";
@@ -69,7 +62,9 @@ class Article extends React.Component<RouteComponentProps, State> {
 
   componentDidUpdate() {
     if (this.state.published == true) {
-      setTimeout(() => {this.props.history.push("/articles")}, 3000);
+      setTimeout(() => {
+        this.props.history.push("/articles");
+      }, 3000);
     }
   }
 
@@ -87,7 +82,9 @@ class Article extends React.Component<RouteComponentProps, State> {
           p.focus();
         } else if (
           event.target.parentNode.children.length > 1 &&
-          (event.target.innerHTML === "<br>" || event.target.innerHTML === "")
+          (event.target.innerHTML === "<br>" ||
+            event.target.innerHTML === "" ||
+            event.target.children[0].innerHTML === "<br>")
         ) {
           let index = [...parentele.children].indexOf(event.target);
           parentele.children[index > 0 ? index - 1 : index].focus();
@@ -106,7 +103,13 @@ class Article extends React.Component<RouteComponentProps, State> {
 
   publish() {
     this.setState({ loading: true });
-    let resobj: Request = { title: "", article: [], author : "", likes : 0, date : Date().toString().slice(4, 15)};
+    let resobj: Request = {
+      title: "",
+      article: [],
+      author: "",
+      likes: 0,
+      date: Date().toString().slice(4, 15),
+    };
     resobj.title = document.getElementById("heading")?.innerHTML as string;
     let article = document.getElementById("content")?.children;
     if (article) {
@@ -146,7 +149,8 @@ class Article extends React.Component<RouteComponentProps, State> {
       event.target.innerHTML === "<br>" &&
       event.target.parentNode.children.length > 2
     )
-      event.target.outerHTML = "";
+      event.target.innerHTML = "";
+    this.setState({ menu: "none" });
   }
 
   focusGain(event: any) {
@@ -155,6 +159,7 @@ class Article extends React.Component<RouteComponentProps, State> {
       position: { x: rect.x - 48, y: rect.y - 4 },
       current: event.target,
       delete: "none",
+      menu: "initial",
     });
   }
 
@@ -309,6 +314,25 @@ class Article extends React.Component<RouteComponentProps, State> {
               >
                 <Icons name="add_para"></Icons>
               </div>
+              <div
+                className="floating-menu-item"
+                onClick={() => {
+                  if (this.state.current.children.length > 0) {
+                    let text = this.state.current.children[0].innerHTML;
+                    this.state.current.children[0].outerHTML = "";
+                    this.state.current.innerHTML = text;
+                  } else {
+                    this.state.current.innerHTML =
+                      "<strong>" + this.state.current.innerHTML + "</strong>";
+                  }
+                  let menu = document.getElementById(
+                    "float-menu"
+                  ) as HTMLInputElement;
+                  menu.checked = false;
+                }}
+              >
+                <Icons name="text_bold"></Icons>
+              </div>
             </div>
           </div>
         </div>
@@ -320,5 +344,8 @@ class Article extends React.Component<RouteComponentProps, State> {
   }
 }
 
-const AddArticle =  withRouter<RouteComponentProps, React.ComponentType<RouteComponentProps>>(Article);
+const AddArticle = withRouter<
+  RouteComponentProps,
+  React.ComponentType<RouteComponentProps>
+>(Article);
 export default AddArticle;

@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import './login.css';
 import Dialog from '../dialog/dialog';
+<<<<<<< HEAD
 import {useState } from 'react';
  import { responsiveFontSizes } from '@material-ui/core';
 import { STATUS_CODES } from 'http';
 import { resourceUsage } from 'process';
 import {GoogleLogin} from "react-google-login";
 
+=======
+import {GoogleLogin} from "react-google-login";
+>>>>>>> 69e7dd0bd4dcab61f3ffb1a51aaf4c329a14f867
 interface states{
    successOpen:boolean;
    open:boolean;
