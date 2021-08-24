@@ -42,6 +42,13 @@ def addUsers(email, password, semester, stream, branch):
         getUsers().insert_one(json)
         return 'submit'
 
+def checkExistance(email):
+    users = getUsers()
+    data = users.find_one({'email':email} , {'_id':0})
+    if data is not None:
+        return True
+    else : return False
+
 
 # login ...
 def getUserDetail(email, password):
