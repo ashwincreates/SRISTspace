@@ -73,8 +73,28 @@ function Explore() {
     </div>
   ));
 
+  let cardskel = [1, 2, 3, 4, 5, 6].map((item: number) => (
+    <div className="article-md">
+      <span className="index">
+        {item.toLocaleString("en-US", {
+          minimumIntegerDigits: 2,
+          useGrouping: false,
+        })}
+      </span>
+      <div className="article-info">
+        <span className="author-skel"></span>
+        <h3 className="title-skel"></h3>
+        <h1></h1>
+      </div>
+    </div>
+  ));
+
   let cardlg = articles.map((item: any) => (
-    <div className="article-lg">
+    <div className="article-lg"
+      onClick={() => {
+        history.push("/articles/" + item._id);
+      }}
+    >
       <div className="article-info">
         <span>
           {item.author}
@@ -88,6 +108,17 @@ function Explore() {
       ) : (
         <div className="cap_img"></div>
       )}
+    </div>
+  ));
+
+  let cardlgskel = [1, 2, 3, 4, 5].map((item: number) => (
+    <div className="article-lg">
+      <div className="article-info">
+        <span className="author-skel"></span>
+        <h3 className="title-skel"></h3>
+        <h1></h1>
+      </div>
+      <div className="cap_img"></div>
     </div>
   ));
 
@@ -110,7 +141,9 @@ function Explore() {
           <h2>Top Trending Article</h2>
         </div>
       </div>
-      <div className="item-tray margin-full">{card}</div>
+      <div className="item-tray margin-full">
+        {articleList.length ? card : cardskel}
+      </div>
       <div className="head margin-full">
         <div className="section-title">
           <h2>Explore articles</h2>
@@ -118,7 +151,16 @@ function Explore() {
       </div>
       <div className="flex margin-full">
         <div className="section">
-          {cardlg}
+          {articles.length ? cardlg : cardlgskel}
+          <div className="loader">{
+	    loading?
+            <div className="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>:""}
+          </div>
           <div ref={loadmore}></div>
         </div>
       </div>
