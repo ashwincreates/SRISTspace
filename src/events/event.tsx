@@ -11,7 +11,6 @@ function Event() {
   const [open, setOpen] = React.useState(false);
   const [image, setImage] = React.useState("");
   const [eventName, setEventName] = React.useState("");
-  const [eventDate, setEventDate] = React.useState("");
   const [eventVenue, setEventVenue] = React.useState("");
 
   const handleClickOpen = () => {
@@ -26,14 +25,12 @@ function Event() {
 
 
   const handleSubmit = () => {
-       setEventDate("");
       setEventName("");
       setEventVenue("");
       setImage("");
   
     if (
       eventName !== "" &&
-      eventDate !== "" &&
       eventVenue !== "" &&
       image !== ""
     ) {
@@ -41,7 +38,6 @@ function Event() {
       console.log("event sunmitted");
       let resobj = {
         eventname: eventName,
-        eventdate: eventDate,
         eventvenue: eventVenue,
         image: image,
       };
@@ -54,7 +50,6 @@ function Event() {
         (response) => response.json()
       );
       console.log(resobj);
-      setEventDate("");
       setEventName("");
       setEventVenue("");
       setImage("");
@@ -112,17 +107,7 @@ function Event() {
                   setEventName(e.target.value);
                 }}
               />
-              <input
-                style={{ opacity: 0.8 }}
-                type="date"
-                name="Event Date"
-                className="popdata"
-                onChange={(e) => {
-                  setEventDate(e.target.value);
-                }}
-              />
-              <input
-                type="name"
+              <textarea
                 placeholder="Event Venue"
                 className="popdata"
                 onChange={(e) => {
@@ -138,7 +123,7 @@ function Event() {
               {image?"":<label className="upload" htmlFor="file">
 		<Icons name="add_image"></Icons>
 		<br/>
-		4:5 png image
+		Add Event Image
               </label>}
             </div>
               <button className="popbtn" onClick={handleSubmit}>
