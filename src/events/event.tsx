@@ -11,9 +11,7 @@ function Event() {
   const [open, setOpen] = React.useState(false);
   const [image, setImage] = React.useState("");
   const [eventName, setEventName] = React.useState("");
-  const [eventDate, setEventDate] = React.useState("");
   const [eventVenue, setEventVenue] = React.useState("");
-  const [label, setlabel] = useState("upload a banner");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,21 +25,26 @@ function Event() {
 
 
   const handleSubmit = () => {
+<<<<<<< HEAD
 
        setEventDate("");
+=======
+>>>>>>> 619d78adab15eec68840bb61379fda0443604c7b
       setEventName("");
       setEventVenue("");
       setImage("");
   
+<<<<<<< HEAD
 
     setEventDate("");
     setEventName("");
     setEventVenue("");
     setImage("");
 
+=======
+>>>>>>> 619d78adab15eec68840bb61379fda0443604c7b
     if (
       eventName !== "" &&
-      eventDate !== "" &&
       eventVenue !== "" &&
       image !== ""
     ) {
@@ -49,7 +52,6 @@ function Event() {
       console.log("event sunmitted");
       let resobj = {
         eventname: eventName,
-        eventdate: eventDate,
         eventvenue: eventVenue,
         image: image,
       };
@@ -62,7 +64,6 @@ function Event() {
         (response) => response.json()
       );
       console.log(resobj);
-      setEventDate("");
       setEventName("");
       setEventVenue("");
       setImage("");
@@ -96,11 +97,11 @@ function Event() {
           Host a Event
         </button>
       </div>
-      <div className="head">
+      <div className="margin-full head">
         <h2 className="subject">Coming Up This Week</h2>
       </div>
 
-      <div className="item-tray">
+      <div className="margin-full post-tray">
         <Ecard />
       </div>
       <Dialog open={open}>
@@ -120,17 +121,7 @@ function Event() {
                   setEventName(e.target.value);
                 }}
               />
-              <input
-                style={{ opacity: 0.8 }}
-                type="date"
-                name="Event Date"
-                className="popdata"
-                onChange={(e) => {
-                  setEventDate(e.target.value);
-                }}
-              />
-              <input
-                type="name"
+              <textarea
                 placeholder="Event Venue"
                 className="popdata"
                 onChange={(e) => {
@@ -148,10 +139,11 @@ function Event() {
                 {label}
               </label> */}
 
+
               {image?"":<label className="upload" htmlFor="file">
 		<Icons name="add_image"></Icons>
 		<br/>
-		4:5 png image
+		Add Event Image
               </label>}
             </div>
               <button className="popbtn" onClick={handleSubmit}>

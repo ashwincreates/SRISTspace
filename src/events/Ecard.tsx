@@ -1,76 +1,92 @@
-import React,{ useEffect, useState } from "react";
-import Edata from "./Edata";
+import React, { useEffect, useState } from "react";
 import { IEvent } from "../models/models";
 import "../notes/note.css";
 import "./event.css";
-import { Note } from "../models/models";
+import Icons from "../icons/icons";
 
-function Card(props:any){
-      
-    const [count,setcount]=useState(120);
-    const [state,setState]=useState(true);
-    const grey="#808080";
-    const [bg,setBg]=useState(grey);
-    function Click(){
+function Card(props: any) {
+  const [state, setState] = useState(true);
+  const [count, setcount] = useState(120);
+  function Click() {
+    if (state) {
+      setcount(count + 1);
+      setState(false);
+    } else {
+      setcount(count - 1);
+      setState(true);
+    }
+    console.log(state);
+  }
 
-        let newBg="	#ff0000";
-        if(state){
-      setcount(count+1);
-       setBg(newBg);
-       setState(false);
-        }
-        else
-        {setcount(count-1);
-        setState(true);
-        setBg(grey);}
+  return (
+    <>
+      <div className="thumbnail post">
+        <img className="event-image post" src={props.image} alt="load..." />
+      </div>
+      <div className="content">
+        <div className="button-tray">
+          <span
+            className={"like ".concat(state ? "" : "filter")}
+            onClick={Click}
+          >
+            <Icons name="party_active" />
+            <div className={state ? "" : "liked"}>{count}</div>
+          </span>
+        </div>
+        <h2 className="data">{props.name} </h2>
+        <p>{props.venue}</p>
+      </div>
+    </>
+  );
 }
 
-    return(
-        <>
-         <div className="thumbnail"><img src={props.image} alt ="load..." /> </div>
-          <div className="content">
-            <h2 className="data">
-              {props.name} <span style={{backgroundColor:bg}} className="like"><button className="click"  onClick={Click}></button></span><span className="count">{count}Likes </span>
-            </h2>
-            <span>{props.venue}</span><br/>
-            <span>{props.date}</span><br/>
-            <p>
-              this is a annual event which is inaugrated by the college department so please take participation more and more.
-            </p>
-            </div>
-         
-        </>
-    )
+function EmptyCard() {
+  return (
+    <>
+      <div className="event-post">
+        <div className="thumbnail post empty"></div>
+        <div className="content">
+          <div className="button-tray">
+            <span className={"like "}>
+              <Icons name="party_active" />
+              <div></div>
+            </span>
+          </div>
+          <h2 className="data-empty"></h2>
+          <div className="text-empty"/>
+          <div className="text-empty"/>
+        </div>
+      </div>
+    </>
+  );
 }
 
 function Ecard() {
-    // const state=useState();
-	const [List, setList] = useState([] as IEvent[]);
+  const [List, setList] = useState([] as IEvent[]);
+  console.log(List.length)
   useEffect(() => {
     fetch("https://sristspace.herokuapp.com/fetchEvents")
       .then((res) => res.json())
       .then((data) => setList(data.data))
-	.catch(error => console.log(error))
+      .catch((error) => console.log(error));
   }, []);
- 
-    return(
-      <>
- 
-        {List.map((item)=>{
-return(
-  
-         <div className="card-post">
 
-
-        <Card name={item.eventname} venue={item.eventvenue}  date={item.eventdate} image={item.image} />
-
-    
-
-        </div>
-         );
-          })}
-          
-        </>
-    )
+  return (
+    <>
+      {(List.length > 0)
+        ? List.map((item) => {
+            return (
+              <div className="event-post">
+                <Card
+                  name={item.eventname}
+                  venue={item.eventvenue}
+                  image={item.image}
+                />
+              </div>
+            );
+          }):[1,2,3].map(() => <EmptyCard/>)} 
+    </>
+  );
 }
+
 export default Ecard;
