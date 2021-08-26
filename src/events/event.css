@@ -9,7 +9,7 @@
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.24) 7px 6px 12px;
 }
-<<<<<<< HEAD
+
 .card-post:hover{
   box-shadow: rgba(0, 5, 1, 0.70) 7px 6px 12px;
 
@@ -19,12 +19,12 @@ padding:0px;
 overflow:hidden;
 height:1000px;
 border-radius:10px;
-=======
-.thumbnail {
+ }
+ .thumbnail {
   padding: 0px;
   overflow: hidden;
   height: 150%;
-}
+} 
 
 .upload {
   height: 100%;
@@ -39,14 +39,14 @@ border-radius:10px;
   align-items: center;
   justify-content: center;
 }
->>>>>>> e9f023e92f93b24cdb915cb6821f29ac4317ce3b
+
 
 .upload svg {
 	height: 48px;
 	width: 48px;	
 }
 
-<<<<<<< HEAD
+
 .content{
 	padding: 20px;
 }
@@ -93,7 +93,7 @@ img{
 .event-card{
  
   padding: 20px;
-=======
+}
 .data {
   color: #b02f00;
 }
@@ -133,7 +133,6 @@ img {
   width: 100%;
 }
 .event-card {
->>>>>>> e9f023e92f93b24cdb915cb6821f29ac4317ce3b
   background-color: white;
   color: var(--Black);
   border-radius: 5px;

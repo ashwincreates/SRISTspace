@@ -27,18 +27,18 @@ function Event() {
 
 
   const handleSubmit = () => {
-<<<<<<< HEAD
+
        setEventDate("");
       setEventName("");
       setEventVenue("");
       setImage("");
   
-=======
+
     setEventDate("");
     setEventName("");
     setEventVenue("");
     setImage("");
->>>>>>> e9f023e92f93b24cdb915cb6821f29ac4317ce3b
+
     if (
       eventName !== "" &&
       eventDate !== "" &&
@@ -142,18 +142,17 @@ function Event() {
               <img src={image} className="event-image"></img>
               <input type="file" id="file" onChange={onChange} />
 
-<<<<<<< HEAD
+{/* 
               <label id="content" htmlFor="file">
               
                 {label}
-              </label>
-=======
+              </label> */}
+
               {image?"":<label className="upload" htmlFor="file">
 		<Icons name="add_image"></Icons>
 		<br/>
 		4:5 png image
               </label>}
->>>>>>> e9f023e92f93b24cdb915cb6821f29ac4317ce3b
             </div>
               <button className="popbtn" onClick={handleSubmit}>
                 Host Event !
