@@ -1,4 +1,5 @@
 import "./event.css";
+import Ecard from "./Ecard";
 function EventList() {
   return (
     <>
@@ -8,49 +9,8 @@ function EventList() {
           <h1>Fresh upload</h1>
 	</div>
       </div>
-      <div className="item-tray">
-        <div className="card-post">
-          <div className="thumbnail"></div>
-          <div className="content">
-            <h2>
-              Event name<span>100k </span>
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-              impedit repellat error deserunt doloremque, praesentium provident
-              cumque sit? Amet eos praesentium quam accusantium dolorum nam
-              eaque soluta recusandae reiciendis asperiores.
-            </p>
-          </div>
-        </div>
-        <div className="card-post">
-          <div className="thumbnail"></div>
-          <div className="content">
-            <h2>
-              Event name<span>100k </span>
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-              impedit repellat error deserunt doloremque, praesentium provident
-              cumque sit? Amet eos praesentium quam accusantium dolorum nam
-              eaque soluta recusandae reiciendis asperiores.
-            </p>
-          </div>
-        </div>
-        <div className="card-post">
-          <div className="thumbnail"></div>
-          <div className="content">
-            <h2>
-              Event name<span>100k </span>
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-              impedit repellat error deserunt doloremque, praesentium provident
-              cumque sit? Amet eos praesentium quam accusantium dolorum nam
-              eaque soluta recusandae reiciendis asperiores.
-            </p>
-          </div>
-        </div>
+      <div className="tray">
+         <Ecard />
       </div>
     </>
   );

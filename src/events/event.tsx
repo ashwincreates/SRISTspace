@@ -15,6 +15,7 @@ function Event() {
   const [eventName, setEventName] = React.useState("");
   const [eventDate, setEventDate] = React.useState("");
   const [eventVenue, setEventVenue] = React.useState("");
+  const [label, setlabel] = useState("upload a banner");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,19 +23,24 @@ function Event() {
 
   const handleClose = () => {
     setOpen(false);
+   
+      setImage("");
   };
+
 
   const handleSubmit = () => {
        setEventDate("");
       setEventName("");
       setEventVenue("");
       setImage("");
+  
     if (
       eventName !== "" &&
       eventDate !== "" &&
       eventVenue !== "" &&
       image !== ""
     ) {
+     
       console.log("event sunmitted");
       let resobj = {
         eventname: eventName,
@@ -59,6 +65,7 @@ function Event() {
     } else {
       // console.log(`${eventName} ${eventVenue} ${eventDate}`);
       alert("plz fill the data");
+    
     }
   };
   const onChange = (event: any) => {
@@ -68,9 +75,11 @@ function Event() {
       let reader = new FileReader();
       reader.onload = (ev: any) => {
         setImage(ev.target.result);
+         
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+
   };
 
   return (
@@ -138,7 +147,8 @@ function Event() {
               <input type="file" id="file" onChange={onChange} />
 
               <label id="content" htmlFor="file">
-                upload a banner
+              
+                {label}
               </label>
             </div>
           </div>

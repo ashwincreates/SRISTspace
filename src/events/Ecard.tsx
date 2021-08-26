@@ -6,21 +6,28 @@ import "./event.css";
 import { Note } from "../models/models";
 
 function Card(props:any){
-      let state=true;
+      
     const [count,setcount]=useState(120);
+    const [state,setState]=useState(true);
     const grey="#808080";
     const [bg,setBg]=useState(grey);
     function Click(){
+
         let newBg="	#ff0000";
         if(state){
       setcount(count+1);
        setBg(newBg);
+       setState(false);
         }
+        else
+        {setcount(count-1);
+        setState(true);
+        setBg(grey);}
 }
 
     return(
         <>
-         <div className="thumbnail"><img src={props.image} alt ="load..." />
+         <div className="thumbnail"><img src={props.image} alt ="load..." /> </div>
           <div className="content">
             <h2 className="data">
               {props.name} <span style={{backgroundColor:bg}} className="like"><button className="click"  onClick={Click}></button></span><span className="count">{count}Likes </span>
@@ -31,7 +38,7 @@ function Card(props:any){
               this is a annual event which is inaugrated by the college department so please take participation more and more.
             </p>
             </div>
-          </div>
+         
         </>
     )
 }

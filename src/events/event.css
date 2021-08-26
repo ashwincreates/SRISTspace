@@ -9,10 +9,15 @@
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.24) 7px 6px 12px;
 }
+.card-post:hover{
+  box-shadow: rgba(0, 5, 1, 0.70) 7px 6px 12px;
+
+}
  .thumbnail {
 padding:0px;
 overflow:hidden;
-height:150%
+height:1000px;
+border-radius:10px;
 
 } 
 
@@ -57,6 +62,7 @@ right:-55px;
 img{
   position:relative;
   width:100%;
+  border-radius:10px;
 }
 .event-card{
  

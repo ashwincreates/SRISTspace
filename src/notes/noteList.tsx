@@ -1,4 +1,5 @@
 import "./note.css";
+import Recent from "./subjects/recent";
 function NoteList() {
     return(
         <>
@@ -9,32 +10,9 @@ function NoteList() {
           </div>
           <button className="explore">Explore &#62;</button>
         </div>
-        <div className="tray">
-            <div className="note-card ">
-              <div>
-                <h3>Card 1</h3>
-                <span>Some text<br/></span>
-              </div>
-            </div>
-            <div className="note-card">
-              <div>
-                <h3>Card 3</h3>
-                <span>Some text<br/></span>
-              </div>
-            </div>
-            <div className="note-card">
-              <div>
-                <h3>Card 3</h3>
-                <span>Some text<br/></span>
-             </div>
-             </div>
-             <div className="note-card">
-               <div>
-               <h3>Card 4</h3>
-               <span>Some text<br/></span>
-             </div>
-          </div>
-      </div>
+        
+           <Recent/>
+ 
         </>
     );
 }
