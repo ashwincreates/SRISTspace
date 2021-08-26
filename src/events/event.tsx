@@ -20,19 +20,24 @@ function Event() {
 
   const handleClose = () => {
     setOpen(false);
+   
+      setImage("");
   };
 
+
   const handleSubmit = () => {
-    setEventDate("");
-    setEventName("");
-    setEventVenue("");
-    setImage("");
+       setEventDate("");
+      setEventName("");
+      setEventVenue("");
+      setImage("");
+  
     if (
       eventName !== "" &&
       eventDate !== "" &&
       eventVenue !== "" &&
       image !== ""
     ) {
+     
       console.log("event sunmitted");
       let resobj = {
         eventname: eventName,
@@ -56,6 +61,7 @@ function Event() {
     } else {
       // console.log(`${eventName} ${eventVenue} ${eventDate}`);
       alert("plz fill the data");
+    
     }
   };
   const onChange = (event: any) => {
@@ -65,9 +71,11 @@ function Event() {
       let reader = new FileReader();
       reader.onload = (ev: any) => {
         setImage(ev.target.result);
+         
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+
   };
 
   return (
@@ -126,6 +134,7 @@ function Event() {
               <img src={image} className="event-image"></img>
               <input type="file" id="file" onChange={onChange} />
 
+              
               {image?"":<label className="upload" htmlFor="file">
 		<Icons name="add_image"></Icons>
 		<br/>

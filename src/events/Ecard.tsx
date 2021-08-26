@@ -6,7 +6,7 @@ import "./event.css";
 import { Note } from "../models/models";
 
 function Card(props: any) {
-  let state = true;
+  const [state, setState] = useState(true);
   const [count, setcount] = useState(120);
   const grey = "#808080";
   const [bg, setBg] = useState(grey);
@@ -15,6 +15,12 @@ function Card(props: any) {
     if (state) {
       setcount(count + 1);
       setBg(newBg);
+      setState(false);
+    }
+    else {
+	setcount(count-1);
+        setBg(grey);
+        setState(true);
     }
   }
 
@@ -23,23 +29,23 @@ function Card(props: any) {
       <div className="thumbnail post">
         <img className="event-image" src={props.image} alt="load..." />
       </div>
-        <div className="content">
-          <h2 className="data">
-            {props.name}{" "}
-            <span style={{ backgroundColor: bg }} className="like">
-              <button className="click" onClick={Click}></button>
-            </span>
-            <span className="count">{count}Likes </span>
-          </h2>
-          <span>{props.venue}</span>
-          <br />
-          <span>{props.date}</span>
-          <br />
-          <p>
-            this is a annual event which is inaugrated by the college department
-            so please take participation more and more.
-          </p>
-        </div>
+      <div className="content">
+        <h2 className="data">
+          {props.name}{" "}
+          <span style={{ backgroundColor: bg }} className="like">
+            <button className="click" onClick={Click}></button>
+          </span>
+          <span className="count">{count}Likes </span>
+        </h2>
+        <span>{props.venue}</span>
+        <br />
+        <span>{props.date}</span>
+        <br />
+        <p>
+          this is a annual event which is inaugrated by the college department
+          so please take participation more and more.
+        </p>
+      </div>
     </>
   );
 }
@@ -71,4 +77,5 @@ function Ecard() {
     </>
   );
 }
+
 export default Ecard;
