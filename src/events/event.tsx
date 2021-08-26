@@ -80,11 +80,11 @@ function Event() {
           Host a Event
         </button>
       </div>
-      <div className="head">
+      <div className="margin-full head">
         <h2 className="subject">Coming Up This Week</h2>
       </div>
 
-      <div className="item-tray">
+      <div className="margin-full post-tray">
         <Ecard />
       </div>
       <Dialog open={open}>
