@@ -11,17 +11,6 @@
   box-shadow: rgba(0, 5, 1, 0.70) 7px 6px 12px;
 
 }
- .thumbnail {
-padding:0px;
-overflow:hidden;
-height:1000px;
-border-radius:10px;
- }
- .thumbnail {
-  padding: 0px;
-  overflow: hidden;
-  height: 150%;
-} 
 
 .content {
 height: 20%;
@@ -103,28 +92,8 @@ height: 20%;
 	filter: grayscale(0) !important;
 }
 
-
-
-.content{
-	padding: 20px;
-}
 .data{
   color:#b02f00;
-}
-span{
-  font-size:16px;
-  font:-webkit-control;
- float:left;
-  right:0px;
-}
-.like{
-  position:relative;
-  border-radius:50%;
-    border:1px solid black;
-    width: 30px;
-    height: 30px;
- float:right;
-    cursor:pointer;
 }
 .click{
   position:relative;
@@ -142,11 +111,6 @@ right:-55px;
   margin:5px;
   font-weight:bold !important;
   float:right;
-}
-img{
-  position:relative;
-  width:100%;
-  border-radius:10px;
 }
 .event-card{
  
