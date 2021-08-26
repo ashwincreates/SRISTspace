@@ -2,12 +2,10 @@ import "../notes/note.css";
 import "./event.css";
 import Ecard from "./Ecard";
 import React, { useEffect } from "react";
- import { useState } from "react";
+import { useState } from "react";
 import "../articles/article.css";
 import Dialog from "../dialog/dialog";
 import Icons from "../icons/icons";
-
-
 
 function Event() {
   const [open, setOpen] = React.useState(false);
@@ -25,10 +23,10 @@ function Event() {
   };
 
   const handleSubmit = () => {
-       setEventDate("");
-      setEventName("");
-      setEventVenue("");
-      setImage("");
+    setEventDate("");
+    setEventName("");
+    setEventVenue("");
+    setImage("");
     if (
       eventName !== "" &&
       eventDate !== "" &&
@@ -47,15 +45,14 @@ function Event() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resobj),
       };
-      fetch("https://sristspace.herokuapp.com/uploadEvent", options).then((response) =>
-        response.json()
+      fetch("https://sristspace.herokuapp.com/uploadEvent", options).then(
+        (response) => response.json()
       );
       console.log(resobj);
       setEventDate("");
       setEventName("");
       setEventVenue("");
       setImage("");
-    
     } else {
       // console.log(`${eventName} ${eventVenue} ${eventDate}`);
       alert("plz fill the data");
@@ -92,12 +89,11 @@ function Event() {
       </div>
       <Dialog open={open}>
         <div className="event-card">
-          <div className="row" > 
-           
+          <div className="row">
+            <div className="icon-button close" onClick={handleClose}>
+              <Icons name="close"></Icons>
+            </div>
             <div className="columnleft">
-              <div  className="close" onClick={handleClose}>
-                <Icons name="close"></Icons>
-                </div>
               <h2 className="poptitle">Host a Event</h2>
 
               <input
@@ -108,7 +104,6 @@ function Event() {
                   setEventName(e.target.value);
                 }}
               />
-              <br />
               <input
                 style={{ opacity: 0.8 }}
                 type="date"
@@ -118,7 +113,6 @@ function Event() {
                   setEventDate(e.target.value);
                 }}
               />
-              <br />
               <input
                 type="name"
                 placeholder="Event Venue"
@@ -127,13 +121,11 @@ function Event() {
                   setEventVenue(e.target.value);
                 }}
               />
-              <br />
               <button className="popbtn" onClick={handleSubmit}>
                 Host Event !
               </button>
             </div>
             <div className="columnright">
-          
               <img src={image} className="event-image"></img>
               <input type="file" id="file" onChange={onChange} />
 

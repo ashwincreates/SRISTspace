@@ -29,9 +29,9 @@ srist space is a app where students can stay updated, get help and share informa
 - UI fixes
 
 ### ARTICLES
-- UI fixes
+- UI fixes ...done
 - Link routing ...done
-- Article editor features(floating toolbox, text)
+- Article editor features(floating toolbox, text) ...done
 - Sorting tags ...cancelled
 
 ### ABOUT US
