@@ -25,24 +25,15 @@ function Event() {
 
 
   const handleSubmit = () => {
-<<<<<<< HEAD
 
-       setEventDate("");
-=======
->>>>>>> 619d78adab15eec68840bb61379fda0443604c7b
+
+      
+
       setEventName("");
       setEventVenue("");
       setImage("");
   
-<<<<<<< HEAD
 
-    setEventDate("");
-    setEventName("");
-    setEventVenue("");
-    setImage("");
-
-=======
->>>>>>> 619d78adab15eec68840bb61379fda0443604c7b
     if (
       eventName !== "" &&
       eventVenue !== "" &&
