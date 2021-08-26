@@ -126,9 +126,11 @@ function Event() {
               <img src={image} className="event-image"></img>
               <input type="file" id="file" onChange={onChange} />
 
-              <label id="content" htmlFor="file">
-                upload a banner
-              </label>
+              {image?"":<label className="upload" htmlFor="file">
+		<Icons name="add_image"></Icons>
+		<br/>
+		4:5 png image
+              </label>}
             </div>
               <button className="popbtn" onClick={handleSubmit}>
                 Host Event !
