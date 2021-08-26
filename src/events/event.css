@@ -77,18 +77,20 @@ img {
 }
 
 .popdata {
+  font-family: Poppins;
   height: 45px;
   width: 100%;
   padding-left: 1rem;
   margin-bottom: 1.5rem;
   background: #ffffff;
-  outline: 2px solid var(--Grey);
+  border: 2px solid var(--Grey);
   box-sizing: border-box;
   border-radius: 8px;
   font-size: 16px;
+  outline: none;
 }
 .popdata:focus{
-	outline: 2px solid var(--PrimaryColor);
+	border: 2px solid var(--PrimaryColor);
 }
 .poptitle {
   font-size: 2rem;
@@ -107,7 +109,7 @@ img {
 .columnright {
   overflow: hidden;
   width: 400px;
-  background: var(--Grey);
+  background-color: var(--Grey);
   border-radius: 5px;
   position: relative;
 }
@@ -126,6 +128,9 @@ img {
   flex-direction: column;
 }
 .popbtn {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
   margin-top: auto;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -141,9 +146,20 @@ img {
   .poptitle {
     font-size: 26px;
   }
+
+  .close {
+  	top: -10px;
+	right: -10px;	
+  }
   .popbtn {
+	  margin-top: 1rem;
+	  position: absolute;
+	  right: 0;
+	  left: initial;
+	  bottom: 0
   }
   .row {
+    justify-content: start;
     flex-direction: column;
     width: calc(100vw - 4rem);
   }
@@ -160,8 +176,8 @@ img {
     margin: 0;
   }
   .columnright {
-    display: flex;
-    width: 200px;
+	  flex-grow: 1;
+	  width: 50%;
   }
   label {
     text-align: center;

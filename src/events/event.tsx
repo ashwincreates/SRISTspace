@@ -121,9 +121,6 @@ function Event() {
                   setEventVenue(e.target.value);
                 }}
               />
-              <button className="popbtn" onClick={handleSubmit}>
-                Host Event !
-              </button>
             </div>
             <div className="columnright">
               <img src={image} className="event-image"></img>
@@ -133,6 +130,9 @@ function Event() {
                 upload a banner
               </label>
             </div>
+              <button className="popbtn" onClick={handleSubmit}>
+                Host Event !
+              </button>
           </div>
         </div>
       </Dialog>
