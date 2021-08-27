@@ -14,17 +14,7 @@ function Notes() {
 		All Notes for every branch available here
           </p>
       </div>
-     
       <Subjects />
-     
-      <div className="head">
-        <div className="section-title">
-          <h2>Newly Uploaded Notes</h2>
-          <h1>Fresh upload</h1>
-        </div>
-      </div>
-     <Recent />
-     <br/>
     </>
   );
 }

@@ -95,6 +95,10 @@ def getNotesSearch(keyword):
     callback = mongoDataBase.searchNotes(keyword)
     return jsonify(callback)
 
+@app.route('/getlinks/<subject>')
+def getlinks(subject):
+    links = mongoDataBase.getLinks(subject)
+    return jsonify(links)
 
 @app.route('/test', methods=['GET'])
 def runTest():
