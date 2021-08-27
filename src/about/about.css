@@ -1,47 +1,80 @@
-.about1{
-
-    text-align: center;
-    margin-top: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
+.about{
+    margin:17%;
+    margin-top:10%;
 }
-.about2{
 
+.aboutpara{
+
+    
     text-align: center;
-    margin-top: 50px;
+    justify-content: center;
+    margin: 8%;
+    margin-top: 7%;
+       
+ 
+}
+.abouttitle{
+
+        text-align: center;
+    margin-bottom: 80px;
+    /* margin: auto; */
     font-size: 30px;
-    color: chocolate;
+    color: #4bb54f;
+     letter-spacing: 1.5px;
+    font-family: fantasy;
 }
-.about4{
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
+.aboutimage{
+    position:relative;
+    margin:auto;
+    width: 70px;
+    height: 70px;
+    background-color:grey;
+    border-radius: 10px;
+
 }
-.about3{
+.aboutcontent{
     text-align: center;
   
 }
-.about5{
+.aboutcontainer{
   
     display:grid;
-   grid-template-columns:1fr 1fr 1fr;
-   grid-gap:2rem;
+   grid-template-columns:1fr 1fr 1fr 1fr;
+   grid-gap:5rem;
 }
 
 .role
 
 {
-    font-weight: lighter;
+    font-weight: bold;
 
 
 }
 .faculty{
     font-size: large;
+    /* font-weight:lighter; */
+    color:grey;
     display:inline-block;
 
 }
 .name{
     font-size: larger;
-    color: rgb(197, 33, 33);
+   color: #4bb54f;
 }
-
+@media (max-width:500px)
+{
+    .aboutpara{
+        position:relative;
+    text-align: center;
+    justify-content: center;
+    margin: 10%;
+    margin-top: 42%;
+ 
+}
+  .aboutcontainer{
+  
+    display:grid;
+   grid-template-columns:1fr 1fr;
+   grid-gap:2rem;
+}  
+}
