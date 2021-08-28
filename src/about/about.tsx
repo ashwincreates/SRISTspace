@@ -7,10 +7,10 @@ function About() {
       <div className="aboutpara ">
         <h2 >
           We are students of SRIST Computer Science Stream and We wanted to
-          bring our College experience on an online plateform .
+          bring our College experience on an online platform .
         </h2>
       </div>
-      <h2 className="abouttitle">Contributer</h2>
+      <h2 className="abouttitle">Contributers</h2>
       <div className="aboutcontainer">
         <div className="aboutcontent">
           <div className="aboutimage">

@@ -49,7 +49,7 @@ class Recent extends React.Component< {}, { notelist: Note[] }>
     return (
       <>
        
-        <div className="tray">{cards}</div>
+        <div className="tray margin-full">{cards}</div>
       </>
     );
   }

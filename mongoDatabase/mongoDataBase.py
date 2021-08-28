@@ -1,5 +1,8 @@
 import pymongo as pg
 import re
+import json
+from bson import json_util
+from bson.objectid import ObjectId
 
 path = "mongodb+srv://utkarsh:utkarsh123456@sristspace.lyx27.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 database = "sristspacedb"
@@ -80,17 +83,31 @@ def addNotes(topic, link, uploadDate, subject, semester, stream):
 
 def fetchNotes(semester, stream):  # via drop downs
     notes = getNotes()
-    cols = getNotes().find({'semester': semester, 'stream': stream} , {'_id': 0})
+    cols = getNotes().aggregate([
+            {"$match" : {"semester" : semester, "stream": stream}},
+            {"$group": {"_id" : {"subject":"$subject", "code":"$code"}}},
+            {"$project" : {"_id":0, "subject":"$_id.subject", "code":"$_id.code"}}
+        ])
     data = []
     for i in cols:
+        #val = json.loads(json_util.dumps(i['_id']))
+        #i['_id'] = val['$oid']
         data.append(i)
 
-    json = {
+    js = {
         'data': data
     }
+    print(data)
+    return js
 
-    return json
-
+def getLinks(subject):
+    links = getNotes().find({}, {'_id':0, 'subject':1,'code':subject, 'unit': 1, 'contents': 1, 'topic': 1}).sort('unit', 1)
+    data = []
+    for i in links:
+        data.append(i)
+    res ={'data' : data}
+    print(res);
+    return res
 
 def searchNotes(keyword):
     # notes = getNotes()

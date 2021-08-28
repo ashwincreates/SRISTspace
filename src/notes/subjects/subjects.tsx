@@ -1,5 +1,6 @@
 import React from "react";
 import Dialog from "../../dialog/dialog";
+import Icons from "../../icons/icons";
 import { Note } from "../../models/models";
 
 //state and props for the class
@@ -7,10 +8,11 @@ interface State {
   semester: string;
   open: boolean;
   branch: string;
-  notelist: Note[];
+  notelist: {subject: string, code :number}[];
+  links: {code: number, contents : string, topic: string,subject: string}[];
   loading: boolean;
   dirty: boolean;
-  selected : string;
+  selected: number;
 }
 
 interface Props {}
@@ -71,7 +73,8 @@ class Subjects extends React.Component<Props, State> {
       loading: false,
       dirty: false,
       open: false,
-	selected: "",
+      selected: 0,
+      links: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.URL = "https://sristspace.herokuapp.com";
@@ -102,11 +105,12 @@ class Subjects extends React.Component<Props, State> {
   handleSubmit(semester: string, branch: string) {
     fetch(this.URL + "/getNotesByDrop/" + semester + "/" + branch)
       .then((res) => res.json())
-      .then((data) => { 
+      .then((data) => {
         this.setState({
           notelist: data.data,
           loading: false,
         });
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -114,9 +118,15 @@ class Subjects extends React.Component<Props, State> {
       });
   }
 
-  toggle(name: string) {
-    this.setState({open: !this.state.open, selected : name});
-	  }
+  toggle(code: number) {
+    this.setState({ open: !this.state.open, selected: code }, () => {
+      if (this.state.semester && this.state.branch && this.state.selected){
+        fetch(this.URL + "/getlinks/" + this.state.selected)
+          .then((res) => res.json())
+          .then((data) => {this.setState({links: data.data})})
+          .catch((error) => console.log(error));}
+    });
+  }
 
   render() {
     let cards: any;
@@ -124,21 +134,19 @@ class Subjects extends React.Component<Props, State> {
       cards = <NoCard loading={this.state.loading} dirty={this.state.dirty} />;
     } else {
       cards = this.state.notelist.map((note) => (
-        
-      <div className="card-md" onClick={() => this.toggle(note.subject)}>
-        <h1>Subject</h1>
-        <span>
-          {note.subject}
-          <br />
-        </span>
-      </div>
+        <div className="sub-md" onClick={() => this.toggle(note.code)}>
+          <span>
+            {note.subject}
+            <br />
+          </span>
+        </div>
       ));
     }
 
     return (
       <>
-        <h2 className="head">Subjects</h2>
-        <form>
+        <h2 className="head margin-full">Subjects</h2>
+        <form className="margin-full">
           <select
             className="choice"
             name="semester"
@@ -165,8 +173,25 @@ class Subjects extends React.Component<Props, State> {
             <option value="IT">IT</option>
           </select>
         </form>
-        <div className="item-tray">{cards}</div>
-        <Dialog open={this.state.open}><div className="card-md">dialog is {this.state.selected} <br /> <button onClick={() => this.toggle(this.state.selected)}>close</button></div></Dialog>
+        <div className="item-tray margin-full">{cards}</div>
+        <Dialog open={this.state.open}>
+          <div className="note-md">
+	    <h3 className="note-title">{this.state.links[0]?this.state.links[0].subject:""}</h3>
+		<div className="scroll">
+            {this.state.links.map((link) => {
+		return (
+			<div className="note">
+				<h2>{link.topic}</h2>
+				<div>{link.contents}</div>
+			</div>
+		);	
+		})}
+		</div>
+            <div className="icon-button close-notes" onClick={() => this.toggle(this.state.selected)}>
+		<Icons name="close"></Icons>
+            </div>
+          </div>
+        </Dialog>
       </>
     );
   }
