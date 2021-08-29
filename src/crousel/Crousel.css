@@ -55,7 +55,7 @@ input[name="a"]{
     margin-left:-40%;
 }
 
-@media(max-width: 480px){
+@media(max-width: 360px){
   .slide img{
     width: auto;
     height: 100%;
