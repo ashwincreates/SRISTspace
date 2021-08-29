@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RouteComponentProps } from "react-router";
 import "../articles/article.css";
-import { Note,IEvent,Article } from "../models/models";
-import  Ecard  from "../events/Ecard";
+import { Note, IEvent, Article } from "../models/models";
 import Icons from "../icons/icons";
 
 interface locstate {
   state: string;
-
-
-}
-interface searchstate {
-notelist:Note[];
-articlelist:Article[];
-eventlist:IEvent[];
 }
 
 function Notecard(props: any) {
@@ -29,13 +21,11 @@ function Notecard(props: any) {
 function Articlecard(props: any) {
   return (
     <>
-      
-        <div className="article-info">
+      <div className="article-info">
         <span>{props.author ? props.author : "unknown"}</span>
         <h3 className="article-title">{props.title.replace("<br>", "")}</h3>
         <h1>{props.date as Date}</h1>
       </div>
-      
     </>
   );
 }
@@ -56,39 +46,38 @@ function Eventcard(props: any) {
 
   return (
     <>
-    <div className="event-post">
-      <div className="thumbnail post">
-        <img className="event-image post" src={props.image} alt="load..." />
-      </div>
-      <div className="content">
-        <div className="button-tray">
-          <span
-            className={"like ".concat(state ? "" : "filter")}
-            onClick={Click}
-          >
-            <Icons name="party_active" />
-            <div className={state ? "" : "liked"}>{count}</div>
-          </span>
+      <div className="event-post">
+        <div className="thumbnail post">
+          <img className="event-image post" src={props.image} alt="load..." />
         </div>
-        <h2 className="data">{props.name} </h2>
-        <p>{props.venue}</p>
-      </div>
+        <div className="content">
+          <div className="button-tray">
+            <span
+              className={"like ".concat(state ? "" : "filter")}
+              onClick={Click}
+            >
+              <Icons name="party_active" />
+              <div className={state ? "" : "liked"}>{count}</div>
+            </span>
+          </div>
+          <h2 className="data">{props.name} </h2>
+          <p>{props.venue}</p>
+        </div>
       </div>
     </>
   );
 }
 
-
 class Search extends React.Component<
   RouteComponentProps<locstate>,
-  { notelist: Note[],eventlist:IEvent[],articlelist:Article[],}
+  { notelist: Note[]; eventlist: IEvent[]; articlelist: Article[] }
 > {
   constructor(props: any) {
     super(props);
     this.state = {
       notelist: [],
-       eventlist:[],
-       articlelist:[],
+      eventlist: [],
+      articlelist: [],
     };
     this.URL = "https://sristspace.herokuapp.com";
   }
@@ -96,43 +85,43 @@ class Search extends React.Component<
   URL: any;
 
   componentDidMount() {
-	
     fetch(this.URL + "/getNotesBySearch/" + this.props.location.state)
       .then((res) => res.json())
       .then((data) => {
         this.setState({
           notelist: data.notes,
-           eventlist: data.events,
-           articlelist:data.articles,
+          eventlist: data.events,
+          articlelist: data.articles,
         });
-	console.log(data)
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
         console.log(this.state.notelist);
       });
   }
- 
 
   render() {
-
     let cards: any;
     cards = this.state.notelist.map((note) => (
       <Notecard topic={note.topic} subject={note.subject} />
     ));
 
- let  Ecards:any;
-  Ecards= this.state.eventlist.map((item)=>(
-      <Eventcard name={item.eventname} venue={item.eventvenue} image={item.image} />
+    let Ecards: any;
+    Ecards = this.state.eventlist.map((item) => (
+      <Eventcard
+        name={item.eventname}
+        venue={item.eventvenue}
+        image={item.image}
+      />
     ));
- let  Acards:any;
-  Acards= this.state.articlelist.map((item)=>(
-      <Articlecard title={item.title} author={item.author} date={item.date}  />
+    let Acards: any;
+    Acards = this.state.articlelist.map((item) => (
+      <Articlecard title={item.title} author={item.author} date={item.date} />
     ));
 
     return (
       <>
-      
         <div className="head">
           <h2>Search result for "{this.props.location.state}"</h2>
         </div>
