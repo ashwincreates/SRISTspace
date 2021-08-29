@@ -36,7 +36,7 @@ return(
 <div className = "fragment">
 
 <img
-alt = ""
+alt = "" 
 className = "imageBack" src = {this.state.images[this.state.index]} 
 onTransitionEnd = {this.changeImage}
 />
