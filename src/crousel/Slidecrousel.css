@@ -1,0 +1,20 @@
+.fragment{
+
+height: 500px;
+border-radius: 10px;
+margin: 1%;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid black;
+
+}
+
+.imageBack{
+
+    width: 500%;
+    height: 500px;
+    border-radius: 10px;
+
+}
