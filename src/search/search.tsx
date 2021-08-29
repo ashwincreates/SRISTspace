@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import "../articles/article.css";
-import { Note,IEvent } from "../models/models";
+import { Note,IEvent,Article } from "../models/models";
 import  Ecard  from "../events/Ecard";
-
+import Icons from "../icons/icons";
 
 interface locstate {
   state: string;
-eventname:string;
-eventvenue:string;
+
 
 }
 interface searchstate {
 notelist:Note[];
-//articlelist:Article[];
+articlelist:Article[];
 eventlist:IEvent[];
 }
 
@@ -27,13 +26,53 @@ function Notecard(props: any) {
     </>
   );
 }
-
-function Eventcard(props: any) {
+function Articlecard(props: any) {
   return (
     <>
-      <div className="event-post">
-        <h2>{props.name}</h2>
+      
+        <div className="article-info">
+        <span>{props.author ? props.author : "unknown"}</span>
+        <h3 className="article-title">{props.title.replace("<br>", "")}</h3>
+        <h1>{props.date as Date}</h1>
+      </div>
+      
+    </>
+  );
+}
+
+function Eventcard(props: any) {
+  const [state, setState] = useState(true);
+  const [count, setcount] = useState(120);
+  function Click() {
+    if (state) {
+      setcount(count + 1);
+      setState(false);
+    } else {
+      setcount(count - 1);
+      setState(true);
+    }
+    console.log(state);
+  }
+
+  return (
+    <>
+    <div className="event-post">
+      <div className="thumbnail post">
+        <img className="event-image post" src={props.image} alt="load..." />
+      </div>
+      <div className="content">
+        <div className="button-tray">
+          <span
+            className={"like ".concat(state ? "" : "filter")}
+            onClick={Click}
+          >
+            <Icons name="party_active" />
+            <div className={state ? "" : "liked"}>{count}</div>
+          </span>
+        </div>
+        <h2 className="data">{props.name} </h2>
         <p>{props.venue}</p>
+      </div>
       </div>
     </>
   );
@@ -42,23 +81,16 @@ function Eventcard(props: any) {
 
 class Search extends React.Component<
   RouteComponentProps<locstate>,
-  { notelist: Note[],eventlist:IEvent[]}
+  { notelist: Note[],eventlist:IEvent[],articlelist:Article[],}
 > {
   constructor(props: any) {
     super(props);
     this.state = {
       notelist: [],
-       eventlist:[{eventdate:"27-07-19",
-       id:"asdfsfs",
-eventname:"Movie Show",
-eventvenue
-:
-"A Movie Show is being organized in the college autditorium all the stu...",
-image
-:
-"http://res.cloudinary.com/sristspace/image/upload/v1629978235/wfhgq3z7..."}],
+       eventlist:[],
+       articlelist:[],
     };
-    this.URL = "http://127.0.0.1:5000"/*"https://sristspace.herokuapp.com"*/;
+    this.URL = "https://sristspace.herokuapp.com";
   }
 
   URL: any;
@@ -70,23 +102,17 @@ image
       .then((data) => {
         this.setState({
           notelist: data.notes,
+           eventlist: data.events,
+           articlelist:data.articles,
         });
 	console.log(data)
       })
-   
-    fetch(this.URL + "/getNotesBySearch/" + this.props.location.state)
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          eventlist: data.events,
-        });
-      })
-  
       .catch((error) => {
         console.log(error);
         console.log(this.state.notelist);
       });
   }
+ 
 
   render() {
 
@@ -95,10 +121,14 @@ image
       <Notecard topic={note.topic} subject={note.subject} />
     ));
 
-//  let  Ecards:any;
-//   Ecards= this.state.eventlist.map((item)=>(
-//       <Eventcard name={item.eventname} venue={item.eventvenue} />
-//     ));
+ let  Ecards:any;
+  Ecards= this.state.eventlist.map((item)=>(
+      <Eventcard name={item.eventname} venue={item.eventvenue} image={item.image} />
+    ));
+ let  Acards:any;
+  Acards= this.state.articlelist.map((item)=>(
+      <Articlecard title={item.title} author={item.author} date={item.date}  />
+    ));
 
     return (
       <>
@@ -107,7 +137,8 @@ image
           <h2>Search result for "{this.props.location.state}"</h2>
         </div>
         <div className="item-tray">{cards}</div>
-        <div className="item-tray"><Ecard/></div>
+        <div className="item-tray">{Ecards}</div>
+        <div className="item-tray">{Acards}</div>
       </>
     );
   }

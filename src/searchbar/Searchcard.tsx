@@ -43,8 +43,7 @@ class SearchInput extends React.Component<RouteComponentProps, {open: boolean}> 
   }
 }
 
-const Searchcard = withRouter<
-  RouteComponentProps,
+const Searchcard = withRouter<RouteComponentProps,
   React.ComponentType<RouteComponentProps>
 >(SearchInput);
 export default Searchcard;
