@@ -54,6 +54,7 @@ def serve(path):
 #        decrypt = jwt.JWT.decode(AuthToken , app.config['SECRET_KEY'])
 #        if mongoDataBase.checkExistance(decrypt['email']) :
 #            return f(decrypt['email'] , *args , **kwargs)
+#
 #    return decorator
 
 
