@@ -63,7 +63,7 @@
   outline: none;
 }
 
-.commonInputs1 {
+.commonInputs1:focus {
   border: 2px solid var(--PrimaryColor);
 }
 
@@ -109,85 +109,3 @@ hr {
 	justify-content: center;
 }
 
-@media (max-width: 480px) {
-  .Views {
-    position: fixed;
-    background-color: whitesmoke;
-    z-index: 10;
-    height: 400px;
-    width: 400px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .common2 {
-    height: 12%;
-    margin-top: 5px;
-    align-self: center;
-    justify-content: center;
-  }
-
-  .googlesign {
-    width: 40%;
-    height: 10%;
-    margin-left: 30%;
-  }
-
-  .or {
-    margin-top: 100px;
-  }
-
-  .borderScrap {
-    border: 5px solid rgba(128, 128, 128, 0.568);
-    margin: 10px;
-    justify-content: center;
-    align-content: center;
-  }
-
-  .commonInputs {
-    border: 2px solid grey;
-    align-self: center;
-    height: 25px;
-    width: 80%;
-    margin-top: 6%;
-    margin-left: 10%;
-  }
-  .commonInputs1 {
-    border: 2px solid grey;
-    align-self: center;
-    height: 25px;
-    width: 80%;
-    margin-top: 6%;
-    margin-left: 10%;
-  }
-
-  .close {
-    display: flex;
-  }
-
-  .flexrow {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .logoat {
-    width: 50px;
-    height: 50px;
-  }
-
-  .udTxt {
-    margin-left: 50%;
-    color: blue;
-    width: fit-content;
-    cursor: pointer;
-  }
-
-  .commonButton {
-    margin-left: 35%;
-    margin-top: 15%;
-    height: 50px;
-    width: 120px;
-    justify-content: center;
-    align-content: center;
-  }
-}
