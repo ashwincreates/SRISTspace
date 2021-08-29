@@ -7,7 +7,7 @@ function Explore() {
   let [articles, setArticles] = useState<Article[]>([]);
   let [page, setPage] = useState<number>(0);
   let [loading, setLoading] = useState<boolean>(false);
-  let URL = "https://sristspace.herokuapp.com";
+  let URL = "http://127.0.0.1:5000"/*"https://sristspace.herokuapp.com"*/;
 
   let loadmore = React.useRef<HTMLDivElement>(null);
 

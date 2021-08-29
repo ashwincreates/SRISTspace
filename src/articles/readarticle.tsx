@@ -1,10 +1,10 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import Icons from "../icons/icons";
 import { Article } from "../models/models";
 
 interface State extends Article {
   liked: boolean;
+  caption: "",
 }
 
 class ReadArticle extends React.Component<RouteComponentProps, State> {
@@ -18,6 +18,7 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
       article: [],
       liked: false,
       date: "",
+      caption: "",
     };
     this.like = this.like.bind(this);
     this.URL = "https://sristspace.herokuapp.com/getArticles/";
@@ -31,6 +32,7 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
             likes: data.likes,
             article: data.article,
             date: data.date,
+            caption: data.caption,
           },
           this.init
         );
@@ -83,14 +85,10 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
             {this.state.author}
             <h1>{this.state.date}</h1>
           </div>
-          <div
-            onClick={this.like}
-            className={"likes ".concat(this.state.liked ? "liked" : "")}
-          >
-            <div>{this.state.likes}</div>
-            <Icons name={"like_fill"}></Icons>
-          </div>
         </div>
+	  <div className="article-caption">
+		{this.state.caption}
+	  </div>
         <article id="content"></article>
       </div>
     );

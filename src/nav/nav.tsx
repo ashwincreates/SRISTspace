@@ -11,21 +11,21 @@ function Nav() {
       <h1>version 1.0</h1>
     </div>
     </NavLink>
-    
+   <div className="nav-tray"> 
+      <Searchcard></Searchcard>
     <div className="nav-menu-btn"  onClick= {() => opennav()}>
       <input className="nav-menu" id="nav-btn" type="checkbox"></input>
       <div className="first"></div>
       <div className="second"></div>
     </div>
 
-      <Searchcard></Searchcard>
     <ul id="overlay">
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/notes">Notes</NavLink></li>
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/events">Events</NavLink></li>
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/articles">Articles</NavLink></li>
       <li><NavLink onClick= {() => linkClick()} className="links" activeClassName="active_class" to="/about">About Us</NavLink></li>
     </ul>
-
+</div>
     </nav>
     </>
   );

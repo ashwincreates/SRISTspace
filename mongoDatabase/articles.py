@@ -47,7 +47,7 @@ def fetchTrendingArticles():
 
 def fetchPage(page):
     skip = int(page) * 5
-    articles = getArticles().find({}, {'article': 0}).skip(skip).limit(5)
+    articles = getArticles().find({}, {'article': 0}).sort('date',-1).skip(skip).limit(5)
     print( page * 5 + " is skipped")
     data = []
     for i in articles:

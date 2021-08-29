@@ -7,12 +7,15 @@ interface Request {
   title: string;
   article: Object[];
   author: string;
+  caption: string;
   likes: number;
   date: string;
 }
 
 interface State {
   position: { x: number; y: number };
+  author: string;
+  caption: string;
   current: any;
   delete: string;
   loading: boolean;
@@ -26,6 +29,8 @@ class Article extends React.Component<RouteComponentProps, State> {
     super(props);
     this.state = {
       position: { x: -100, y: -100 },
+      author: "",
+      caption: "",
       current: "",
       delete: "none",
       menu: "none",
@@ -69,35 +74,31 @@ class Article extends React.Component<RouteComponentProps, State> {
   }
 
   handlekeydown(event: any) {
-    switch (event.keyCode) {
-      case 8:
-        let parentele = event.target.parentNode;
-        if (
-          event.target.nodeName === "IMG" &&
-          event.target.parentNode.children.length === 1
-        ) {
-          let p = this.addpara();
-          event.target.parentNode.insertBefore(p, event.target.nextSibling);
-          event.target.outerHTML = "";
-          p.focus();
-        } else if (
-          event.target.parentNode.children.length > 1 &&
-          (event.target.innerHTML === "<br>" ||
-            event.target.innerHTML === "" ||
-            event.target.children[0].innerHTML === "<br>")
-        ) {
-          let index = [...parentele.children].indexOf(event.target);
-          parentele.children[index > 0 ? index - 1 : index].focus();
-          event.target.outerHTML = "";
-        }
-        break;
-      case 13:
+    if (event.keyCode === 8) {
+      let parentele = event.target.parentNode;
+      if (
+        event.target.nodeName === "IMG" &&
+        event.target.parentNode.children.length === 1
+      ) {
         let p = this.addpara();
         event.target.parentNode.insertBefore(p, event.target.nextSibling);
+        event.target.outerHTML = "";
         p.focus();
-        break;
-      default:
-        break;
+      } else if (
+        event.target.parentNode.children.length > 1 &&
+        (event.target.innerHTML === "<br>" ||
+          event.target.innerHTML === "" /*||
+          event.target.children[0].innerHTML === "<br>"*/)
+      ) {
+        let index = [...parentele.children].indexOf(event.target);
+        parentele.children[index > 0 ? index - 1 : index].focus();
+        event.target.outerHTML = "";
+      }
+    } else if (event.keyCode == 13 && event.shiftKey) {
+      event.preventDefault();
+      let p = this.addpara();
+      event.target.parentNode.insertBefore(p, event.target.nextSibling);
+      p.focus();
     }
   }
 
@@ -107,6 +108,7 @@ class Article extends React.Component<RouteComponentProps, State> {
       title: "",
       article: [],
       author: "",
+      caption: "",
       likes: 0,
       date: Date().toString().slice(4, 15),
     };
@@ -119,7 +121,8 @@ class Article extends React.Component<RouteComponentProps, State> {
         else resobj.article.push({ image: article[i].getAttribute("src") });
       }
     }
-    resobj.author = "root";
+    resobj.author = this.state.author;
+    resobj.caption = this.state.caption;
     resobj.likes = 0;
     let options = {
       method: "POST",
@@ -195,7 +198,21 @@ class Article extends React.Component<RouteComponentProps, State> {
   confirmation() {
     return (
       <>
-        Are you sure you want to publish?
+        <input
+          className="popdata"
+          type="text"
+          placeholder="author name"
+          onChange={(e) => {
+            this.setState({ author: e.target.value });
+          }}
+        />
+        <textarea
+          className="popdata"
+          placeholder="add a caption"
+          onChange={(e) => {
+            this.setState({ caption: e.target.value });
+          }}
+        />
         <div className="flex">
           <button onClick={this.publish}>Publish!</button>
           <button
