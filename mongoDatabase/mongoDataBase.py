@@ -3,6 +3,8 @@ import re
 import json
 from bson import json_util
 from bson.objectid import ObjectId
+import mongoDatabase.articles
+import mongoDatabase.event
 
 path = "mongodb+srv://utkarsh:utkarsh123456@sristspace.lyx27.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 database = "sristspacedb"
@@ -113,13 +115,26 @@ def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
     cols = getNotes().find({'topic': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
-    data = []
+    colsa = mongoDatabase.articles.getArticles().find({'title': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
+    colse = mongoDatabase.event.getEvents().find({'eventname': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
+
+    notes = []
+    articles = []
+    events = []
 
     for i in cols:
-        data.append(i)
+        notes.append(i)
+
+    for i in colsa:
+        articles.append(i)
+
+    for i in colse:
+        events.append(i)
 
     json = {
-        'data': data
+        'notes': notes,
+        'events' : events,
+        'articles': articles
     }
 
     return json

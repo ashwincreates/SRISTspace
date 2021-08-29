@@ -27,23 +27,28 @@ class Search extends React.Component<
     this.state = {
       notelist: [],
     };
-    this.URL = "https://sristspace.herokuapp.com";
+    this.URL = "http://127.0.0.1:5000"/*"https://sristspace.herokuapp.com"*/;
   }
 
   URL: any;
 
-  render() {
+  componentDidMount() {
+	
     fetch(this.URL + "/getNotesBySearch/" + this.props.location.state)
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          notelist: data.data,
+          notelist: data.notes,
         });
+	console.log(data)
       })
       .catch((error) => {
         console.log(error);
         console.log(this.state.notelist);
       });
+  }
+
+  render() {
 
     let cards: any;
     cards = this.state.notelist.map((note) => (

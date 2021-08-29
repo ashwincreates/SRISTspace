@@ -1,18 +1,12 @@
 import "./note.css";
-import Recent from "./subjects/recent";
 function NoteList() {
     return(
         <>
-        <div className="head">
+        <div className="head margin-full">
           <div className="section-title">
-            <h2>Newly Uploaded Notes</h2>
-            <h1>Fresh upload</h1>
+            <h2>Important Notice</h2>
           </div>
-          <button className="explore">Explore &#62;</button>
         </div>
-        
-           <Recent/>
- 
         </>
     );
 }
