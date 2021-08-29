@@ -58,18 +58,20 @@ image
 :
 "http://res.cloudinary.com/sristspace/image/upload/v1629978235/wfhgq3z7..."}],
     };
-    this.URL = "https://sristspace.herokuapp.com";
+    this.URL = "http://127.0.0.1:5000"/*"https://sristspace.herokuapp.com"*/;
   }
 
   URL: any;
 
-  render() {
+  componentDidMount() {
+	
     fetch(this.URL + "/getNotesBySearch/" + this.props.location.state)
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          notelist: data.data,
+          notelist: data.notes,
         });
+	console.log(data)
       })
    
     fetch(this.URL + "/getNotesBySearch/" + this.props.location.state)
@@ -84,6 +86,9 @@ image
         console.log(error);
         console.log(this.state.notelist);
       });
+  }
+
+  render() {
 
     let cards: any;
     cards = this.state.notelist.map((note) => (

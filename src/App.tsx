@@ -11,14 +11,6 @@ function App() {
     <>
       <div className="App">
         <Crousel></Crousel>
-        <div className="card">
-          <h2> Welcome to SRIST space </h2>
-          <br />
-          A Online community where students of srist can post notes, host
-          events, ask help, poll.
-          <br />
-          Have Fun!
-        </div>
         <NoteList></NoteList>
         <ArticleList></ArticleList>
         <EventList></EventList>
