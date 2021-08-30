@@ -70,11 +70,17 @@ function Eventcard(props: any) {
 
 class Search extends React.Component<
   RouteComponentProps<locstate>,
-  { notelist: Note[]; eventlist: IEvent[]; articlelist: Article[] }
+  {
+    notelist: Note[];
+    eventlist: IEvent[];
+    articlelist: Article[];
+    keyword: string;
+  }
 > {
   constructor(props: any) {
     super(props);
     this.state = {
+      keyword: "",
       notelist: [],
       eventlist: [],
       articlelist: [],
@@ -85,6 +91,10 @@ class Search extends React.Component<
   URL: any;
 
   componentDidMount() {
+    this.fetchResults();
+  }
+
+  fetchResults() {
     fetch(this.URL + "/getNotesBySearch/" + this.props.location.state)
       .then((res) => res.json())
       .then((data) => {
@@ -99,6 +109,13 @@ class Search extends React.Component<
         console.log(error);
         console.log(this.state.notelist);
       });
+  }
+
+  componentDidUpdate() {
+    if (this.state.keyword != this.props.location.state) {
+      this.setState({ keyword: this.props.location.state as string });
+      this.fetchResults();
+    }
   }
 
   render() {
@@ -122,12 +139,42 @@ class Search extends React.Component<
 
     return (
       <>
-        <div className="head">
-          <h2>Search result for "{this.props.location.state}"</h2>
-        </div>
-        <div className="item-tray">{cards}</div>
-        <div className="item-tray">{Ecards}</div>
-        <div className="item-tray">{Acards}</div>
+        <h2 className="sea margin-full">
+          Search result for <span>"{this.props.location.state}"</span>
+        </h2>
+
+        {this.state.notelist.length > 0 ? (
+          <>
+            <div className="head margin-full">
+              <h2 className="subsection">NOTES</h2>
+            </div>
+            <div className="item-tray margin-full">{cards}</div>
+          </>
+        ) : (
+          ""
+        )}
+
+        {this.state.articlelist.length > 0 ? (
+          <>
+            <div className="head margin-full">
+              <h2 className="subsection">ARTICLES</h2>
+            </div>
+            <div className="item-tray margin-full">{Acards}</div>
+          </>
+        ) : (
+          ""
+        )}
+
+        {this.state.eventlist.length > 0 ? (
+          <>
+            <div className="head margin-full">
+              <h2 className="subsection">EVENTS</h2>
+            </div>
+            <div className="item-tray margin-full">{Ecards}</div>
+          </>
+        ) : (
+          ""
+        )}
       </>
     );
   }

@@ -4,6 +4,21 @@
   flex-grow: 1;
 }
 
+.sea {
+	margin-top: 1rem;
+	font-size: 1.5rem;
+}
+
+.sea span {
+	color:  var(--PrimaryColor);
+}
+
+.subsection {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--Grey);
+}
+
 .close-search {
 	height: 18px;
 	width: 18px;
