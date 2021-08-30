@@ -6,6 +6,18 @@
   flex-direction: column;
 }
 
+.event-preview {
+	padding: 0px;
+	height: 250px;
+	width: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.event-preview img {
+	position: absolute;
+	top: 0;
+}
 
 .card-post:hover{
   box-shadow: rgba(0, 5, 1, 0.70) 7px 6px 12px;
@@ -259,12 +271,21 @@ img {
   left: 45%;
 }
 
+@media(min-width: 480px) {
+	.event-preview {
+		height: 400px;
+		width: 300px;
+		margin-right: 1rem;
+	}
+}
+
 @media (max-width: 1500px) {
   .post-tray {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 480px) {
+
   .poptitle {
     font-size: 26px;
   }

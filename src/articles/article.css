@@ -7,6 +7,40 @@ p:first-of-type:empty:before {
   color: #aaa;
 }
 
+.preview {
+	box-shadow: none !important;
+	position: relative;
+	overflow: hidden;
+	align-items: flex-start;
+	justify-content: flex-end !important;
+	flex-direction: column;
+	padding: 12px !important;
+}
+
+.preview img {
+	width: 100%;
+	position: absolute;
+	top : 0;
+	left: 0;
+	z-index: 0;
+}
+
+.preview div {
+	background: linear-gradient(11.96deg, #000000 -56.54%, rgba(0, 0, 0, 0) 88.04%);
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.preview h3 {
+	z-index: 2;
+	font-weight: 500;
+	color: var(--White);
+}
+
 .article-caption {
   font-size: 1.2rem;
   color: var(--Black);

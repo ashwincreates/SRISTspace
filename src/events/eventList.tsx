@@ -1,16 +1,34 @@
 import "./event.css";
-import Ecard from "./Ecard";
+import {IEvent} from "../models/models";
+import {useEffect, useState} from "react";
 function EventList() {
+  let [events, setevents] = useState([] as IEvent[]);
+
+  let URL = "https://sristspace.herokuapp.com/fetchEvents";
+
+  useEffect(() => {
+    fetch(URL)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data.length > 0) {
+          setevents(data.data);
+        }
+      });
+  }, []);
   return (
     <>
       <div className="head margin-full">
 	<div className="section-title">
-          <h2>Up Coming Event</h2>
-          <h1>Fresh upload</h1>
+          <h2>Up Coming Events</h2>
 	</div>
+	<button>Explore</button>
       </div>
       <div className="tray margin-full">
-         <Ecard />
+         {events.map((item) => (
+		<div className="card-md event-preview">
+			<img src={item.image}/>
+		</div>
+	))}
       </div>
     </>
   );
