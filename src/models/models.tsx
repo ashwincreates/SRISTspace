@@ -16,7 +16,7 @@ export interface Article {
 	cap_img?: string;
 }
 export interface IEvent {
-	id : string;
+  _id:object;
 	eventname : string;
   eventdate:string;
   eventvenue:string;

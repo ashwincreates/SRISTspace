@@ -1,11 +1,14 @@
 import "./article.css";
 import "../notes/note.css";
+import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
 import { Article } from "../models/models";
-
+import ReadArticle from "../articles/readarticle";
 interface state extends Article {
 	cap_image : string;
+  _id:object;
 }
+
 
 function ArticleList() {
   let [articles, setarticles] = useState([] as state[]);
@@ -21,7 +24,7 @@ function ArticleList() {
         }
       });
   }, []);
-
+let history = useHistory();
   return (
     <>
       <div className="head margin-full">
@@ -33,7 +36,8 @@ function ArticleList() {
 
       <div className="item-tray margin-full">
         {articles.map((item) => (
-          <div className="card-md preview">
+          <div className="card-md preview"  onClick={() => {
+        history.push("/articles/" + item._id); }}>
 		<img src={item.cap_image} />
 		<div/>
               <h3>{item.title.replace("<br>", "")}</h3>

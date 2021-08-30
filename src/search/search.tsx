@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router";
 import "../articles/article.css";
 import { Note, IEvent, Article } from "../models/models";
 import Icons from "../icons/icons";
+import "../articles/article.css";
+import "../notes/note.css";
 
 interface locstate {
   state: string;
+  
+}
+interface state extends Article{
+  cap_img: string;
+  _id:object;
 }
 
 function Notecard(props: any) {
@@ -18,14 +25,16 @@ function Notecard(props: any) {
     </>
   );
 }
-function Articlecard(props: any) {
+function Articlecard(props: any,item) {
+ let history = useHistory();
   return (
     <>
-      <div className="article-info">
-        <span>{props.author ? props.author : "unknown"}</span>
-        <h3 className="article-title">{props.title.replace("<br>", "")}</h3>
-        <h1>{props.date as Date}</h1>
-      </div>
+       <div className="card-md preview" onClick={() => {
+        history.push("/articles/" + item._id); }}>
+		<img src={props.cap_img} />
+		<div/>
+              <h3>{props.title.replace("<br>", "")}</h3>
+          </div>
     </>
   );
 }
@@ -43,10 +52,11 @@ function Eventcard(props: any) {
     }
     console.log(state);
   }
-
+let history=useHistory();
   return (
     <>
-      <div className="event-post">
+      <div className="event-post" onClick={() => {
+        history.push("/events/"); }}>
         <div className="thumbnail post">
           <img className="event-image post" src={props.image} alt="load..." />
         </div>
@@ -132,9 +142,10 @@ class Search extends React.Component<
         image={item.image}
       />
     ));
+     
     let Acards: any;
     Acards = this.state.articlelist.map((item) => (
-      <Articlecard title={item.title} author={item.author} date={item.date} />
+      <Articlecard  title={item.title} image={item.cap_img} />
     ));
 
     return (

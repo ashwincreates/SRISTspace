@@ -1,11 +1,15 @@
 import "./event.css";
 import {IEvent} from "../models/models";
 import {useEffect, useState} from "react";
+import { useHistory } from "react-router";
+
+
+
 function EventList() {
   let [events, setevents] = useState([] as IEvent[]);
 
   let URL = "https://sristspace.herokuapp.com/fetchEvents";
-
+let history = useHistory();
   useEffect(() => {
     fetch(URL)
       .then((res) => res.json())
@@ -25,7 +29,7 @@ function EventList() {
       </div>
       <div className="tray margin-full">
          {events.map((item) => (
-		<div className="card-md event-preview">
+		<div className="card-md event-preview" onClick={()=>{history.push("/events/");}}>
 			<img src={item.image}/>
 		</div>
 	))}
