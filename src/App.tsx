@@ -15,6 +15,7 @@ function App() {
     <>
       <div className="App">
         <Crousel></Crousel>
+		{/* <Slidecrousel/> */}
 	<div className="head margin-full">
 		<h2>Important Notices</h2>
 	</div>
