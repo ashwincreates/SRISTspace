@@ -22,3 +22,8 @@ flex-wrap: wrap;
     flex: 1;
     
 }
+
+.upperLayer{
+    position:absolute;
+
+}
