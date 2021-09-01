@@ -23,6 +23,10 @@
   grid-row-end: 3;
 }
 
+.nocard span {
+	text-align: center;
+}
+
 .note-title {
   font-weight: 600;
   font-size: 1.5rem;

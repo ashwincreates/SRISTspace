@@ -61,6 +61,7 @@
 }
 
 .rem-form input {
+	flex-grow: 1;
 	width: 0;
 	border: none;
 	padding: 0;
@@ -122,4 +123,5 @@
 		justify-content: space-evenly;
 		width: calc(100vw - 2rem);
 	}
+
 }

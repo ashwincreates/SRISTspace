@@ -46,7 +46,7 @@ function opennav(){
         document.getElementById("overlay")?.classList.remove("active");
         const root = document.getElementById("root")?.style;
         if(root)
-            root.overflow = "scroll"
+            root.overflowY = "scroll"
     }
 }
 
