@@ -41,6 +41,7 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 
+
 #JWT authentication
 #def checkForToken(f):
 #    @functools.wraps(f)
