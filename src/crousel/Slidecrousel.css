@@ -8,22 +8,40 @@ display:flex;
 align-items: center;
 justify-content: center;
 border: 2px solid black;
-overflow:scroll;
+overflow:hidden;
 scroll-behavior: smooth;
 flex-direction: column;
 flex-wrap: wrap;
+
+}
+
+.super{
+    height: 500px;
+    position: relative;
 }
 
 .imageBack{
-
+    position: relative;
     width: 100vw;
     height: 500px;
     border-radius: 10px;
-    flex: 1;
+
     
 }
 
-.upperLayer{
+.forward{
     position:absolute;
+    top: 200px;
+   right: 10px;
 
+   
 }
+
+
+.backward{
+    position: absolute;
+    top:200px;
+    left: 10px;
+}
+
+
