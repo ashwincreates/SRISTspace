@@ -103,7 +103,10 @@ def fetchNotes(semester, stream):  # via drop downs
     return js
 
 def getLinks(subject):
-    links = getNotes().find({}, {'_id':0, 'subject':1,'code':subject, 'unit': 1, 'contents': 1, 'topic': 1}).sort('unit', 1)
+    links = getNotes().aggregate([
+        { "$match" : { "code" : subject}},
+        { "$project" : {"_id":0}}
+    ])
     data = []
     for i in links:
         data.append(i)

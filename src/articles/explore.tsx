@@ -124,7 +124,7 @@ function Explore() {
 
   return (
     <>
-      <div className="header">
+      <div className="header article-bg">
         <h3 className="title-text"> Article </h3>
         <p>Articles written by everyone. Write your own too</p>
         <button

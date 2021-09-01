@@ -31,7 +31,7 @@ let history = useHistory();
         <div className="section-title">
           <h2>Newly Uploaded Article</h2>
         </div>
-        <button className="explore">Explore</button>
+        <button className="explore" onClick={() => {history.push("/articles")}}>Explore</button>
       </div>
 
       <div className="item-tray margin-full">

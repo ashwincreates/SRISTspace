@@ -8,7 +8,7 @@ import Icons from "../icons/icons";
 function Notes() {
   return (
     <>
-      <div className="header">
+      <div className="header note-bg">
           <div className="title-text"> Notes </div>
           <p>
 		All Notes for every branch available here

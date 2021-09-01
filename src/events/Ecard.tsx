@@ -6,7 +6,7 @@ import Icons from "../icons/icons";
 
 function Card(props: any) {
   const [state, setState] = useState(true);
-  const [count, setcount] = useState(120);
+  const [count, setcount] = useState(props.likes);
   function Click() {
     if (state) {
       setcount(count + 1);
@@ -17,6 +17,11 @@ function Card(props: any) {
     }
     console.log(state);
   }
+
+  useEffect(() => {
+    let URL = "http://127.0.0.1:5000"
+    fetch(URL + "/updateEvent/" + props.id + "/" + count)
+  }, [count])
 
   return (
     <>
@@ -65,22 +70,24 @@ function Ecard() {
   const [List, setList] = useState([] as IEvent[]);
   console.log(List.length)
   useEffect(() => {
-    fetch("https://sristspace.herokuapp.com/fetchEvents")
+    fetch("http://127.0.0.1:5000/fetchEvents"/*"https://sristspace.herokuapp.com/fetchEvents"*/)
       .then((res) => res.json())
-      .then((data) => setList(data.data))
+      .then((data) => {setList(data.data); console.log(data)})
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <>
       {(List.length > 0)
-        ? List.map((item) => {
+        ? List.map((item : any) => {
             return (
               <div className="event-post">
                 <Card
                   name={item.eventname}
                   venue={item.eventvenue}
                   image={item.image}
+		  likes={item.likes as number}
+		  id={item._id}
                 />
               </div>
             );

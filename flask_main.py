@@ -135,5 +135,10 @@ def Get(_id):
     data = articles.getbyid(_id)
     return jsonify(data)
 
+@app.route('/updateEvent/<_id>/<count>', methods=['PUT'])
+def update(_id, count):
+    print("Started...")
+    event.updateEvent(_id, count)
+
 if __name__ == '__main__':
     app.run(use_reloader=True, port=port, threaded=True)

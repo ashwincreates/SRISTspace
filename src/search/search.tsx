@@ -10,10 +10,6 @@ interface locstate {
   state: string;
   
 }
-interface state extends Article{
-  cap_img: string;
-  _id:object;
-}
 
 function Notecard(props: any) {
   return (
@@ -25,13 +21,13 @@ function Notecard(props: any) {
     </>
   );
 }
-function Articlecard(props: any,item) {
+function Articlecard(props: any) {
  let history = useHistory();
   return (
     <>
        <div className="card-md preview" onClick={() => {
-        history.push("/articles/" + item._id); }}>
-		<img src={props.cap_img} />
+        history.push("/articles/" + props.id); }}>
+		<img src={props.image} />
 		<div/>
               <h3>{props.title.replace("<br>", "")}</h3>
           </div>
@@ -40,40 +36,12 @@ function Articlecard(props: any,item) {
 }
 
 function Eventcard(props: any) {
-  const [state, setState] = useState(true);
-  const [count, setcount] = useState(120);
-  function Click() {
-    if (state) {
-      setcount(count + 1);
-      setState(false);
-    } else {
-      setcount(count - 1);
-      setState(true);
-    }
-    console.log(state);
-  }
 let history=useHistory();
   return (
     <>
-      <div className="event-post" onClick={() => {
-        history.push("/events/"); }}>
-        <div className="thumbnail post">
-          <img className="event-image post" src={props.image} alt="load..." />
-        </div>
-        <div className="content">
-          <div className="button-tray">
-            <span
-              className={"like ".concat(state ? "" : "filter")}
-              onClick={Click}
-            >
-              <Icons name="party_active" />
-              <div className={state ? "" : "liked"}>{count}</div>
-            </span>
-          </div>
-          <h2 className="data">{props.name} </h2>
-          <p>{props.venue}</p>
-        </div>
-      </div>
+		<div className="card-md event-preview" onClick={()=>{history.push("/events/");}}>
+			<img src={props.image}/>
+		</div>
     </>
   );
 }
@@ -137,15 +105,13 @@ class Search extends React.Component<
     let Ecards: any;
     Ecards = this.state.eventlist.map((item) => (
       <Eventcard
-        name={item.eventname}
-        venue={item.eventvenue}
         image={item.image}
       />
     ));
      
     let Acards: any;
-    Acards = this.state.articlelist.map((item) => (
-      <Articlecard  title={item.title} image={item.cap_img} />
+    Acards = this.state.articlelist.map((item : any) => (
+      <Articlecard  title={item.title} image={item.cap_image} id={item._id}/>
     ));
 
     return (
@@ -181,7 +147,7 @@ class Search extends React.Component<
             <div className="head margin-full">
               <h2 className="subsection">EVENTS</h2>
             </div>
-            <div className="item-tray margin-full">{Ecards}</div>
+            <div className="tray margin-full">{Ecards}</div>
           </>
         ) : (
           ""

@@ -25,7 +25,7 @@ let history = useHistory();
 	<div className="section-title">
           <h2>Up Coming Events</h2>
 	</div>
-	<button>Explore</button>
+	<button className="explore" onClick={() => {history.push("/events/")}}>Explore</button>
       </div>
       <div className="tray margin-full">
          {events.map((item) => (

@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+.event-bg {
+	background-image: url("../images/Frame 11.png");
+	background-position: center;
+}
+
 .event-preview {
 	padding: 0px;
 	height: 250px;
@@ -285,6 +290,10 @@ img {
   }
 }
 @media (max-width: 480px) {
+
+  .event-bg {
+  	background-size: auto 120%;
+  }
 
   .poptitle {
     font-size: 26px;
