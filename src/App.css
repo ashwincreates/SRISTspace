@@ -5,6 +5,7 @@
 .notify-md {
   font-size: 14px;
   width: auto;
+  height:auto;
   padding: 12px;
   background-color: white;
   color: var(--Black);
@@ -32,4 +33,9 @@
 	top: 0;
 	left: 0;
 	background-color: var(--PrimaryColor);
+}
+.number{
+	    padding-left: 13px;
+    padding-top: 6px;
+	color: grey;
 }

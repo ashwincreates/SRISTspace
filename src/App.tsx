@@ -7,9 +7,9 @@ import "./articles/article.css";
 import EventList from "./events/eventList";
 import Slidecrousel from "./crousel/Slidecrousel";
 
-function App() {
+function App(props) {
 
-	let notification = [1,2,3,4];
+	let notification = [{id:"1",text:"here are one important notice",},{id:"2",text:"here are second  notification",},{id:"3",text:"important notice for midsem decalaration",},{id:"4", text:"some text with notification and links and information",},];
 
   return (
     <>
@@ -22,8 +22,8 @@ function App() {
 	<div className="item-tray margin-full">
 		{notification.map((item) => (
 			<div className="notify-md">
-				<div className="icon"></div>
-				<div className="tex">Some text with notification and links and information</div>
+				<div className="icon"><h2 className="number">{item.id}</h2></div>
+				<div className="tex">{item.text}</div>
 			</div>
 		))}
 	</div>

@@ -17,13 +17,28 @@ function About() {
           </div>
           <div className="aboutdata">
           <h2>
-            <span className="name">Name </span>
+            <span className="name">Ashwin kumar sharma </span>
             <br></br>
 
             <span className="role">Role</span>
             <br></br>
 
-            <span className="faculty">Class faculty</span>
+            <span className="faculty">computer science<br/> 4th(A) semester</span>
+          </h2>
+          </div>
+        </div>
+        <div className="aboutcontent">
+          <div className="aboutimage">
+          </div>
+          <div className="aboutdata">
+          <h2>
+            <span className="name">Ayush nigam</span>
+            <br></br>
+
+            <span className="role">Role</span>
+            <br></br>
+
+            <span className="faculty">computer science<br/> 4th(A) semester</span>
           </h2>
           </div>
         </div>
@@ -38,7 +53,7 @@ function About() {
             <span className="role">Role</span>
             <br></br>
 
-            <span className="faculty">Class faculty</span>
+            <span className="faculty">computer science<br/> 4th(A) semester</span>
           </h2>
           </div>
         </div>
@@ -47,28 +62,13 @@ function About() {
           </div>
           <div className="aboutdata">
           <h2>
-            <span className="name">Name </span>
+            <span className="name">Utkarsh chaudhary</span>
             <br></br>
 
             <span className="role">Role</span>
             <br></br>
 
-            <span className="faculty">Class faculty</span>
-          </h2>
-          </div>
-        </div>
-        <div className="aboutcontent">
-          <div className="aboutimage">
-          </div>
-          <div className="aboutdata">
-          <h2>
-            <span className="name">Name </span>
-            <br></br>
-
-            <span className="role">Role</span>
-            <br></br>
-
-            <span className="faculty">Class faculty</span>
+            <span className="faculty">computer science<br/> 4th(B) semester</span>
           </h2>
           </div>
         </div>
