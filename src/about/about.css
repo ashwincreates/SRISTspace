@@ -17,6 +17,16 @@
   font-size: 1.3rem;
 }
 
+.ashwin {
+	background-image: url(../images//143867595_193679815559918_1802848546316643880_n.png);
+	background-size: 100% 100%;
+}
+
+.ayush {
+	background-image: url(./ayush.png);
+	background-size: 100% 100%;
+}
+
 .abouttitle {
   text-align: center;
   margin-bottom: 80px;

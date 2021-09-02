@@ -13,8 +13,7 @@ function About() {
       <h2 className="abouttitle">Contributers</h2>
       <div className="aboutcontainer">
         <div className="aboutcontent">
-          <div className="aboutimage">
-          <img src="../images/143867595_193679815559918_1802848546316643880_n.jpg"/>
+          <div className="aboutimage ashwin">
           </div>
           <div className="aboutdata">
           <h2>
@@ -29,8 +28,7 @@ function About() {
           </div>
         </div>
         <div className="aboutcontent">
-          <div className="aboutimage">
-		<img src="./ayush.jpg"/>
+          <div className="aboutimage ayush">
           </div>
           <div className="aboutdata">
           <h2>
@@ -45,7 +43,7 @@ function About() {
           </div>
         </div>
         <div className="aboutcontent">
-          <div className="aboutimage">
+          <div className="aboutimage utkarsh">
           </div>
           <div className="aboutdata">
           <h2>
