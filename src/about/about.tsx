@@ -24,7 +24,7 @@ function About() {
             <span className="role">Role</span>
             <br></br>
 
-            <span className="faculty">computer science<br/> 4th(A) semester</span>
+            <span className="faculty">Full Stack & UI/UX</span>
           </h2>
           </div>
         </div>
@@ -40,7 +40,7 @@ function About() {
             <span className="role">Role</span>
             <br></br>
 
-            <span className="faculty">computer science<br/> 4th(A) semester</span>
+            <span className="faculty">Frontend Development</span>
           </h2>
           </div>
         </div>
@@ -55,7 +55,7 @@ function About() {
             <span className="role">Role</span>
             <br></br>
 
-            <span className="faculty">computer science<br/> 4th(B) semester</span>
+            <span className="faculty">Frontend & Backend Development</span>
           </h2>
           </div>
         </div>

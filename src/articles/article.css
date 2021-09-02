@@ -374,7 +374,7 @@ p [content-editable] {
   width: auto;
   height: auto;
   padding: 2rem;
-  background-color: grey;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
