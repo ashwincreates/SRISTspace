@@ -4,6 +4,7 @@ import ArticleList from "./articles/articleList";
 import "./articles/article.css";
 import EventList from "./events/eventList";
 import Slidecrousel from "./crousel/Slidecrousel";
+import Crousel from "./crousel/Crousel";
 
 function App() {
   let notification = [
