@@ -19,10 +19,11 @@
   position: relative;
   width: 100vw;
   height: 500px;
+  
 }
 
 .forward {
-  position: absolute;
+  position:absolute;
   top: 200px;
   right: 10px;
 }
