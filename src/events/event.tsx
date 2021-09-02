@@ -19,32 +19,22 @@ function Event() {
 
   const handleClose = () => {
     setOpen(false);
-   
-      setImage("");
+
+    setImage("");
   };
 
-
   const handleSubmit = () => {
+    setEventName("");
+    setEventVenue("");
+    setImage("");
 
-
-      
-
-      setEventName("");
-      setEventVenue("");
-      setImage("");
-  
-
-    if (
-      eventName !== "" &&
-      eventVenue !== "" &&
-      image !== ""
-    ) {
-     
+    if (eventName !== "" && eventVenue !== "" && image !== "") {
       console.log("event sunmitted");
       let resobj = {
         eventname: eventName,
         eventvenue: eventVenue,
         image: image,
+        likes: 0,
       };
       let options = {
         method: "POST",
@@ -61,7 +51,6 @@ function Event() {
     } else {
       // console.log(`${eventName} ${eventVenue} ${eventDate}`);
       alert("plz fill the data");
-    
     }
   };
   const onChange = (event: any) => {
@@ -71,16 +60,14 @@ function Event() {
       let reader = new FileReader();
       reader.onload = (ev: any) => {
         setImage(ev.target.result);
-         
       };
       reader.readAsDataURL(event.target.files[0]);
     }
-
   };
 
   return (
     <>
-      <div className="header">
+      <div className="header event-bg">
         <h2 className="title-text"> Event</h2>
 
         <p>Show ur participation and Host new events</p>
@@ -124,22 +111,25 @@ function Event() {
               <img src={image} className="event-image"></img>
               <input type="file" id="file" onChange={onChange} />
 
-{/* 
+              {/* 
               <label id="content" htmlFor="file">
               
                 {label}
               </label> */}
 
-
-              {image?"":<label className="upload" htmlFor="file">
-		<Icons name="add_image"></Icons>
-		<br/>
-		Add Event Image
-              </label>}
+              {image ? (
+                ""
+              ) : (
+                <label className="upload" htmlFor="file">
+                  <Icons name="add_image"></Icons>
+                  <br />
+                  Add Event Image
+                </label>
+              )}
             </div>
-              <button className="popbtn" onClick={handleSubmit}>
-                Host Event !
-              </button>
+            <button className="popbtn" onClick={handleSubmit}>
+              Host Event !
+            </button>
           </div>
         </div>
       </Dialog>

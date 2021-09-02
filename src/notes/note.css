@@ -5,6 +5,11 @@
   margin-left: 1rem;
 }
 
+.note-bg {
+	background-image: url("../images/Frame 10.png");
+	background-position: center;
+}
+
 .nocard {
   font-size: 1.2rem;
   font-weight: 500;
@@ -116,6 +121,10 @@
     grid-gap: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
+  }
+
+  .note-bg {
+  	background-size: auto 120%;
   }
 
   .note-card {

@@ -120,10 +120,11 @@ class Subjects extends React.Component<Props, State> {
 
   toggle(code: number) {
     this.setState({ open: !this.state.open, selected: code }, () => {
+	console.log("selected subject code is " + code)
       if (this.state.semester && this.state.branch && this.state.selected){
         fetch(this.URL + "/getlinks/" + this.state.selected)
           .then((res) => res.json())
-          .then((data) => {this.setState({links: data.data})})
+          .then((data) => {this.setState({links: data.data});console.log(data)})
           .catch((error) => console.log(error));}
     });
   }

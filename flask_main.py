@@ -41,6 +41,7 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 
+
 #JWT authentication
 #def checkForToken(f):
 #    @functools.wraps(f)
@@ -134,6 +135,11 @@ def FetchEvents():
 def Get(_id):
     data = articles.getbyid(_id)
     return jsonify(data)
+
+@app.route('/updateEvent/<_id>/<count>', methods=['PUT'])
+def update(_id, count):
+    print("Started...")
+    event.updateEvent(_id, count)
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=port, threaded=True)

@@ -1,14 +1,12 @@
 import "./Crousel.css";
 
-function Crousel() {
-    return(
-       <>
-        <div className="showslider">
-          <div className="slides">
-       
-           <input type="radio" name="a" id="a1" checked/>
-           <input type="radio" name="a" id="a2" checked />
-           <input type="radio" name="a" id="a3" checked />
+let images = [
+	"",
+	"",
+	"",
+	
+]
+
 
              <div className="slide s1">
                <img src="https://educationworld4u.com/images/college/1975992703-shri-ram-institute-of-technology-jabalpur-city-jabalpur-colleges-tthlike.jpg" className="d-block w-100" width="1200px" height="500px" alt="..."/>
@@ -35,3 +33,11 @@ function Crousel() {
         );
     }
     export default Crousel;
+
+function Crousel() {
+	return (
+		<>
+		</>
+	)
+}
+export default Crousel;
