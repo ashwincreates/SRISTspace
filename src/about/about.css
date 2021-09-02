@@ -1,92 +1,75 @@
-.about{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.aboutpara{
-    width: 800px;
-    text-align: center;
-    justify-content: center;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-       
- 
+.aboutpara {
+  width: 800px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .aboutpara h2 {
-	font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
-.abouttitle{
-
-        text-align: center;
-    margin-bottom: 80px;
-    font-size: 30px;
-    font-weight: 600;
-    color: var(--PrimaryColor);
-    font-family: Poppins;
+.abouttitle {
+  text-align: center;
+  margin-bottom: 80px;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--PrimaryColor);
+  font-family: Poppins;
 }
-.aboutimage{
-    position:relative;
-    margin:auto;
-    width: 70px;
-    height: 80px;
-    background-color:grey;
-    border-radius: 10px;
-
+.aboutimage {
+  position: relative;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  overflow: hidden;
 }
-img{
-    border-radius:10px;
+.aboutcontent {
+  text-align: center;
 }
-.aboutcontent{
-    text-align: center;
-  
-}
-.aboutcontainer{
-	width : auto;
-    display:grid;
-   grid-template-columns:1fr 1fr 1fr 1fr;
+.aboutcontainer {
+  width: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-.role
-
-{
-    font-weight: bold;
-
-
+.role {
+  color: var(--Grey);
 }
-.faculty{
-    font-size: large;
-    /* font-weight:lighter; */
-    color:grey;
-    display:inline-block;
-
+.faculty {
+  font-size: large;
+  /* font-weight:lighter; */
+  color: var(--PrimaryColor);
+  display: inline-block;
 }
 
 .aboutdata {
-	margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-.name{
-    font-size: larger;
-   color: #4bb54f;
+.name {
+  font-size: larger;
+  font-weight: 600;
 }
-@media (max-width:500px)
-{
-    .aboutpara{
-        position:relative;
+@media (max-width: 500px) {
+  .aboutpara {
+    position: relative;
+    width: calc(100vw - 1rem);
     text-align: center;
     justify-content: center;
-    margin: 10%;
-    margin-top: 42%;
- 
-}
-  .aboutcontainer{
-  
-    display:grid;
-   grid-template-columns:1fr 1fr;
-   grid-gap:2rem;
-}  
+  }
+  .aboutcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
 }

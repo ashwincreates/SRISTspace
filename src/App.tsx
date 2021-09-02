@@ -8,10 +8,10 @@ import Crousel from "./crousel/Crousel";
 
 function App() {
   let notification = [
-    { id: "1", text: "here are one important notice" },
-    { id: "2", text: "here are second  notification" },
-    { id: "3", text: "important notice for midsem decalaration" },
-    { id: "4", text: "some text with notification and links and information" },
+    { id: "1", text: "Web Development workshop being held. For more infomation visit the event page" },
+    { id: "2", text: "New time table for 5th sem students has been released" },
+    { id: "3", text: "Important notice for midsem decalaration" },
+    { id: "4", text: "Important notice regarding practicals for 4th sem students" },
   ];
 
   
@@ -28,9 +28,6 @@ function App() {
         <div className="item-tray margin-full">
           {notification.map((item) => (
             <div className="notify-md">
-              <div className="icon">
-                <h2 className="number">{item.id}</h2>
-              </div>
               <div className="tex">{item.text}</div>
             </div>
           ))}
