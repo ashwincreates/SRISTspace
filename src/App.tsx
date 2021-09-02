@@ -4,6 +4,7 @@ import ArticleList from "./articles/articleList";
 import "./articles/article.css";
 import EventList from "./events/eventList";
 import Slidecrousel from "./crousel/Slidecrousel";
+import Crousel from "./crousel/Crousel";
 
 function App() {
   let notification = [
@@ -13,11 +14,14 @@ function App() {
     { id: "4", text: "some text with notification and links and information" },
   ];
 
+  
+
   return (
+
     <>
       <div className="App">
         {/*<Crousel></Crousel>*/}
-        <Slidecrousel scrollable={true} />
+        <Slidecrousel/>
         <div className="head margin-full">
           <h2>Important Notices</h2>
         </div>

@@ -1,68 +1,75 @@
-.showslider{
-    height:500px;
-    overflow:hidden;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    border-radius: 5px;
-    position: relative;
+.slider {
+  width: 100%;
+  height: 500px;
 }
 
-.navigation{
-    position:absolute;
-    bottom:2%;
-    left: 50%;
-    /* margin-left: -50%; */
-    transform:translateX(-50%);
-    display:flex;
-}
-.bar{
-    width: 10px;
-    height: 10px;
-    border: 2px solid var(--White);
-    margin: 10px;
-    border-radius: 10px; 
-    transition: 0.5s;
-    cursor:pointer;
-}
-.bar:hover{
-    background: var(--White) ;
-}
-input[name="a"]{
-    position:absolute;
-    visibility:hidden;
-}
-.slides{
-   width:500%;
-   height:100%;
-   display:flex;
-}
-.slide{
-   width:20%;
-   transition:0.6s;
-}
-.slide img{
-    width: 100%;
-    height: 500px;
-}
-#a1:checked ~ .s1{
-    margin-left:0%;
+.wrap {
+  overflow: hidden;
+  position: relative;
+  background: #222;
+  z-index: 1;
 }
 
-#a2:checked ~ .s1{
-    margin-left:-20%;
-}
-#a3:checked ~ .s1{
-    margin-left:-40%;
-}
-.infocro{
-    position:relative;
-    opacity:1;
-    color:black;
+#items {
+  width: 10000px;
+  position: relative;
+  top: 0;
+  left: -100vw;
 }
 
-@media(max-width: 360px){
-  .slide img{
-    width: auto;
-    height: 100%;
-  }
-} 
+.slide:nth-child(1) {
+	background-color: red;
+}
+.slide:nth-child(2) {
+	background-color: blue;
+}
+
+#items.shifting {
+  transition: left .2s ease-out;
+}
+
+.slide {
+  width: 100vw;
+  height: 500px;
+  cursor: pointer;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 1s;
+  position: relative;
+  background: #FFCF47;
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 20px;
+  margin-top: -20px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.prev,
+.next {
+  background-size: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.prev:active,
+.next:active {
+  transform: scale(0.8);
+}
