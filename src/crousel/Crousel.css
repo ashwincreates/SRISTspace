@@ -54,6 +54,11 @@ input[name="a"]{
 #a3:checked ~ .s1{
     margin-left:-40%;
 }
+.infocro{
+    position:relative;
+    opacity:1;
+    color:black;
+}
 
 @media(max-width: 360px){
   .slide img{

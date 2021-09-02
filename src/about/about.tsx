@@ -14,6 +14,7 @@ function About() {
       <div className="aboutcontainer">
         <div className="aboutcontent">
           <div className="aboutimage">
+          <img src=""/>
           </div>
           <div className="aboutdata">
           <h2>
