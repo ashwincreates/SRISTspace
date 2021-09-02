@@ -14,6 +14,7 @@ function About() {
       <div className="aboutcontainer">
         <div className="aboutcontent">
           <div className="aboutimage">
+          <img src=""/>
           </div>
           <div className="aboutdata">
           <h2>
@@ -62,7 +63,7 @@ function About() {
           </div>
           <div className="aboutdata">
           <h2>
-            <span className="name">Utkarsh chaudhary</span>
+            <span className="name">Utkarsh choudhary</span>
             <br></br>
 
             <span className="role">Role</span>
