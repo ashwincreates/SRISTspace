@@ -28,11 +28,17 @@
   position: relative;
   width: 100vw;
   height: 500px;
+  
 }
 
 .forward {
+
+  position:absolute;
+  top: 200px;
+
   position: absolute;
   top: 225px;
+
   right: 10px;
 }
 
