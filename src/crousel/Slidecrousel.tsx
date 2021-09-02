@@ -7,15 +7,11 @@ interface slides {
 }
 
 interface slideStates {
-  images: Array<string>;
   index: number;
   items: Array<slides>;
-  refArr: Array<Object>;
-  scrollable: boolean;
 }
 
 interface props {
-  scrollable: boolean;
 }
 
 export default class Slidecrousel extends React.Component<props, slideStates> {
@@ -43,14 +39,7 @@ export default class Slidecrousel extends React.Component<props, slideStates> {
         },
       ],
       index: 0,
-      images: [
-        "https://educationworld4u.com/images/college/1975992703-shri-ram-institute-of-technology-jabalpur-city-jabalpur-colleges-tthlike.jpg",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80",
-      ],
-      refArr: [],
-      scrollable: true,
     };
-    this.checkScrollable = this.checkScrollable.bind(this);
     this.changeImageForward = this.changeImageForward.bind(this);
     this.changeImageBackWard = this.changeImageBackWard.bind(this);
   }
@@ -75,11 +64,37 @@ export default class Slidecrousel extends React.Component<props, slideStates> {
     }
   }
 
-  checkScrollable() {
-    this.setState({ scrollable: false });
+  componentDidMount() {
+    
+    this.setIntervals();
+
+  let options = {
+	root : null,
+	rootMargin: "0px",
+	threshold: 1.0,
   }
 
-  componentDidMount() {
+   const observer = new IntersectionObserver((entities : any) => {
+	const target = entities[0];
+	if(!target.isIntersecting){
+    clearInterval(this.interval) 
+		console.log("Out of view...")
+	}
+	else {
+		console.log("In View...")
+    clearInterval(this.interval)
+    this.setIntervals()
+	}
+}, options);
+	if(this.carousel.current){
+		observer.observe(this.carousel.current);
+	}
+
+  }
+
+
+  setIntervals(){
+
     this.interval = setInterval(() => {
       if (this.state.index < this.state.items.length - 1) {
         this.divRef[this.state.index + 1].current?.scrollIntoView({
@@ -96,41 +111,8 @@ export default class Slidecrousel extends React.Component<props, slideStates> {
           inline: "nearest",
         });
       }
-    }, 3000);
+    }, 5000);
 
-  let options = {
-	root : null,
-	rootMargin: "0px",
-	threshold: 1.0,
-  }
-
-   const observer = new IntersectionObserver((entities : any) => {
-	const target = entities[0];
-	if(!target.isIntersecting){
-		this.setState({scrollable: false})
-		console.log("Out of view...")
-	}
-	else {
-		this.setState({scrollable: true})
-		console.log("In View...")
-	}
-}, options);
-	if(this.carousel.current){
-		observer.observe(this.carousel.current);
-	}
-
-    /*document.getElementById("root")?.addEventListener("scroll", this.checkScrollable, false);*/
-
-  }
-
-/* componentDidUpdate() {
-	if(!this.state.scrollable){
-		clearInterval(this.interval)
-	}
-}*/
-
-  componentWillUnmount() {
-    this.setState({ scrollable: false });
   }
 
   render() {

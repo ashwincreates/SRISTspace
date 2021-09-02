@@ -63,7 +63,7 @@ function About() {
           </div>
           <div className="aboutdata">
           <h2>
-            <span className="name">Utkarsh chaudhary</span>
+            <span className="name">Utkarsh choudhary</span>
             <br></br>
 
             <span className="role">Role</span>
