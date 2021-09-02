@@ -1,4 +1,5 @@
 import React, { Component, useEffect, useRef } from "react";
+import Icons from "../icons/icons";
 import "./Slidecrousel.css";
 
 interface slides {
@@ -126,28 +127,13 @@ export default class Slidecrousel extends React.Component<props, slideStates> {
           ))}
         </div>
 
-        <div className="forward">
-          <img
-            style={{
-              height: "50px",
-              width: "50px",
-            }}
-            src={process.env.PUBLIC_URL + "/arrowr.png"}
-            alt=""
-            onClick={this.changeImageForward}
-          />
+        <div className="forward" onClick={this.changeImageForward}>
+		<Icons name="forward" />
         </div>
 
-        <div className="backward">
-          <img
-            style={{
-              height: "50px",
-              width: "50px",
-            }}
-            alt=""
-            src={process.env.PUBLIC_URL + "/arrow.png"}
-            onClick={this.changeImageBackWard}
-          />
+        <div className="backward" onClick={this.changeImageBackWard}>
+            
+		<Icons name="backward" />
         </div>
       </div>
     );

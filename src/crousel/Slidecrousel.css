@@ -10,6 +10,15 @@
   flex-wrap: wrap;
 }
 
+.super div svg {
+	height: 50px;
+	width:  50px;
+}
+
+.super div svg path {
+	fill : white
+}
+
 .super {
   height: 500px;
   position: relative;
@@ -23,12 +32,12 @@
 
 .forward {
   position: absolute;
-  top: 200px;
+  top: 225px;
   right: 10px;
 }
 
 .backward {
   position: absolute;
-  top: 200px;
+  top: 225px;
   left: 10px;
 }
