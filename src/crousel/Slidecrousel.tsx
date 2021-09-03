@@ -67,27 +67,6 @@ export default class Slidecrousel extends React.Component<props, slideStates> {
 
   componentDidMount() {
 
-    this.interval = setInterval(() => {
-      if (this.state.index < this.state.items.length - 1) {
-        this.divRef[this.state.index + 1].current?.scrollIntoView({
-      
-          behavior: "smooth",
-          block: "end",
-          inline: "nearest",
-        });
-        this.setState({ index: this.state.index + 1 });
-      } else {
-        this.setState({ index: 0 });
-        this.divRef[this.state.index].current?.scrollIntoView({
-         
-          behavior: "smooth",
-          block: "nearest",
-          inline: "nearest",
-        });
-      }
-    }, 3000);
-
-    
     this.setIntervals();
 
 

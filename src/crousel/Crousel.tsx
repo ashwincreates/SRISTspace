@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from "react";
 // import "./Crousel.css";
   
-    
+let images = []    
 
 function Crousel() {
 //   /*const [posX1, setposX1] = useState(0);
