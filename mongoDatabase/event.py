@@ -39,7 +39,7 @@ def fetchEvents():
 
 def updateEvent(_id, count):
     print("Updating....")
-    event = getEvents().update(
+    event = getEvents().update_one(
                 {"_id" : ObjectId(_id)},
                 {"$set" : {"likes" : count}}
             )

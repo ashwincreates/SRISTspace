@@ -118,7 +118,7 @@ def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
     cols = getNotes().find({'topic': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
-    colsa = mongoDatabase.articles.getArticles().find({'title': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
+    colsa = mongoDatabase.articles.getArticles().find({'title': {'$regex': re.compile(keyword, re.IGNORECASE)}})
     colse = mongoDatabase.event.getEvents().find({'eventname': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
 
     notes = []
@@ -129,18 +129,20 @@ def searchNotes(keyword):
         notes.append(i)
 
     for i in colsa:
+        val = json.loads(json_util.dumps(i['_id']))
+        i['_id'] = val['$oid']
         articles.append(i)
 
     for i in colse:
         events.append(i)
 
-    json = {
+    data = {
         'notes': notes,
         'events' : events,
         'articles': articles
     }
 
-    return json
+    return data
 
 
 def dropNotes(topic, link):
