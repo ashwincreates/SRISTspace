@@ -1,18 +1,11 @@
-import "./note.css";
-import "../articles/article.css";
 import Subjects from "./subjects/subjects";
-import Recent from "./subjects/recent";
-import Icons from "../icons/icons";
-
 
 function Notes() {
   return (
     <>
-      <div className="header note-bg">
-          <div className="title-text"> Notes </div>
-          <p>
-		All Notes for every branch available here
-          </p>
+      <div className="w-full h-[200px] flex items-center justify-center flex-col">
+        <div className="text-xl font-bold"> Notes </div>
+        <p>All Notes for every branch available here</p>
       </div>
       <Subjects />
     </>

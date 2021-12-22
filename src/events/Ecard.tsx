@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IEvent } from "../models/models";
-import "../notes/note.css";
-import "./event.css";
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import Icons from "../icons/icons";
 
 function Card(props: any) {
@@ -25,21 +24,21 @@ function Card(props: any) {
 
   return (
     <>
-      <div className="thumbnail post">
-        <img className="event-image post" src={props.image} alt="load..." />
+      <div className="sm:h-[500px] overflow-hidden">
+        <img className="w-full rounded-t-md" src={props.image} alt="load..." />
       </div>
-      <div className="content">
-        <div className="button-tray">
+      <div className="p-4">
+        <div className="w-full">
           <span
-            className={"like ".concat(state ? "" : "filter")}
+            className={"flex gap-x-3 items-center"}
             onClick={Click}
           >
-            <Icons name="party_active" />
-            <div className={state ? "" : "liked"}>{count}</div>
+            {state?<AiOutlineHeart size={24} className="text-gray-900"/>:<AiFillHeart className="text-rose-500" size={24}/>}
+            <div className={state ? "" : "liked" + "text-lg text-medium"}>{count}</div>
           </span>
         </div>
-        <h2 className="data">{props.name} </h2>
-        <p>{props.venue}</p>
+        <h2 className="text-md font-medium mt-2 text-gray-900">{props.name} </h2>
+        <p className="text-gray-500">{props.venue}</p>
       </div>
     </>
   );
@@ -48,18 +47,17 @@ function Card(props: any) {
 function EmptyCard() {
   return (
     <>
-      <div className="event-post">
-        <div className="thumbnail post empty"></div>
-        <div className="content">
-          <div className="button-tray">
-            <span className={"like "}>
-              <Icons name="party_active" />
-              <div></div>
+      <div className="h-[500px] flex flex-col overflow-hidden">
+        <div className="grow bg-gray-300 rounded-md animate-pulse"></div>
+        <div className="p-3">
+          <div className="w-full">
+            <span className="">
+							<AiOutlineHeart size="24" className="text-gray-400 animate-pulse"/>
             </span>
           </div>
-          <h2 className="data-empty"></h2>
-          <div className="text-empty"/>
-          <div className="text-empty"/>
+          <h2 className="mt-2 h-4 bg-gray-300 rounded-full animate-pulse"></h2>
+          <div className="mt-2 h-2 bg-gray-300 rounded-full animate-pulse"/>
+          <div className="mt-1 h-2 bg-gray-300 rounded-full animate-pulse"/>
         </div>
       </div>
     </>
@@ -81,7 +79,7 @@ function Ecard() {
       {(List.length > 0)
         ? List.map((item : any) => {
             return (
-              <div className="event-post">
+              <div className="shadow-lg rounded-md">
                 <Card
                   name={item.eventname}
                   venue={item.eventvenue}
@@ -91,7 +89,7 @@ function Ecard() {
                 />
               </div>
             );
-          }):[1,2,3].map(() => <EmptyCard/>)} 
+          }):[1,2,3].map(() => <div className="shadow-lg border border-gray-100 rounded-md"><EmptyCard/></div>)} 
     </>
   );
 }

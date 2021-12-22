@@ -1,4 +1,3 @@
-import "./note.css";
 function NoteList() {
     return(
         <>

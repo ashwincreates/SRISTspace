@@ -1,11 +1,7 @@
-import "../notes/note.css";
-import "./event.css";
 import Ecard from "./Ecard";
-import React, { useEffect } from "react";
-import { useState } from "react";
-import "../articles/article.css";
-import Dialog from "../dialog/dialog";
-import Icons from "../icons/icons";
+import React, { Fragment } from "react";
+import { BiImageAdd } from 'react-icons/bi';
+import { Transition, Dialog } from "@headlessui/react";
 
 function Event() {
   const [open, setOpen] = React.useState(false);
@@ -49,7 +45,6 @@ function Event() {
       setEventVenue("");
       setImage("");
     } else {
-      // console.log(`${eventName} ${eventVenue} ${eventDate}`);
       alert("plz fill the data");
     }
   };
@@ -67,72 +62,106 @@ function Event() {
 
   return (
     <>
-      <div className="header event-bg">
-        <h2 className="title-text"> Event</h2>
+      <div className="w-full h-[200px] flex items-center justify-center flex-col">
+        <h2 className="text-xl font-bold"> Event</h2>
 
         <p>Show ur participation and Host new events</p>
-        <button onClick={handleClickOpen} className="explore">
+        <button
+          onClick={handleClickOpen}
+          className="px-5 py-2 mt-3 bg-lime-500 hover:bg-lime-600 text-white font-medium rounded-lg"
+        >
           Host a Event
         </button>
       </div>
-      <div className="margin-full head">
-        <h2 className="subject">Coming Up This Week</h2>
+      <div className="py-6 text-lg font-medium text-gray-900">
+        Coming Up this Week
       </div>
 
-      <div className="margin-full post-tray">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <Ecard />
       </div>
-      <Dialog open={open}>
-        <div className="event-card">
-          <div className="row">
-            <div className="icon-button close" onClick={handleClose}>
-              <Icons name="close"></Icons>
-            </div>
-            <div className="columnleft">
-              <h2 className="poptitle">Host a Event</h2>
+      <Transition appear show={open} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={handleClose}
+        >
+          <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+          <div className="min-h-screen px-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Dialog.Overlay className="fixed inset-0" />
+            </Transition.Child>
 
-              <input
-                type="text"
-                placeholder="Event Name"
-                className="popdata"
-                onChange={(e) => {
-                  setEventName(e.target.value);
-                }}
-              />
-              <textarea
-                placeholder="Event Venue"
-                className="popdata"
-                onChange={(e) => {
-                  setEventVenue(e.target.value);
-                }}
-              />
-            </div>
-            <div className="columnright">
-              <img src={image} className="event-image"></img>
-              <input type="file" id="file" onChange={onChange} />
-
-              {/* 
-              <label id="content" htmlFor="file">
-              
-                {label}
-              </label> */}
-
-              {image ? (
-                ""
-              ) : (
-                <label className="upload" htmlFor="file">
-                  <Icons name="add_image"></Icons>
-                  <br />
-                  Add Event Image
-                </label>
-              )}
-            </div>
-            <button className="popbtn" onClick={handleSubmit}>
-              Host Event !
-            </button>
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="inline-block w-full max-w-md sm:max-w-2xl p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <Dialog.Title
+                  as="h3"
+                  className="text-lg font-medium leading-6 py-2 text-lime-600"
+                >
+                  Host a Event
+                </Dialog.Title>
+								<div className="flex mt-4 gap-x-4 flex-row">
+                <div className="flex flex-col gap-y-4 basis-1/2">
+                  <input
+                    type="text"
+                    placeholder="Event Name"
+                    className="p-2 border rounded-lg focus:outline-lime-500"
+                    onChange={(e) => {
+                      setEventName(e.target.value);
+                    }}
+                  />
+                  <textarea
+										rows={8}
+                    placeholder="Event Venue"
+                    className="p-3 border rounded-lg resize-none"
+                    onChange={(e) => {
+                      setEventVenue(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="relative basis-1/2 overflow-hidden">
+                  <img src={image}></img>
+                  <input type="file" id="file" className="hidden" onChange={onChange} />
+                  {image ? (
+                    ""
+                  ) : (
+                    <label className="flex flex-col cursor-pointer rounded-lg hover:bg-gray-100 gap-y-4 absolute top-0 left-0 h-full w-full items-center justify-center" htmlFor="file">
+											<BiImageAdd className="text-gray-500" size={28}/>
+                      Add Event Image <br/> (Required ratio 4:5)
+                    </label>
+                  )}
+                </div>
+								</div>
+                <button className="px-5 py-2 mt-3 bg-lime-500 hover:bg-lime-600 text-white font-medium rounded-lg" onClick={handleSubmit}>
+                  Host Event !
+                </button>
+              </div>
+            </Transition.Child>
           </div>
-        </div>
-      </Dialog>
+        </Dialog>
+      </Transition>
     </>
   );
 }

@@ -1,6 +1,5 @@
-import { Component } from "react";
-import "./login.css";
-import Dialog from "../dialog/dialog";
+import { Dialog, Transition } from "@headlessui/react";
+import { Component, Fragment } from "react";
 
 import { GoogleLogin } from "react-google-login";
 import Icons from "../icons/icons";
@@ -155,179 +154,300 @@ export default class Login extends Component<props, states> {
     switch (this.state.rendered) {
       case "0":
         return (
-          <Dialog open={this.state.open}>
-            <div className="Views">
-              <div>
-                <div className="flexrow">
-                  <img
-                    className="logoat"
-                    alt=""
-                    src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg"
-                  />
-                  <div
-                    style={{
-                      verticalAlign: "center",
-                      margin: "5px",
-                    }}
-                  >
-                    <text>SRIST space</text>
-                    <h1>v 1.0</h1>
-                  </div>
-                  <h1 className="udTxt" onClick={this.closeDialog}>
-                    SKIP
-                  </h1>
-                </div>
-              </div>
-              {/* <LoginWindows open={this.state.open} /> */}
-              <div>
-                <h1
-                  style={{
-                    textAlign: "center",
-                    color: "black",
-                  }}
+          <Transition appear show={this.state.open} as={Fragment}>
+            <Dialog
+              as="div"
+              className="fixed inset-0 z-10 overflow-y-auto"
+              onClose={() => {
+                this.setState({ open: !this.state.open });
+              }}
+            >
+              <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+              <div className="min-h-screen px-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
                 >
-                  Sign in to continue
-                </h1>
-                <button className="commonButton" onClick={this.changeToSignUp}>
-                  Sign up
-                </button>
-                <button className="commonButton" onClick={this.changeToLogin}>
-                  Login
-                </button>
-              </div>
+                  <Dialog.Overlay className="fixed inset-0" />
+                </Transition.Child>
 
-              <div className="or">
-                <h1
-                  style={{
-                    textAlign: "center",
-                    color: "white",
-                    marginTop: "15%",
-                  }}
+                <span
+                  className="inline-block h-screen align-middle"
+                  aria-hidden="true"
                 >
-                  or
-                </h1>
-                <GoogleLogin
-                  clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
-                  className="googlesign"
-                  onSuccess={this.responseGoogleSuccess}
-                  onFailure={this.responseGoogleFailure}
-                />
+                  &#8203;
+                </span>
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <div className="inline-block w-full max-w-md sm:max-w-2xl p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                    <div className="Views">
+                      <div>
+                        <div className="flexrow">
+                          <img
+                            className="logoat"
+                            alt=""
+                            src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg"
+                          />
+                          <div
+                          >
+                            <text>SRIST space</text>
+                            <h1>v 1.0</h1>
+                          </div>
+                          <h1 className="udTxt" onClick={this.closeDialog}>
+                            SKIP
+                          </h1>
+                        </div>
+                      </div>
+                      {/* <LoginWindows open={this.state.open} /> */}
+                      <div>
+                        <h1
+                          style={{
+                            textAlign: "center",
+                            color: "black",
+                          }}
+                        >
+                          Sign in to continue
+                        </h1>
+                        <button
+                          className="commonButton"
+                          onClick={this.changeToSignUp}
+                        >
+                          Sign up
+                        </button>
+                        <button
+                          className="commonButton"
+                          onClick={this.changeToLogin}
+                        >
+                          Login
+                        </button>
+                      </div>
+
+                      <div className="or">
+                        <h1
+                          style={{
+                            textAlign: "center",
+                            color: "white",
+                            marginTop: "15%",
+                          }}
+                        >
+                          or
+                        </h1>
+                        <GoogleLogin
+                          clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+                          className="googlesign"
+                          onSuccess={this.responseGoogleSuccess}
+                          onFailure={this.responseGoogleFailure}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </Transition.Child>
               </div>
-            </div>
-          </Dialog>
+            </Dialog>
+          </Transition>
         );
 
       case "1":
         return (
-          <Dialog open={this.state.open}>
-            <div className="card-md Views">
-		<div className="clz" onClick={this.closeDialog}><Icons name="close"/></div>
-              <div>
-                <h3 className="sec-head">Sign Up</h3>
-                <form className="text-fields">
-                  <input
-                    className="commonInputs1"
-                    onChange={(evt) => {
-                      this.setEmail(evt.target.value);
-                    }}
-                    placeholder={"Type Email Address"}
-                    type="email"
-                  ></input>
-                  <input
-                    className="commonInputs1"
-                    onChange={(evt) => {
-                      this.setPassword(evt.target.value);
-                    }}
-                    placeholder={"Type password"}
-                    type="password"
-                    name="password"
-                  ></input>
-                  <input
-                    className="commonInputs1"
-                    onChange={(evt) => {
-                      this.setPass1(evt.target.value);
-                    }}
-                    placeholder={"Retype password"}
-                    type="password"
-                    name="password"
-                  ></input>
-                  <button
-                    className="common2"
-                    onClick={(Event) => {
-                      this.signUPToserver(Event);
-                    }}
-                  >
-                    Sign Up
-                  </button>
-                </form>
-                <div className="link-text">
-                  Already have an account ?
-                  <span onClick={this.changeToLogin}>Login</span>
-                </div>
+          <Transition appear show={this.state.open} as={Fragment}>
+            <Dialog
+              as="div"
+              className="fixed inset-0 z-10 overflow-y-auto"
+              onClose={() => {
+                this.setState({ open: !this.state.open });
+              }}
+            >
+              <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+              <div className="min-h-screen px-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <Dialog.Overlay className="fixed inset-0" />
+                </Transition.Child>
+
+                <span
+                  className="inline-block h-screen align-middle"
+                  aria-hidden="true"
+                >
+                  &#8203;
+                </span>
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <div className="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                    <div className="flex flex-col gap-y-4 justify-center">
+                        <h3 className="sec-head text-xl font-bold text-lime-500">Sign Up</h3>
+                        <form className="text-fields flex flex-col gap-y-4">
+                          <input
+                            className="p-2 border rounded-lg focus:outline-lime-500 commonInputs1"
+                            onChange={(evt) => {
+                              this.setEmail(evt.target.value);
+                            }}
+                            placeholder={"Type Email Address"}
+                            type="email"
+                          ></input>
+                          <input
+                            className="p-2 border rounded-lg focus:outline-lime-500 commonInputs1"
+                            onChange={(evt) => {
+                              this.setPassword(evt.target.value);
+                            }}
+                            placeholder={"Type password"}
+                            type="password"
+                            name="password"
+                          ></input>
+                          <input
+                            className="p-2 border rounded-lg focus:outline-lime-500 commonInputs1"
+                            onChange={(evt) => {
+                              this.setPass1(evt.target.value);
+                            }}
+                            placeholder={"Retype password"}
+                            type="password"
+                            name="password"
+                          ></input>
+                          <button
+                            className="px-5 py-2 mt-3 bg-lime-500 hover:bg-lime-600 text-white font-medium rounded-lg common2"
+                            onClick={(Event) => {
+                              this.signUPToserver(Event);
+                            }}
+                          >
+                            Sign Up
+                          </button>
+                        </form>
+                        <div className="link-text text-center">
+                          Already have an account ? {" "}
+                          <span className="text-lime-500 cursor-pointer" onClick={this.changeToLogin}>Login</span>
+                        </div>
+                      </div>
+                      <hr className="my-4" />
+                      <h1 className="text-center">or Continue using</h1>
+                      <div className="mt-4 flex justify-center">
+                        <GoogleLogin
+                          clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+                          className="googlesign"
+                          onSuccess={this.responseGoogleSuccess}
+                          onFailure={this.responseGoogleFailure}
+                        />
+                      </div>
+                  </div>
+                </Transition.Child>
               </div>
-              <hr/> 
-              <h1>or Continue using</h1>
-              <div className="or">
-                <GoogleLogin
-                  clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
-                  className="googlesign"
-                  onSuccess={this.responseGoogleSuccess}
-                  onFailure={this.responseGoogleFailure}
-                />
-              </div>
-            </div>
-          </Dialog>
+            </Dialog>
+          </Transition>
         );
 
       case "2":
         return (
-          <Dialog open={this.state.open}>
-            <div className="card-md Views">
-		<div className="clz" onClick={this.closeDialog}><Icons name="close"/></div>
-              <h3 className="sec-head">Login</h3>
-              <form className="text-fields">
-                <input
-                  placeholder="Enter registered email address"
-                  className="commonInputs1"
-                  onChange={(evt) => {
-                    this.setEmail(evt.target.value);
-                  }}
-                />
-                <input
-                  placeholder="Enter password"
-                  onChange={(evt) => {
-                    this.setPassword(evt.target.value);
-                  }}
-                  type="password"
-                  name="password"
-                  className="commonInputs1"
-                />
-                <button
-                  className="common2"
-                  onClick={(Event) => {
-                    this.LoginToServer(Event);
-                  }}
+          <Transition appear show={this.state.open} as={Fragment}>
+            <Dialog
+              as="div"
+              className="fixed inset-0 z-10 overflow-y-auto"
+              onClose={() => {
+                this.setState({ open: !this.state.open });
+              }}
+            >
+              <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+              <div className="min-h-screen px-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
                 >
-                  Login
-                </button>
-              </form>
-              <div className="link-text">
-                Create a new account.
-                <span onClick={this.changeToSignUp}>Sign up</span>
-              </div>
-              <hr />
+                  <Dialog.Overlay className="fixed inset-0" />
+                </Transition.Child>
 
-              <h1>or Continue using</h1>
-              <div className="or">
-                <GoogleLogin
-                  clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
-                  className="googlesign"
-                  onSuccess={this.responseGoogleSuccess}
-                  onFailure={this.responseGoogleFailure}
-                />
+                <span
+                  className="inline-block h-screen align-middle"
+                  aria-hidden="true"
+                >
+                  &#8203;
+                </span>
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <div className="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                    <div className="card-md Views flex flex-col gap-y-4 justify-center">
+                      <h3 className="sec-head text-xl font-bold text-lime-500">Login</h3>
+                      <form className="text-fields text-fields flex flex-col gap-y-4">
+                        <input
+                          placeholder="Enter registered email address"
+                          className="p-2 border rounded-lg focus:outline-lime-500 commonInputs1"
+                          onChange={(evt) => {
+                            this.setEmail(evt.target.value);
+                          }}
+                        />
+                        <input
+                          placeholder="Enter password"
+                          onChange={(evt) => {
+                            this.setPassword(evt.target.value);
+                          }}
+                          type="password"
+                          name="password"
+                          className="p-2 border rounded-lg focus:outline-lime-500 commonInputs1"
+                        />
+                        <button
+                          className="px-5 py-2 mt-3 bg-lime-500 hover:bg-lime-600 text-white font-medium rounded-lg common2"
+                          onClick={(Event) => {
+                            this.LoginToServer(Event);
+                          }}
+                        >
+                          Login
+                        </button>
+                      </form>
+                      <div className="link-text text-center">
+                        Create a new account. {" "}
+                        <span className="text-lime-500 cursor-pointer" onClick={this.changeToSignUp}>Sign up</span>
+                      </div>
+                      <hr className="my-1" />
+
+                      <h1 className="text-center">or Continue using</h1>
+                      <div className="or mt-1 flex justify-center">
+                        <GoogleLogin
+                          clientId="561872423103-p700sl1jeu9rhrmq2tr5n6mlodekr467.apps.googleusercontent.com"
+                          className="googlesign"
+                          onSuccess={this.responseGoogleSuccess}
+                          onFailure={this.responseGoogleFailure}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </Transition.Child>
               </div>
-            </div>
-          </Dialog>
+            </Dialog>
+          </Transition>
         );
     }
   }

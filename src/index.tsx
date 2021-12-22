@@ -13,30 +13,25 @@ import Explore from "./articles/explore";
 import ReadArticle from "./articles/readarticle";
 import AddArticle from "./articles/addarticle";
 
-
 ReactDOM.render(
   <BrowserRouter>
     <Login />
     <Nav></Nav>
-    <div className="wrapper">
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route exact path="/notes" component={Note} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/articles" component={Explore} />
-      <Route exact path="/articles/addarticle" component={AddArticle} />
-      <Route exact path="/articles/:article" component={ReadArticle} />
-      <Route exact path="/events" component={Event} />
+    <div className="px-3 lg:p-0 max-w-7xl mx-auto min-h-screen">
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/notes" component={Note} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/articles" component={Explore} />
+        <Route exact path="/articles/addarticle" component={AddArticle} />
+        <Route exact path="/articles/:article" component={ReadArticle} />
+        <Route exact path="/events" component={Event} />
 
-      <Route exact path="/search" component={Search} />
-    </Switch>
-    <div className="push">
+        <Route exact path="/search" component={Search} />
+      </Switch>
     </div>
-    </div>
-    <div className="footer">
-	<div className="margin-full">
-		Made by Students of SRIST, 2021
-	</div>
+    <div className="bg-zinc-900 pt-3 pb-6 px-2 mt-10 text-white">
+      Made by Students of SRIST, 2021
     </div>
   </BrowserRouter>,
   document.getElementById("root")

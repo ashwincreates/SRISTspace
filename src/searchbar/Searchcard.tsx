@@ -1,15 +1,14 @@
 import React from "react";
+import {FiX, FiSearch} from 'react-icons/fi';
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import "../articles/article.css";
-import "../search/search.css"
 import Icons from "../icons/icons";
 
-class SearchInput extends React.Component<RouteComponentProps, {open: boolean}> {
+class SearchInput extends React.Component<RouteComponentProps,{ open: boolean }> {
   constructor(props: any) {
     super(props);
     this.state = {
-    	open : false 
-    }
+      open: false,
+    };
     this.printval = this.printval.bind(this);
     this.inpref = React.createRef();
   }
@@ -18,32 +17,48 @@ class SearchInput extends React.Component<RouteComponentProps, {open: boolean}> 
 
   printval(event: any) {
     event.preventDefault();
-    this.props.history.push("/search", this.inpref.current.value);
+		if(this.inpref.current.value != "")
+    	this.props.history.push("/search", this.inpref.current.value);
     this.inpref.current.value = "";
   }
 
   render() {
     return (
       <>
-        <form onSubmit={this.printval} className={"rem-form ".concat(this.state.open?"active-search":"")}>
-	  <div className="search-button " onClick={() => {this.setState({open : true});this.inpref.current.focus()}}><Icons name="search"/></div>
+        <form
+          onSubmit={this.printval}
+          className={`flex items-center gap-x-2 ${this.state.open?"border border-lime-500":"border border-white"} py-2 px-3 rounded-lg`}
+        >
+          <button
+						type="submit"
+            className="search-button"
+            onClick={() => {
+              this.setState({ open: true });
+              this.inpref.current.focus();
+            }}
+          >
+						<FiSearch size={18}/>
+          </button>
           <input
-            className={"search ".concat(this.state.open?"active-input":"")}
+            className={`focus:outline-none outline-none transition-{width} duration-150 ease-in-out ${this.state.open?"":"w-0"}`}
             name="search"
             ref={this.inpref}
             type="text"
             placeholder="search subject,topics..."
             id="myInput"
-	    onBlur={(e) => {this.setState({open : false});e.target.value = ""}}
+            onBlur={(e) => {
+              this.setState({ open: false });
+              e.target.value = "";
+            }}
           />
-	<div className="close-search"><Icons name="close"/></div>
         </form>
       </>
     );
   }
 }
 
-const Searchcard = withRouter<RouteComponentProps,
+const Searchcard = withRouter<
+  RouteComponentProps,
   React.ComponentType<RouteComponentProps>
 >(SearchInput);
 export default Searchcard;

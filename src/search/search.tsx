@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { RouteComponentProps, useHistory } from "react-router";
-import "../articles/article.css";
 import { Note, IEvent, Article } from "../models/models";
-import Icons from "../icons/icons";
-import "../articles/article.css";
-import "../notes/note.css";
 
 interface locstate {
   state: string;
-  
 }
 
 function Notecard(props: any) {
@@ -22,26 +17,35 @@ function Notecard(props: any) {
   );
 }
 function Articlecard(props: any) {
- let history = useHistory();
+  let history = useHistory();
   return (
     <>
-       <div className="card-md preview" onClick={() => {
-        history.push("/articles/" + props.id); }}>
-		<img src={props.image} />
-		<div/>
-              <h3>{props.title.replace("<br>", "")}</h3>
-          </div>
+      <div
+        className="card-md preview"
+        onClick={() => {
+          history.push("/articles/" + props.id);
+        }}
+      >
+        <img src={props.image} />
+        <div />
+        <h3>{props.title.replace("<br>", "")}</h3>
+      </div>
     </>
   );
 }
 
 function Eventcard(props: any) {
-let history=useHistory();
+  let history = useHistory();
   return (
     <>
-		<div className="card-md event-preview" onClick={()=>{history.push("/events/");}}>
-			<img src={props.image}/>
-		</div>
+      <div
+        className="card-md event-preview"
+        onClick={() => {
+          history.push("/events/");
+        }}
+      >
+        <img src={props.image} />
+      </div>
     </>
   );
 }
@@ -104,14 +108,12 @@ class Search extends React.Component<
 
     let Ecards: any;
     Ecards = this.state.eventlist.map((item) => (
-      <Eventcard
-        image={item.image}
-      />
+      <Eventcard image={item.image} />
     ));
-     
+
     let Acards: any;
-    Acards = this.state.articlelist.map((item : any) => (
-      <Articlecard  title={item.title} image={item.cap_image} id={item._id}/>
+    Acards = this.state.articlelist.map((item: any) => (
+      <Articlecard title={item.title} image={item.cap_image} id={item._id} />
     ));
 
     return (

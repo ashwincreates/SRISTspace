@@ -1,15 +1,14 @@
-import React from "react";
-import Dialog from "../../dialog/dialog";
+import { Transition, Dialog } from "@headlessui/react";
+import React, { Fragment } from "react";
 import Icons from "../../icons/icons";
-import { Note } from "../../models/models";
 
 //state and props for the class
 interface State {
   semester: string;
   open: boolean;
   branch: string;
-  notelist: {subject: string, code :number}[];
-  links: {code: number, contents : string, topic: string,subject: string}[];
+  notelist: { subject: string; code: number }[];
+  links: { code: number; contents: string; topic: string; subject: string }[];
   loading: boolean;
   dirty: boolean;
   selected: number;
@@ -35,31 +34,30 @@ function Card(props: any) {
 function NoCard(props: any) {
   if (props.loading) {
     return (
-      <div className="nocard">
-        <Spinner></Spinner>
+      <div className="w-full  h-[200px] flex justify-center items-center">
+        <div
+          className="animate-spin inline-block w-8 h-8 border-4 border-lime-600 rounded-full"
+          role="status"
+        >
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     );
   } else {
-    if (props.dirty) return <div className="nocard">Nothing here</div>;
+    if (props.dirty)
+      return (
+        <div className="w-full flex items-center justify-center text-gray-400">
+          Nothing here
+        </div>
+      );
     else {
       return (
-        <div className="nocard">
+        <div className="w-full h-[200px] flex items-center justify-center text-gray-400">
           <span>Choose Subject and semester</span>
         </div>
       );
     }
   }
-}
-
-function Spinner() {
-  return (
-    <div className="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
 }
 
 //Subject class
@@ -120,12 +118,16 @@ class Subjects extends React.Component<Props, State> {
 
   toggle(code: number) {
     this.setState({ open: !this.state.open, selected: code }, () => {
-	console.log("selected subject code is " + code)
-      if (this.state.semester && this.state.branch && this.state.selected){
+      console.log("selected subject code is " + code);
+      if (this.state.semester && this.state.branch && this.state.selected) {
         fetch(this.URL + "/getlinks/" + this.state.selected)
           .then((res) => res.json())
-          .then((data) => {this.setState({links: data.data});console.log(data)})
-          .catch((error) => console.log(error));}
+          .then((data) => {
+            this.setState({ links: data.data });
+            console.log(data);
+          })
+          .catch((error) => console.log(error));
+      }
     });
   }
 
@@ -134,22 +136,27 @@ class Subjects extends React.Component<Props, State> {
     if (this.state.notelist.length === 0) {
       cards = <NoCard loading={this.state.loading} dirty={this.state.dirty} />;
     } else {
-      cards = this.state.notelist.map((note) => (
-        <div className="sub-md" onClick={() => this.toggle(note.code)}>
-          <span>
-            {note.subject}
-            <br />
-          </span>
+      cards = (
+        <div className="grid mt-4 grid-cols-1 md:grid-cols-3 gap-4">
+          {this.state.notelist.map((note) => (
+            <div
+              className="p-4 shadow-md h-[125px] flex flex-col-reverse border border-gray-100 rounded-lg"
+              onClick={() => this.toggle(note.code)}
+            >
+              <span className="text-xl font-medium">{note.subject}</span>
+              <span className="text-gray-400">Subject</span>
+            </div>
+          ))}
         </div>
-      ));
+      );
     }
 
     return (
       <>
-        <h2 className="head margin-full">Subjects</h2>
-        <form className="margin-full">
+        <div className="py-6 text-lg font-medium text-gray-900">Subjects</div>
+        <form className="w-full flex gap-y-4 md:gap-x-4 md:flex-row flex-col">
           <select
-            className="choice"
+            className="p-3 rounded-lg focus:outline-lime-500"
             name="semester"
             onChange={this.handleChange}
           >
@@ -163,7 +170,11 @@ class Subjects extends React.Component<Props, State> {
             <option value="5">Fifth</option>
             <option value="6">Sixth</option>
           </select>
-          <select className="choice" name="branch" onChange={this.handleChange}>
+          <select
+            className="p-3 rounded-lg focus:outline-lime-500"
+            name="branch"
+            onChange={this.handleChange}
+          >
             <option selected disabled>
               Choose your stream
             </option>
@@ -174,25 +185,64 @@ class Subjects extends React.Component<Props, State> {
             <option value="IT">IT</option>
           </select>
         </form>
-        <div className="item-tray margin-full">{cards}</div>
-        <Dialog open={this.state.open}>
-          <div className="note-md">
-	    <h3 className="note-title">{this.state.links[0]?this.state.links[0].subject:""}</h3>
-		<div className="scroll">
-            {this.state.links.map((link) => {
-		return (
-			<div className="note">
-				<h2>{link.topic}</h2>
-				<div>{link.contents}</div>
-			</div>
-		);	
-		})}
-		</div>
-            <div className="icon-button close-notes" onClick={() => this.toggle(this.state.selected)}>
-		<Icons name="close"></Icons>
+        {cards}
+        <Transition appear show={this.state.open} as={Fragment}>
+          <Dialog
+            as="div"
+            className="fixed inset-0 z-10 overflow-y-auto"
+            onClose={() => this.toggle(this.state.selected)}
+          >
+						<Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+            <div className="min-h-screen px-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Dialog.Overlay className="fixed inset-0" />
+              </Transition.Child>
+
+              <span
+                className="inline-block h-screen align-middle"
+                aria-hidden="true"
+              >
+                &#8203;
+              </span>
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <div className="inline-block w-full max-w-md sm:max-w-4xl p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 py-2 text-lime-600"
+                  >
+                    {this.state.links[0] ? this.state.links[0].subject : ""}
+                  </Dialog.Title>
+                  <div className="mt-2 h-[500px] overflow-y-scroll">
+                      {this.state.links.map((link) => {
+                        return (
+                          <div className="mt-3">
+                            <h2 className="font-medium text-gray-900">{link.topic}</h2>
+                            <div className="text-gray-500">{link.contents}</div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </Transition.Child>
             </div>
-          </div>
-        </Dialog>
+          </Dialog>
+        </Transition>
       </>
     );
   }

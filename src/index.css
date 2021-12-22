@@ -1,127 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-:root {
-  font-family: "Poppins", "sans-serif";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
-  overflow: unset;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  /* Global Variables */
-  --PrimaryColor: #6fcf97;
-  --Black: #333333;
-  --Grey: #bdbdbd;
-  --White: #ffffff;
-
-  /* BreakPoints */
-  --Phone: 480px;
-  --Tablet: 768px;
+[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555;
 }
 
-body {
-  margin: auto;
-  overflow: unset;
+.article-bg {
+	background-image: url("https://res.cloudinary.com/sristspace/image/upload/v1630644139/Frame_12_a0bcb2.png");
+	background-position: center;
+}
+
+.ashwin {
+	background-image: url(./images//143867595_193679815559918_1802848546316643880_n.png);
+	background-size: 100% 100%;
+}
+
+.ayush {
+	background-image: url(./about/ayush.png);
+	background-size: 100% 100%;
+}
+
+.utkarsh {
+	background-image: url(./images/20190516_075808.jpg);
+	background-size: 100% 100%;
+}
+
+html,body {
+	height: 100%;
 }
 
 #root {
-  padding: 0;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow-y: scroll;
-  position: relative;
+	height: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 400;
-  margin: 0;
-}
-
-h1 {
-  font-size: 0.9rem;
-  color: var(--Grey);
-}
-
-h2 {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.card {
-  padding: 1.5rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  background-color: var(--PrimaryColor);
-  border-radius: 5px;
-  color: var(--White);
-  line-height: 120%;
-}
-
-.button,
-button {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 25px;
-  padding-right: 25px;
-  border: none;
-  border-radius: 0.45rem;
-  background-color: var(--PrimaryColor);
-  color: var(--White);
-  height: 2.5rem;
-  font-size: 1rem;
-  font-family: "Poppins";
-  cursor: pointer;
-}
-
-.active_class {
-  color: var(--PrimaryColor);
-}
-
-input {
-  border: 2px solid red;
-  border-style: none;
-  border-radius: 10px;
-}
-
-.explore {
-  background-position: center;
-  transition: background 0.8s;
-}
-.explore:hover {
-  background: var(--PrimaryColor)
-    radial-gradient(circle, transparent 1%, #82c888 1%) center/15000%;
-  color: white;
-}
-.explore:active {
-  background-color: white;
-  background-size: 100%;
-  transition: background 0s;
-  opacity: 0.3;
-}
-
-.wrapper {
-  min-height: calc(100% - 3rem);
-
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -150px;
-}
-.footer,
-.push {
-  height: 150px;
-}
-
-.footer {
-  font-size: 0.9rem;
-  padding-top: 0.5rem;
-  color: white;
-  margin-top: 3rem;
-  background-color: var(--Black);
-}

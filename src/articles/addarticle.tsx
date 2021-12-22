@@ -1,7 +1,8 @@
-import React from "react";
-import Dialog from "../dialog/dialog";
+import React, {Fragment} from "react";
 import Icons from "../icons/icons";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import './article.css';
+import {Transition, Dialog} from "@headlessui/react";
 
 interface Request {
   title: string;
@@ -60,7 +61,7 @@ class Article extends React.Component<RouteComponentProps, State> {
       this.focusGain(ev);
     };
     p.contentEditable = "true";
-    p.className = "article-content";
+    p.className = "text-lg mt-4 placeholder:text-gray-200 outline-none focus:outline-none";
     p.setAttribute("placeholder", "The content goes here");
     return p;
   }
@@ -198,8 +199,9 @@ class Article extends React.Component<RouteComponentProps, State> {
   confirmation() {
     return (
       <>
+			<div className="flex flex-col gap-y-4">
         <input
-          className="popdata"
+          className="p-2 border rounded-lg focus:outline-lime-500"
           type="text"
           placeholder="author name"
           onChange={(e) => {
@@ -207,19 +209,20 @@ class Article extends React.Component<RouteComponentProps, State> {
           }}
         />
         <textarea
-          className="popdata"
+          className="p-2 border rounded-lg resize-none focus:outline-lime-500"
           placeholder="add a caption"
           onChange={(e) => {
             this.setState({ caption: e.target.value });
           }}
         />
-        <div className="flex">
-          <button onClick={this.publish}>Publish!</button>
+				</div>
+        <div className="flex gap-x-4">
+          <button onClick={this.publish} className="px-5 py-2 mt-6 bg-lime-500 hover:bg-lime-600 text-white font-medium rounded-lg">Publish!</button>
           <button
             onClick={() => {
               this.setState({ open: !this.state.open });
             }}
-            className="cancel"
+            className="px-5 py-2 mt-6 bg-rose-500 hover:bg-rose-600 text-white font-medium rounded-lg"
           >
             Cancel
           </button>
@@ -246,36 +249,30 @@ class Article extends React.Component<RouteComponentProps, State> {
     }
     return (
       <>
-        <div className="menu">
-          <button onClick={this.confirm}>Publish article</button>
-          <input
-            id="addImage"
-            className="hidden"
-            type="file"
-            onChange={this.handleChange}
-          />
+        <div className="hidden sm:flex justify-end w-full">
+          <button className="px-5 py-2 mt-6 bg-lime-500 hover:bg-lime-600 text-white font-medium rounded-lg" onClick={this.confirm}>Publish article</button>
         </div>
-        <div className="container">
+        <div className="max-w-3xl mt-6 sm:mt-4 mx-auto">
           <p
             contentEditable
             placeholder="Title goes here.."
             id="heading"
-            className="article-heading"
+            className="text-3xl sm:text-4xl mt-4 placeholder:text-gray-200 font-medium outline-none focus:outline-none"
             onBlur={(e) => {
               if (e.target.innerHTML === "<br>") e.target.innerHTML = "";
             }}
           ></p>
-          <article id="content">
+          <article id="content sm:mt-6">
             <p
               contentEditable
               placeholder={"The content goes here"}
               onBlur={this.focusLost}
-              className="article-content"
+              className="text-lg placeholder:text-gray-200 outline-none focus:outline-none mt-4"
               onFocus={this.focusGain}
             ></p>
           </article>
         </div>
-        <button className="icon-button explore publish" onClick={this.confirm}>
+        <button className="fixed bottom-4 right-4 shadow-lg sm:hidden p-4 rounded-full bg-lime-500 hover:bg-lime-600" onClick={this.confirm}>
           <Icons name="publish"></Icons>
         </button>
         <button
@@ -353,9 +350,48 @@ class Article extends React.Component<RouteComponentProps, State> {
             </div>
           </div>
         </div>
-        <Dialog open={this.state.open}>
+      <Transition appear show={this.state.open} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={() => {this.setState({open: !this.state.open})}}
+        >
+          <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+          <div className="min-h-screen px-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Dialog.Overlay className="fixed inset-0" />
+            </Transition.Child>
+
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="inline-block w-full max-w-md sm:max-w-2xl p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
           {<div className="card-md confirm">{box}</div>}
+              </div>
+            </Transition.Child>
+          </div>
         </Dialog>
+      </Transition>
       </>
     );
   }

@@ -1,60 +1,42 @@
-import "./about.css";
-
 function About() {
   return (
     <>
-    <div className="about margin-full">
-      <div className="aboutpara ">
-        <h2 >
+    <div className="flex items-center flex-col">
+      <div className="mx-auto flex items-center justify-center h-[300px]">
+        <h2 className="text-2xl max-w-4xl text-center">
           We are students of SRIST Computer Science Stream and We wanted to
           bring our College experience on an online platform .
         </h2>
       </div>
-      <h2 className="abouttitle">Contributers</h2>
-      <div className="aboutcontainer">
-        <div className="aboutcontent">
-          <div className="aboutimage ashwin">
+      <h2 className="text-2xl font-bold text-lime-500">Contributers</h2>
+      <div className="flex flex-col gap-y-10 sm:gap-x-10 mt-10 sm:flex-row">
+        <div className="aboutcontent flex items-center flex-col">
+          <div className="ashwin h-20 w-20 rounded-full bg-gray-300">
           </div>
-          <div className="aboutdata">
-          <h2>
-            <span className="name">Ashwin kumar sharma </span>
-            <br></br>
+          <div className="flex items-center mt-4 flex-col aboutdata">
+            <div className="text-xl text-lime-500 font-bold">Ashwin kumar sharma </div>
 
-            <span className="role">Role</span>
-            <br></br>
+            <div className="role text-gray-500">Role</div>
 
-            <span className="faculty">Full Stack & UI/UX</span>
-          </h2>
+            <div className="faculty font-bold text-gray-900">Full Stack & UI/UX</div>
           </div>
         </div>
-        <div className="aboutcontent">
-          <div className="aboutimage ayush">
+        <div className="aboutcontent flex items-center flex-col">
+          <div className="aboutimage ayush h-20 w-20 rounded-full bg-gray-300">
           </div>
-          <div className="aboutdata">
-          <h2>
-            <span className="name">Ayush nigam</span>
-            <br></br>
-
-            <span className="role">Role</span>
-            <br></br>
-
-            <span className="faculty">Frontend Development</span>
-          </h2>
+          <div className="flex items-center flex-col aboutdata mt-4">
+            <div className="name text-xl text-lime-500 font-bold">Ayush nigam</div>
+            <div className="role text-gray-500">Role</div>
+            <div className="faculty font-bold text-gray-900">Frontend Development</div>
           </div>
         </div>
-        <div className="aboutcontent">
-          <div className="aboutimage utkarsh">
+        <div className="aboutcontent flex items-center flex-col">
+          <div className="aboutimage utkarsh h-20 w-20 rounded-full bg-gray-300">
           </div>
-          <div className="aboutdata">
-          <h2>
-            <span className="name">Utkarsh choudhary</span>
-            <br></br>
-
-            <span className="role">Role</span>
-            <br></br>
-
-            <span className="faculty">Frontend & Backend Development</span>
-          </h2>
+          <div className="flex items-center flex-col aboutdata mt-4">
+            <div className="name text-xl text-lime-500 font-bold">Utkarsh choudhary</div>
+            <div className="role text-gray-500">Role</div>
+            <div className="faculty font-bold text-gray-900">Frontend & Backend Development</div>
           </div>
         </div>
       
