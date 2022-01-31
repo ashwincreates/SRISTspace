@@ -9,9 +9,9 @@ interface locstate {
 function Notecard(props: any) {
   return (
     <>
-      <div className="card-md">
-        <h1>{props.subject}</h1>
-        <span>{props.topic}</span>
+      <div className="p-4 shadow-md h-[125px] flex flex-col-reverse border border-gray-100 rounded-lg">
+        <h1 className="text-xl font-medium">{props.subject}</h1>
+        <span className="text-gray-400">{props.topic}</span>
       </div>
     </>
   );
@@ -21,14 +21,14 @@ function Articlecard(props: any) {
   return (
     <>
       <div
-        className="card-md preview"
+        className="h-[150px] relative overflow-hidden rounded-lg after:absolute border after:top-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t after:from-black after:rounded-b-lg"
         onClick={() => {
           history.push("/articles/" + props.id);
         }}
       >
         <img src={props.image} />
         <div />
-        <h3>{props.title.replace("<br>", "")}</h3>
+        <h3 className="absolute bottom-4 left-4 text-white font-bold text-lg z-10">{props.title.replace("<br>", "")}</h3>
       </div>
     </>
   );
@@ -39,7 +39,7 @@ function Eventcard(props: any) {
   return (
     <>
       <div
-        className="card-md event-preview"
+        className="card-md w-[300px] h-[360px] rounded-lg overflow-hidden event-preview"
         onClick={() => {
           history.push("/events/");
         }}
@@ -118,16 +118,16 @@ class Search extends React.Component<
 
     return (
       <>
-        <h2 className="sea margin-full">
+        <h2 className="text-xl font-bold my-4">
           Search result for <span>"{this.props.location.state}"</span>
         </h2>
 
         {this.state.notelist.length > 0 ? (
           <>
-            <div className="head margin-full">
+            <div className="my-4 font-bold text-gray-500">
               <h2 className="subsection">NOTES</h2>
             </div>
-            <div className="item-tray margin-full">{cards}</div>
+            <div className="grid mt-4 grid-cols-1 md:grid-cols-3 gap-4">{cards}</div>
           </>
         ) : (
           ""
@@ -135,10 +135,10 @@ class Search extends React.Component<
 
         {this.state.articlelist.length > 0 ? (
           <>
-            <div className="head margin-full">
+            <div className="my-4 font-bold text-gray-500">
               <h2 className="subsection">ARTICLES</h2>
             </div>
-            <div className="item-tray margin-full">{Acards}</div>
+            <div className="grid mt-4 grid-cols-1 md:grid-cols-3 gap-4">{Acards}</div>
           </>
         ) : (
           ""
@@ -146,10 +146,10 @@ class Search extends React.Component<
 
         {this.state.eventlist.length > 0 ? (
           <>
-            <div className="head margin-full">
+            <div className="my-4 font-bold text-gray-500">
               <h2 className="subsection">EVENTS</h2>
             </div>
-            <div className="tray margin-full">{Ecards}</div>
+            <div className="flex flex-col gap-y-4 sm:flex-row sm:gap-x-4">{Ecards}</div>
           </>
         ) : (
           ""

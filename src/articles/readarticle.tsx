@@ -52,7 +52,7 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
         let img = document.createElement("img");
         let url = this.state.article[i] as { image: string };
         img.src = url.image;
-        img.className = "article-image";
+        img.className = "my-4 rounded-md";
         content?.appendChild(img);
       } else {
         let text = document.createElement("p");
@@ -76,20 +76,21 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
 
   render() {
     return (
-      <div className="container">
-        <p id="heading" className="article-heading">
+      <div className="max-w-3xl mt-6 sm:mt-4 mx-auto">
+        <p id="heading" className="text-3xl sm:text-4xl mt-6 placeholder:text-gray-200 font-medium">
           {this.state.title}
         </p>
-        <div className="info">
+        <div className="my-4">
           <div>
-            {this.state.author}
-            <h1>{this.state.date}</h1>
+            <strong>{this.state.author}</strong>
+            <h1 className="text-gray-500">{this.state.date}</h1>
           </div>
         </div>
-	  <div className="article-caption">
+				{ this.state.caption != ""?
+	  <div className="italic text-lg p-4 bg-gray-50 text-gray-500 my-4 before:w-1 before:absolute before:left-0 before:bg-gray-500 before:min-h-full before:rounded-l-lg before:top-0 relative">
 		{this.state.caption}
-	  </div>
-        <article id="content"></article>
+	  </div>:""}
+        <article id="content" className="text-lg"></article>
       </div>
     );
   }

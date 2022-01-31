@@ -123,7 +123,7 @@ function Explore() {
 
   return (
     <>
-      <div className="w-full h-[200px] flex items-center justify-center flex-col">
+      <div className="w-full h-[200px] flex items-center justify-center flex-col bg-cover bg-center rounded-md mt-4" style={{backgroundImage: "url(https://res.cloudinary.com/sristspace/image/upload/v1630644139/Frame_12_a0bcb2.png)"}}>
         <h3 className="text-xl font-bold"> Article </h3>
         <p>Articles written by everyone. Write your own too</p>
         <button
@@ -135,13 +135,13 @@ function Explore() {
           Write a article
         </button>
       </div>
-      <div className="py-6 text-lg font-medium text-gray-900">
+      <div className="py-6 text-lg font-bold text-gray-900">
           Top Trending Article
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {articleList.length ? card : cardskel}
       </div>
-      <div className="py-6 text-lg font-medium text-gray-900">
+      <div className="py-6 text-lg font-bold text-gray-900">
          Explore articles
       </div>
       <div className="flex flex-col dm:w-full md:max-w-3xl gap-y-4">

@@ -1,6 +1,5 @@
 import { Transition, Dialog } from "@headlessui/react";
 import React, { Fragment } from "react";
-import Icons from "../../icons/icons";
 
 //state and props for the class
 interface State {
@@ -153,10 +152,10 @@ class Subjects extends React.Component<Props, State> {
 
     return (
       <>
-        <div className="py-6 text-lg font-medium text-gray-900">Subjects</div>
+        <div className="py-6 text-lg font-bold text-gray-900">Subjects</div>
         <form className="w-full flex gap-y-4 md:gap-x-4 md:flex-row flex-col">
           <select
-            className="p-3 rounded-lg focus:outline-lime-500"
+            className="p-3 rounded-lg border border-gray-900 focus:outline-lime-500"
             name="semester"
             onChange={this.handleChange}
           >
@@ -171,7 +170,7 @@ class Subjects extends React.Component<Props, State> {
             <option value="6">Sixth</option>
           </select>
           <select
-            className="p-3 rounded-lg focus:outline-lime-500"
+            className="p-3 rounded-lg border border-gray-900 focus:outline-lime-500"
             name="branch"
             onChange={this.handleChange}
           >

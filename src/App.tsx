@@ -18,9 +18,9 @@ function App() {
 
   return (
     <>
-      <div className="App">
+      <div className="sm:mx-1">
         <Slidecrousel />
-        <div className="py-6 text-lg font-medium text-gray-900">
+        <div className="py-6 text-lg font-bold text-gray-900">
           Important Notices
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

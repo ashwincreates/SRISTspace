@@ -21,7 +21,7 @@ function EventList() {
   return (
     <>
       <div className="flex my-2 justify-between items-center">
-        <div className="py-6 text-lg font-medium text-gray-900">
+        <div className="py-6 text-lg font-bold text-gray-900">
           New Events
         </div>
         <button

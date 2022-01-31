@@ -14,7 +14,7 @@ function Nav() {
             src="https://storage.googleapis.com/ezap-prod/colleges/7918/shri-ram-institute-of-science-and-technology-jabalpur-logo.jpg"
             alt="website logo"
           />
-          <h2 className="text-xl font-medium">SRIST space</h2>
+          <h2 className="text-xl"><strong>SRIST</strong><span className="font-light">space</span></h2>
         </NavLink>
         <div className="hidden md:flex items-center gap-x-6 mr-6">
           <Searchcard></Searchcard>

@@ -62,7 +62,7 @@ function Event() {
 
   return (
     <>
-      <div className="w-full h-[200px] flex items-center justify-center flex-col">
+      <div className="w-full h-[200px] flex items-center justify-center flex-col bg-cover bg-center rounded-md mt-4" style={{backgroundImage: "url(https://res.cloudinary.com/sristspace/image/upload/v1630644140/Frame_11_xygmnt.png)"}}>
         <h2 className="text-xl font-bold"> Event</h2>
 
         <p>Show ur participation and Host new events</p>
@@ -73,7 +73,7 @@ function Event() {
           Host a Event
         </button>
       </div>
-      <div className="py-6 text-lg font-medium text-gray-900">
+      <div className="py-6 text-lg font-bold text-gray-900">
         Coming Up this Week
       </div>
 
