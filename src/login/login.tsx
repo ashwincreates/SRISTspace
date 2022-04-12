@@ -16,6 +16,7 @@ interface states {
 
 interface props {
   open: boolean;
+  setOpen: Function;
 }
 
 export default class Login extends Component<props, states> {
@@ -167,7 +168,7 @@ export default class Login extends Component<props, states> {
               as="div"
               className="fixed inset-0 z-10 overflow-y-auto"
               onClose={() => {
-                this.setState({ open: !this.state.open });
+                this.props.setOpen(!this.state.open)
               }}
             >
               <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
@@ -274,7 +275,8 @@ export default class Login extends Component<props, states> {
               as="div"
               className="fixed inset-0 z-10 overflow-y-auto"
               onClose={() => {
-                this.setState({ open: !this.state.open });
+                // this.setState({ open: !this.state.open });
+                this.props.setOpen(!this.state.open)
               }}
             >
               <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
@@ -374,7 +376,8 @@ export default class Login extends Component<props, states> {
               as="div"
               className="fixed inset-0 z-10 overflow-y-auto"
               onClose={() => {
-                this.setState({ open: !this.state.open });
+                // this.setState({ open: !this.state.open });
+                this.props.setOpen(!this.state.open)
               }}
             >
               <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />

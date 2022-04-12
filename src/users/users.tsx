@@ -10,7 +10,7 @@ const User = () => {
   const [open, setOpen] = useState(true);
   return (
     <>
-      <Login open={open} />
+      <Login open={open} setOpen={setOpen} />
       <div className="relative">
         {!usercontext.login ?
         <div className="px-5 py-2 bg-lime-500 text-base hover:bg-lime-600 text-white font-medium rounded-lg" onClick={(e) => {setOpen(!open)}}>
