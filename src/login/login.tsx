@@ -14,7 +14,9 @@ interface states {
   response: string;
 }
 
-interface props {}
+interface props {
+  open: boolean;
+}
 
 export default class Login extends Component<props, states> {
   constructor(props: any) {
@@ -31,6 +33,12 @@ export default class Login extends Component<props, states> {
     this.closeDialog = this.closeDialog.bind(this);
     this.changeToLogin = this.changeToLogin.bind(this);
     this.changeToSignUp = this.changeToSignUp.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.open != this.props.open)
+      this.setState({...this.state, open: this.props.open})
+    console.log("updated", this.props.open)
   }
 
   signUPToserver(event: any) {

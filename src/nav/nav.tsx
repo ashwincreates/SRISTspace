@@ -2,8 +2,12 @@ import { NavLink } from "react-router-dom";
 import { Popover } from "@headlessui/react";
 import { Transition } from "@headlessui/react";
 import Searchcard from "../searchbar/Searchcard";
-import { FiMenu, FiX } from "react-icons/fi";
-import { Fragment } from "react";
+import { FiBook, FiCalendar, FiInfo, FiLogOut, FiMenu, FiPenTool, FiX } from "react-icons/fi";
+import { Fragment, useContext, useState } from "react";
+import User from "../users/users";
+import {UserContext} from "../users/UserAuthContext";
+import Login from "../login/login";
+
 function Nav() {
   return (
     <>
@@ -19,7 +23,7 @@ function Nav() {
         <div className="hidden md:flex items-center gap-x-6 mr-6">
           <Searchcard></Searchcard>
           <ul className="flex gap-x-8">
-            <li>
+            <li className="flex items-center">
               <NavLink
                 className="links text-base font-medium hover:text-lime-600"
                 activeClassName="text-lime-600"
@@ -28,7 +32,7 @@ function Nav() {
                 Notes
               </NavLink>
             </li>
-            <li>
+            <li className="flex items-center">
               <NavLink
                 className="links text-base font-medium hover:text-lime-600"
                 activeClassName="text-lime-600"
@@ -37,7 +41,7 @@ function Nav() {
                 Events
               </NavLink>
             </li>
-            <li>
+            <li className="flex items-center">
               <NavLink
                 className="links text-base font-medium hover:text-lime-600"
                 activeClassName="text-lime-600"
@@ -46,7 +50,7 @@ function Nav() {
                 Articles
               </NavLink>
             </li>
-            <li>
+            <li className="flex items-center">
               <NavLink
                 className="links text-base font-medium hover:text-lime-600"
                 activeClassName="text-lime-600"
@@ -54,6 +58,9 @@ function Nav() {
               >
                 About Us
               </NavLink>
+            </li>
+            <li className="flex items-center">
+              <User/>
             </li>
           </ul>
         </div>
@@ -84,7 +91,8 @@ function Nav() {
                 <Popover.Panel className="fixed z-10 w-10/12 top-0 right-0">
                   {({ close }) => (
                     <div className="overflow-hidden shadow-lg ring-1 ring-black bg-white ring-opacity-5 h-screen">
-											<div className="flex pt-6 mx-4 justify-end">
+											<div className="flex pt-6 mx-4 justify-between">
+                        <User/>
 												<Popover.Button>
 													<FiX size={24}/>
 												</Popover.Button>
@@ -94,29 +102,46 @@ function Nav() {
                           className="links p-3 text-base rounded-lg font-medium hover:text-lime-600"
                           activeClassName="text-lime-600 bg-gray-50"
                           to="/notes"
+                          onClick={(e) => {close()}}
                         >
+                          <FiBook className="mr-2 inline" size={18}/>
                           Notes
                         </NavLink>
                         <NavLink
                           className="links p-3 text-base rounded-lg font-medium hover:text-lime-600"
                           activeClassName="text-lime-600 bg-gray-50"
                           to="/articles"
+                          onClick={(e) => {close()}}
                         >
+                          <FiPenTool className="mr-2 inline" size={18}/>
                           Articles
                         </NavLink>
                         <NavLink
                           className="links p-3 text-base rounded-lg font-medium hover:text-lime-600"
                           activeClassName="text-lime-600 bg-gray-50"
                           to="/events"
+                          onClick={(e) => {close()}}
                         >
+                          <FiCalendar className="mr-2 inline" size={18}/>
                           Events
                         </NavLink>
                         <NavLink
                           className="links p-3 text-base rounded-lg font-medium hover:text-lime-600"
                           activeClassName="text-lime-600 bg-gray-50"
                           to="/about"
+                          onClick={(e) => {close()}}
                         >
+                          <FiInfo className="mr-2 inline" size={18}/>
                           About
+                        </NavLink>
+                        <NavLink
+                          className="links p-3 text-base rounded-lg font-medium text-rose-500 hover:text-lime-600"
+                          activeClassName="text-lime-600 bg-gray-50"
+                          to="/about"
+                          onClick={(e) => {close()}}
+                        >
+                          <FiLogOut className="mr-2 inline" size={18}/>
+                          Logout
                         </NavLink>
                       </div>
                     </div>
