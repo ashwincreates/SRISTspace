@@ -52,7 +52,7 @@ class ReadArticle extends React.Component<RouteComponentProps, State> {
         let img = document.createElement("img");
         let url = this.state.article[i] as { image: string };
         img.src = url.image;
-        img.className = "my-4 rounded-md";
+        img.className = "rounded-md m-1 w-full";
         content?.appendChild(img);
       } else {
         let text = document.createElement("p");

@@ -36,7 +36,7 @@ function EventList() {
       <div className="flex flex-col gap-y-4 sm:flex-row sm:gap-x-4">
         {events.map((item) => (
           <div
-            className="card-md w-[300px] h-[360px] rounded-lg overflow-hidden event-preview"
+            className="card-md w-full sm:w-[300px] sm:h-[360px] rounded-lg overflow-hidden event-preview"
             onClick={() => {
               history.push("/events/");
             }}

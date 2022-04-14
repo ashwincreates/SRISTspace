@@ -45,7 +45,7 @@ function NoCard(props: any) {
   } else {
     if (props.dirty)
       return (
-        <div className="w-full flex items-center justify-center text-gray-400">
+        <div className="w-full flex h-[200px] items-center justify-center text-gray-400">
           Nothing here
         </div>
       );

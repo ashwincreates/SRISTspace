@@ -168,13 +168,14 @@ class Article extends React.Component<RouteComponentProps, State> {
   }
 
   handleChange(event: any) {
+    console.log("image added")
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (ev: any) => {
         var art = document.getElementById("content");
         if (art) {
           var img = document.createElement("img");
-          img.className = "article-image";
+          img.className = "rounded-md m-1 focus:border-2 focus:border-solid w-full";
           img.src = ev.target.result;
           img.tabIndex = 0;
           img.onfocus = (ev) => {
@@ -262,7 +263,7 @@ class Article extends React.Component<RouteComponentProps, State> {
               if (e.target.innerHTML === "<br>") e.target.innerHTML = "";
             }}
           ></p>
-          <article id="content sm:mt-6">
+          <article id="content" className="sm:mt-6">
             <p
               contentEditable
               placeholder={"The content goes here"}
@@ -313,6 +314,7 @@ class Article extends React.Component<RouteComponentProps, State> {
               <label className="floating-menu-item" htmlFor="addImage">
                 <Icons name="add_image"></Icons>
               </label>
+              <input id="addImage" className="hidden" type="file" onChange={this.handleChange}></input>
               <div
                 className="floating-menu-item"
                 onClick={() => {
@@ -331,6 +333,7 @@ class Article extends React.Component<RouteComponentProps, State> {
               <div
                 className="floating-menu-item"
                 onClick={() => {
+                  console.log("Bold Text")
                   if (this.state.current.children.length > 0) {
                     let text = this.state.current.children[0].innerHTML;
                     this.state.current.children[0].outerHTML = "";

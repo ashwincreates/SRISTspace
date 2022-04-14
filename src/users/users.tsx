@@ -1,5 +1,6 @@
 import {Menu, Transition} from "@headlessui/react";
 import {Fragment, useContext, useState} from "react";
+import { useHistory } from "react-router";
 import {FiEdit, FiLogOut, FiUser} from "react-icons/fi";
 import {NavLink} from "react-router-dom";
 import Login from "../login/login";
@@ -8,14 +9,15 @@ import {UserContext} from "./UserAuthContext";
 const User = () => {
   const usercontext = useContext(UserContext);
   const [open, setOpen] = useState(true);
+  let history = useHistory();
   return (
     <>
       <Login open={open} setOpen={setOpen} />
       <div className="relative">
         {!usercontext.login ?
-        <div className="px-5 py-2 bg-lime-500 text-base hover:bg-lime-600 text-white font-medium rounded-lg" onClick={(e) => {setOpen(!open)}}>
+        <button className="px-5 py-2 bg-lime-500 text-base hover:bg-lime-600 text-white font-medium rounded-lg" onClick={(e) => {/*setOpen(!open)*/}}>
           Login
-        </div>
+        </button>
         :
       <Menu>
         <Menu.Button className="flex items-center">
@@ -43,6 +45,9 @@ const User = () => {
                     className={`${
                       active ? 'bg-lime-500 text-white' : 'text-gray-900'
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={() => {
+                      history.push("/users/" + usercontext.user_id)
+                    }}
                   >
                     <FiEdit size={18} className="mr-2"/>
                     My Profile
