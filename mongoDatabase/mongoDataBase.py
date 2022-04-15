@@ -81,11 +81,9 @@ def checkExistance(email):
 # login ...
 def getUserDetail(email, password):
     users = getUsers()
-    data = users.find_one({'email': email, 'password': password}, {'_id': 0})
-    if data is not None:
-        return data
-    else:
-        return 'user does not exists'
+    respones = login_user(email,password)
+    return respones
+        # return 'user does not exists'
 
 
 # notes init

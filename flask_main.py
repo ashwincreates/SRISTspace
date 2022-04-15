@@ -1,5 +1,5 @@
 import os
-from flask import Flask, send_from_directory, request, jsonify,make_response
+from flask import Flask, send_from_directory, request, jsonify, make_response
 from mongoDatabase import mongoDataBase
 from mongoDatabase import articles
 from mongoDatabase import event
@@ -7,7 +7,8 @@ from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 import functools
 import jwt
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime, timedelta
 
 # import jwt
 
@@ -68,24 +69,34 @@ def checkForToken(f):
 # url - https://sristspace.herokuapp.com/adduser/email/pass/sem/stream/branch
 @app.route('/adduser/<email>/<password>/<semester>/<stream>/<branch>', methods=['POST', 'GET'])
 def newUser(email, password, semester, stream, branch):
-    secure_pass =  generate_password_hash(password)
+    secure_pass = generate_password_hash(password)
     callback = mongoDataBase.addUsers(email, secure_pass, semester, stream, branch)
-    return callback
+    return callback, 201
 
 
-@app.route('/user/login',methods = ['GET','POST'])
+@app.route('/user/login', methods=['GET', 'POST'])
 def login_user():
-    args  = request.args
+    args = request.args
     response = None
 
-    return make_response(jsonify({"status":200 ,"jwtToken":""} )),200
-
+    return make_response(jsonify({"status": 200, "jwtToken": ""})), 200
 
 
 # url - https://sristspace.herokuapp.com/getuser/email/pass
 @app.route('/getuser/<email>/<password>', methods=['GET'])
 def getUserData(email, password):
-    return jsonify(mongoDataBase.getUserDetail(email, password))
+    response = mongoDataBase.getUserDetail(email, password)
+
+    if response:
+        jwtToken = jwt.encode({'public_id': mongoDataBase.get_single_user(email)['email'],
+                               'exp': datetime.utcnow() + timedelta(minutes=30)}
+                              , app.config['SECRET_KEY'])
+        return make_response(jsonify({
+            'jwtToken': jwtToken, 'data': mongoDataBase.get_single_user(email)
+        })), 200
+    else:
+        return 'user does not exists'
+    # return jsonify(mongoDataBase.getUserDetail(email, password))
 
 
 # url - https://sristspace.herokuapp.com/addNotes/Java/ref-oracle/date/sub/sem/stream
@@ -97,6 +108,7 @@ def addNotes(topic, link, date, subject, semester, stream):
 
 # url - https://sristspace.herokuapp.com/getNotesByDrop/sem/stream
 @app.route('/getNotesByDrop/<semester>/<stream>')
+@checkForToken  # test jwt token
 def getNotes(semester, stream):
     return jsonify(mongoDataBase.fetchNotes(semester, stream))
 
