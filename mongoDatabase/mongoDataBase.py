@@ -5,6 +5,7 @@ from bson import json_util
 from bson.objectid import ObjectId
 import mongoDatabase.articles
 import mongoDatabase.event
+from werkzeug.security import check_password_hash
 
 path = "mongodb+srv://utkarsh:utkarsh123456@sristspace.lyx27.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 database = "sristspacedb"
@@ -30,6 +31,26 @@ def getNotes():
     return client.get_database(database).get_collection(notes)
 
 
+def get_single_user(uname):
+    users = getUsers()
+    response = users.find_one({'email': uname})
+    data = None
+    for i in response:
+        data = i
+    return data
+
+
+def login_user(uname, pwd):
+    if checkExistance(uname):
+        user = get_single_user(uname)
+        if check_password_hash(user['password'], pwd):
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
 # add new sign in...
 def addUsers(email, password, semester, stream, branch):
     json = {
@@ -47,12 +68,14 @@ def addUsers(email, password, semester, stream, branch):
         getUsers().insert_one(json)
         return 'submit'
 
+
 def checkExistance(email):
     users = getUsers()
-    data = users.find_one({'email':email} , {'_id':0})
+    data = users.find_one({'email': email}, {'_id': 0})
     if data is not None:
         return True
-    else : return False
+    else:
+        return False
 
 
 # login ...
@@ -86,14 +109,14 @@ def addNotes(topic, link, uploadDate, subject, semester, stream):
 def fetchNotes(semester, stream):  # via drop downs
     notes = getNotes()
     cols = getNotes().aggregate([
-            {"$match" : {"semester" : semester, "stream": stream}},
-            {"$group": {"_id" : {"subject":"$subject", "code":"$code"}}},
-            {"$project" : {"_id":0, "subject":"$_id.subject", "code":"$_id.code"}}
-        ])
+        {"$match": {"semester": semester, "stream": stream}},
+        {"$group": {"_id": {"subject": "$subject", "code": "$code"}}},
+        {"$project": {"_id": 0, "subject": "$_id.subject", "code": "$_id.code"}}
+    ])
     data = []
     for i in cols:
-        #val = json.loads(json_util.dumps(i['_id']))
-        #i['_id'] = val['$oid']
+        # val = json.loads(json_util.dumps(i['_id']))
+        # i['_id'] = val['$oid']
         data.append(i)
 
     js = {
@@ -102,24 +125,27 @@ def fetchNotes(semester, stream):  # via drop downs
     print(data)
     return js
 
+
 def getLinks(subject):
     links = getNotes().aggregate([
-        { "$match" : { "code" : subject}},
-        { "$project" : {"_id":0}}
+        {"$match": {"code": subject}},
+        {"$project": {"_id": 0}}
     ])
     data = []
     for i in links:
         data.append(i)
-    res ={'data' : data}
+    res = {'data': data}
     print(res);
     return res
+
 
 def searchNotes(keyword):
     # notes = getNotes()
     # data = getNotes().find({} , {'topic':1 , '_id': 1})
     cols = getNotes().find({'topic': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
     colsa = mongoDatabase.articles.getArticles().find({'title': {'$regex': re.compile(keyword, re.IGNORECASE)}})
-    colse = mongoDatabase.event.getEvents().find({'eventname': {'$regex': re.compile(keyword, re.IGNORECASE)}}, {'_id': 0})
+    colse = mongoDatabase.event.getEvents().find({'eventname': {'$regex': re.compile(keyword, re.IGNORECASE)}},
+                                                 {'_id': 0})
 
     notes = []
     articles = []
@@ -138,7 +164,7 @@ def searchNotes(keyword):
 
     data = {
         'notes': notes,
-        'events' : events,
+        'events': events,
         'articles': articles
     }
 
