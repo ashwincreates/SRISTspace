@@ -43,6 +43,7 @@ def get_single_user(uname):
 def login_user(uname, pwd):
     if checkExistance(uname):
         user = get_single_user(uname)
+        print(user)
         if check_password_hash(user['password'], pwd):
             return True
         else:
