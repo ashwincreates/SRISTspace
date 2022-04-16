@@ -88,11 +88,11 @@ def getUserData(email, password):
     response = mongoDataBase.getUserDetail(email, password)
 
     if response:
-        jwtToken = jwt.encode({'public_id': mongoDataBase.get_single_user(email)['email'],
+        jwtToken = jwt.encode({'public_id': mongoDataBase.get_single_user(email,0)['email'],
                                'exp': datetime.utcnow() + timedelta(minutes=30)}
                               , app.config['SECRET_KEY'])
         return make_response(jsonify({
-            'jwtToken': jwtToken, 'data': mongoDataBase.get_single_user(email)
+            'jwtToken': jwtToken, 'data': mongoDataBase.get_single_user(email,0)
         })), 200
     else:
         return 'user does not exists'

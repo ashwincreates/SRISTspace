@@ -31,9 +31,13 @@ def getNotes():
     return client.get_database(database).get_collection(notes)
 
 
-def get_single_user(uname):
+def get_single_user(uname,type):
     users = getUsers()
-    response = users.find({'email': uname}, {'_id': 0, 'password': 0})
+    response = None
+    if type == 0:
+     response = users.find({'email': uname}, {'_id': 0, 'password': 0})
+    elif type == 1 :
+        response = users.find({'email': uname}, {'_id': 0})
     data = None
     for i in response:
         data = i
@@ -42,7 +46,7 @@ def get_single_user(uname):
 
 def login_user(uname, pwd):
     if checkExistance(uname):
-        user = get_single_user(uname)
+        user = get_single_user(uname,1)
         print(user)
         if check_password_hash(user['password'], pwd):
             return True
@@ -88,7 +92,7 @@ def getUserDetail(email, password):
 
 
 if __name__ == '__main__':
-    print(get_single_user('tester@gmail.com'))
+    print(get_single_user('tester@gmail.com',1))
 
 
 # notes init
