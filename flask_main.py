@@ -108,7 +108,6 @@ def addNotes(topic, link, date, subject, semester, stream):
 
 # url - https://sristspace.herokuapp.com/getNotesByDrop/sem/stream
 @app.route('/getNotesByDrop/<semester>/<stream>')
-@checkForToken  # test jwt token
 def getNotes(semester, stream):
     return jsonify(mongoDataBase.fetchNotes(semester, stream))
 
@@ -144,6 +143,7 @@ def ReceiveArticles():
 
 
 @app.route('/fetchTrendingArticles', methods=['GET'])
+@checkForToken
 def FetchArticles():
     data = articles.fetchTrendingArticles()
     return jsonify(data)
