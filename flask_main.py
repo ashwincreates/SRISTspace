@@ -74,14 +74,6 @@ def newUser(email, password, semester, stream, branch):
     return callback, 201
 
 
-@app.route('/user/login', methods=['GET', 'POST'])
-def login_user():
-    args = request.args
-    response = None
-
-    return make_response(jsonify({"status": 200, "jwtToken": ""})), 200
-
-
 # url - https://sristspace.herokuapp.com/getuser/email/pass
 @app.route('/getuser/<email>/<password>', methods=['GET'])
 def getUserData(email, password):
@@ -101,6 +93,7 @@ def getUserData(email, password):
 
 # url - https://sristspace.herokuapp.com/addNotes/Java/ref-oracle/date/sub/sem/stream
 @app.route('/addNotes/<topic>/<link>/<date>/<subject>/<semester>/<stream>')
+@checkForToken
 def addNotes(topic, link, date, subject, semester, stream):
     callback = mongoDataBase.addNotes(topic, link, date, subject, semester, stream)
     return callback
@@ -114,6 +107,7 @@ def getNotes(semester, stream):
 
 # url - https://sristspace.herokuapp.com/dropNotes/topic/ref
 @app.route('/dropNotes/<topic>/<link>')
+@checkForToken
 def dropNotes(topic, link):
     callback = mongoDataBase.dropNotes(topic, link)
     return callback
@@ -137,13 +131,13 @@ def runTest():
 
 
 @app.route('/uploadArticles', methods=['POST'])
+@checkForToken
 def ReceiveArticles():
     message = articles.uploadArticles(request.json)
     return jsonify(message)
 
 
 @app.route('/fetchTrendingArticles', methods=['GET'])
-@checkForToken
 def FetchArticles():
     data = articles.fetchTrendingArticles()
     return jsonify(data)
@@ -156,6 +150,7 @@ def FetchPage(page):
 
 
 @app.route('/uploadEvent', methods=['POST'])
+@checkForToken
 def ReceiveEvents():
     message = event.uploadEvent(request.json)
     return jsonify(message)
