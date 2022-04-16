@@ -114,11 +114,11 @@ export default class Login extends Component<props, states> {
     if (isValid) {
       fetch(url).then((response) => {
         response.json().then((result) => {
+          console.log("login result : "  +result as string)
           if (result === "user does not exists") {
             alert("wrong password or email.");
           } else {
             // this.setState({rendered:"0"})
-            console.log("login result : "  +result as string)
             this.closeDialog();
           }
         });
