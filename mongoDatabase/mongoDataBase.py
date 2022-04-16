@@ -33,7 +33,7 @@ def getNotes():
 
 def get_single_user(uname):
     users = getUsers()
-    response = users.find_one({'email': uname})
+    response = users.find({'email': uname})
     data = None
     for i in response:
         data = i
@@ -82,9 +82,13 @@ def checkExistance(email):
 # login ...
 def getUserDetail(email, password):
     users = getUsers()
-    respones = login_user(email,password)
+    respones = login_user(email, password)
     return respones
-        # return 'user does not exists'
+    # return 'user does not exists'
+
+
+if __name__ == '__main__':
+    print(get_single_user('tester@gmail.com'))
 
 
 # notes init
