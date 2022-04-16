@@ -118,6 +118,7 @@ export default class Login extends Component<props, states> {
             alert("wrong password or email.");
           } else {
             // this.setState({rendered:"0"})
+            console.log("login result : "  +result as string)
             this.closeDialog();
           }
         });
