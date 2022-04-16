@@ -57,7 +57,7 @@ def checkForToken(f):
         else:
             return jsonify({'message': 'bad request'}), 400
 
-        data = jwt.decode(AuthToken, app.config['SECRET_KEY'])
+        data = jwt.decode(AuthToken, app.config['SECRET_KEY'],algorithms=['HS256'])
         if mongoDataBase.checkExistance(data['email']):
             return f(*args, **kwargs)
         else:
@@ -88,9 +88,9 @@ def getUserData(email, password):
     response = mongoDataBase.getUserDetail(email, password)
 
     if response:
-        jwtToken = jwt.encode({'public_id': mongoDataBase.get_single_user(email,0)['email'],
+        jwtToken = jwt.encode({'email': mongoDataBase.get_single_user(email,0)['email'],
                                'exp': datetime.utcnow() + timedelta(minutes=30)}
-                              , app.config['SECRET_KEY'])
+                              , app.config['SECRET_KEY'] )
         return make_response(jsonify({
             'jwtToken': jwtToken, 'data': mongoDataBase.get_single_user(email,0)
         })), 200
