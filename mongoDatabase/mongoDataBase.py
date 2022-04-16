@@ -33,7 +33,7 @@ def getNotes():
 
 def get_single_user(uname):
     users = getUsers()
-    response = users.find({'email': uname}, {'_id': 0})
+    response = users.find({'email': uname}, {'_id': 0, 'password': 0})
     data = None
     for i in response:
         data = i
