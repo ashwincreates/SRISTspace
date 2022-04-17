@@ -93,7 +93,6 @@ def getUserData(email, password):
 
 # url - https://sristspace.herokuapp.com/addNotes/Java/ref-oracle/date/sub/sem/stream
 @app.route('/addNotes/<topic>/<link>/<date>/<subject>/<semester>/<stream>')
-@checkForToken
 def addNotes(topic, link, date, subject, semester, stream):
     callback = mongoDataBase.addNotes(topic, link, date, subject, semester, stream)
     return callback
@@ -107,7 +106,6 @@ def getNotes(semester, stream):
 
 # url - https://sristspace.herokuapp.com/dropNotes/topic/ref
 @app.route('/dropNotes/<topic>/<link>')
-@checkForToken
 def dropNotes(topic, link):
     callback = mongoDataBase.dropNotes(topic, link)
     return callback
@@ -131,7 +129,6 @@ def runTest():
 
 
 @app.route('/uploadArticles', methods=['POST'])
-@checkForToken
 def ReceiveArticles():
     message = articles.uploadArticles(request.json)
     return jsonify(message)
@@ -150,7 +147,6 @@ def FetchPage(page):
 
 
 @app.route('/uploadEvent', methods=['POST'])
-@checkForToken
 def ReceiveEvents():
     message = event.uploadEvent(request.json)
     return jsonify(message)
