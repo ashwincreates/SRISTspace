@@ -13,29 +13,51 @@ import Explore from "./articles/explore";
 import ReadArticle from "./articles/readarticle";
 import AddArticle from "./articles/addarticle";
 import UserProfile from "./users/UserProfile";
-import User, {UserContext} from "./users/UserAuthContext";
+import {User, UserContext } from "./users/UserAuthContext";
+import {useState} from "react";
+
+const Index = () => {
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState({
+    user_id: "",
+    name: "",
+    login: false,
+  } as User);
+
+  return (
+    <>
+      <UserContext.Provider value={{user: user, updatedUser: (l) => {
+        console.log(l)
+        setUser(l)
+      }, updatLogin: (l) => {
+        console.log(l)
+        setLogin(l)
+      }}}>
+        <Nav></Nav>
+        <div className="px-3 lg:p-0 max-w-7xl mx-auto min-h-screen">
+          <Switch>
+            <Route exact path="/" component={App} />
+            <Route exact path="/notes" component={Note} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/articles" component={Explore} />
+            <Route exact path="/articles/addarticle" component={AddArticle} />
+            <Route exact path="/articles/:article" component={ReadArticle} />
+            <Route exact path="/events" component={Event} />
+            <Route exact path="/users/:userid" component={UserProfile} />
+            <Route exact path="/search" component={Search} />
+          </Switch>
+        </div>
+        <div className="bg-zinc-900 pt-3 pb-6 px-2 mt-10 text-white">
+          Made by Students of SRIST, 2021
+        </div>
+      </UserContext.Provider>
+    </>
+  );
+};
 
 ReactDOM.render(
   <BrowserRouter>
-    <Nav></Nav>
-    <UserContext.Provider value={User}>    
-      <div className="px-3 lg:p-0 max-w-7xl mx-auto min-h-screen">
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/notes" component={Note} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/articles" component={Explore} />
-        <Route exact path="/articles/addarticle" component={AddArticle} />
-        <Route exact path="/articles/:article" component={ReadArticle} />
-        <Route exact path="/events" component={Event} />
-        <Route exact path="/users/:userid" component={UserProfile} />
-        <Route exact path="/search" component={Search} />
-      </Switch>
-    </div>
-    <div className="bg-zinc-900 pt-3 pb-6 px-2 mt-10 text-white">
-      Made by Students of SRIST, 2021
-    </div>
-    </UserContext.Provider>
+    <Index></Index>
   </BrowserRouter>,
   document.getElementById("root")
 );

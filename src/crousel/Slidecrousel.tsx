@@ -6,8 +6,8 @@ function Slide(props) {
 	<div className="h-[500px] relative w-full overflow-hidden after:h-full after:w-full after:absolute after:opacity-30 after:top-0 after:bg-gradient-to-t after:from-black after:block">
 		<img src={props.src} className="pointer-events-none object-cover h-[500px] w-full"/>
 		<div className="md:block absolute bottom-6 text-white z-10 px-3 text-center w-full">
-        <h5 className="text-xl font-medium">Web Development Classes</h5>
-        <p>New Courses are available starting from 11th Jan.</p>
+        <h5 className="text-xl font-medium">{props.heading}</h5>
+        <p>{props.description}</p>
     </div>
 	</div>
 	)
@@ -18,11 +18,11 @@ function Slidecrousel() {
     items: [
       {
         id: 'item-1',
-        renderItem: <Slide src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>,
+        renderItem: <Slide src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" heading={"Web Development Workshop"} description={"Web development classes starting from 15th April."}/>,
       },
       {
         id: 'item-2',
-        renderItem: <Slide src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"/>,
+        renderItem: <Slide src="https://images.unsplash.com/photo-1635775017492-1eb935a082a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" heading={"C++ Workshop"} description={"C++ Master Class starting from 1 April"}/>,
       }
     ]
   })

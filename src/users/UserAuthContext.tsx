@@ -1,10 +1,17 @@
 import React from "react";
 
-const User = {
-  user_id : "awda",
-  name : "John Wick",
-  login : true,
+export interface User {
+  name: String;
+  user_id: String;
+  login: Boolean;
 }
 
-export default User;
-export const UserContext = React.createContext(User)
+export const UserContext = React.createContext({
+  user: {} as User,
+  updatedUser: (u: User) => {
+    console.log(u)
+  },
+  updatLogin: (l: boolean) => {
+    console.log(l)
+  },
+})

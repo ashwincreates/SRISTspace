@@ -28,7 +28,7 @@ function Card(props: any) {
         <img className="w-full rounded-t-md" src={props.image} alt="load..." />
       </div>
       <div className="p-4">
-        <div className="w-full">
+        {/*<div className="w-full">
           <span
             className={"flex gap-x-3 items-center"}
             onClick={Click}
@@ -36,7 +36,7 @@ function Card(props: any) {
             {state?<AiOutlineHeart size={24} className="text-gray-900"/>:<AiFillHeart className="text-rose-500" size={24}/>}
             <div className={state ? "" : "liked" + "text-lg text-medium"}>{count}</div>
           </span>
-        </div>
+      </div>*/}
         <h2 className="text-md font-medium mt-2 text-gray-900">{props.name} </h2>
         <p className="text-gray-500">{props.venue}</p>
       </div>
@@ -50,11 +50,11 @@ function EmptyCard() {
       <div className="h-[500px] flex flex-col overflow-hidden">
         <div className="grow bg-gray-300 rounded-md animate-pulse"></div>
         <div className="p-3">
-          <div className="w-full">
+          {/*<div className="w-full">
             <span className="">
 							<AiOutlineHeart size="24" className="text-gray-400 animate-pulse"/>
             </span>
-          </div>
+        </div>*/}
           <h2 className="mt-2 h-4 bg-gray-300 rounded-full animate-pulse"></h2>
           <div className="mt-2 h-2 bg-gray-300 rounded-full animate-pulse"/>
           <div className="mt-1 h-2 bg-gray-300 rounded-full animate-pulse"/>

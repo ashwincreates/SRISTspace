@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Article } from "../models/models";
+import {UserContext} from "../users/UserAuthContext";
 
 function Explore() {
   let [articleList, setArticleList] = useState<Article[]>([]);
@@ -10,6 +11,7 @@ function Explore() {
   let URL = "https://sristspace.herokuapp.com";
 
   let loadmore = React.useRef<HTMLDivElement>(null);
+  let usercontext = useContext(UserContext)
 
   const handleObserver = (entities: any) => {
     const target = entities[0];

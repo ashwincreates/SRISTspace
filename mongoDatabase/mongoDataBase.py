@@ -35,11 +35,13 @@ def get_single_user(uname,type):
     users = getUsers()
     response = None
     if type == 0:
-     response = users.find({'email': uname}, {'_id': 0, 'password': 0})
+     response = users.find({'email': uname}, {'password': 0})
     elif type == 1 :
-        response = users.find({'email': uname}, {'_id': 0})
+        response = users.find({'email': uname})
     data = None
     for i in response:
+        val = json.loads(json_util.dumps(i['_id']))
+        i['_id'] = val['$oid']
         data = i
     return data
 
